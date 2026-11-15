@@ -1,0 +1,2951 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Luyện Nghe – Ôn thi VSTEP B1–C1</title>
+<meta name="description" content="Luyện Nghe VSTEP B1–C1: đề nghe 35 câu có chấm điểm, chữa bài và từ vựng mới có phát âm giọng nam, giọng nữ.">
+<script>
+/* ================================================================
+   CÀI ĐẶT — chỉ cần sửa phần này (giữ nguyên dấu ngoặc kép "")
+   Phần này giống nhau ở cả 5 trang: sửa ở trang nào thì sửa luôn 4 trang còn lại.
+   ================================================================ */
+window.VSTEP_CONFIG = {
+  brand: "Ôn thi VSTEP",          // tên hiện ở góc trái thanh menu
+  levelName: "Bậc 3–5",           // các bậc khoá học luyện
+  level: "B1–C1",
+  defaultTarget: "b1",            // bậc mục tiêu khi học viên chưa tự chọn: "b1", "b2" hoặc "c1"
+  studentName: "",                // tên học viên (tuỳ chọn) — để "" thì web dùng chung cho mọi người
+  examDate: "",                   // ngày thi chung, dạng "2026-12-12" — để "" thì học viên tự chọn
+  sheetUrl: "",                   // link Ứng dụng web Google Sheet (…/exec) của RIÊNG trang này để nhận kết quả — để "" thì kết quả chỉ lưu trên máy học viên
+  teacherName: "thầy Hoàng",      // tên người chữa bài, ví dụ "cô Lan" — để "" sẽ hiện là "giáo viên"
+  teacherEmail: "",               // email nhận bài Viết/Nói của học viên (để "" nếu không dùng)
+
+  // CÁC FILE CỦA TRANG — đặt chung một thư mục, giữ nguyên tên
+  linkMode: "file",
+  files: { home: "index.html", nghe: "nghe.html", noi: "noi.html", doc: "doc.html", viet: "viet.html" },
+  audioBase: "audio/"             // thư mục chứa file nghe và file phát âm, đặt cạnh các file .html
+};
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ===== GIAO DIỆN DÙNG CHUNG (giống nhau ở mọi trang) ===== */
+:root{
+  --bg:#f4f5f9; --grid:#e6e9f0; --card:#fff; --ink:#1b2130; --muted:#5d6577; --line:#dfe3ea;
+  --blue-50:#e6f0ff; --blue-100:#d6e6ff; --blue-200:#b7cff5; --blue-400:#6f9fe6; --blue-600:#2563eb; --blue-700:#1d4ed8; --blue-900:#123a7a;
+  --red:#c62828; --ok:#15803d; --ok-soft:#e8f6ec; --bad:#b42318; --bad-soft:#fdecea; --warn:#8a4f06; --warn-soft:#fff5e0;
+  --font:"Be Vietnam Pro","Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background-color:var(--bg);background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:24px 24px;color:var(--ink);font-family:var(--font);font-size:17px;line-height:1.6;-webkit-text-size-adjust:100%;min-height:100vh}
+button,input,select,textarea{font:inherit;color:inherit}
+a{color:var(--blue-700)}
+h1,h2,h3,p{margin:0}
+:focus-visible{outline:3px solid var(--blue-600);outline-offset:2px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 18px}
+.muted{color:var(--muted)}
+.small{font-size:.9rem}
+
+/* thanh menu */
+.nav{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.96);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1040px;margin:0 auto;padding:8px 18px;display:flex;align-items:center;gap:8px 18px;flex-wrap:wrap}
+.brand{font-weight:800;font-size:1.12rem;color:var(--ink);text-decoration:none;white-space:nowrap;padding:6px 0;background:none;border:0;cursor:pointer}
+.brand .lvl{color:var(--red);font-weight:400;margin-left:7px}
+.nav-links{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;margin-left:auto}
+.nav-links::-webkit-scrollbar{display:none}
+.nav-a{white-space:nowrap;padding:8px 14px;border-radius:999px;font-weight:600;font-size:.98rem;color:var(--ink);text-decoration:none;border:1px solid transparent;background:none;cursor:pointer;line-height:1.3}
+.nav-a:hover{background:var(--blue-50);border-color:var(--blue-200)}
+.nav-a.on{background:var(--ink);color:#fff}
+.nav-who{font-size:.9rem;color:var(--muted);white-space:nowrap;max-width:230px;min-width:0;flex:0 1 auto;overflow:hidden;text-overflow:ellipsis}
+.nav-who b{color:var(--ink);font-weight:600}
+@media(max-width:700px){
+  .nav-in{padding:6px 14px}
+  .nav-links{order:3;width:100%;margin-left:-6px}
+  .nav-who{display:none}
+  .brand{padding:4px 0}
+  .nav-a{padding:7px 12px}
+}
+
+/* nút */
+.btn{appearance:none;border:1px solid var(--line);background:#fff;border-radius:10px;padding:9px 16px;cursor:pointer;font-weight:600;line-height:1.25;min-height:44px;display:inline-flex;align-items:center;justify-content:center;gap:7px;text-decoration:none;color:var(--ink)}
+.btn:hover{border-color:#aeb7c7}
+.btn.primary{background:var(--ink);border-color:var(--ink);color:#fff}
+.btn.primary:hover{background:#000}
+.btn.blue{background:var(--blue-600);border-color:var(--blue-600);color:#fff}
+.btn.blue:hover{background:var(--blue-700);border-color:var(--blue-700)}
+.btn.small{min-height:36px;padding:6px 12px;font-size:.9rem;border-radius:9px}
+.btn[disabled]{opacity:.5;cursor:not-allowed}
+.btn svg{width:18px;height:18px;flex:0 0 auto}
+
+/* khối nội dung */
+.sec{padding:34px 0 0}
+.sec > h2{font-size:1.45rem;font-weight:800;letter-spacing:-.01em;line-height:1.25;margin-bottom:6px}
+.sec > .sub{color:var(--muted);margin-bottom:14px;max-width:68ch}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.notice{border-radius:12px;padding:10px 14px;background:var(--blue-50);color:var(--blue-900);font-size:.95rem}
+.notice.warn{background:var(--warn-soft);color:var(--warn)}
+.notice.ok{background:var(--ok-soft);color:#14532d}
+.notice.bad{background:var(--bad-soft);color:#7f1d1d}
+.pill{display:inline-flex;align-items:center;padding:2px 10px;border-radius:999px;background:#eceef4;font-weight:600;font-size:.85rem;white-space:nowrap}
+.pill.ok{background:var(--ok-soft);color:var(--ok)}
+.pill.blue{background:var(--blue-50);color:var(--blue-900)}
+.field{border:1px solid #b9c1cf;border-radius:10px;padding:9px 12px;min-height:44px;background:#fff;min-width:0}
+.field:focus{outline:3px solid var(--blue-200);outline-offset:0;border-color:var(--blue-600)}
+
+/* bảng */
+.tblwrap{overflow-x:auto;background:#fff;border:1px solid var(--line);border-radius:14px}
+.tbl{width:100%;border-collapse:collapse;font-size:.98rem}
+.tbl th,.tbl td{text-align:left;padding:11px 16px;border-bottom:1px solid var(--line);vertical-align:top}
+.tbl tr:last-child td{border-bottom:0}
+.tbl th{font-size:.88rem;color:var(--muted);font-weight:600;background:#fafbfd;white-space:nowrap}
+.tbl td.num,.tbl th.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.tbl tr.hl td{background:var(--blue-50)}
+.tbl td.nw{white-space:nowrap}
+/* màn hình hẹp: mỗi dòng của bảng thành một khối xếp dọc */
+@media(max-width:700px){
+  .tbl.stack thead{display:none}
+  .tbl.stack,.tbl.stack tbody{display:block}
+  .tbl.stack tr{display:block;padding:12px 16px;border-bottom:1px solid var(--line)}
+  .tbl.stack tr:last-child{border-bottom:0}
+  .tbl.stack td{display:flex;justify-content:space-between;align-items:baseline;gap:14px;padding:3px 0;border:0;text-align:right;white-space:normal}
+  .tbl.stack td::before{content:attr(data-label);color:var(--muted);font-size:.88rem;text-align:left;flex:0 0 auto}
+  .tbl.stack td:first-child{font-size:1.05rem;padding-bottom:5px}
+  .tbl.stack td:first-child::before,.tbl.stack td.long::before{content:none}
+  .tbl.stack td.long{display:block;text-align:left;padding-top:6px}
+}
+
+/* tiêu đề trang con + thẻ chuyển phần */
+.pagehead{padding:30px 0 6px}
+.pagehead h1{font-size:clamp(2rem,5vw,2.6rem);font-weight:800;letter-spacing:-.02em;line-height:1.15}
+.pagehead h1 .lvl{color:var(--red);font-weight:400;font-size:.62em;margin-left:12px;letter-spacing:0}
+.pagehead p{color:var(--muted);font-size:1.05rem;margin-top:8px;max-width:64ch}
+.tabs{display:flex;gap:6px;margin:18px 0 16px;border-bottom:1px solid var(--line)}
+.tab{padding:10px 18px;border:1px solid transparent;border-bottom:0;border-radius:12px 12px 0 0;font-weight:700;color:var(--muted);text-decoration:none;background:none;cursor:pointer;margin-bottom:-1px}
+.tab:hover{color:var(--ink)}
+.tab.on{background:#fff;border-color:var(--line);color:var(--ink)}
+.empty{background:#fff;border:1px dashed #b9c1cf;border-radius:14px;padding:28px 22px;text-align:center;color:var(--muted)}
+.empty b{display:block;color:var(--ink);font-size:1.1rem;margin-bottom:4px}
+
+/* ô nhập họ tên học viên */
+.learner{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 18px;display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between}
+.learner .lb-label{font-weight:700;width:100%}
+.learner .lb-row{display:flex;gap:8px;width:100%}
+.learner .lb-row .field{flex:1 1 auto}
+.learner .btn{white-space:nowrap}
+.learner .lb-name{display:flex;flex-direction:column;line-height:1.35}
+.learner .lb-name b{font-size:1.15rem}
+.learner p{width:100%}
+.ipa{color:var(--blue-900);font-family:"Segoe UI","Lucida Sans Unicode","Arial Unicode MS",sans-serif}
+
+/* nhóm nút chọn một trong vài mục */
+.pick{display:flex;flex-wrap:wrap;gap:8px 10px;align-items:center;font-size:.95rem;font-weight:600}
+.seg{display:inline-flex;border:1.5px solid var(--ink);border-radius:10px;overflow:hidden}
+.seg button{appearance:none;border:0;border-left:1.5px solid var(--ink);background:#fff;padding:6px 16px;font-weight:700;cursor:pointer;min-height:38px;min-width:54px}
+.seg button:first-child{border-left:0}
+.seg button:hover{background:var(--blue-50)}
+.seg button[aria-pressed="true"]{background:var(--ink);color:#fff}
+.seg button:focus-visible{outline-offset:-3px}
+
+/* thẻ từ vựng có nút nghe phát âm */
+.words{display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(230px,1fr))}
+.word{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px 16px;display:flex;flex-direction:column;gap:2px}
+.word .w{font-size:1.3rem;font-weight:800;letter-spacing:-.01em;line-height:1.25}
+.word .pos{font-size:.82rem;color:var(--muted);font-weight:400;margin-left:6px}
+.word .ipa{color:var(--blue-900);font-family:"Segoe UI","Lucida Sans Unicode","Arial Unicode MS",sans-serif;font-size:.98rem}
+.word .vi{font-weight:600;margin-top:4px}
+.word .ex{color:var(--muted);font-size:.92rem;line-height:1.5;margin-top:2px}
+.word .say{margin-top:auto;padding-top:12px;display:flex;flex-wrap:wrap;gap:6px}
+.word .say .btn{white-space:nowrap;padding:6px 10px}
+.btn.playing{background:var(--blue-50);border-color:var(--blue-400)}
+
+/* chuyển trang trước / sau */
+.pager{display:flex;justify-content:space-between;gap:12px;margin:36px 0 0;padding-top:18px;border-top:1px solid var(--line)}
+.pager a,.pager button{display:flex;flex-direction:column;gap:0;text-decoration:none;color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px 16px;min-width:140px;cursor:pointer;text-align:left}
+.pager a:hover,.pager button:hover{border-color:var(--blue-400);background:var(--blue-50)}
+.pager .dir{font-size:.82rem;color:var(--muted)}
+.pager .nm{font-weight:700}
+.pager .next{text-align:right;margin-left:auto}
+
+.foot{margin-top:44px;padding:18px 0 34px;border-top:1px solid var(--line);color:var(--muted);font-size:.88rem}
+.toast{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:var(--ink);color:#fff;padding:10px 16px;border-radius:10px;z-index:99;max-width:92vw;font-size:.95rem}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+@media print{.nav,.pager,.btn{display:none!important}body{background:#fff}}
+.audiowarn{margin-top:16px;padding:14px 18px}
+.audiowarn ul{margin:6px 0 6px;padding-left:20px}
+.audiowarn li{margin-top:4px}
+/* ===== LUYỆN TẬP: danh sách bài, làm bài, chấm, chữa (dùng chung cho Nghe và Đọc) ===== */
+.test{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px 20px 8px;margin-bottom:18px}
+.test h2{font-size:1.35rem;font-weight:800;margin-bottom:4px}
+.parts{list-style:none;margin:0;padding:0}
+.parts li{display:grid;grid-template-columns:150px minmax(0,1fr) auto;gap:10px 18px;align-items:center;padding:14px 0;border-top:1px solid var(--line)}
+.parts li:first-child{border-top:0}
+.parts .pt{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.parts .pt b{font-size:1.08rem}
+.parts .pd{color:var(--muted);font-size:.95rem}
+.parts .last{display:block;color:var(--blue-900);font-weight:600;margin-top:2px}
+.parts .btn{min-width:128px}
+@media(max-width:700px){.parts li{grid-template-columns:1fr}.parts .btn{width:100%}}
+
+.dobar{position:sticky;top:calc(var(--navh, 57px) + 8px);z-index:10;display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;justify-content:space-between;background:var(--ink);color:#fff;border-radius:12px;padding:10px 16px;margin-bottom:16px}
+.dobar .count{margin-left:12px;font-size:.92rem;opacity:.85;font-variant-numeric:tabular-nums}
+.dobar .btn.primary{background:#fff;color:var(--ink);border-color:#fff}
+.dobar .btn.small{background:transparent;color:#fff;border-color:rgba(255,255,255,.45)}
+.parthead{font-size:1.3rem;font-weight:800;margin:26px 0 12px;display:flex;align-items:center;gap:10px}
+.item{background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px 20px 18px;margin-bottom:14px}
+.item h3{font-size:1.02rem;font-weight:700;margin-bottom:10px}
+.player audio{width:100%;max-width:560px;display:block;height:44px}
+.player .notice{margin-top:8px}
+.q{border:0;margin:16px 0 0;padding:0;min-width:0}
+.q legend,.q .qt{font-weight:600;padding:0;margin-bottom:8px;line-height:1.45}
+.q .qn{color:var(--blue-900);font-weight:800}
+.opt{display:flex;align-items:flex-start;gap:10px;padding:9px 12px;border:1px solid var(--line);border-radius:10px;margin-top:6px;cursor:pointer;line-height:1.4}
+label.opt:hover{border-color:var(--blue-400);background:var(--blue-50)}
+.opt input{width:19px;height:19px;margin:2px 0 0;flex:0 0 auto;accent-color:var(--blue-600)}
+.opt:has(input:checked){border-color:var(--blue-600);background:var(--blue-50)}
+.opt .lt{font-weight:800;min-width:1.1em}
+.q.rev .opt{cursor:default}
+.q.rev .qt .pill{margin-left:8px;vertical-align:1px}
+.pill.no{background:var(--bad-soft);color:var(--bad)}
+.opt.right{border-color:var(--ok);background:var(--ok-soft)}
+.opt.wrong{border-color:var(--bad);background:var(--bad-soft)}
+.opt .tag{margin-left:auto;font-size:.82rem;font-weight:700;white-space:nowrap;padding-left:10px}
+.opt.right .tag{color:var(--ok)}
+.opt.wrong .tag{color:var(--bad)}
+.why{margin-top:8px;padding:10px 14px;border-left:3px solid var(--blue-400);background:#f7f9fd;border-radius:0 10px 10px 0;font-size:.95rem}
+.why .ev{font-style:italic;color:var(--blue-900);margin-bottom:4px}
+.script{margin-top:16px;border-top:1px solid var(--line);padding-top:12px}
+.script summary{cursor:pointer;font-weight:700;color:var(--blue-700)}
+.script p{margin-top:8px;max-width:72ch}
+
+.score{display:flex;flex-wrap:wrap;gap:8px 26px;align-items:center;background:#fff;border:1.5px solid var(--ink);border-radius:16px;padding:18px 22px}
+.score .big{font-size:2.6rem;font-weight:800;letter-spacing:-.02em;line-height:1.1;white-space:nowrap}
+.score .big span{font-size:1rem;font-weight:600;letter-spacing:0;color:var(--muted)}
+.score > div:last-child{flex:1 1 300px}
+.score p{margin-top:2px;max-width:66ch}
+
+.vbar{display:flex;flex-wrap:wrap;gap:12px 24px;align-items:center;justify-content:space-between}
+.vbar .seg button{padding:6px 12px;font-size:.92rem}
+.quiz{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px 22px;max-width:640px}
+.quiz .qhead{display:flex;justify-content:space-between;gap:12px;margin-bottom:6px}
+.quiz > p{margin-bottom:12px}
+.qopts{display:grid;gap:8px;margin-top:16px}
+.qopts .btn{justify-content:flex-start;text-align:left}
+.qopts .btn.right{border-color:var(--ok);background:var(--ok-soft);opacity:1}
+.qopts .btn.wrong{border-color:var(--bad);background:var(--bad-soft);opacity:1}
+.qfb{margin-top:14px}
+.qfb p{margin-bottom:10px}
+.qfb .qw{font-weight:800}
+.qword{font-size:1.9rem;font-weight:800;letter-spacing:-.01em;margin:2px 0 12px}
+/* đang làm bài: thanh menu không dính nữa để dành chỗ cho bài */
+body.doing{--navh:0px}
+body.doing .nav{position:static}
+@media(max-width:700px){
+  .dobar{padding:8px 12px;flex-wrap:nowrap}
+  .dobar b,.dobar .count .long{display:none}
+  .dobar .count{margin-left:0}
+  .dobar .btn{min-height:38px;padding:6px 12px}
+}
+@media(max-width:700px){
+  .dobar > div{display:flex;align-items:center;gap:8px;flex-wrap:nowrap;white-space:nowrap}
+  .dobar .clock{margin-left:0}
+}
+@media(max-width:700px){
+  .dobar{gap:6px}
+  .dobar .row{gap:6px;flex-wrap:nowrap}
+  .dobar .btn{padding:6px 10px}
+}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chips button{appearance:none;border:1.5px solid var(--ink);background:#fff;border-radius:999px;padding:6px 16px;font-weight:700;cursor:pointer;min-height:38px}
+.chips button:hover{background:var(--blue-50)}
+.chips button[aria-pressed="true"]{background:var(--ink);color:#fff}
+.chips button .done{font-weight:400;font-size:.85rem;margin-left:6px;opacity:.8}
+.testpick{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;margin-bottom:14px;font-weight:600}
+</style>
+</head>
+<body>
+<noscript><p style="padding:20px">Trang này cần bật JavaScript để hoạt động.</p></noscript>
+<script>window.VSTEP_PAGE = "nghe";</script>
+<script>
+/* ===== LÕI DÙNG CHUNG (giống nhau ở mọi trang, không cần sửa) ===== */
+(function () {
+  'use strict';
+  var C = window.VSTEP_CONFIG || {};
+  var PAGE = window.VSTEP_PAGE || 'home';
+  var PAGES = [
+    { key: 'home', t: 'Trang chủ', en: 'Home' },
+    { key: 'nghe', t: 'Nghe', en: 'Listening' },
+    { key: 'noi', t: 'Nói', en: 'Speaking' },
+    { key: 'doc', t: 'Đọc', en: 'Reading' },
+    { key: 'viet', t: 'Viết', en: 'Writing' }
+  ];
+  var ICON = {
+    nghe: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="3" y="14" width="4.5" height="6.5" rx="1.6"/><rect x="16.5" y="14" width="4.5" height="6.5" rx="1.6"/></svg>',
+    noi: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H10l-5 4v-4H4z"/><path d="M8.5 9h7M8.5 12h4.5"/></svg>',
+    doc: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 6.5C10 5 7 4.5 3.5 4.5v13c3.5 0 6.5.5 8.5 2 2-1.5 5-2 8.5-2v-13C17 4.5 14 5 12 6.500z"/><path d="M12 6.500v13"/></svg>',
+    viet: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l1.2-4.500L16.5 4.200l3.3 3.300L8.5 18.800z"/><path d="M14 6.700l3.3 3.3"/></svg>',
+    loa: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.500v5h3.500l5 4v-13l-5 4z"/><path d="M16 9a4.2 4.2 0 0 1 0 6"/><path d="M18.5 6.500a8 8 0 0 1 0 11"/></svg>'
+  };
+
+  /* ---------- DOM ---------- */
+  function h(tag, attrs) {
+    var el = document.createElement(tag);
+    if (attrs) {
+      for (var k in attrs) {
+        var v = attrs[k];
+        if (v === null || v === undefined || v === false) continue;
+        if (k === 'class') el.className = v;
+        else if (k === 'html') el.innerHTML = v;
+        else if (k.slice(0, 2) === 'on' && typeof v === 'function') el.addEventListener(k.slice(2), v);
+        else if (k === 'style' && typeof v === 'object') { for (var s in v) el.style[s] = v[s]; }
+        else el.setAttribute(k, v === true ? '' : v);
+      }
+    }
+    for (var i = 2; i < arguments.length; i++) add(el, arguments[i]);
+    return el;
+  }
+  function add(el, kid) {
+    if (kid === null || kid === undefined || kid === false) return;
+    if (Array.isArray(kid)) { kid.forEach(function (k) { add(el, k); }); return; }
+    if (typeof kid === 'string' || typeof kid === 'number') el.appendChild(document.createTextNode(String(kid)));
+    else el.appendChild(kid);
+  }
+  function clear(el) { while (el.firstChild) el.removeChild(el.firstChild); return el; }
+  var toastEl = null;
+  function toast(msg) {
+    if (toastEl) toastEl.remove();
+    toastEl = h('div', { class: 'toast', role: 'status' }, msg);
+    document.body.appendChild(toastEl);
+    var el = toastEl; setTimeout(function () { el.remove(); }, 4200);
+  }
+
+  /* ---------- lưu trên máy (an toàn khi trình duyệt chặn) ---------- */
+  var mem = {};
+  var GLOBAL_KEYS = { learner: 1, slow: 1, uid: 1 };
+  function slug(t) {
+    return String(t || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/đ/g, 'd').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+  }
+  var store = {
+    who: '',
+    // mỗi học viên (theo tên) có kho kết quả riêng trên cùng một máy; cả 5 trang dùng chung kho này
+    full: function (k, who) { var w = GLOBAL_KEYS[k] ? '' : (who === undefined ? this.who : who); return 'vstep2.' + (w ? 'u_' + w + '.' : '') + k; },
+    raw: function (fk, d) {
+      try { var v = localStorage.getItem(fk); if (v !== null) return JSON.parse(v); } catch (e) { }
+      return (fk in mem) ? mem[fk] : d;
+    },
+    get: function (k, d) { return this.raw(this.full(k), d); },
+    set: function (k, v) { var fk = this.full(k); mem[fk] = v; try { localStorage.setItem(fk, JSON.stringify(v)); } catch (e) { } }
+  };
+  store.who = slug(store.get('learner', '') || C.studentName || '');
+  function learnerName() { return String(store.get('learner', '') || C.studentName || '').trim(); }
+  function setLearner(n) {
+    n = String(n || '').trim().replace(/\s+/g, ' ');
+    var anon = store.raw(store.full('results', ''), []), anonTarget = store.raw(store.full('target', ''), '');
+    store.set('learner', n); store.who = slug(n);
+    if (n && anonTarget && !store.get('target', '')) store.set('target', anonTarget);
+    // bài làm trước khi nhập tên được chuyển sang tên vừa nhập
+    if (n && anon.length && !store.get('results', []).length) {
+      store.set('results', anon);
+      try { localStorage.removeItem(store.full('results', '')); } catch (e) { }
+      delete mem[store.full('results', '')];
+    }
+    return n;
+  }
+  function uid() { var u = store.get('uid', ''); if (!u) { u = Math.random().toString(36).slice(2, 8); store.set('uid', u); } return u; }
+
+  /* ---------- kết quả làm bài ----------
+     Mỗi bài làm xong, trang kỹ năng gọi V.results.add({...}) với:
+       skill: 'nghe' | 'noi' | 'doc' | 'viet'
+       kind:  'luyen-tap' | 'tu-vung'
+       title: tên bài, ví dụ "Bài 1 – Phần 1"
+       correct, total: số câu đúng / tổng số câu (nếu có)
+       score10: điểm quy về thang 10 (nếu chấm được)                       */
+  var results = {
+    all: function () { return store.get('results', []); },
+    of: function (skill) { return this.all().filter(function (r) { return r.skill === skill; }); },
+    // sửa một kết quả đã lưu (tìm theo ts), ví dụ đánh dấu đã gửi: V.results.mark(rec.ts, {sent: true})
+    mark: function (ts, patch) {
+      var a = this.all();
+      a.forEach(function (r) { if (r.ts === ts) for (var k in patch) r[k] = patch[k]; });
+      store.set('results', a);
+    },
+    add: function (r) {
+      var rec = { ts: Date.now() }; for (var k in r) rec[k] = r[k];
+      var a = this.all(); a.unshift(rec); if (a.length > 300) a.length = 300;
+      store.set('results', a); return rec;
+    }
+  };
+  function round05(x) { return Math.round(x * 2) / 2; }
+  function fmtScore(x) { return (Math.round(x * 10) / 10).toFixed(1); }
+  // quy điểm trung bình (đã làm tròn 0,5) ra bậc VSTEP.3-5
+  function bandOf(score) {
+    var s = round05(score);
+    if (s >= 8.5) return { key: 'c1', t: 'C1', name: 'Bậc 5' };
+    if (s >= 6) return { key: 'b2', t: 'B2', name: 'Bậc 4' };
+    if (s >= 4) return { key: 'b1', t: 'B1', name: 'Bậc 3' };
+    return { key: 'none', t: 'Chưa đạt B1', name: '' };
+  }
+  // bậc mục tiêu học viên tự chọn (lưu theo tên học viên)
+  var TARGETS = [
+    { key: 'b1', t: 'B1', name: 'Bậc 3', min: 4, range: '4.0 – 5.5' },
+    { key: 'b2', t: 'B2', name: 'Bậc 4', min: 6, range: '6.0 – 8.0' },
+    { key: 'c1', t: 'C1', name: 'Bậc 5', min: 8.5, range: '8.5 – 10' }
+  ];
+  function target() {
+    var k = store.get('target', '') || String(C.defaultTarget || 'b1').toLowerCase(), out = TARGETS[0];
+    TARGETS.forEach(function (t) { if (t.key === k) out = t; });
+    return out;
+  }
+  function setTarget(k) { store.set('target', k); }
+  function dateShort(ts) { var d = new Date(ts); return d.getDate() + '/' + (d.getMonth() + 1); }
+
+  /* ---------- liên kết giữa các trang ---------- */
+  function onSites() {
+    try { return /(^|\.)googleusercontent\.com$/i.test(location.hostname) || /sites\.google\.com/i.test(document.referrer || ''); } catch (e) { return false; }
+  }
+  function linkMode() { var m = C.linkMode || 'auto'; return m === 'auto' ? (onSites() ? 'site' : 'file') : m; }
+  function linkFor(key, hash) {
+    var u = '';
+    if (linkMode() === 'site') {
+      u = String((C.links || {})[key] || '').trim();
+      if (u && !/^https?:\/\//i.test(u)) { var base = String(C.siteUrl || '').trim().replace(/\/+$/, ''); u = base ? base + '/' + u.replace(/^\/+/, '') : ''; }
+      return u;                       // Google Sites không chuyển được phần #... vào trang nhúng
+    }
+    u = String((C.files || {})[key] || '').trim();
+    return u ? u + (hash ? '#' + hash : '') : '';
+  }
+  // Trong Google Sites: thử chuyển trang ngay trong tab; nếu bị chặn thì sau 0,45 giây mở tab mới.
+  function go(url) {
+    var left = false, mark = function () { left = true; };
+    window.addEventListener('beforeunload', mark); window.addEventListener('pagehide', mark);
+    var framed = true;
+    try { framed = window.top !== window.self; } catch (e) { framed = true; }
+    try { if (framed) window.top.location.href = url; else { window.location.href = url; return; } } catch (e) { }
+    setTimeout(function () {
+      if (left) return;
+      var w = null;
+      try { w = window.open(url, '_blank'); if (w) w.opener = null; } catch (e2) { }
+      if (!w) toast('Trình duyệt chặn mở trang. Hãy chọn trang ở menu phía trên của site.');
+    }, 450);
+  }
+  // tạo một liên kết tới trang khác: V.link('nghe', {class:'btn'}, 'Luyện tập') hoặc V.link('nghe#tu-vung', ...)
+  function link(target, attrs) {
+    var parts = String(target).split('#'), key = parts[0], hash = parts[1] || '';
+    var url = linkFor(key, hash), kids = Array.prototype.slice.call(arguments, 2), a;
+    attrs = attrs || {};
+    if (!url) {
+      attrs.type = 'button';
+      a = h('button', attrs, kids);
+      a.addEventListener('click', function () { toast('Trang này chưa được gắn link. Hãy chọn trang ở menu phía trên của site.'); });
+      return a;
+    }
+    attrs.href = url;
+    if (linkMode() === 'site') { attrs.target = '_top'; attrs.rel = 'noopener'; }
+    a = h('a', attrs, kids);
+    if (linkMode() === 'site') a.addEventListener('click', function (e) { e.preventDefault(); go(url); });
+    return a;
+  }
+  function pageInfo(key) { for (var i = 0; i < PAGES.length; i++) if (PAGES[i].key === key) return PAGES[i]; return PAGES[0]; }
+
+  /* ---------- khung trang: menu, tiêu đề, chuyển trang, chân trang ---------- */
+  var whoEl = null;
+  function drawWho() {
+    if (!whoEl) return;
+    clear(whoEl); var n = learnerName();
+    if (n) add(whoEl, ['Học viên: ', h('b', null, n)]);
+  }
+  function nav() {
+    whoEl = h('span', { class: 'nav-who' });
+    drawWho();
+    return h('header', { class: 'nav' }, h('div', { class: 'nav-in' },
+      link('home', { class: 'brand' }, C.brand || 'Ôn thi VSTEP', h('span', { class: 'lvl' }, C.level || 'B1–C1')),
+      whoEl,
+      h('nav', { class: 'nav-links', 'aria-label': 'Các trang' }, PAGES.map(function (p) {
+        return link(p.key, { class: 'nav-a' + (p.key === PAGE ? ' on' : ''), 'aria-current': p.key === PAGE ? 'page' : null }, p.t);
+      }))));
+  }
+  function pageHead(title, tag, sub) {
+    return h('div', { class: 'pagehead' },
+      h('h1', null, title, tag ? h('span', { class: 'lvl' }, tag) : null),
+      sub ? h('p', null, sub) : null);
+  }
+  function section(title, sub) {
+    var s = h('section', { class: 'sec' }, h('h2', null, title), sub ? h('p', { class: 'sub' }, sub) : null);
+    for (var i = 2; i < arguments.length; i++) add(s, arguments[i]);
+    return s;
+  }
+  function pager() {
+    var i = 0; PAGES.forEach(function (p, k) { if (p.key === PAGE) i = k; });
+    var prev = PAGES[i - 1], next = PAGES[i + 1];
+    return h('nav', { class: 'pager', 'aria-label': 'Trang trước và trang sau' },
+      prev ? link(prev.key, { class: 'prev' }, h('span', { class: 'dir' }, 'Trang trước'), h('span', { class: 'nm' }, prev.t)) : null,
+      next ? link(next.key, { class: 'next' }, h('span', { class: 'dir' }, 'Trang sau'), h('span', { class: 'nm' }, next.t)) : null);
+  }
+  function teacher() { return String(C.teacherName || '').trim() || 'giáo viên'; }
+  function cap(s) { s = String(s); return s.charAt(0).toUpperCase() + s.slice(1); }
+  function mount(render) {
+    var body = document.body; clear(body);
+    var root = h('main', { class: 'wrap', id: 'app' });
+    var navEl = nav();
+    body.appendChild(navEl);
+    // chiều cao thanh menu, để các thanh dính bên dưới không bị che
+    var setNavH = function () { document.documentElement.style.setProperty('--navh', navEl.offsetHeight + 'px'); };
+    setNavH(); window.addEventListener('resize', setNavH); window.addEventListener('load', setNavH);
+    body.appendChild(root);
+    render(root);
+    audioCheck(root);
+    root.appendChild(h('footer', { class: 'foot' },
+      (C.brand || 'Ôn thi VSTEP') + ' ' + (C.level || 'B1–C1') + '. Kết quả làm bài được lưu trên máy này' + (sheetOn() ? ' và gửi về bảng điểm của ' + teacher() + '.' : '.')));
+  }
+
+  /* ---------- ô nhập tên học viên ---------- */
+  function learnerBox(onChange) {
+    var box = h('div', { class: 'learner' });
+    function draw(edit) {
+      clear(box);
+      var name = learnerName();
+      if (name && !edit) {
+        add(box, [h('div', { class: 'lb-name' }, h('span', { class: 'muted small' }, 'Học viên'), h('b', null, name)),
+          h('button', { class: 'btn small', type: 'button', onclick: function () { draw(true); } }, 'Đổi tên')]);
+        return;
+      }
+      var inp = h('input', { class: 'field', type: 'text', id: 'lb-inp', maxlength: '60', autocomplete: 'name', placeholder: 'Nguyễn Văn An – lớp K12', value: name });
+      var save = function () {
+        var v = inp.value.trim();
+        if (v.length < 2) { toast('Hãy nhập họ tên (ít nhất 2 ký tự).'); inp.focus(); return; }
+        setLearner(v); drawWho(); draw(false); onChange && onChange();
+      };
+      inp.addEventListener('keydown', function (e) { if (e.key === 'Enter') save(); });
+      add(box, [h('label', { for: 'lb-inp', class: 'lb-label' }, 'Họ tên của bạn'),
+        h('div', { class: 'lb-row' }, inp, h('button', { class: 'btn primary', type: 'button', onclick: save }, 'Lưu tên')),
+        h('p', { class: 'small muted' }, 'Tên dùng để lưu bài làm và để ' + teacher() + ' biết bài của ai. Ghi thêm lớp để không trùng tên.')]);
+    }
+    draw(false);
+    return box;
+  }
+
+  /* ---------- âm thanh: file ghi sẵn trong thư mục audio/ ---------- */
+  function audioUrl(path) { return String(C.audioBase === undefined ? 'audio/' : C.audioBase) + path; }
+  function isSlow() { return !!store.get('slow', false); }
+  // dự phòng khi thiếu file: dùng giọng tiếng Anh có sẵn của trình duyệt
+  var TTS = {
+    ok: 'speechSynthesis' in window, voice: null,
+    pick: function () {
+      if (!this.ok) return null;
+      var v = speechSynthesis.getVoices().filter(function (x) { return /^en[-_]/i.test(x.lang); });
+      v.sort(function (a, b) { return (/en[-_]GB/i.test(b.lang) ? 1 : 0) - (/en[-_]GB/i.test(a.lang) ? 1 : 0); });
+      this.voice = v[0] || null; return this.voice;
+    },
+    stop: function () { if (this.ok) speechSynthesis.cancel(); },
+    say: function (text, opts) {
+      opts = opts || {};
+      if (!this.ok) { opts.onend && opts.onend(); return; }
+      speechSynthesis.cancel();
+      var u = new SpeechSynthesisUtterance(String(text)), voice = this.voice || this.pick();
+      if (voice) { u.voice = voice; u.lang = voice.lang; } else u.lang = 'en-GB';
+      u.rate = opts.rate || 0.9;
+      var ended = false, end = function () { if (!ended) { ended = true; opts.onend && opts.onend(); } };
+      u.onend = end; u.onerror = end;
+      setTimeout(end, 8000 + String(text).length * 120);
+      speechSynthesis.speak(u);
+    }
+  };
+  if (TTS.ok) { TTS.pick(); try { speechSynthesis.addEventListener('voiceschanged', function () { TTS.pick(); }); } catch (e) { } }
+  var curClip = null;
+  function stopClip() {
+    if (curClip) { try { curClip.pause(); } catch (e) { } curClip = null; }
+    TTS.stop();
+    Array.prototype.forEach.call(document.querySelectorAll('.playing'), function (el) { el.classList.remove('playing'); });
+    Array.prototype.forEach.call(document.querySelectorAll('audio'), function (el) { try { el.pause(); } catch (e) { } });
+  }
+  // phát một file ngắn: V.playClip('tu/checkout-f.mp3', {fallback: 'checkout', onend: fn})
+  function playClip(path, opts) {
+    opts = opts || {}; stopClip();
+    var a = new Audio(), finished = false, rate = isSlow() ? 0.7 : 1;
+    function end() { if (finished) return; finished = true; if (curClip === a) curClip = null; opts.onend && opts.onend(); }
+    function fail() {
+      if (finished) return;
+      if (opts.fallback && TTS.ok) { finished = true; if (curClip === a) curClip = null; TTS.say(opts.fallback, { rate: isSlow() ? 0.6 : 0.9, onend: opts.onend }); }
+      else { end(); toast('Không mở được file âm thanh. Kiểm tra thư mục audio nằm cạnh các file .html.'); }
+    }
+    a.addEventListener('ended', end); a.addEventListener('error', fail);
+    a.addEventListener('loadedmetadata', function () { a.playbackRate = rate; });
+    a.preload = 'auto'; a.src = audioUrl(path); a.defaultPlaybackRate = rate; a.playbackRate = rate;
+    curClip = a;
+    var p = a.play();
+    if (p && p.catch) p.catch(function (e) { if (e && e.name === 'AbortError') end(); else fail(); });
+  }
+  // thử mở một file âm thanh khi vào trang; nếu không mở được thì báo rõ ở đầu trang
+  function audioCheck(root) {
+    var a = new Audio(), finished = false;
+    function bad() {
+      if (finished) return; finished = true;
+      var addr = ''; try { addr = String(location.href).slice(0, 90); } catch (e) { }
+      var box = h('div', { class: 'notice bad audiowarn', role: 'alert' },
+        h('b', null, 'Trang chưa mở được file âm thanh.'),
+        h('ul', null,
+          h('li', null, 'Nếu bạn đang xem trang trong khung xem trước của một ứng dụng (ví dụ ứng dụng Claude): khung đó chỉ đọc được một file nên không lấy được âm thanh. Hãy mở bằng Chrome hoặc Edge: vào thư mục chứa trang rồi bấm đúp file index.html.'),
+          h('li', null, 'Nếu bạn đã mở bằng trình duyệt: kiểm tra thư mục audio có nằm cạnh các file .html không.')),
+        h('div', { class: 'small', style: { opacity: '.8' } }, 'Địa chỉ trang đang mở: ' + addr));
+      root.insertBefore(box, root.firstChild);
+    }
+    a.addEventListener('loadedmetadata', function () { finished = true; });
+    a.addEventListener('error', bad);
+    a.preload = 'metadata'; a.src = audioUrl('tu/available-f.mp3');
+    try { a.load(); } catch (e) { }
+  }
+  function clipButton(label, path, fallback, aria) {
+    var b = h('button', { class: 'btn small', type: 'button', 'aria-label': aria || label }, label);
+    b.addEventListener('click', function () {
+      if (b.classList.contains('playing')) { stopClip(); return; }
+      playClip(path, { fallback: fallback, onend: function () { b.classList.remove('playing'); } });
+      b.classList.add('playing');
+    });
+    return b;
+  }
+  // nút chọn tốc độ phát âm từ vựng (lưu chung cho mọi trang)
+  function speedToggle() {
+    var box = h('div', { class: 'pick' });
+    function draw() {
+      clear(box);
+      add(box, ['Tốc độ', h('div', { class: 'seg', role: 'group', 'aria-label': 'Tốc độ phát âm' }, [[false, 'Thường'], [true, 'Chậm']].map(function (o) {
+        return h('button', { type: 'button', 'aria-pressed': isSlow() === o[0] ? 'true' : 'false', onclick: function () { store.set('slow', o[0]); draw(); } }, o[1]);
+      }))]);
+    }
+    draw(); return box;
+  }
+  // thẻ từ vựng: {w, pos, ipa, vi, ex} – mỗi từ có giọng nữ, giọng nam và câu ví dụ
+  function wordCard(it) {
+    var s = slug(it.w);
+    return h('div', { class: 'word' },
+      h('div', { class: 'w', lang: 'en' }, it.w, it.pos ? h('span', { class: 'pos' }, it.pos) : null),
+      it.ipa ? h('div', { class: 'ipa' }, it.ipa) : null,
+      h('div', { class: 'vi' }, it.vi),
+      it.ex ? h('div', { class: 'ex', lang: 'en' }, it.ex) : null,
+      h('div', { class: 'say' },
+        clipButton('Giọng nữ', 'tu/' + s + '-f.mp3', it.w, 'Nghe giọng nữ đọc: ' + it.w),
+        clipButton('Giọng nam', 'tu/' + s + '-m.mp3', it.w, 'Nghe giọng nam đọc: ' + it.w),
+        it.ex ? clipButton('Câu ví dụ', 'tu/' + s + '-ex.mp3', it.ex, 'Nghe câu ví dụ: ' + it.ex) : null));
+  }
+
+  /* ---------- gửi kết quả về Google Sheet ---------- */
+  function sheetUrl() { return String(C.sheetUrl || '').trim(); }
+  function sheetOn() { return /^https:\/\/script\.google(usercontent)?\.com\//.test(sheetUrl()); }
+  // gửi bằng POST dạng form (không cần CORS); nếu fetch lỗi thì dùng form ẩn
+  function postSheet(payload, cb) {
+    var url = sheetUrl(), json = JSON.stringify(payload), finished = false;
+    var done = function (ok) { if (!finished) { finished = true; cb && cb(ok); } };
+    function formPost() {
+      try {
+        var name = 'vsend' + Date.now();
+        var ifr = h('iframe', { name: name, style: { display: 'none' } });
+        var f = h('form', { method: 'POST', action: url, target: name, style: { display: 'none' } }, h('input', { type: 'hidden', name: 'payload', value: json }));
+        document.body.appendChild(ifr); document.body.appendChild(f);
+        var t = setTimeout(function () { done(false); }, 25000);
+        ifr.addEventListener('load', function () { clearTimeout(t); done(true); setTimeout(function () { ifr.remove(); f.remove(); }, 2000); });
+        f.submit();
+      } catch (e) { done(false); }
+    }
+    try {
+      fetch(url, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: 'payload=' + encodeURIComponent(json) })
+        .then(function () { done(true); }, formPost);
+    } catch (e) { formPost(); }
+  }
+  // gửi một dòng kết quả: V.send('nghe', {'Đề': 'Bài 1', 'Kết quả': '6/8', ...}, cb)
+  function send(skill, row, cb) {
+    if (!sheetOn()) { cb && cb(false); return; }
+    var ordered = { 'Học viên': learnerName() || '(chưa nhập tên)' };
+    Object.keys(row || {}).forEach(function (k) { ordered[k] = row[k]; });
+    ordered['Mã'] = uid() + '-' + Date.now().toString(36);
+    postSheet({ skill: skill, cols: Object.keys(ordered), row: ordered, audio: [] }, cb);
+  }
+  function jsonp(params, cb) {
+    var cbName = '__vjp' + Date.now() + Math.floor(Math.random() * 1000), finished = false;
+    var q = Object.keys(params).map(function (k) { return k + '=' + encodeURIComponent(params[k]); }).join('&');
+    var sc = document.createElement('script');
+    function end(err, d) { if (finished) return; finished = true; try { delete window[cbName]; } catch (e) { window[cbName] = undefined; } sc.remove(); cb(err, d); }
+    window[cbName] = function (d) { end(null, d); };
+    sc.src = sheetUrl() + (sheetUrl().indexOf('?') >= 0 ? '&' : '?') + q + '&callback=' + cbName;
+    sc.onerror = function () { end(new Error('load')); };
+    setTimeout(function () { end(new Error('timeout')); }, 20000);
+    document.head.appendChild(sc);
+  }
+  // điểm và nhận xét giáo viên đã chấm cho học viên này (đọc từ Google Sheet)
+  function feedback(cb) {
+    var name = learnerName();
+    if (!sheetOn() || !name) { cb(null, []); return; }
+    jsonp({ action: 'feedback', name: name }, function (err, d) { cb(err, (d && d.items) || []); });
+  }
+
+  window.V = {
+    C: C, PAGE: PAGE, PAGES: PAGES, ICON: ICON, page: pageInfo(PAGE), pageInfo: pageInfo,
+    h: h, add: add, clear: clear, toast: toast, slug: slug,
+    store: store, learnerName: learnerName, setLearner: setLearner, learnerBox: learnerBox, uid: uid,
+    results: results, TARGETS: TARGETS, target: target, setTarget: setTarget, round05: round05, fmtScore: fmtScore, bandOf: bandOf, dateShort: dateShort,
+    link: link, linkFor: linkFor, linkMode: linkMode, go: go,
+    mount: mount, pageHead: pageHead, section: section, pager: pager, teacher: teacher, cap: cap,
+    audioUrl: audioUrl, isSlow: isSlow, playClip: playClip, stopClip: stopClip, clipButton: clipButton, speedToggle: speedToggle, wordCard: wordCard,
+    sheetOn: sheetOn, send: send, postSheet: postSheet, jsonp: jsonp, feedback: feedback
+  };
+})();
+</script>
+<script>
+/* ===== NỘI DUNG TRANG NGHE: đề nghe và từ vựng (soạn riêng cho trang này) ===== */
+window.NGHE_DATA = {
+ "tests": [
+  {
+   "id": "de1",
+   "title": "Đề 1",
+   "parts": [
+    {
+     "id": "p1",
+     "title": "Phần 1",
+     "level": "B1",
+     "intro": "8 đoạn ngắn: thông báo, lời nhắn, hướng dẫn. Mỗi đoạn một câu hỏi.",
+     "items": [
+      {
+       "id": "p1-1",
+       "label": "Thông báo ở siêu thị",
+       "lines": [
+        [
+         "",
+         "Attention, shoppers. The supermarket will close in fifteen minutes, at nine p.m. Please take your items to the checkouts now. Tomorrow we open at eight a.m. as usual, but on Sunday the store will open one hour later, at nine. Thank you for shopping with us."
+        ]
+       ],
+       "qs": [
+        {
+         "q": "What time does the supermarket open on Sunday?",
+         "o": [
+          "8 a.m.",
+          "9 a.m.",
+          "10 a.m.",
+          "9 p.m."
+         ],
+         "a": 1,
+         "ev": "on Sunday the store will open one hour later, at nine",
+         "why": "Ngày thường mở lúc 8 giờ sáng, Chủ nhật mở muộn hơn một tiếng, tức 9 giờ sáng. \"Nine p.m.\" là giờ đóng cửa tối nay, dễ chọn nhầm."
+        }
+       ]
+      },
+      {
+       "id": "p1-2",
+       "label": "Lời nhắn thoại",
+       "lines": [
+        [
+         "",
+         "Hi Anna, it's David. I'm afraid I can't meet you at the cinema at six, because my meeting is running late. Let's meet at the café next to the cinema at half past six instead. The film doesn't start until seven, so we will still have time for a quick drink. See you there."
+        ]
+       ],
+       "qs": [
+        {
+         "q": "Where will David meet Anna?",
+         "o": [
+          "At a café",
+          "At the cinema",
+          "At his office",
+          "At a restaurant"
+         ],
+         "a": 0,
+         "ev": "Let's meet at the café next to the cinema at half past six instead.",
+         "why": "Từ \"instead\" báo hiệu kế hoạch thay đổi: không gặp ở rạp nữa mà gặp ở quán cà phê cạnh rạp."
+        }
+       ]
+      },
+      {
+       "id": "p1-3",
+       "label": "Thông báo ở nhà ga",
+       "lines": [
+        [
+         "",
+         "This is an announcement for passengers travelling to Manchester. The ten fifteen train will now leave from platform seven, not platform four. The train is running about twenty minutes late because of a signal problem. We apologise for the delay. Hot drinks are available in the waiting room on platform six."
+        ]
+       ],
+       "qs": [
+        {
+         "q": "Why is the train late?",
+         "o": [
+          "Because of bad weather",
+          "Because there are too many passengers",
+          "Because a platform is closed",
+          "Because of a signal problem"
+         ],
+         "a": 3,
+         "ev": "The train is running about twenty minutes late because of a signal problem.",
+         "why": "Lý do được nói ngay sau \"because of\". Việc đổi sân ga (platform) chỉ là thông tin đi kèm, không phải lý do trễ."
+        }
+       ]
+      },
+      {
+       "id": "p1-4",
+       "label": "Lời dặn của giáo viên",
+       "lines": [
+        [
+         "",
+         "Before you leave, a quick reminder about Friday's trip to the science museum. The bus leaves at eight o'clock from the school gate, so please arrive by seven forty-five. Bring a packed lunch and a notebook. You don't need any money, because the tickets have already been paid for. And remember to wear comfortable shoes."
+        ]
+       ],
+       "qs": [
+        {
+         "q": "What do the students NOT need to bring?",
+         "o": [
+          "A notebook",
+          "A packed lunch",
+          "Money",
+          "Comfortable shoes"
+         ],
+         "a": 2,
+         "ev": "You don't need any money, because the tickets have already been paid for.",
+         "why": "Câu hỏi có NOT: ba thứ còn lại đều được dặn mang theo, chỉ tiền là không cần vì vé đã trả rồi."
+        }
+       ]
+      },
+      {
+       "id": "p1-5",
+       "label": "Lời nhắn từ phòng khám",
+       "lines": [
+        [
+         "",
+         "Hello, this is the Riverside Dental Clinic with a message for Mr Brown. Your appointment on Tuesday at three p.m. has to be changed, because the dentist will be away that day. We can offer you Wednesday at ten a.m. or Thursday at four p.m. Please call us back to tell us which time you prefer."
+        ]
+       ],
+       "qs": [
+        {
+         "q": "Why is the clinic calling Mr Brown?",
+         "o": [
+          "To change his appointment",
+          "To remind him about his appointment",
+          "To ask him to pay a bill",
+          "To give him some test results"
+         ],
+         "a": 0,
+         "ev": "Your appointment on Tuesday at three p.m. has to be changed",
+         "why": "\"Has to be changed\" = phải đổi lịch. Phòng khám không nhắc lịch cũ mà đề nghị hai giờ hẹn mới."
+        }
+       ]
+      },
+      {
+       "id": "p1-6",
+       "label": "Dự báo thời tiết",
+       "lines": [
+        [
+         "",
+         "And now, the weather for the weekend. Saturday will start cloudy, with some light rain in the morning, but it should be dry and sunny by the afternoon. Sunday will be much colder, with strong winds and heavy rain all day, so it's a good day to stay at home. Temperatures will fall to around five degrees."
+        ]
+       ],
+       "qs": [
+        {
+         "q": "What will the weather be like on Saturday afternoon?",
+         "o": [
+          "Rainy",
+          "Windy",
+          "Snowy",
+          "Sunny"
+         ],
+         "a": 3,
+         "ev": "it should be dry and sunny by the afternoon",
+         "why": "Sáng thứ Bảy có mưa nhẹ nhưng sau \"but\" là buổi chiều: khô và nắng. Mưa to, gió mạnh là của Chủ nhật."
+        }
+       ]
+      },
+      {
+       "id": "p1-7",
+       "label": "Hướng dẫn ở thư viện",
+       "lines": [
+        [
+         "",
+         "Welcome to the city library. The computers are on the second floor, and you can use them for up to two hours a day with your library card. If you want to print, each page costs ten pence. The quiet study rooms are on the third floor. Please remember that food is not allowed anywhere in the building, but you may bring water in a bottle."
+        ]
+       ],
+       "qs": [
+        {
+         "q": "What can visitors bring into the library?",
+         "o": [
+          "Sandwiches",
+          "Bottled water",
+          "Coffee",
+          "Snacks"
+         ],
+         "a": 1,
+         "ev": "food is not allowed anywhere in the building, but you may bring water in a bottle",
+         "why": "Đồ ăn bị cấm; sau \"but\" là thứ được phép: nước đựng trong chai."
+        }
+       ]
+      },
+      {
+       "id": "p1-8",
+       "label": "Quảng cáo trên radio",
+       "lines": [
+        [
+         "",
+         "Join Greenfield Sports Centre this month and save money. Membership usually costs forty pounds a month, but new members who sign up before the thirtieth of June pay only thirty pounds a month for the first year. You also get two free swimming lessons. Visit our website or come to the front desk to join today."
+        ]
+       ],
+       "qs": [
+        {
+         "q": "How much do new members pay each month if they join before 30 June?",
+         "o": [
+          "£13",
+          "£20",
+          "£30",
+          "£40"
+         ],
+         "a": 2,
+         "ev": "new members who sign up before the thirtieth of June pay only thirty pounds a month",
+         "why": "40 bảng là giá thường. Hội viên mới đăng ký trước 30/6 chỉ trả 30 bảng. Chú ý phân biệt \"thirty\" (30) với \"thirteen\" (13)."
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "p2",
+     "title": "Phần 2",
+     "level": "B1–B2",
+     "intro": "3 hội thoại. Mỗi hội thoại 4 câu hỏi.",
+     "items": [
+      {
+       "id": "p2-1",
+       "label": "Hỏi thuê căn hộ",
+       "lines": [
+        [
+         "Man",
+         "Hello, I'm calling about the flat on Park Street. Is it still available?"
+        ],
+        [
+         "Woman",
+         "Yes, it is. It has one bedroom, a small kitchen and a living room. It's on the third floor."
+        ],
+        [
+         "Man",
+         "That sounds good. How much is the rent?"
+        ],
+        [
+         "Woman",
+         "It's six hundred and fifty pounds a month. That includes water, but you pay for electricity and the internet yourself."
+        ],
+        [
+         "Man",
+         "I see. Is it far from the university? I'm a student there."
+        ],
+        [
+         "Woman",
+         "Not at all. It's about ten minutes on foot, and there's a bus stop right outside the building."
+        ],
+        [
+         "Man",
+         "Great. Is the flat furnished?"
+        ],
+        [
+         "Woman",
+         "Partly. There's a bed, a wardrobe and a sofa, but there's no washing machine. Most people use the laundrette on the corner."
+        ],
+        [
+         "Man",
+         "OK. Could I come and see it tomorrow afternoon?"
+        ],
+        [
+         "Woman",
+         "I'm afraid I'm busy tomorrow. How about Thursday at five o'clock?"
+        ],
+        [
+         "Man",
+         "Thursday at five is fine. My name's Tom Baker."
+        ],
+        [
+         "Woman",
+         "Thank you, Tom. I'll meet you outside the building. Please bring your student card with you."
+        ]
+       ],
+       "qs": [
+        {
+         "q": "What is included in the rent?",
+         "o": [
+          "Electricity",
+          "The internet",
+          "Water",
+          "Laundry"
+         ],
+         "a": 2,
+         "ev": "That includes water, but you pay for electricity and the internet yourself.",
+         "why": "Tiền thuê chỉ gồm nước. Điện và internet người thuê tự trả."
+        },
+        {
+         "q": "What does the flat NOT have?",
+         "o": [
+          "A washing machine",
+          "A bed",
+          "A sofa",
+          "A wardrobe"
+         ],
+         "a": 0,
+         "ev": "There's a bed, a wardrobe and a sofa, but there's no washing machine.",
+         "why": "Câu hỏi có NOT: giường, tủ quần áo, sofa đều có; chỉ thiếu máy giặt."
+        },
+        {
+         "q": "When will the man see the flat?",
+         "o": [
+          "Tomorrow afternoon",
+          "On Thursday morning",
+          "On Friday at five",
+          "On Thursday at five"
+         ],
+         "a": 3,
+         "ev": "How about Thursday at five o'clock? – Thursday at five is fine.",
+         "why": "Người nam đề nghị chiều mai nhưng người nữ bận, nên hai người chốt 5 giờ chiều thứ Năm."
+        },
+        {
+         "q": "What should the man bring with him?",
+         "o": [
+          "His passport",
+          "His student card",
+          "One month's rent",
+          "A letter from the university"
+         ],
+         "a": 1,
+         "ev": "Please bring your student card with you.",
+         "why": "Lời dặn cuối cùng của người nữ: mang theo thẻ sinh viên."
+        }
+       ]
+      },
+      {
+       "id": "p2-2",
+       "label": "Chuẩn bị bài thuyết trình",
+       "lines": [
+        [
+         "Sarah",
+         "James, have you got a minute? I'd like to talk about our presentation for the marketing course."
+        ],
+        [
+         "James",
+         "Sure. It's next Monday, isn't it? I've been a bit worried about it, to be honest."
+        ],
+        [
+         "Sarah",
+         "Actually, the lecturer has moved it to Wednesday, so we've got two extra days."
+        ],
+        [
+         "James",
+         "Oh, that's a relief. So, what have we got so far?"
+        ],
+        [
+         "Sarah",
+         "Well, I've finished the research on online shopping habits. The main finding is that most young people now buy clothes on their phones rather than in shops."
+        ],
+        [
+         "James",
+         "Interesting. I was going to collect opinions from people in the street, but hardly anyone wanted to stop and talk. So I put a short questionnaire online instead, and eighty people have answered already."
+        ],
+        [
+         "Sarah",
+         "That's a much better idea. Could you turn the results into two or three charts? People remember pictures more easily than numbers."
+        ],
+        [
+         "James",
+         "No problem. I'm quite good with that kind of software. What about the slides?"
+        ],
+        [
+         "Sarah",
+         "I'll design them, but I think we've got too much text at the moment. The lecturer said he would take marks off if we simply read from the screen."
+        ],
+        [
+         "James",
+         "Fair enough. Let's keep each slide to a few key words. Shall we practise together before Wednesday?"
+        ],
+        [
+         "Sarah",
+         "Definitely. How about Tuesday evening in the library? We can book one of the group rooms."
+        ],
+        [
+         "James",
+         "Perfect. I'll book it this afternoon."
+        ]
+       ],
+       "qs": [
+        {
+         "q": "When will they give their presentation?",
+         "o": [
+          "On Monday",
+          "On Tuesday",
+          "On Wednesday",
+          "On Friday"
+         ],
+         "a": 2,
+         "ev": "Actually, the lecturer has moved it to Wednesday",
+         "why": "James tưởng là thứ Hai, nhưng \"Actually\" đính chính: giảng viên đã dời sang thứ Tư. Tối thứ Ba là buổi tập, không phải buổi trình bày."
+        },
+        {
+         "q": "How did James collect his information?",
+         "o": [
+          "He interviewed people in the street.",
+          "He phoned shop managers.",
+          "He read reports in the library.",
+          "He used an online questionnaire."
+         ],
+         "a": 3,
+         "ev": "So I put a short questionnaire online instead, and eighty people have answered already.",
+         "why": "James định hỏi người đi đường nhưng hầu như không ai dừng lại (\"hardly anyone\"), nên chuyển sang bảng câu hỏi trên mạng."
+        },
+        {
+         "q": "Why does Sarah want James to make charts?",
+         "o": [
+          "People remember pictures more easily.",
+          "Charts are quicker to make.",
+          "The lecturer asked for them.",
+          "They make the slides look modern."
+         ],
+         "a": 0,
+         "ev": "People remember pictures more easily than numbers.",
+         "why": "Sarah nêu lý do ngay sau lời đề nghị: người nghe nhớ hình ảnh dễ hơn con số."
+        },
+        {
+         "q": "What will the lecturer take marks off for?",
+         "o": [
+          "Speaking for too long",
+          "Reading from the screen",
+          "Using too few slides",
+          "Arriving late"
+         ],
+         "a": 1,
+         "ev": "he would take marks off if we simply read from the screen",
+         "why": "\"Take marks off\" = trừ điểm. Bị trừ nếu chỉ đọc chữ trên màn hình."
+        }
+       ]
+      },
+      {
+       "id": "p2-3",
+       "label": "Tư vấn chương trình trao đổi",
+       "lines": [
+        [
+         "Advisor",
+         "Come in, Maya. You wanted to discuss the exchange programme, didn't you?"
+        ],
+        [
+         "Maya",
+         "Yes, thanks for seeing me. I'm thinking of spending a semester abroad next year, but I can't decide whether it's worth it."
+        ],
+        [
+         "Advisor",
+         "What's holding you back?"
+        ],
+        [
+         "Maya",
+         "Mainly the cost. The tuition is covered by the university, but I'd still have to pay for flights and accommodation, and I wouldn't be able to keep my part-time job."
+        ],
+        [
+         "Advisor",
+         "That's a common concern. Have you looked at the travel grant? It doesn't cover everything, but it pays for the flights and gives you a small monthly allowance."
+        ],
+        [
+         "Maya",
+         "I didn't know about that. Is it difficult to get?"
+        ],
+        [
+         "Advisor",
+         "Not especially, as long as your grades are above average and you apply before the end of October. What really matters is the personal statement. The committee wants to see that you have a clear reason for going, not just a wish to travel."
+        ],
+        [
+         "Maya",
+         "Well, my reason is quite specific. I'm studying environmental engineering, and the university in Denmark has a research centre for wind energy. We don't have anything like that here."
+        ],
+        [
+         "Advisor",
+         "That's exactly the kind of argument that convinces them. Put it at the very beginning of your statement."
+        ],
+        [
+         "Maya",
+         "I will. One more thing. Will the courses I take there count towards my degree?"
+        ],
+        [
+         "Advisor",
+         "Most of them will, provided you get them approved in advance. Bring me the course list, and I'll check which ones match our programme."
+        ],
+        [
+         "Maya",
+         "That's really helpful. I'll email you the list tonight."
+        ]
+       ],
+       "qs": [
+        {
+         "q": "What is Maya's main worry about studying abroad?",
+         "o": [
+          "Her grades",
+          "The language",
+          "Being far from her family",
+          "The cost"
+         ],
+         "a": 3,
+         "ev": "Mainly the cost.",
+         "why": "Khi được hỏi điều gì khiến cô do dự, Maya trả lời thẳng: chủ yếu là chi phí (vé máy bay, chỗ ở, mất việc làm thêm)."
+        },
+        {
+         "q": "What does the travel grant pay for?",
+         "o": [
+          "Flights and a small monthly allowance",
+          "Tuition fees",
+          "Accommodation",
+          "All living costs"
+         ],
+         "a": 0,
+         "ev": "It doesn't cover everything, but it pays for the flights and gives you a small monthly allowance.",
+         "why": "Trợ cấp không trả hết mọi thứ, chỉ gồm vé máy bay và một khoản nhỏ hằng tháng. Học phí do trường lo, không phải do trợ cấp."
+        },
+        {
+         "q": "According to the advisor, what matters most in the application?",
+         "o": [
+          "Very high grades",
+          "A teacher's recommendation",
+          "The personal statement",
+          "Applying as early as possible"
+         ],
+         "a": 2,
+         "ev": "What really matters is the personal statement.",
+         "why": "Điểm trên trung bình và nộp trước cuối tháng 10 chỉ là điều kiện. Cụm \"What really matters\" nhấn vào bài tự giới thiệu."
+        },
+        {
+         "q": "Why does Maya want to go to Denmark in particular?",
+         "o": [
+          "She has friends there.",
+          "It has a research centre for wind energy.",
+          "It is cheaper than other countries.",
+          "The courses there are easier."
+         ],
+         "a": 1,
+         "ev": "the university in Denmark has a research centre for wind energy",
+         "why": "Lý do của Maya gắn với ngành học: trường ở Đan Mạch có trung tâm nghiên cứu năng lượng gió, trường cô không có."
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "p3",
+     "title": "Phần 3",
+     "level": "B2–C1",
+     "intro": "3 bài nói, bài giảng. Mỗi bài 5 câu hỏi.",
+     "items": [
+      {
+       "id": "p3-1",
+       "label": "Bài nói: giấc ngủ và việc học",
+       "lines": [
+        [
+         "",
+         "Good morning, everyone. Today I want to talk about something that affects every student: sleep, and its role in learning."
+        ],
+        [
+         "",
+         "Many students believe that the best way to prepare for an exam is to stay up all night studying. Research suggests the opposite. When we learn something new, the memory is at first quite fragile. It is during sleep, especially deep sleep, that the brain moves this information into long-term storage. In other words, sleep is not time away from studying. It is part of studying."
+        ],
+        [
+         "",
+         "In one experiment, two groups of students learned a list of word pairs. The first group studied in the morning and was tested twelve hours later, in the evening. The second group studied in the evening, slept, and was tested the next morning, also twelve hours later. The group that slept remembered considerably more, although both groups had spent exactly the same amount of time studying."
+        ],
+        [
+         "",
+         "So how much sleep do we need? Most adults need between seven and nine hours a night, yet many university students get far less than that during the week. They often try to catch up at the weekend, but irregular sleep causes its own problems. It confuses the body clock, which makes it harder to fall asleep on Sunday night."
+        ],
+        [
+         "",
+         "What can you do? First, keep to a regular schedule: go to bed and get up at the same time every day. Second, avoid screens for an hour before bed, because the light from phones and laptops tells the brain that it is still daytime. And finally, if you have to choose between one more hour of revision and one more hour of sleep before an exam, choose sleep."
+        ]
+       ],
+       "qs": [
+        {
+         "q": "What is the main idea of the talk?",
+         "o": [
+          "Students should study for more hours.",
+          "Exams cause sleep problems.",
+          "The morning is the best time to study.",
+          "Sleep is an essential part of learning."
+         ],
+         "a": 3,
+         "ev": "sleep is not time away from studying. It is part of studying.",
+         "why": "Cả bài xoay quanh một ý: ngủ là một phần của việc học. Các phương án khác chỉ là chi tiết hoặc không được nói tới."
+        },
+        {
+         "q": "According to the speaker, what happens during deep sleep?",
+         "o": [
+          "New information is moved into long-term storage.",
+          "The brain stops working.",
+          "Fragile memories are removed.",
+          "The body clock is reset."
+         ],
+         "a": 0,
+         "ev": "It is during sleep, especially deep sleep, that the brain moves this information into long-term storage.",
+         "why": "Trong giấc ngủ sâu, não chuyển thông tin mới vào bộ nhớ dài hạn. Ký ức \"fragile\" được củng cố chứ không bị xoá."
+        },
+        {
+         "q": "In the experiment, why did one group remember more?",
+         "o": [
+          "They studied for longer.",
+          "They were tested sooner.",
+          "They slept between studying and the test.",
+          "They learned easier words."
+         ],
+         "a": 2,
+         "ev": "The group that slept remembered considerably more, although both groups had spent exactly the same amount of time studying.",
+         "why": "Hai nhóm học lâu như nhau và đều kiểm tra sau 12 tiếng; khác biệt duy nhất là một nhóm được ngủ."
+        },
+        {
+         "q": "Why is catching up on sleep at the weekend a problem?",
+         "o": [
+          "It wastes study time.",
+          "It confuses the body clock.",
+          "It causes headaches.",
+          "It reduces deep sleep."
+         ],
+         "a": 1,
+         "ev": "It confuses the body clock, which makes it harder to fall asleep on Sunday night.",
+         "why": "Ngủ không đều làm rối đồng hồ sinh học, khiến tối Chủ nhật khó ngủ."
+        },
+        {
+         "q": "Which piece of advice does the speaker NOT give?",
+         "o": [
+          "Go to bed at the same time every day.",
+          "Avoid screens before bed.",
+          "Choose sleep rather than extra revision before an exam.",
+          "Take a short nap after lunch."
+         ],
+         "a": 3,
+         "ev": "First, keep to a regular schedule … Second, avoid screens … And finally … choose sleep.",
+         "why": "Người nói đưa ra đúng ba lời khuyên (First, Second, finally). Ngủ trưa không được nhắc tới."
+        }
+       ]
+      },
+      {
+       "id": "p3-2",
+       "label": "Bài nói: cây xanh trong thành phố",
+       "lines": [
+        [
+         "",
+         "Thank you all for coming. My talk this afternoon is about a simple technology that cities have used for centuries and are now rediscovering: the street tree."
+        ],
+        [
+         "",
+         "As cities grow, they become hotter than the countryside around them. Concrete and asphalt absorb heat during the day and release it slowly at night, a phenomenon known as the urban heat island. In some large cities, the centre can be several degrees warmer than the surrounding area, and during a heatwave that difference can be dangerous, particularly for elderly people."
+        ],
+        [
+         "",
+         "Trees reduce this effect in two ways. The obvious one is shade: a street lined with mature trees can be noticeably cooler than a street without them. The less obvious one is that trees release water through their leaves, which cools the air in much the same way that sweating cools the human body."
+        ],
+        [
+         "",
+         "The benefits go beyond temperature. Trees absorb rainwater, and so reduce the risk of flooding. They filter dust from the air. There is even evidence that people who live on greener streets report lower levels of stress."
+        ],
+        [
+         "",
+         "However, planting trees is not as simple as it sounds. A young tree needs regular watering for at least its first three years, and in many planting programmes a large proportion of trees die, because nobody has been made responsible for looking after them. The choice of species matters too. A city that plants only one kind of tree may lose all of them to a single disease."
+        ],
+        [
+         "",
+         "Perhaps the most serious issue is fairness. Studies in several countries have found that wealthy neighbourhoods tend to have far more trees than poor ones. If we are serious about cooling our cities, the first trees should go where they are needed most, not where they are easiest to plant."
+        ]
+       ],
+       "qs": [
+        {
+         "q": "What is the talk mainly about?",
+         "o": [
+          "How to plant a tree correctly",
+          "Why cities are growing so fast",
+          "The benefits and difficulties of trees in cities",
+          "Diseases that kill street trees"
+         ],
+         "a": 2,
+         "ev": "My talk this afternoon is about … the street tree. … However, planting trees is not as simple as it sounds.",
+         "why": "Nửa đầu nói lợi ích của cây trong thành phố, nửa sau (từ \"However\") nói khó khăn. Bệnh của cây chỉ là một chi tiết."
+        },
+        {
+         "q": "What causes the \"urban heat island\"?",
+         "o": [
+          "Pollution from cars",
+          "Concrete and asphalt storing heat",
+          "A lack of rain",
+          "Tall buildings blocking the wind"
+         ],
+         "a": 1,
+         "ev": "Concrete and asphalt absorb heat during the day and release it slowly at night",
+         "why": "Bê tông và nhựa đường hấp thụ nhiệt ban ngày, nhả ra ban đêm. \"Storing heat\" diễn đạt lại ý \"absorb … and release it slowly\"."
+        },
+        {
+         "q": "The speaker compares the way trees release water to",
+         "o": [
+          "a person sweating.",
+          "rain falling.",
+          "a river flowing.",
+          "an air conditioner."
+         ],
+         "a": 0,
+         "ev": "which cools the air in much the same way that sweating cools the human body",
+         "why": "Cụm \"in much the same way that\" báo hiệu phép so sánh: giống như mồ hôi làm mát cơ thể."
+        },
+        {
+         "q": "Why do many newly planted trees die?",
+         "o": [
+          "They are planted in the wrong season.",
+          "The soil in cities is polluted.",
+          "They are damaged by traffic.",
+          "Nobody is responsible for looking after them."
+         ],
+         "a": 3,
+         "ev": "a large proportion of trees die, because nobody has been made responsible for looking after them",
+         "why": "Cây non cần tưới đều ít nhất ba năm đầu; nhiều cây chết vì không ai được giao chăm sóc."
+        },
+        {
+         "q": "Where does the speaker think the first trees should be planted?",
+         "o": [
+          "In city centres",
+          "In wealthy neighbourhoods",
+          "In the areas that need them most",
+          "Wherever it is easiest"
+         ],
+         "a": 2,
+         "ev": "the first trees should go where they are needed most, not where they are easiest to plant",
+         "why": "Người nói nhấn mạnh sự công bằng: trồng trước ở nơi cần nhất, không phải nơi dễ trồng nhất hay khu giàu vốn đã nhiều cây."
+        }
+       ]
+      },
+      {
+       "id": "p3-3",
+       "label": "Bài giảng: càng nhiều lựa chọn càng tốt?",
+       "lines": [
+        [
+         "",
+         "In today's lecture, I'd like to examine an idea that seems to contradict common sense: the claim that having more choice can leave us worse off."
+        ],
+        [
+         "",
+         "Economists have traditionally assumed that more options are always better. If you don't want the extra options, you can simply ignore them. But in a famous study carried out in a food shop, researchers set up a table where customers could taste different kinds of jam. On some days the table displayed twenty-four varieties; on other days, only six. The larger display attracted more people. Yet when it came to actually buying, the result was reversed: about thirty per cent of those who stopped at the small display bought a jar, compared with only about three per cent at the large one."
+        ],
+        [
+         "",
+         "Why might this happen? One explanation is that comparing many options demands mental effort, and when the effort becomes too great, people postpone the decision or avoid it altogether. A second explanation concerns regret. The more alternatives we reject, the easier it is to imagine that one of them would have been better, so we feel less satisfied with whatever we finally choose."
+        ],
+        [
+         "",
+         "I should add a note of caution here. When other researchers repeated experiments of this kind, the results were mixed. Some found the same effect, some found none, and a few found that more choice actually increased sales. So it would be an exaggeration to say that choice is bad for us. A more reasonable conclusion is that the effect depends on the situation. It appears to be strongest when the options are hard to compare, and when people do not already know what they want."
+        ],
+        [
+         "",
+         "What does this mean in practice? For businesses, it suggests that helping customers to narrow down their options, for example by grouping products into clear categories, may matter more than simply offering a wider range. And for the rest of us, it may be worth deciding in advance what is good enough, rather than searching endlessly for the best."
+        ]
+       ],
+       "qs": [
+        {
+         "q": "What is the lecture mainly about?",
+         "o": [
+          "The idea that more choice can leave people worse off",
+          "How shops display their products",
+          "Why people like to taste food before buying",
+          "How economists study shoppers"
+         ],
+         "a": 0,
+         "ev": "the claim that having more choice can leave us worse off",
+         "why": "Câu mở đầu nêu thẳng chủ đề: có nhiều lựa chọn hơn có thể khiến ta thiệt hơn. Thí nghiệm mứt chỉ là ví dụ minh hoạ."
+        },
+        {
+         "q": "What happened at the table with twenty-four varieties?",
+         "o": [
+          "Fewer people stopped, but more of them bought.",
+          "More people stopped, but fewer of them bought.",
+          "More people stopped, and more of them bought.",
+          "Fewer people stopped, and fewer of them bought."
+         ],
+         "a": 1,
+         "ev": "The larger display attracted more people. Yet when it came to actually buying, the result was reversed",
+         "why": "Bàn nhiều loại thu hút đông người hơn, nhưng chỉ khoảng 3% mua, so với khoảng 30% ở bàn 6 loại. \"Yet\" báo hiệu kết quả đảo ngược."
+        },
+        {
+         "q": "According to the lecturer, why may people feel less satisfied after choosing from many options?",
+         "o": [
+          "They spend too much money.",
+          "They forget what they chose.",
+          "They do not trust the seller.",
+          "They imagine that a rejected option might have been better."
+         ],
+         "a": 3,
+         "ev": "The more alternatives we reject, the easier it is to imagine that one of them would have been better",
+         "why": "Đây là lời giải thích thứ hai, về sự hối tiếc (regret): càng bỏ qua nhiều phương án, càng dễ nghĩ rằng một trong số đó tốt hơn."
+        },
+        {
+         "q": "What is the lecturer's attitude to the claim that choice is bad for us?",
+         "o": [
+          "She accepts it completely.",
+          "She rejects it completely.",
+          "She thinks it is true only in certain situations.",
+          "She thinks it applies only to food."
+         ],
+         "a": 2,
+         "ev": "it would be an exaggeration to say that choice is bad for us. A more reasonable conclusion is that the effect depends on the situation.",
+         "why": "Câu hỏi thái độ: giảng viên thận trọng. Bà cho rằng nói \"lựa chọn có hại\" là phóng đại, hiệu ứng còn tuỳ tình huống."
+        },
+        {
+         "q": "What does the lecturer advise individuals to do?",
+         "o": [
+          "Compare as many options as possible.",
+          "Decide in advance what is good enough.",
+          "Always choose the cheapest option.",
+          "Ask other people to choose for them."
+         ],
+         "a": 1,
+         "ev": "it may be worth deciding in advance what is good enough, rather than searching endlessly for the best",
+         "why": "Lời khuyên cho mỗi người nằm ở câu cuối: xác định trước thế nào là \"đủ tốt\" thay vì tìm mãi cái tốt nhất."
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "de2",
+   "title": "Đề 2",
+   "parts": [
+    {
+     "id": "p1",
+     "title": "Phần 1",
+     "level": "B1",
+     "intro": "8 đoạn ngắn: thông báo, lời nhắn, hướng dẫn. Mỗi đoạn một câu hỏi.",
+     "items": [
+      {
+       "id": "p1-1",
+       "label": "Thông báo ở sân bay",
+       "lines": [
+        [
+         "",
+         "Good afternoon, passengers. This is a message for those travelling on flight two four six to Edinburgh. Because of heavy fog, the flight will now depart at four thirty instead of three fifteen. Boarding will begin at four o'clock at gate twelve. Please stay in the departure area and listen for further announcements."
+        ]
+       ],
+       "qs": [
+        {
+         "q": "What time will boarding begin?",
+         "o": [
+          "At 3.15",
+          "At 4.00",
+          "At 4.30",
+          "At 12.00"
+         ],
+         "a": 1,
+         "ev": "Boarding will begin at four o'clock at gate twelve.",
+         "why": "Có ba mốc giờ: 3.15 là giờ bay cũ, 4.30 là giờ bay mới, còn giờ lên máy bay là 4.00. Số 12 là số cổng, không phải giờ."
+        }
+       ]
+      },
+      {
+       "id": "p1-2",
+       "label": "Lời nhắn của bạn",
+       "lines": [
+        [
+         "",
+         "Hi Mark, it's Julia. I'm calling about Saturday. I know we planned to go to the beach, but the forecast says it will rain all day. Why don't we go to the new art museum instead? It opens at ten, and students get in free. Call me back tonight and let me know what you think."
+        ]
+       ],
+       "qs": [
+        {
+         "q": "What does Julia suggest doing on Saturday?",
+         "o": [
+          "Going to the beach",
+          "Staying at home",
+          "Visiting an art museum",
+          "Watching a film"
+         ],
+         "a": 2,
+         "ev": "Why don't we go to the new art museum instead?",
+         "why": "Đi biển là kế hoạch cũ. \"Why don't we … instead?\" là lời đề nghị mới: đi bảo tàng mỹ thuật vì trời mưa."
+        }
+       ]
+      },
+      {
+       "id": "p1-3",
+       "label": "Thông báo ở ngân hàng",
+       "lines": [
+        [
+         "",
+         "Welcome to City Bank. Please note that from next Monday our opening hours will change. We will open at nine thirty instead of nine o'clock, and we will close at five p.m. as before. On Saturdays the bank will be open in the morning only. Cash machines outside the building can be used at any time."
+        ]
+       ],
+       "qs": [
+        {
+         "q": "What will change from next Monday?",
+         "o": [
+          "The bank will open later.",
+          "The bank will close earlier.",
+          "The bank will close on Saturdays.",
+          "The cash machines will be removed."
+         ],
+         "a": 0,
+         "ev": "We will open at nine thirty instead of nine o'clock, and we will close at five p.m. as before.",
+         "why": "Giờ mở cửa lùi từ 9.00 sang 9.30, tức mở muộn hơn. Giờ đóng cửa giữ nguyên (\"as before\"), thứ Bảy vẫn mở buổi sáng."
+        }
+       ]
+      },
+      {
+       "id": "p1-4",
+       "label": "Lời dặn của hướng dẫn viên",
+       "lines": [
+        [
+         "",
+         "Before we get off the bus, a few words about our visit to the castle. The tour inside takes about one hour. You may take photographs in the gardens, but not inside the building. Afterwards you will have forty minutes for lunch. Please be back at the bus by half past one, because we have to leave on time."
+        ]
+       ],
+       "qs": [
+        {
+         "q": "Where are visitors allowed to take photographs?",
+         "o": [
+          "Inside the castle",
+          "On the bus",
+          "In the restaurant",
+          "In the gardens"
+         ],
+         "a": 3,
+         "ev": "You may take photographs in the gardens, but not inside the building.",
+         "why": "\"You may\" = được phép: chụp ảnh ở khu vườn. Sau \"but not\" là nơi bị cấm: bên trong lâu đài."
+        }
+       ]
+      },
+      {
+       "id": "p1-5",
+       "label": "Lời dặn ở hiệu thuốc",
+       "lines": [
+        [
+         "",
+         "Here is your medicine, Mrs Clark. Take one tablet twice a day, in the morning and in the evening, always after a meal. Don't take it on an empty stomach, and don't drive if it makes you feel sleepy. You should feel better in three or four days. If you don't, please come back and see the doctor."
+        ]
+       ],
+       "qs": [
+        {
+         "q": "When should Mrs Clark take the medicine?",
+         "o": [
+          "After meals",
+          "Before breakfast",
+          "Only at night",
+          "Three times a day"
+         ],
+         "a": 0,
+         "ev": "Take one tablet twice a day, in the morning and in the evening, always after a meal.",
+         "why": "Uống hai lần một ngày, luôn sau bữa ăn; không uống khi bụng đói (\"on an empty stomach\"). \"Three or four days\" là thời gian thuốc có tác dụng, không phải số lần uống."
+        }
+       ]
+      },
+      {
+       "id": "p1-6",
+       "label": "Thông báo ở trường",
+       "lines": [
+        [
+         "",
+         "Attention, all students. The library will be closed this Friday for repairs to the heating system. Books that are due on Friday may be returned on Monday without a fine. The computer room on the ground floor will stay open as usual. We are sorry for any inconvenience."
+        ]
+       ],
+       "qs": [
+        {
+         "q": "Why will the library be closed on Friday?",
+         "o": [
+          "It is a public holiday.",
+          "New computers are being installed.",
+          "The heating system is being repaired.",
+          "The staff have a meeting."
+         ],
+         "a": 2,
+         "ev": "The library will be closed this Friday for repairs to the heating system.",
+         "why": "Lý do đứng sau \"for\": sửa hệ thống sưởi. Phòng máy tính được nhắc tới nhưng chỉ để nói là vẫn mở."
+        }
+       ]
+      },
+      {
+       "id": "p1-7",
+       "label": "Lời nhắn từ nhà hàng",
+       "lines": [
+        [
+         "",
+         "Hello, this is Tony from the Golden Lake Restaurant. I'm calling about your booking for eight people this Friday. I'm afraid we don't have a table for eight at seven o'clock, but we can offer you one at eight thirty. Could you call us before Thursday to confirm? Otherwise we will have to cancel the booking."
+        ]
+       ],
+       "qs": [
+        {
+         "q": "What is the problem with the booking?",
+         "o": [
+          "The restaurant is closed on Friday.",
+          "The group is too large for the restaurant.",
+          "The customer has cancelled the booking.",
+          "There is no table at the time requested."
+         ],
+         "a": 3,
+         "ev": "we don't have a table for eight at seven o'clock, but we can offer you one at eight thirty",
+         "why": "Nhà hàng vẫn có bàn cho tám người, chỉ là không có vào lúc 7 giờ, nên đề nghị 8.30. Việc huỷ chỉ xảy ra nếu khách không gọi lại xác nhận."
+        }
+       ]
+      },
+      {
+       "id": "p1-8",
+       "label": "Thông báo trên radio",
+       "lines": [
+        [
+         "",
+         "This Sunday, join the city's charity run in Victoria Park. The five-kilometre race starts at nine a.m., and the ten-kilometre race starts one hour later. It costs fifteen pounds to enter, and all the money goes to the children's hospital. You can sign up online until Saturday noon."
+        ]
+       ],
+       "qs": [
+        {
+         "q": "What time does the ten-kilometre race start?",
+         "o": [
+          "At 9 a.m.",
+          "At 10 a.m.",
+          "At 12 noon",
+          "At 3 p.m."
+         ],
+         "a": 1,
+         "ev": "The five-kilometre race starts at nine a.m., and the ten-kilometre race starts one hour later.",
+         "why": "Giờ không được nói thẳng: chặng 5 km bắt đầu 9 giờ, chặng 10 km muộn hơn một tiếng, tức 10 giờ. \"Noon\" là hạn đăng ký hôm thứ Bảy."
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "p2",
+     "title": "Phần 2",
+     "level": "B1–B2",
+     "intro": "3 hội thoại. Mỗi hội thoại 4 câu hỏi.",
+     "items": [
+      {
+       "id": "p2-1",
+       "label": "Hỏi về khoá học buổi tối",
+       "lines": [
+        [
+         "Man",
+         "Good morning. I'd like some information about your evening English courses."
+        ],
+        [
+         "Woman",
+         "Certainly. We have two levels starting next month, intermediate and upper-intermediate. Have you studied with us before?"
+        ],
+        [
+         "Man",
+         "No, this is my first time. I studied English at school, but that was ten years ago."
+        ],
+        [
+         "Woman",
+         "In that case, you'll need to take a short placement test. It takes about thirty minutes, and you can do it here on any weekday."
+        ],
+        [
+         "Man",
+         "Fine. When are the classes?"
+        ],
+        [
+         "Woman",
+         "Intermediate classes are on Mondays and Wednesdays, from six thirty to eight thirty. The upper-intermediate group meets on Tuesdays and Thursdays at the same time."
+        ],
+        [
+         "Man",
+         "I work late on Mondays, so I hope I get into the Tuesday group. How much does the course cost?"
+        ],
+        [
+         "Woman",
+         "It's two hundred and forty pounds for twelve weeks. The course book is included, but there's an extra fee of thirty pounds if you want to take the final exam."
+        ],
+        [
+         "Man",
+         "I see. And how many students are in a class?"
+        ],
+        [
+         "Woman",
+         "Never more than twelve. We like to keep the groups small, so that everyone gets a chance to speak."
+        ],
+        [
+         "Man",
+         "That sounds perfect. Can I take the test now?"
+        ],
+        [
+         "Woman",
+         "Of course. Please fill in this form first, and I'll get the test paper for you."
+        ]
+       ],
+       "qs": [
+        {
+         "q": "Why does the man need to take a placement test?",
+         "o": [
+          "He has never studied at the school before.",
+          "He failed the last exam.",
+          "He wants to join the highest level.",
+          "He missed the first lesson."
+         ],
+         "a": 0,
+         "ev": "No, this is my first time. … In that case, you'll need to take a short placement test.",
+         "why": "\"In that case\" nối thẳng với câu trước: vì đây là lần đầu anh học ở trường nên phải làm bài xếp lớp."
+        },
+        {
+         "q": "When does the upper-intermediate group meet?",
+         "o": [
+          "On Mondays and Wednesdays",
+          "On Mondays and Thursdays",
+          "On Tuesdays and Wednesdays",
+          "On Tuesdays and Thursdays"
+         ],
+         "a": 3,
+         "ev": "The upper-intermediate group meets on Tuesdays and Thursdays at the same time.",
+         "why": "Thứ Hai và thứ Tư là lớp intermediate. Lớp upper-intermediate học thứ Ba và thứ Năm."
+        },
+        {
+         "q": "What is NOT included in the course fee?",
+         "o": [
+          "The course book",
+          "The final exam",
+          "Twelve weeks of classes",
+          "Two classes a week"
+         ],
+         "a": 1,
+         "ev": "The course book is included, but there's an extra fee of thirty pounds if you want to take the final exam.",
+         "why": "Sách đã gồm trong học phí. Thi cuối khoá phải đóng thêm 30 bảng (\"an extra fee\")."
+        },
+        {
+         "q": "Why does the school keep its classes small?",
+         "o": [
+          "The rooms are small.",
+          "There are not enough teachers.",
+          "So that every student has a chance to speak.",
+          "To keep the price low."
+         ],
+         "a": 2,
+         "ev": "We like to keep the groups small, so that everyone gets a chance to speak.",
+         "why": "Mục đích đứng sau \"so that\": để ai cũng có cơ hội nói."
+        }
+       ]
+      },
+      {
+       "id": "p2-2",
+       "label": "Bàn về làm việc tại nhà",
+       "lines": [
+        [
+         "Emma",
+         "Daniel, have you seen the email about the new working arrangements?"
+        ],
+        [
+         "Daniel",
+         "The one about working from home? Yes, I read it this morning. From next month we can choose two days a week to work from home."
+        ],
+        [
+         "Emma",
+         "What do you think? I'm delighted, to be honest. My journey takes over an hour each way, so I'll save more than four hours a week."
+        ],
+        [
+         "Daniel",
+         "I'm not so sure. I live ten minutes from the office, so travel isn't a problem for me. And I find it hard to concentrate at home. There's always something else to do, like washing up or tidying the kitchen."
+        ],
+        [
+         "Emma",
+         "I know what you mean, but I actually get more done at home. Nobody stops at my desk to chat every five minutes."
+        ],
+        [
+         "Daniel",
+         "That's true. The open-plan office can be noisy. What worries me more is the team meetings. It's much harder to discuss ideas on a screen."
+        ],
+        [
+         "Emma",
+         "The email says everyone has to be in the office on Wednesdays, so all the meetings will be moved to that day."
+        ],
+        [
+         "Daniel",
+         "Oh, I missed that part. That makes sense. So which days will you choose?"
+        ],
+        [
+         "Emma",
+         "Mondays and Fridays, I think. It will feel like a longer weekend, even though I'll still be working."
+        ],
+        [
+         "Daniel",
+         "Then maybe I'll try Fridays too, and see how it goes. If it doesn't work, I can always come back in."
+        ]
+       ],
+       "qs": [
+        {
+         "q": "Why is Emma pleased about the new arrangements?",
+         "o": [
+          "She dislikes her colleagues.",
+          "She wants to move house.",
+          "She will be paid more.",
+          "She will spend less time travelling."
+         ],
+         "a": 3,
+         "ev": "My journey takes over an hour each way, so I'll save more than four hours a week.",
+         "why": "Emma đi làm mất hơn một tiếng mỗi chiều; làm ở nhà hai ngày giúp cô đỡ hơn bốn tiếng đi lại mỗi tuần."
+        },
+        {
+         "q": "What problem does Daniel have with working at home?",
+         "o": [
+          "He has no computer there.",
+          "He finds it hard to concentrate.",
+          "His flat is too noisy.",
+          "He lives too far from the office."
+         ],
+         "a": 1,
+         "ev": "And I find it hard to concentrate at home.",
+         "why": "Daniel khó tập trung vì ở nhà luôn có việc khác để làm. Anh ở cách văn phòng chỉ mười phút, nên D sai."
+        },
+        {
+         "q": "Why does Emma get more work done at home?",
+         "o": [
+          "Colleagues do not interrupt her.",
+          "She starts work earlier.",
+          "Her computer is faster.",
+          "She has fewer tasks."
+         ],
+         "a": 0,
+         "ev": "Nobody stops at my desk to chat every five minutes.",
+         "why": "Ở nhà không có ai ghé bàn nói chuyện, tức là không bị đồng nghiệp làm gián đoạn."
+        },
+        {
+         "q": "What will happen on Wednesdays?",
+         "o": [
+          "Everyone will work from home.",
+          "The office will be closed.",
+          "All staff will be in the office for meetings.",
+          "Meetings will be held online."
+         ],
+         "a": 2,
+         "ev": "everyone has to be in the office on Wednesdays, so all the meetings will be moved to that day",
+         "why": "Thứ Tư mọi người phải có mặt ở văn phòng, các cuộc họp dồn về ngày này."
+        }
+       ]
+      },
+      {
+       "id": "p2-3",
+       "label": "Phỏng vấn về quán sửa đồ",
+       "lines": [
+        [
+         "Interviewer",
+         "My guest today is Laura Chen, who started the town's first repair café three years ago. Laura, for listeners who have never been, what exactly is a repair café?"
+        ],
+        [
+         "Laura",
+         "It's a free event, held once a month, where people bring broken things, such as lamps, toasters, bicycles or clothes, and volunteers help to fix them. The important word is help. We don't simply take the item away and return it repaired. The owner sits beside the volunteer and learns how it's done."
+        ],
+        [
+         "Interviewer",
+         "What gave you the idea?"
+        ],
+        [
+         "Laura",
+         "A kettle, actually. Mine stopped working after eighteen months. The shop told me it would cost more to repair than to replace. I found that ridiculous, so I opened it up, and the problem was a single loose wire. It took five minutes to fix."
+        ],
+        [
+         "Interviewer",
+         "So is the main aim to save people money?"
+        ],
+        [
+         "Laura",
+         "That's what brings people in, but I'd say it isn't the real point. What we're trying to change is the habit of throwing things away without thinking. Once you've repaired something yourself, you look at objects differently."
+        ],
+        [
+         "Interviewer",
+         "Do you manage to repair everything?"
+        ],
+        [
+         "Laura",
+         "No, about two thirds. Modern electronics are the hardest, because many of them are glued shut and simply aren't designed to be opened. That, to me, is the real scandal."
+        ],
+        [
+         "Interviewer",
+         "And what's next for the café?"
+        ],
+        [
+         "Laura",
+         "We've been invited to run workshops in two secondary schools next term. If teenagers learn that things can be fixed, that will do more good than any number of monthly events."
+        ]
+       ],
+       "qs": [
+        {
+         "q": "What is special about the way repairs are done at the café?",
+         "o": [
+          "Volunteers collect broken items from people's homes.",
+          "Every item is repaired within five minutes.",
+          "Owners sit with the volunteers and learn how to repair things.",
+          "Customers pay only for the parts."
+         ],
+         "a": 2,
+         "ev": "The owner sits beside the volunteer and learns how it's done.",
+         "why": "Laura nhấn vào chữ \"help\": chủ đồ ngồi cạnh tình nguyện viên để học cách sửa, không phải gửi đồ rồi nhận lại. \"Five minutes\" chỉ là chuyện cái ấm của cô."
+        },
+        {
+         "q": "What gave Laura the idea of starting the café?",
+         "o": [
+          "A shop said her kettle was not worth repairing.",
+          "She lost her job in a repair shop.",
+          "She read about a similar café abroad.",
+          "A friend asked her to fix a lamp."
+         ],
+         "a": 0,
+         "ev": "The shop told me it would cost more to repair than to replace.",
+         "why": "Cửa hàng bảo sửa ấm còn đắt hơn mua mới; cô tự mở ra và sửa được trong năm phút. Từ chuyện đó cô nảy ra ý tưởng."
+        },
+        {
+         "q": "According to Laura, the real purpose of the café is",
+         "o": [
+          "to save people money.",
+          "to train professional repairers.",
+          "to sell second-hand goods.",
+          "to change the habit of throwing things away."
+         ],
+         "a": 3,
+         "ev": "What we're trying to change is the habit of throwing things away without thinking.",
+         "why": "Tiết kiệm tiền chỉ là thứ kéo người ta đến (\"what brings people in\"). Mục đích thật là thay đổi thói quen vứt đồ."
+        },
+        {
+         "q": "Why are modern electronic devices difficult to repair?",
+         "o": [
+          "Spare parts are too expensive.",
+          "They are not designed to be opened.",
+          "The volunteers lack training.",
+          "Owners rarely bring them in."
+         ],
+         "a": 1,
+         "ev": "many of them are glued shut and simply aren't designed to be opened",
+         "why": "Nhiều thiết bị bị dán kín, không được thiết kế để mở ra, nên khó sửa nhất."
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "p3",
+     "title": "Phần 3",
+     "level": "B2–C1",
+     "intro": "3 bài nói, bài giảng. Mỗi bài 5 câu hỏi.",
+     "items": [
+      {
+       "id": "p3-1",
+       "label": "Bài nói: ghi chép khi nghe giảng",
+       "lines": [
+        [
+         "",
+         "Good afternoon, and welcome to the first session of our study skills programme. Today's topic sounds simple, but it makes a real difference to your results: how to take notes in lectures."
+        ],
+        [
+         "",
+         "Let me start with a question. Is it better to type your notes on a laptop or to write them by hand? Many students prefer typing because it is faster, and they can record almost every word the lecturer says. But speed is exactly the problem. When you type everything, you are copying, not thinking. Writing by hand is slower, so you are forced to choose what is important and to put it into your own words. That extra effort is what helps you remember."
+        ],
+        [
+         "",
+         "Some studies have found that students who wrote by hand did better on questions that tested understanding, although the two groups remembered simple facts equally well. Not every study agrees, so I won't tell you to throw away your laptop. What matters is not the tool but what you do with it."
+        ],
+        [
+         "",
+         "So here are three habits I recommend. First, don't write full sentences. Use key words, arrows and simple diagrams. Second, leave a wide margin on every page. After the lecture, use that space to write questions and to connect ideas. Third, and this is the one most students skip, read your notes again within twenty-four hours. Even ten minutes is enough. If you wait until the week before the exam, your notes will look like something written by a stranger."
+        ],
+        [
+         "",
+         "Finally, a word about slides. Lecturers often put their slides online, and students think they don't need to take notes at all. But slides only show the lecturer's main points. They don't show the examples, the explanations, or your own questions, and those are usually what you need most."
+        ]
+       ],
+       "qs": [
+        {
+         "q": "What is the talk mainly about?",
+         "o": [
+          "Choosing a laptop for university",
+          "How lecturers prepare their slides",
+          "How to take useful notes in lectures",
+          "Preparing for examinations"
+         ],
+         "a": 2,
+         "ev": "Today's topic sounds simple, but it makes a real difference to your results: how to take notes in lectures.",
+         "why": "Chủ đề được nêu ngay đầu bài: cách ghi chép khi nghe giảng. Laptop và slide chỉ là các ý nhỏ trong bài."
+        },
+        {
+         "q": "According to the speaker, what is the problem with typing notes?",
+         "o": [
+          "Students copy the words without thinking about them.",
+          "Laptops distract other students.",
+          "Typing is slower than writing.",
+          "Typed notes are easily lost."
+         ],
+         "a": 0,
+         "ev": "When you type everything, you are copying, not thinking.",
+         "why": "Gõ nhanh nên chép được gần hết lời giảng, nhưng đó là chép chứ không phải suy nghĩ. Gõ nhanh hơn viết tay, nên C trái với bài."
+        },
+        {
+         "q": "What does the speaker say about research on handwritten notes?",
+         "o": [
+          "It proves that laptops should be banned.",
+          "It shows no difference at all.",
+          "It shows that typing is better for remembering facts.",
+          "It suggests an advantage for understanding, but studies do not all agree."
+         ],
+         "a": 3,
+         "ev": "students who wrote by hand did better on questions that tested understanding … Not every study agrees",
+         "why": "Một số nghiên cứu cho thấy viết tay tốt hơn ở câu hỏi hiểu bài, còn nhớ sự kiện thì ngang nhau; nhưng không phải nghiên cứu nào cũng đồng ý."
+        },
+        {
+         "q": "What should students use the margin for?",
+         "o": [
+          "Copying the lecturer's slides",
+          "Writing questions and linking ideas after the lecture",
+          "Drawing pictures during the lecture",
+          "Writing full sentences"
+         ],
+         "a": 1,
+         "ev": "After the lecture, use that space to write questions and to connect ideas.",
+         "why": "Lề rộng để sau buổi học ghi câu hỏi và nối các ý với nhau. Viết cả câu là điều người nói khuyên không nên."
+        },
+        {
+         "q": "Why are the lecturer's slides not enough?",
+         "o": [
+          "They leave out examples and explanations.",
+          "They are difficult to download.",
+          "They contain too many mistakes.",
+          "They are removed after the lecture."
+         ],
+         "a": 0,
+         "ev": "They don't show the examples, the explanations, or your own questions",
+         "why": "Slide chỉ có ý chính, thiếu ví dụ, lời giải thích và câu hỏi của chính bạn."
+        }
+       ]
+      },
+      {
+       "id": "p3-2",
+       "label": "Bài nói: chiếc thùng thay đổi thương mại",
+       "lines": [
+        [
+         "",
+         "Today I'd like to talk about an invention that changed the world economy, although most people have never given it a moment's thought. It isn't a computer or an engine. It's a metal box: the shipping container."
+        ],
+        [
+         "",
+         "Before the nineteen fifties, loading a ship was slow, expensive work. Goods arrived at the port in sacks, barrels and wooden boxes of every size, and each item had to be carried on board by hand. A ship could spend more time in port than at sea. Things were also frequently damaged or stolen along the way."
+        ],
+        [
+         "",
+         "The person usually given credit for changing this was not a sailor or an engineer, but the owner of a trucking company, Malcolm McLean. His idea was simple. Instead of unloading a truck and reloading its contents onto a ship, why not lift the whole body of the truck on board? In nineteen fifty-six, his first container ship sailed along the American coast. The cost of loading fell to a small fraction of what it had been."
+        ],
+        [
+         "",
+         "However, the box itself was not the real breakthrough. The difficult part was agreement. For containers to be useful, every port, ship, crane, truck and train in the world had to handle boxes of exactly the same size. It took more than a decade of argument between companies and governments before international standards were accepted."
+        ],
+        [
+         "",
+         "The effects were enormous. Because transport became so cheap, it no longer mattered much where a product was made. Factories could move thousands of kilometres from their customers. Old ports in city centres, which had no room for the new equipment, declined, while new ports grew up beside deep water. And many dock workers lost their jobs, since a container ship needed only a small part of the labour that had been required before."
+        ],
+        [
+         "",
+         "So the next time you buy something made on the other side of the world, remember that its low price owes a great deal to a plain steel box."
+        ]
+       ],
+       "qs": [
+        {
+         "q": "What is the talk mainly about?",
+         "o": [
+          "The life of a famous businessman",
+          "How a simple metal box transformed world trade",
+          "Why ports are dangerous places to work",
+          "The future of sea transport"
+         ],
+         "a": 1,
+         "ev": "an invention that changed the world economy … the shipping container",
+         "why": "Bài nói về công-ten-nơ: trước khi có nó, ai nghĩ ra, khó khăn và tác động. McLean chỉ xuất hiện ở một đoạn."
+        },
+        {
+         "q": "What was true of loading ships before the 1950s?",
+         "o": [
+          "It was done mostly by machines.",
+          "It was cheap but dangerous.",
+          "It was faster than it is today.",
+          "Goods of many shapes were carried on board by hand."
+         ],
+         "a": 3,
+         "ev": "Goods arrived at the port in sacks, barrels and wooden boxes of every size, and each item had to be carried on board by hand.",
+         "why": "Hàng đủ loại bao, thùng, hộp phải khuân tay lên tàu; việc này chậm và đắt, không rẻ và không dùng máy."
+        },
+        {
+         "q": "What was Malcolm McLean's profession?",
+         "o": [
+          "He owned a trucking company.",
+          "He was a ship's captain.",
+          "He was a port engineer.",
+          "He was a government official."
+         ],
+         "a": 0,
+         "ev": "not a sailor or an engineer, but the owner of a trucking company",
+         "why": "Cấu trúc \"not … but …\": không phải thuỷ thủ hay kỹ sư mà là chủ một công ty vận tải đường bộ."
+        },
+        {
+         "q": "According to the speaker, what was the most difficult part of introducing containers?",
+         "o": [
+          "Building boxes that were strong enough",
+          "Finding money for new ships",
+          "Getting everyone to agree on the same sizes",
+          "Training dock workers"
+         ],
+         "a": 2,
+         "ev": "The difficult part was agreement. … boxes of exactly the same size",
+         "why": "Phần khó không phải cái thùng mà là sự thống nhất: mọi cảng, tàu, xe phải dùng thùng cùng kích cỡ; mất hơn mười năm tranh cãi."
+        },
+        {
+         "q": "Which effect of containers is NOT mentioned in the talk?",
+         "o": [
+          "Factories moved far from their customers.",
+          "Old city-centre ports declined.",
+          "Many dock workers lost their jobs.",
+          "Ships began to travel much faster."
+         ],
+         "a": 3,
+         "ev": "Factories could move thousands of kilometres … Old ports in city centres … declined … many dock workers lost their jobs",
+         "why": "Ba tác động A, B, C đều có ở đoạn 5. Bài nói vận chuyển rẻ hơn, không nói tàu chạy nhanh hơn."
+        }
+       ]
+      },
+      {
+       "id": "p3-3",
+       "label": "Bài giảng: của chung có bị tàn phá?",
+       "lines": [
+        [
+         "",
+         "In this lecture I want to look at one of the most influential ideas in environmental thinking, and at the evidence that it is, at best, only half true."
+        ],
+        [
+         "",
+         "In nineteen sixty-eight, the biologist Garrett Hardin published an essay called The Tragedy of the Commons. He asked his readers to imagine a field that is open to all the farmers of a village. Each farmer gains the full benefit of adding one more cow, while the damage done by overgrazing is shared among everyone. Reasoning in this way, every farmer keeps adding animals until the field is ruined. Hardin concluded that shared resources are bound to be destroyed unless they are either privately owned or controlled by the state."
+        ],
+        [
+         "",
+         "The argument is elegant, and it has been applied to fishing, forests, clean air and much else. Its weakness is that Hardin described an imaginary field, not a real one. When the political scientist Elinor Ostrom examined how real communities had actually managed shared land, water and fishing grounds, she found many that had done so successfully for centuries, with neither private ownership nor government control."
+        ],
+        [
+         "",
+         "What these communities had in common was not good luck but good rules. The users themselves decided who had the right to use the resource and how much each could take. They watched one another, and those who broke the rules faced penalties that were mild at first but became more serious if the behaviour continued. Above all, there were cheap and quick ways of settling disputes."
+        ],
+        [
+         "",
+         "Ostrom, who was awarded the Nobel Prize in economics in two thousand and nine, was careful not to claim too much. Her examples were mostly small groups whose members knew each other and expected to go on living side by side. Whether the same principles can work for a resource shared by billions of strangers, such as the atmosphere, remains an open question. What her work does show is that Hardin's tragedy is a possibility rather than a law, and that the people who depend on a resource are often better at protecting it than outsiders assume."
+        ]
+       ],
+       "qs": [
+        {
+         "q": "What is the lecturer's main purpose?",
+         "o": [
+          "To explain how to manage a farm",
+          "To show that a famous idea about shared resources is only partly true",
+          "To describe the history of the Nobel Prize",
+          "To argue for private ownership of land"
+         ],
+         "a": 1,
+         "ev": "one of the most influential ideas in environmental thinking, and at the evidence that it is, at best, only half true",
+         "why": "Câu mở đầu nêu mục đích: xem xét một ý tưởng nổi tiếng và bằng chứng cho thấy nó nhiều lắm chỉ đúng một nửa."
+        },
+        {
+         "q": "In Hardin's example, why does each farmer keep adding cows?",
+         "o": [
+          "The village requires it.",
+          "Cows are cheap to buy.",
+          "The farmer gets all the benefit while the damage is shared.",
+          "The field is too large to be damaged."
+         ],
+         "a": 2,
+         "ev": "Each farmer gains the full benefit of adding one more cow, while the damage done by overgrazing is shared among everyone.",
+         "why": "Lợi ích thuộc trọn về người thêm bò, còn thiệt hại do chăn thả quá mức thì cả làng cùng chịu."
+        },
+        {
+         "q": "What does the lecturer see as the main weakness of Hardin's argument?",
+         "o": [
+          "It was based on an imaginary case, not on evidence.",
+          "It was too complicated to understand.",
+          "It ignored private property.",
+          "It was written too long ago."
+         ],
+         "a": 0,
+         "ev": "Its weakness is that Hardin described an imaginary field, not a real one.",
+         "why": "Điểm yếu được nói thẳng: Hardin mô tả một cánh đồng tưởng tượng chứ không khảo sát cánh đồng thật."
+        },
+        {
+         "q": "Which of the following is NOT a feature of the successful communities that Ostrom studied?",
+         "o": [
+          "The users made the rules themselves.",
+          "Members watched one another.",
+          "Penalties grew for repeated rule-breaking.",
+          "The government controlled the resource."
+         ],
+         "a": 3,
+         "ev": "with neither private ownership nor government control",
+         "why": "Ba đặc điểm A, B, C được liệt kê ở đoạn 4. Các cộng đồng này thành công mà không cần chính quyền kiểm soát."
+        },
+        {
+         "q": "What does the lecturer say about applying Ostrom's ideas to the atmosphere?",
+         "o": [
+          "It has already succeeded.",
+          "It is clearly impossible.",
+          "It is still uncertain.",
+          "It was Ostrom's main interest."
+         ],
+         "a": 2,
+         "ev": "Whether the same principles can work for a resource shared by billions of strangers, such as the atmosphere, remains an open question.",
+         "why": "\"Remains an open question\" = vẫn chưa có câu trả lời. Các ví dụ của Ostrom chủ yếu là nhóm nhỏ quen biết nhau."
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "vocab": [
+  {
+   "id": "p1",
+   "title": "Phần 1",
+   "level": "B1",
+   "words": [
+    {
+     "w": "checkout",
+     "pos": "n",
+     "ipa": "/ˈtʃekaʊt/",
+     "vi": "quầy thanh toán",
+     "ex": "Please take your items to the checkouts now."
+    },
+    {
+     "w": "as usual",
+     "pos": "phr",
+     "ipa": "/əz ˈjuːʒuəl/",
+     "vi": "như thường lệ",
+     "ex": "Tomorrow we open at eight a.m. as usual."
+    },
+    {
+     "w": "instead",
+     "pos": "adv",
+     "ipa": "/ɪnˈsted/",
+     "vi": "thay vào đó",
+     "ex": "Let's meet at the café instead."
+    },
+    {
+     "w": "passenger",
+     "pos": "n",
+     "ipa": "/ˈpæsɪndʒə(r)/",
+     "vi": "hành khách",
+     "ex": "This is an announcement for passengers travelling to Manchester."
+    },
+    {
+     "w": "platform",
+     "pos": "n",
+     "ipa": "/ˈplætfɔːm/",
+     "vi": "sân ga",
+     "ex": "The train will leave from platform seven."
+    },
+    {
+     "w": "delay",
+     "pos": "n",
+     "ipa": "/dɪˈleɪ/",
+     "vi": "sự chậm trễ",
+     "ex": "We apologise for the delay."
+    },
+    {
+     "w": "reminder",
+     "pos": "n",
+     "ipa": "/rɪˈmaɪndə(r)/",
+     "vi": "lời nhắc",
+     "ex": "A quick reminder about Friday's trip."
+    },
+    {
+     "w": "packed lunch",
+     "pos": "n",
+     "ipa": "/ˌpækt ˈlʌntʃ/",
+     "vi": "bữa trưa mang theo",
+     "ex": "Bring a packed lunch and a notebook."
+    },
+    {
+     "w": "comfortable",
+     "pos": "adj",
+     "ipa": "/ˈkʌmftəbl/",
+     "vi": "thoải mái, dễ chịu",
+     "ex": "Remember to wear comfortable shoes."
+    },
+    {
+     "w": "offer",
+     "pos": "v",
+     "ipa": "/ˈɒfə(r)/",
+     "vi": "đề nghị, đưa ra",
+     "ex": "We can offer you Wednesday at ten a.m."
+    },
+    {
+     "w": "forecast",
+     "pos": "n",
+     "ipa": "/ˈfɔːkɑːst/",
+     "vi": "dự báo",
+     "ex": "The weather forecast says it will rain."
+    },
+    {
+     "w": "temperature",
+     "pos": "n",
+     "ipa": "/ˈtemprətʃə(r)/",
+     "vi": "nhiệt độ",
+     "ex": "Temperatures will fall to around five degrees."
+    },
+    {
+     "w": "allowed",
+     "pos": "adj",
+     "ipa": "/əˈlaʊd/",
+     "vi": "được phép",
+     "ex": "Food is not allowed anywhere in the building."
+    },
+    {
+     "w": "membership",
+     "pos": "n",
+     "ipa": "/ˈmembəʃɪp/",
+     "vi": "tư cách hội viên, thẻ hội viên",
+     "ex": "Membership usually costs forty pounds a month."
+    },
+    {
+     "w": "sign up",
+     "pos": "phr v",
+     "ipa": "/ˌsaɪn ˈʌp/",
+     "vi": "đăng ký",
+     "ex": "New members who sign up before June pay less."
+    },
+    {
+     "w": "front desk",
+     "pos": "n",
+     "ipa": "/ˌfrʌnt ˈdesk/",
+     "vi": "quầy lễ tân",
+     "ex": "Come to the front desk to join today."
+    }
+   ]
+  },
+  {
+   "id": "p2",
+   "title": "Phần 2",
+   "level": "B1–B2",
+   "words": [
+    {
+     "w": "rent",
+     "pos": "n",
+     "ipa": "/rent/",
+     "vi": "tiền thuê nhà",
+     "ex": "How much is the rent?"
+    },
+    {
+     "w": "include",
+     "pos": "v",
+     "ipa": "/ɪnˈkluːd/",
+     "vi": "bao gồm",
+     "ex": "The rent includes water."
+    },
+    {
+     "w": "furnished",
+     "pos": "adj",
+     "ipa": "/ˈfɜːnɪʃt/",
+     "vi": "có sẵn đồ đạc",
+     "ex": "Is the flat furnished?"
+    },
+    {
+     "w": "wardrobe",
+     "pos": "n",
+     "ipa": "/ˈwɔːdrəʊb/",
+     "vi": "tủ quần áo",
+     "ex": "There's a bed, a wardrobe and a sofa."
+    },
+    {
+     "w": "laundrette",
+     "pos": "n",
+     "ipa": "/lɔːnˈdret/",
+     "vi": "tiệm giặt tự phục vụ",
+     "ex": "Most people use the laundrette on the corner."
+    },
+    {
+     "w": "relief",
+     "pos": "n",
+     "ipa": "/rɪˈliːf/",
+     "vi": "sự nhẹ nhõm",
+     "ex": "Oh, that's a relief."
+    },
+    {
+     "w": "finding",
+     "pos": "n",
+     "ipa": "/ˈfaɪndɪŋ/",
+     "vi": "kết quả nghiên cứu",
+     "ex": "The main finding is that young people shop on their phones."
+    },
+    {
+     "w": "questionnaire",
+     "pos": "n",
+     "ipa": "/ˌkwestʃəˈneə(r)/",
+     "vi": "bảng câu hỏi khảo sát",
+     "ex": "I put a short questionnaire online."
+    },
+    {
+     "w": "chart",
+     "pos": "n",
+     "ipa": "/tʃɑːt/",
+     "vi": "biểu đồ",
+     "ex": "Could you turn the results into two or three charts?"
+    },
+    {
+     "w": "lecturer",
+     "pos": "n",
+     "ipa": "/ˈlektʃərə(r)/",
+     "vi": "giảng viên",
+     "ex": "The lecturer has moved it to Wednesday."
+    },
+    {
+     "w": "semester",
+     "pos": "n",
+     "ipa": "/sɪˈmestə(r)/",
+     "vi": "học kỳ",
+     "ex": "I'm thinking of spending a semester abroad."
+    },
+    {
+     "w": "tuition",
+     "pos": "n",
+     "ipa": "/tjuˈɪʃn/",
+     "vi": "học phí, việc giảng dạy",
+     "ex": "The tuition is covered by the university."
+    },
+    {
+     "w": "accommodation",
+     "pos": "n",
+     "ipa": "/əˌkɒməˈdeɪʃn/",
+     "vi": "chỗ ở",
+     "ex": "I'd still have to pay for flights and accommodation."
+    },
+    {
+     "w": "grant",
+     "pos": "n",
+     "ipa": "/ɡrɑːnt/",
+     "vi": "khoản trợ cấp",
+     "ex": "Have you looked at the travel grant?"
+    },
+    {
+     "w": "allowance",
+     "pos": "n",
+     "ipa": "/əˈlaʊəns/",
+     "vi": "tiền trợ cấp định kỳ",
+     "ex": "It gives you a small monthly allowance."
+    },
+    {
+     "w": "personal statement",
+     "pos": "n",
+     "ipa": "/ˌpɜːsənl ˈsteɪtmənt/",
+     "vi": "bài tự giới thiệu trong hồ sơ",
+     "ex": "What really matters is the personal statement."
+    },
+    {
+     "w": "in advance",
+     "pos": "phr",
+     "ipa": "/ɪn ədˈvɑːns/",
+     "vi": "trước, từ trước",
+     "ex": "You must get the courses approved in advance."
+    },
+    {
+     "w": "approve",
+     "pos": "v",
+     "ipa": "/əˈpruːv/",
+     "vi": "chấp thuận, phê duyệt",
+     "ex": "The committee approved her application."
+    }
+   ]
+  },
+  {
+   "id": "p3",
+   "title": "Phần 3",
+   "level": "B2–C1",
+   "words": [
+    {
+     "w": "fragile",
+     "pos": "adj",
+     "ipa": "/ˈfrædʒaɪl/",
+     "vi": "mong manh, dễ vỡ",
+     "ex": "A new memory is at first quite fragile."
+    },
+    {
+     "w": "long-term",
+     "pos": "adj",
+     "ipa": "/ˌlɒŋ ˈtɜːm/",
+     "vi": "dài hạn",
+     "ex": "The brain moves information into long-term storage."
+    },
+    {
+     "w": "considerably",
+     "pos": "adv",
+     "ipa": "/kənˈsɪdərəbli/",
+     "vi": "đáng kể",
+     "ex": "The group that slept remembered considerably more."
+    },
+    {
+     "w": "irregular",
+     "pos": "adj",
+     "ipa": "/ɪˈreɡjələ(r)/",
+     "vi": "không đều, thất thường",
+     "ex": "Irregular sleep causes its own problems."
+    },
+    {
+     "w": "revision",
+     "pos": "n",
+     "ipa": "/rɪˈvɪʒn/",
+     "vi": "việc ôn bài",
+     "ex": "One more hour of revision will not help."
+    },
+    {
+     "w": "absorb",
+     "pos": "v",
+     "ipa": "/əbˈzɔːb/",
+     "vi": "hấp thụ",
+     "ex": "Concrete and asphalt absorb heat during the day."
+    },
+    {
+     "w": "release",
+     "pos": "v",
+     "ipa": "/rɪˈliːs/",
+     "vi": "thải ra, giải phóng",
+     "ex": "Trees release water through their leaves."
+    },
+    {
+     "w": "heatwave",
+     "pos": "n",
+     "ipa": "/ˈhiːtweɪv/",
+     "vi": "đợt nắng nóng",
+     "ex": "A heatwave can be dangerous for elderly people."
+    },
+    {
+     "w": "mature",
+     "pos": "adj",
+     "ipa": "/məˈtʃʊə(r)/",
+     "vi": "trưởng thành, lâu năm",
+     "ex": "The street is lined with mature trees."
+    },
+    {
+     "w": "flooding",
+     "pos": "n",
+     "ipa": "/ˈflʌdɪŋ/",
+     "vi": "ngập lụt",
+     "ex": "Trees reduce the risk of flooding."
+    },
+    {
+     "w": "species",
+     "pos": "n",
+     "ipa": "/ˈspiːʃiːz/",
+     "vi": "loài",
+     "ex": "The choice of species matters too."
+    },
+    {
+     "w": "neighbourhood",
+     "pos": "n",
+     "ipa": "/ˈneɪbəhʊd/",
+     "vi": "khu dân cư",
+     "ex": "Wealthy neighbourhoods tend to have more trees."
+    },
+    {
+     "w": "contradict",
+     "pos": "v",
+     "ipa": "/ˌkɒntrəˈdɪkt/",
+     "vi": "mâu thuẫn với, trái với",
+     "ex": "The idea seems to contradict common sense."
+    },
+    {
+     "w": "variety",
+     "pos": "n",
+     "ipa": "/vəˈraɪəti/",
+     "vi": "loại, chủng loại",
+     "ex": "The table displayed twenty-four varieties of jam."
+    },
+    {
+     "w": "postpone",
+     "pos": "v",
+     "ipa": "/pəˈspəʊn/",
+     "vi": "hoãn lại",
+     "ex": "People postpone the decision or avoid it."
+    },
+    {
+     "w": "regret",
+     "pos": "n",
+     "ipa": "/rɪˈɡret/",
+     "vi": "sự hối tiếc",
+     "ex": "A second explanation concerns regret."
+    },
+    {
+     "w": "exaggeration",
+     "pos": "n",
+     "ipa": "/ɪɡˌzædʒəˈreɪʃn/",
+     "vi": "sự phóng đại",
+     "ex": "It would be an exaggeration to say that choice is bad."
+    },
+    {
+     "w": "narrow down",
+     "pos": "phr v",
+     "ipa": "/ˌnærəʊ ˈdaʊn/",
+     "vi": "thu hẹp lại",
+     "ex": "Shops can help customers to narrow down their options."
+    }
+   ]
+  }
+ ]
+};
+</script>
+<script>
+/* ===== TỪ VỰNG MỚI (dùng chung cho các trang kỹ năng) =====
+   V.vocabTab(panel, { skill: 'nghe', groups: [{title, level, words:[{w,pos,ipa,vi,ex}]}], source: 'các bài nghe', listenFirst: true })
+   listenFirst = true: bài kiểm tra phát âm trước rồi mới chọn nghĩa (trang Nghe); false: hiện chữ, bấm nghe nếu muốn. */
+(function () {
+  'use strict';
+  var V = window.V, h = V.h;
+  var picked = {};
+  function shuffle(a) { a = a.slice(); for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)), t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+  function top() { try { window.scrollTo(0, 0); } catch (e) { } }
+
+  V.vocabTab = function (panel, o) {
+    var n = o.groups.length;
+    if (picked[o.skill] === undefined) picked[o.skill] = ({ b1: 0, b2: Math.floor((n - 1) / 2), c1: n - 1 })[V.target().key] || 0;
+    function view() {
+      V.stopClip(); V.clear(panel);
+      var g = o.groups[picked[o.skill]];
+      panel.appendChild(h('div', { class: 'vbar' },
+        h('div', { class: 'pick' }, 'Nhóm từ', h('div', { class: 'seg', role: 'group', 'aria-label': 'Nhóm từ' }, o.groups.map(function (x, i) {
+          return h('button', { type: 'button', 'aria-pressed': i === picked[o.skill] ? 'true' : 'false', title: 'Trình độ ' + x.level, onclick: function () { picked[o.skill] = i; view(); } }, x.title);
+        }))),
+        V.speedToggle()));
+      panel.appendChild(h('p', { class: 'muted', style: { margin: '12px 0 14px', maxWidth: '70ch' } },
+        g.words.length + ' từ lấy từ ' + (o.source ? o.source + ' ' : '') + g.title + ', trình độ ' + g.level + '. Nghe giọng nữ và giọng nam, đọc theo, rồi làm bài kiểm tra nhanh.'));
+      panel.appendChild(h('div', { class: 'words' }, g.words.map(V.wordCard)));
+      panel.appendChild(h('div', { class: 'row', style: { marginTop: '18px' } },
+        h('button', { class: 'btn primary', type: 'button', onclick: function () { quiz(g); } }, 'Kiểm tra nhanh ' + Math.min(10, g.words.length) + ' từ')));
+    }
+    function quiz(g) {
+      V.stopClip(); top();
+      var qs = shuffle(g.words).slice(0, 10), i = 0, right = 0, missed = [];
+      function ask() {
+        V.stopClip(); V.clear(panel);
+        var w = qs[i], voice = Math.random() < 0.5 ? 'f' : 'm';
+        var opts = shuffle([w].concat(shuffle(g.words.filter(function (x) { return x !== w; })).slice(0, 3)));
+        var fb = h('div', { class: 'qfb', role: 'status' }), box = h('div', { class: 'qopts' });
+        function listen() { V.playClip('tu/' + V.slug(w.w) + '-' + voice + '.mp3', { fallback: w.w }); }
+        opts.forEach(function (op) {
+          var b = h('button', { class: 'btn', type: 'button' }, op.vi);
+          b.addEventListener('click', function () {
+            Array.prototype.forEach.call(box.querySelectorAll('button'), function (x) { x.disabled = true; });
+            var ok = op === w; if (ok) right++; else missed.push(w);
+            b.classList.add(ok ? 'right' : 'wrong');
+            if (!ok) Array.prototype.forEach.call(box.querySelectorAll('button'), function (x, k) { if (opts[k] === w) x.classList.add('right'); });
+            V.add(fb, [h('p', null, h('b', null, ok ? 'Đúng. ' : 'Chưa đúng. '), h('span', { lang: 'en', class: 'qw' }, w.w), ' ', h('span', { class: 'ipa' }, w.ipa), ' = ' + w.vi),
+              h('button', { class: 'btn primary', type: 'button', onclick: function () { i++; if (i < qs.length) ask(); else done(); } }, i + 1 < qs.length ? 'Câu tiếp' : 'Xem kết quả')]);
+            fb.querySelector('button').focus();
+          });
+          box.appendChild(b);
+        });
+        panel.appendChild(h('div', { class: 'quiz' },
+          h('div', { class: 'qhead' }, h('b', null, 'Kiểm tra nhanh, ' + g.title), h('span', { class: 'muted' }, 'Từ ' + (i + 1) + '/' + qs.length)),
+          o.listenFirst ? h('p', null, 'Nghe rồi chọn nghĩa đúng của từ.') : [h('p', null, 'Chọn nghĩa đúng của từ.'), h('div', { class: 'qword', lang: 'en' }, w.w)],
+          h('button', { class: 'btn ' + (o.listenFirst ? 'blue' : 'small'), type: 'button', onclick: listen }, h('span', { html: V.ICON.loa, style: { display: 'inline-flex' } }), o.listenFirst ? 'Nghe lại' : 'Nghe phát âm'),
+          box, fb,
+          h('button', { class: 'btn small', type: 'button', style: { marginTop: '16px' }, onclick: view }, 'Thoát')));
+        if (o.listenFirst) listen();
+      }
+      function done() {
+        V.stopClip(); V.clear(panel);
+        var title = 'Từ vựng ' + g.title;
+        var rec = V.results.add({ skill: o.skill, kind: 'tu-vung', title: title, correct: right, total: qs.length, sent: false });
+        if (V.sheetOn()) V.send(o.skill, { 'Đề': 'Từ vựng', 'Phần': g.title, 'Kết quả': right + '/' + qs.length,
+          'Chi tiết đáp án': missed.length ? 'Sai: ' + missed.map(function (w) { return w.w; }).join(', ') : 'Đúng hết', 'Mục tiêu': V.target().t }, function (ok) { if (ok) V.results.mark(rec.ts, { sent: true }); });
+        panel.appendChild(h('div', { class: 'score' },
+          h('div', { class: 'big' }, right + '/' + qs.length, h('span', null, ' từ đúng')),
+          h('div', null, h('b', null, title), h('p', null, missed.length ? 'Xem lại các từ chưa đúng bên dưới rồi thử lại.' : 'Bạn nhớ hết các từ được hỏi.'))));
+        if (missed.length) panel.appendChild(h('div', { class: 'words', style: { marginTop: '16px' } }, missed.map(V.wordCard)));
+        panel.appendChild(h('div', { class: 'row', style: { marginTop: '18px' } },
+          h('button', { class: 'btn primary', type: 'button', onclick: function () { quiz(g); } }, 'Kiểm tra lại'),
+          h('button', { class: 'btn', type: 'button', onclick: view }, 'Về danh sách từ')));
+      }
+      ask();
+    }
+    view();
+  };
+})();
+/* ===== TRANG NGHE ===== */
+(function () {
+  'use strict';
+  var V = window.V, h = V.h, D = window.NGHE_DATA;
+  var LETTERS = ['A', 'B', 'C', 'D'];
+  var TABS = [['luyen-tap', 'Luyện tập'], ['tu-vung', 'Từ vựng mới']];
+  function hashTab() { return location.hash === '#tu-vung' ? 'tu-vung' : 'luyen-tap'; }
+  var tab = hashTab();
+  var bar, panel;
+
+  // đánh số câu liên tục trong cả đề: Phần 1 câu 1–8, Phần 2 câu 9–20, Phần 3 câu 21–35
+  D.tests.forEach(function (t) {
+    var n = 0;
+    t.parts.forEach(function (p) {
+      p.first = n + 1;
+      p.items.forEach(function (it) { it.qs.forEach(function (q) { n++; q.n = n; }); });
+      p.count = n - p.first + 1;
+    });
+    t.count = n;
+  });
+  function lastResult(title) {
+    var r = V.results.of('nghe').filter(function (x) { return x.title === title; })[0];
+    return r ? r.correct + '/' + r.total + ' câu đúng (' + V.dateShort(r.ts) + ')' : '';
+  }
+  function top() { try { if (document.body.classList.contains('doing')) bar.scrollIntoView(); else window.scrollTo(0, 0); } catch (e) { } }
+  function doing(on) { document.body.classList.toggle('doing', !!on); }
+
+  /* ================= LUYỆN TẬP ================= */
+  function listView() {
+    V.stopClip(); doing(false); V.clear(panel);
+    var tg = V.target();
+    var tip = { b1: 'Với mục tiêu B1, hãy làm chắc Phần 1 trước rồi sang Phần 2. Phần 3 làm được câu nào hay câu đó.',
+      b2: 'Với mục tiêu B2, Phần 1 và Phần 2 cần đúng gần hết. Dành thời gian luyện thêm Phần 3.',
+      c1: 'Với mục tiêu C1, hãy làm cả đề một mạch như thi thật và nhắm đúng từ 30/35 câu.' }[tg.key];
+    panel.appendChild(h('p', { class: 'notice', style: { marginBottom: '16px' } }, tip + ' Trong phòng thi mỗi bài chỉ được nghe một lần.'));
+    var cur = Math.min(V.store.get('nghe.de', 0), D.tests.length - 1);
+    panel.appendChild(h('div', { class: 'testpick' }, 'Chọn đề', h('div', { class: 'chips', role: 'group', 'aria-label': 'Chọn đề' }, D.tests.map(function (t, i) {
+      var w = V.results.of('nghe').filter(function (x) { return x.title === t.title + ', cả đề'; })[0];
+      return h('button', { type: 'button', 'aria-pressed': i === cur ? 'true' : 'false', onclick: function () { V.store.set('nghe.de', i); listView(); } },
+        t.title, w ? h('span', { class: 'done' }, w.correct + '/' + w.total) : null);
+    }))));
+    [D.tests[cur]].forEach(function (t) {
+      var rows = t.parts.map(function (p) {
+        var title = t.title + ', ' + p.title, last = lastResult(title);
+        return h('li', null,
+          h('div', { class: 'pt' }, h('b', null, p.title), h('span', { class: 'pill blue' }, p.level)),
+          h('div', { class: 'pd' }, p.intro + ' Câu ' + p.first + '–' + (p.first + p.count - 1) + '.', last ? h('span', { class: 'last' }, 'Lần gần nhất: ' + last) : null),
+          h('button', { class: 'btn blue', type: 'button', onclick: function () { start(t, [p], title); } }, 'Làm ' + p.title));
+      });
+      var whole = t.title + ', cả đề', lastW = lastResult(whole);
+      rows.push(h('li', null,
+        h('div', { class: 'pt' }, h('b', null, 'Cả đề'), h('span', { class: 'pill blue' }, 'B1–C1')),
+        h('div', { class: 'pd' }, 'Làm liền ba phần, ' + t.count + ' câu, khoảng 20 phút. Kết quả được quy ra thang điểm 10.', lastW ? h('span', { class: 'last' }, 'Lần gần nhất: ' + lastW) : null),
+        h('button', { class: 'btn primary', type: 'button', onclick: function () { start(t, t.parts, whole); } }, 'Làm cả đề')));
+      panel.appendChild(h('section', { class: 'test' }, h('h2', null, t.title), h('ul', { class: 'parts' }, rows)));
+    });
+  }
+
+  function start(test, parts, title) {
+    V.stopClip(); V.clear(panel); doing(true); top();
+    var answers = {}, total = 0;
+    parts.forEach(function (p) { total += p.count; });
+    var count = h('span', { class: 'count' }), warn = h('div');
+    function upd() { V.add(V.clear(count), [h('span', { class: 'long' }, 'Đã chọn '), Object.keys(answers).length + '/' + total, h('span', { class: 'long' }, ' câu')]); }
+    var submitBtn = h('button', { class: 'btn primary', type: 'button', onclick: function () { trySubmit(); } }, 'Nộp bài');
+    panel.appendChild(h('div', { class: 'dobar' },
+      h('div', null, h('b', null, title), count),
+      h('div', { class: 'row' }, h('button', { class: 'btn small', type: 'button', onclick: function () { listView(); top(); } }, 'Thoát'), submitBtn)));
+    parts.forEach(function (p) {
+      if (parts.length > 1) panel.appendChild(h('h2', { class: 'parthead' }, p.title, h('span', { class: 'pill blue' }, p.level)));
+      p.items.forEach(function (it) {
+        var q0 = it.qs[0].n, q1 = it.qs[it.qs.length - 1].n;
+        var head = it.qs.length > 1 ? 'Bài nghe cho câu ' + q0 + '–' + q1 : 'Bài nghe cho câu ' + q0;
+        var card = h('article', { class: 'item' }, h('h3', null, head), player(test, it));
+        it.qs.forEach(function (q) {
+          var fs = h('fieldset', { class: 'q' }, h('legend', null, h('span', { class: 'qn' }, 'Câu ' + q.n + '.'), ' ', h('span', { lang: 'en' }, q.q)));
+          q.o.forEach(function (o, i) {
+            var id = 'q' + q.n + '-' + i, r = h('input', { type: 'radio', name: 'q' + q.n, id: id });
+            r.addEventListener('change', function () { answers[q.n] = i; upd(); V.clear(warn); });
+            fs.appendChild(h('label', { class: 'opt', for: id }, r, h('span', { class: 'lt' }, LETTERS[i]), h('span', { lang: 'en' }, o)));
+          });
+          card.appendChild(fs);
+        });
+        panel.appendChild(card);
+      });
+    });
+    panel.appendChild(warn);
+    panel.appendChild(h('div', { class: 'row', style: { marginTop: '18px' } },
+      h('button', { class: 'btn primary', type: 'button', onclick: function () { trySubmit(); } }, 'Nộp bài')));
+    upd(); top();
+
+    function trySubmit(force) {
+      var left = total - Object.keys(answers).length;
+      if (left > 0 && !force) {
+        V.clear(warn).appendChild(h('div', { class: 'notice warn', style: { marginTop: '14px' }, role: 'alert' },
+          'Còn ' + left + ' câu chưa chọn. Câu bỏ trống tính là sai. ',
+          h('button', { class: 'btn small', type: 'button', style: { marginLeft: '8px' }, onclick: function () { trySubmit(true); } }, 'Vẫn nộp bài')));
+        warn.scrollIntoView({ block: 'center' });
+        return;
+      }
+      resultView(test, parts, title, answers, total);
+    }
+  }
+
+  function player(test, it) {
+    var a = h('audio', { controls: true, preload: 'none', src: V.audioUrl('nghe/' + test.id + '/' + it.id + '.mp3') });
+    var err = h('div');
+    a.addEventListener('play', function () {
+      Array.prototype.forEach.call(document.querySelectorAll('audio'), function (o) { if (o !== a) o.pause(); });
+    });
+    a.addEventListener('error', function () {
+      V.clear(err).appendChild(h('div', { class: 'notice bad' }, 'Không mở được file nghe ' + it.id + '.mp3. Kiểm tra thư mục audio nằm cạnh file nghe.html.'));
+    });
+    return h('div', { class: 'player' }, a, err);
+  }
+
+  function resultView(test, parts, title, answers, total) {
+    V.stopClip(); V.clear(panel); doing(false); top();
+    var correct = 0, wrong = [];
+    parts.forEach(function (p) { p.items.forEach(function (it) { it.qs.forEach(function (q) {
+      if (answers[q.n] === q.a) correct++;
+      else wrong.push(q.n + '(' + (answers[q.n] === undefined ? 'bỏ trống' : LETTERS[answers[q.n]]) + ', đúng ' + LETTERS[q.a] + ')');
+    }); }); });
+    var score10 = Math.round(correct / total * 100) / 10, whole = parts.length === test.parts.length;
+    var rec = V.results.add({ skill: 'nghe', kind: 'luyen-tap', title: title, correct: correct, total: total, score10: score10, full: whole, sent: false });
+
+    var sendBox = h('p', { class: 'small muted', role: 'status' });
+    function send() {
+      if (!V.sheetOn()) { sendBox.textContent = 'Kết quả đã được lưu trên máy này.'; return; }
+      sendBox.textContent = 'Đang gửi kết quả cho ' + V.teacher() + '…';
+      V.send('nghe', { 'Đề': test.title, 'Phần': whole ? 'Cả đề' : parts[0].title, 'Kết quả': correct + '/' + total, 'Điểm /10': V.fmtScore(score10),
+        'Chi tiết đáp án': wrong.length ? 'Sai: ' + wrong.join('; ') : 'Đúng hết', 'Mục tiêu': V.target().t }, function (ok) {
+        V.clear(sendBox);
+        if (ok) { V.results.mark(rec.ts, { sent: true }); sendBox.textContent = 'Đã lưu và gửi kết quả cho ' + V.teacher() + '.'; }
+        else V.add(sendBox, ['Đã lưu trên máy này nhưng chưa gửi được cho ' + V.teacher() + '. ', h('button', { class: 'btn small', type: 'button', onclick: send }, 'Gửi lại')]);
+      });
+    }
+    var verdict;
+    if (whole) {
+      var band = V.bandOf(score10), tg = V.target();
+      verdict = 'Điểm Nghe ước lượng: ' + V.fmtScore(V.round05(score10)) + '/10, ' + (band.key === 'none' ? 'chưa tới mốc B1' : 'tương đương ' + band.t) + '. ' +
+        (V.round05(score10) >= tg.min ? 'Bạn đã đạt mốc mục tiêu ' + tg.t + ' ở kỹ năng Nghe.' : 'Mốc mục tiêu ' + tg.t + ' cần từ ' + V.fmtScore(tg.min) + ' điểm.');
+    } else verdict = correct === total ? 'Đúng hết. Hãy thử phần tiếp theo.' : 'Xem phần chữa bài bên dưới, nghe lại những câu sai rồi làm lại.';
+    panel.appendChild(h('div', { class: 'score' },
+      h('div', { class: 'big' }, correct + '/' + total, h('span', null, ' câu đúng')),
+      h('div', null, h('b', null, title), h('p', null, verdict), sendBox)));
+    panel.appendChild(h('div', { class: 'row', style: { margin: '14px 0 6px' } },
+      h('button', { class: 'btn primary', type: 'button', onclick: function () { start(test, parts, title); } }, 'Làm lại'),
+      h('button', { class: 'btn', type: 'button', onclick: function () { listView(); top(); } }, 'Về danh sách bài')));
+    send();
+
+    panel.appendChild(h('h2', { class: 'parthead' }, 'Chữa bài'));
+    parts.forEach(function (p) { p.items.forEach(function (it) {
+      var card = h('article', { class: 'item' }, h('h3', null, it.label), player(test, it));
+      it.qs.forEach(function (q) {
+        var mine = answers[q.n], ok = mine === q.a;
+        var box = h('div', { class: 'q rev ' + (ok ? 'ok' : 'bad') },
+          h('div', { class: 'qt' }, h('span', { class: 'qn' }, 'Câu ' + q.n + '.'), ' ', h('span', { lang: 'en' }, q.q), h('span', { class: 'pill ' + (ok ? 'ok' : 'no') }, ok ? 'Đúng' : mine === undefined ? 'Bỏ trống' : 'Sai')));
+        q.o.forEach(function (o, i) {
+          box.appendChild(h('div', { class: 'opt' + (i === q.a ? ' right' : i === mine ? ' wrong' : '') },
+            h('span', { class: 'lt' }, LETTERS[i]), h('span', { lang: 'en' }, o),
+            i === q.a ? h('span', { class: 'tag' }, 'Đáp án đúng') : i === mine ? h('span', { class: 'tag' }, 'Bạn chọn') : null));
+        });
+        box.appendChild(h('div', { class: 'why' }, h('div', { class: 'ev', lang: 'en' }, '“' + q.ev + '”'), q.why));
+        card.appendChild(box);
+      });
+      card.appendChild(h('details', { class: 'script' }, h('summary', null, 'Xem lời bài nghe'),
+        h('div', { lang: 'en' }, it.lines.map(function (l) { return h('p', null, l[0] ? h('b', null, l[0] + ': ') : null, l[1]); }))));
+      panel.appendChild(card);
+    }); });
+    panel.appendChild(h('div', { class: 'row', style: { marginTop: '18px' } },
+      h('button', { class: 'btn primary', type: 'button', onclick: function () { start(test, parts, title); } }, 'Làm lại'),
+      h('button', { class: 'btn', type: 'button', onclick: function () { listView(); top(); } }, 'Về danh sách bài')));
+  }
+
+  /* ================= KHUNG TRANG ================= */
+  function draw() {
+    V.clear(bar);
+    TABS.forEach(function (t) {
+      bar.appendChild(h('button', { class: 'tab' + (t[0] === tab ? ' on' : ''), type: 'button', role: 'tab', 'aria-selected': t[0] === tab ? 'true' : 'false',
+        onclick: function () { tab = t[0]; try { history.replaceState(null, '', '#' + tab); } catch (e) { } draw(); } }, t[1]));
+    });
+    if (tab === 'tu-vung') { doing(false); V.vocabTab(panel, { skill: 'nghe', groups: D.vocab, source: 'các bài nghe', listenFirst: true }); } else listView();
+  }
+  V.mount(function (root) {
+    bar = h('div', { class: 'tabs', role: 'tablist' }); panel = h('div', { role: 'tabpanel' });
+    window.addEventListener('hashchange', function () { tab = hashTab(); draw(); });
+    root.appendChild(V.pageHead('Nghe', 'Listening', 'Bài nghe theo đúng định dạng VSTEP.3-5: 3 phần, 35 câu, độ khó tăng dần từ B1 đến C1.'));
+    root.appendChild(h('div', { style: { marginTop: '14px' } }, V.learnerBox(function () { draw(); })));
+    root.appendChild(bar); root.appendChild(panel);
+    draw();
+    root.appendChild(V.pager());
+  });
+})();
+</script>
+</body>
+</html>

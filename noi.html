@@ -1,0 +1,644 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Luyện Nói – Ôn thi VSTEP B1–C1</title>
+<meta name="description" content="Luyện Nói VSTEP B1–C1 và từ vựng mới có phát âm.">
+<script>
+/* ================================================================
+   CÀI ĐẶT — chỉ cần sửa phần này (giữ nguyên dấu ngoặc kép "")
+   Phần này giống nhau ở cả 5 trang: sửa ở trang nào thì sửa luôn 4 trang còn lại.
+   ================================================================ */
+window.VSTEP_CONFIG = {
+  brand: "Ôn thi VSTEP",          // tên hiện ở góc trái thanh menu
+  levelName: "Bậc 3–5",           // các bậc khoá học luyện
+  level: "B1–C1",
+  defaultTarget: "b1",            // bậc mục tiêu khi học viên chưa tự chọn: "b1", "b2" hoặc "c1"
+  studentName: "",                // tên học viên (tuỳ chọn) — để "" thì web dùng chung cho mọi người
+  examDate: "",                   // ngày thi chung, dạng "2026-12-12" — để "" thì học viên tự chọn
+  sheetUrl: "",                   // link Ứng dụng web Google Sheet (…/exec) của RIÊNG trang này để nhận kết quả — để "" thì kết quả chỉ lưu trên máy học viên
+  teacherName: "thầy Hoàng",      // tên người chữa bài, ví dụ "cô Lan" — để "" sẽ hiện là "giáo viên"
+  teacherEmail: "",               // email nhận bài Viết/Nói của học viên (để "" nếu không dùng)
+
+  // CÁC FILE CỦA TRANG — đặt chung một thư mục, giữ nguyên tên
+  linkMode: "file",
+  files: { home: "index.html", nghe: "nghe.html", noi: "noi.html", doc: "doc.html", viet: "viet.html" },
+  audioBase: "audio/"             // thư mục chứa file nghe và file phát âm, đặt cạnh các file .html
+};
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ===== GIAO DIỆN DÙNG CHUNG (giống nhau ở mọi trang) ===== */
+:root{
+  --bg:#f4f5f9; --grid:#e6e9f0; --card:#fff; --ink:#1b2130; --muted:#5d6577; --line:#dfe3ea;
+  --blue-50:#e6f0ff; --blue-100:#d6e6ff; --blue-200:#b7cff5; --blue-400:#6f9fe6; --blue-600:#2563eb; --blue-700:#1d4ed8; --blue-900:#123a7a;
+  --red:#c62828; --ok:#15803d; --ok-soft:#e8f6ec; --bad:#b42318; --bad-soft:#fdecea; --warn:#8a4f06; --warn-soft:#fff5e0;
+  --font:"Be Vietnam Pro","Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background-color:var(--bg);background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:24px 24px;color:var(--ink);font-family:var(--font);font-size:17px;line-height:1.6;-webkit-text-size-adjust:100%;min-height:100vh}
+button,input,select,textarea{font:inherit;color:inherit}
+a{color:var(--blue-700)}
+h1,h2,h3,p{margin:0}
+:focus-visible{outline:3px solid var(--blue-600);outline-offset:2px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 18px}
+.muted{color:var(--muted)}
+.small{font-size:.9rem}
+
+/* thanh menu */
+.nav{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.96);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1040px;margin:0 auto;padding:8px 18px;display:flex;align-items:center;gap:8px 18px;flex-wrap:wrap}
+.brand{font-weight:800;font-size:1.12rem;color:var(--ink);text-decoration:none;white-space:nowrap;padding:6px 0;background:none;border:0;cursor:pointer}
+.brand .lvl{color:var(--red);font-weight:400;margin-left:7px}
+.nav-links{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;margin-left:auto}
+.nav-links::-webkit-scrollbar{display:none}
+.nav-a{white-space:nowrap;padding:8px 14px;border-radius:999px;font-weight:600;font-size:.98rem;color:var(--ink);text-decoration:none;border:1px solid transparent;background:none;cursor:pointer;line-height:1.3}
+.nav-a:hover{background:var(--blue-50);border-color:var(--blue-200)}
+.nav-a.on{background:var(--ink);color:#fff}
+.nav-who{font-size:.9rem;color:var(--muted);white-space:nowrap;max-width:230px;min-width:0;flex:0 1 auto;overflow:hidden;text-overflow:ellipsis}
+.nav-who b{color:var(--ink);font-weight:600}
+@media(max-width:700px){
+  .nav-in{padding:6px 14px}
+  .nav-links{order:3;width:100%;margin-left:-6px}
+  .nav-who{display:none}
+  .brand{padding:4px 0}
+  .nav-a{padding:7px 12px}
+}
+
+/* nút */
+.btn{appearance:none;border:1px solid var(--line);background:#fff;border-radius:10px;padding:9px 16px;cursor:pointer;font-weight:600;line-height:1.25;min-height:44px;display:inline-flex;align-items:center;justify-content:center;gap:7px;text-decoration:none;color:var(--ink)}
+.btn:hover{border-color:#aeb7c7}
+.btn.primary{background:var(--ink);border-color:var(--ink);color:#fff}
+.btn.primary:hover{background:#000}
+.btn.blue{background:var(--blue-600);border-color:var(--blue-600);color:#fff}
+.btn.blue:hover{background:var(--blue-700);border-color:var(--blue-700)}
+.btn.small{min-height:36px;padding:6px 12px;font-size:.9rem;border-radius:9px}
+.btn[disabled]{opacity:.5;cursor:not-allowed}
+.btn svg{width:18px;height:18px;flex:0 0 auto}
+
+/* khối nội dung */
+.sec{padding:34px 0 0}
+.sec > h2{font-size:1.45rem;font-weight:800;letter-spacing:-.01em;line-height:1.25;margin-bottom:6px}
+.sec > .sub{color:var(--muted);margin-bottom:14px;max-width:68ch}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.notice{border-radius:12px;padding:10px 14px;background:var(--blue-50);color:var(--blue-900);font-size:.95rem}
+.notice.warn{background:var(--warn-soft);color:var(--warn)}
+.notice.ok{background:var(--ok-soft);color:#14532d}
+.notice.bad{background:var(--bad-soft);color:#7f1d1d}
+.pill{display:inline-flex;align-items:center;padding:2px 10px;border-radius:999px;background:#eceef4;font-weight:600;font-size:.85rem;white-space:nowrap}
+.pill.ok{background:var(--ok-soft);color:var(--ok)}
+.pill.blue{background:var(--blue-50);color:var(--blue-900)}
+.field{border:1px solid #b9c1cf;border-radius:10px;padding:9px 12px;min-height:44px;background:#fff;min-width:0}
+.field:focus{outline:3px solid var(--blue-200);outline-offset:0;border-color:var(--blue-600)}
+
+/* bảng */
+.tblwrap{overflow-x:auto;background:#fff;border:1px solid var(--line);border-radius:14px}
+.tbl{width:100%;border-collapse:collapse;font-size:.98rem}
+.tbl th,.tbl td{text-align:left;padding:11px 16px;border-bottom:1px solid var(--line);vertical-align:top}
+.tbl tr:last-child td{border-bottom:0}
+.tbl th{font-size:.88rem;color:var(--muted);font-weight:600;background:#fafbfd;white-space:nowrap}
+.tbl td.num,.tbl th.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.tbl tr.hl td{background:var(--blue-50)}
+.tbl td.nw{white-space:nowrap}
+/* màn hình hẹp: mỗi dòng của bảng thành một khối xếp dọc */
+@media(max-width:700px){
+  .tbl.stack thead{display:none}
+  .tbl.stack,.tbl.stack tbody{display:block}
+  .tbl.stack tr{display:block;padding:12px 16px;border-bottom:1px solid var(--line)}
+  .tbl.stack tr:last-child{border-bottom:0}
+  .tbl.stack td{display:flex;justify-content:space-between;align-items:baseline;gap:14px;padding:3px 0;border:0;text-align:right;white-space:normal}
+  .tbl.stack td::before{content:attr(data-label);color:var(--muted);font-size:.88rem;text-align:left;flex:0 0 auto}
+  .tbl.stack td:first-child{font-size:1.05rem;padding-bottom:5px}
+  .tbl.stack td:first-child::before,.tbl.stack td.long::before{content:none}
+  .tbl.stack td.long{display:block;text-align:left;padding-top:6px}
+}
+
+/* tiêu đề trang con + thẻ chuyển phần */
+.pagehead{padding:30px 0 6px}
+.pagehead h1{font-size:clamp(2rem,5vw,2.6rem);font-weight:800;letter-spacing:-.02em;line-height:1.15}
+.pagehead h1 .lvl{color:var(--red);font-weight:400;font-size:.62em;margin-left:12px;letter-spacing:0}
+.pagehead p{color:var(--muted);font-size:1.05rem;margin-top:8px;max-width:64ch}
+.tabs{display:flex;gap:6px;margin:18px 0 16px;border-bottom:1px solid var(--line)}
+.tab{padding:10px 18px;border:1px solid transparent;border-bottom:0;border-radius:12px 12px 0 0;font-weight:700;color:var(--muted);text-decoration:none;background:none;cursor:pointer;margin-bottom:-1px}
+.tab:hover{color:var(--ink)}
+.tab.on{background:#fff;border-color:var(--line);color:var(--ink)}
+.empty{background:#fff;border:1px dashed #b9c1cf;border-radius:14px;padding:28px 22px;text-align:center;color:var(--muted)}
+.empty b{display:block;color:var(--ink);font-size:1.1rem;margin-bottom:4px}
+
+/* ô nhập họ tên học viên */
+.learner{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 18px;display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between}
+.learner .lb-label{font-weight:700;width:100%}
+.learner .lb-row{display:flex;gap:8px;width:100%}
+.learner .lb-row .field{flex:1 1 auto}
+.learner .btn{white-space:nowrap}
+.learner .lb-name{display:flex;flex-direction:column;line-height:1.35}
+.learner .lb-name b{font-size:1.15rem}
+.learner p{width:100%}
+.ipa{color:var(--blue-900);font-family:"Segoe UI","Lucida Sans Unicode","Arial Unicode MS",sans-serif}
+
+/* nhóm nút chọn một trong vài mục */
+.pick{display:flex;flex-wrap:wrap;gap:8px 10px;align-items:center;font-size:.95rem;font-weight:600}
+.seg{display:inline-flex;border:1.5px solid var(--ink);border-radius:10px;overflow:hidden}
+.seg button{appearance:none;border:0;border-left:1.5px solid var(--ink);background:#fff;padding:6px 16px;font-weight:700;cursor:pointer;min-height:38px;min-width:54px}
+.seg button:first-child{border-left:0}
+.seg button:hover{background:var(--blue-50)}
+.seg button[aria-pressed="true"]{background:var(--ink);color:#fff}
+.seg button:focus-visible{outline-offset:-3px}
+
+/* thẻ từ vựng có nút nghe phát âm */
+.words{display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(230px,1fr))}
+.word{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px 16px;display:flex;flex-direction:column;gap:2px}
+.word .w{font-size:1.3rem;font-weight:800;letter-spacing:-.01em;line-height:1.25}
+.word .pos{font-size:.82rem;color:var(--muted);font-weight:400;margin-left:6px}
+.word .ipa{color:var(--blue-900);font-family:"Segoe UI","Lucida Sans Unicode","Arial Unicode MS",sans-serif;font-size:.98rem}
+.word .vi{font-weight:600;margin-top:4px}
+.word .ex{color:var(--muted);font-size:.92rem;line-height:1.5;margin-top:2px}
+.word .say{margin-top:auto;padding-top:12px;display:flex;flex-wrap:wrap;gap:6px}
+.word .say .btn{white-space:nowrap;padding:6px 10px}
+.btn.playing{background:var(--blue-50);border-color:var(--blue-400)}
+
+/* chuyển trang trước / sau */
+.pager{display:flex;justify-content:space-between;gap:12px;margin:36px 0 0;padding-top:18px;border-top:1px solid var(--line)}
+.pager a,.pager button{display:flex;flex-direction:column;gap:0;text-decoration:none;color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px 16px;min-width:140px;cursor:pointer;text-align:left}
+.pager a:hover,.pager button:hover{border-color:var(--blue-400);background:var(--blue-50)}
+.pager .dir{font-size:.82rem;color:var(--muted)}
+.pager .nm{font-weight:700}
+.pager .next{text-align:right;margin-left:auto}
+
+.foot{margin-top:44px;padding:18px 0 34px;border-top:1px solid var(--line);color:var(--muted);font-size:.88rem}
+.toast{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:var(--ink);color:#fff;padding:10px 16px;border-radius:10px;z-index:99;max-width:92vw;font-size:.95rem}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+@media print{.nav,.pager,.btn{display:none!important}body{background:#fff}}
+.audiowarn{margin-top:16px;padding:14px 18px}
+.audiowarn ul{margin:6px 0 6px;padding-left:20px}
+.audiowarn li{margin-top:4px}
+</style>
+</head>
+<body>
+<noscript><p style="padding:20px">Trang này cần bật JavaScript để hoạt động.</p></noscript>
+<script>window.VSTEP_PAGE = "noi";</script>
+<script>
+/* ===== LÕI DÙNG CHUNG (giống nhau ở mọi trang, không cần sửa) ===== */
+(function () {
+  'use strict';
+  var C = window.VSTEP_CONFIG || {};
+  var PAGE = window.VSTEP_PAGE || 'home';
+  var PAGES = [
+    { key: 'home', t: 'Trang chủ', en: 'Home' },
+    { key: 'nghe', t: 'Nghe', en: 'Listening' },
+    { key: 'noi', t: 'Nói', en: 'Speaking' },
+    { key: 'doc', t: 'Đọc', en: 'Reading' },
+    { key: 'viet', t: 'Viết', en: 'Writing' }
+  ];
+  var ICON = {
+    nghe: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="3" y="14" width="4.5" height="6.5" rx="1.6"/><rect x="16.5" y="14" width="4.5" height="6.5" rx="1.6"/></svg>',
+    noi: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H10l-5 4v-4H4z"/><path d="M8.5 9h7M8.5 12h4.5"/></svg>',
+    doc: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 6.5C10 5 7 4.5 3.5 4.5v13c3.5 0 6.5.5 8.5 2 2-1.5 5-2 8.5-2v-13C17 4.5 14 5 12 6.500z"/><path d="M12 6.500v13"/></svg>',
+    viet: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l1.2-4.500L16.5 4.200l3.3 3.300L8.5 18.800z"/><path d="M14 6.700l3.3 3.3"/></svg>',
+    loa: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.500v5h3.500l5 4v-13l-5 4z"/><path d="M16 9a4.2 4.2 0 0 1 0 6"/><path d="M18.5 6.500a8 8 0 0 1 0 11"/></svg>'
+  };
+
+  /* ---------- DOM ---------- */
+  function h(tag, attrs) {
+    var el = document.createElement(tag);
+    if (attrs) {
+      for (var k in attrs) {
+        var v = attrs[k];
+        if (v === null || v === undefined || v === false) continue;
+        if (k === 'class') el.className = v;
+        else if (k === 'html') el.innerHTML = v;
+        else if (k.slice(0, 2) === 'on' && typeof v === 'function') el.addEventListener(k.slice(2), v);
+        else if (k === 'style' && typeof v === 'object') { for (var s in v) el.style[s] = v[s]; }
+        else el.setAttribute(k, v === true ? '' : v);
+      }
+    }
+    for (var i = 2; i < arguments.length; i++) add(el, arguments[i]);
+    return el;
+  }
+  function add(el, kid) {
+    if (kid === null || kid === undefined || kid === false) return;
+    if (Array.isArray(kid)) { kid.forEach(function (k) { add(el, k); }); return; }
+    if (typeof kid === 'string' || typeof kid === 'number') el.appendChild(document.createTextNode(String(kid)));
+    else el.appendChild(kid);
+  }
+  function clear(el) { while (el.firstChild) el.removeChild(el.firstChild); return el; }
+  var toastEl = null;
+  function toast(msg) {
+    if (toastEl) toastEl.remove();
+    toastEl = h('div', { class: 'toast', role: 'status' }, msg);
+    document.body.appendChild(toastEl);
+    var el = toastEl; setTimeout(function () { el.remove(); }, 4200);
+  }
+
+  /* ---------- lưu trên máy (an toàn khi trình duyệt chặn) ---------- */
+  var mem = {};
+  var GLOBAL_KEYS = { learner: 1, slow: 1, uid: 1 };
+  function slug(t) {
+    return String(t || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/đ/g, 'd').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+  }
+  var store = {
+    who: '',
+    // mỗi học viên (theo tên) có kho kết quả riêng trên cùng một máy; cả 5 trang dùng chung kho này
+    full: function (k, who) { var w = GLOBAL_KEYS[k] ? '' : (who === undefined ? this.who : who); return 'vstep2.' + (w ? 'u_' + w + '.' : '') + k; },
+    raw: function (fk, d) {
+      try { var v = localStorage.getItem(fk); if (v !== null) return JSON.parse(v); } catch (e) { }
+      return (fk in mem) ? mem[fk] : d;
+    },
+    get: function (k, d) { return this.raw(this.full(k), d); },
+    set: function (k, v) { var fk = this.full(k); mem[fk] = v; try { localStorage.setItem(fk, JSON.stringify(v)); } catch (e) { } }
+  };
+  store.who = slug(store.get('learner', '') || C.studentName || '');
+  function learnerName() { return String(store.get('learner', '') || C.studentName || '').trim(); }
+  function setLearner(n) {
+    n = String(n || '').trim().replace(/\s+/g, ' ');
+    var anon = store.raw(store.full('results', ''), []), anonTarget = store.raw(store.full('target', ''), '');
+    store.set('learner', n); store.who = slug(n);
+    if (n && anonTarget && !store.get('target', '')) store.set('target', anonTarget);
+    // bài làm trước khi nhập tên được chuyển sang tên vừa nhập
+    if (n && anon.length && !store.get('results', []).length) {
+      store.set('results', anon);
+      try { localStorage.removeItem(store.full('results', '')); } catch (e) { }
+      delete mem[store.full('results', '')];
+    }
+    return n;
+  }
+  function uid() { var u = store.get('uid', ''); if (!u) { u = Math.random().toString(36).slice(2, 8); store.set('uid', u); } return u; }
+
+  /* ---------- kết quả làm bài ----------
+     Mỗi bài làm xong, trang kỹ năng gọi V.results.add({...}) với:
+       skill: 'nghe' | 'noi' | 'doc' | 'viet'
+       kind:  'luyen-tap' | 'tu-vung'
+       title: tên bài, ví dụ "Bài 1 – Phần 1"
+       correct, total: số câu đúng / tổng số câu (nếu có)
+       score10: điểm quy về thang 10 (nếu chấm được)                       */
+  var results = {
+    all: function () { return store.get('results', []); },
+    of: function (skill) { return this.all().filter(function (r) { return r.skill === skill; }); },
+    // sửa một kết quả đã lưu (tìm theo ts), ví dụ đánh dấu đã gửi: V.results.mark(rec.ts, {sent: true})
+    mark: function (ts, patch) {
+      var a = this.all();
+      a.forEach(function (r) { if (r.ts === ts) for (var k in patch) r[k] = patch[k]; });
+      store.set('results', a);
+    },
+    add: function (r) {
+      var rec = { ts: Date.now() }; for (var k in r) rec[k] = r[k];
+      var a = this.all(); a.unshift(rec); if (a.length > 300) a.length = 300;
+      store.set('results', a); return rec;
+    }
+  };
+  function round05(x) { return Math.round(x * 2) / 2; }
+  function fmtScore(x) { return (Math.round(x * 10) / 10).toFixed(1); }
+  // quy điểm trung bình (đã làm tròn 0,5) ra bậc VSTEP.3-5
+  function bandOf(score) {
+    var s = round05(score);
+    if (s >= 8.5) return { key: 'c1', t: 'C1', name: 'Bậc 5' };
+    if (s >= 6) return { key: 'b2', t: 'B2', name: 'Bậc 4' };
+    if (s >= 4) return { key: 'b1', t: 'B1', name: 'Bậc 3' };
+    return { key: 'none', t: 'Chưa đạt B1', name: '' };
+  }
+  // bậc mục tiêu học viên tự chọn (lưu theo tên học viên)
+  var TARGETS = [
+    { key: 'b1', t: 'B1', name: 'Bậc 3', min: 4, range: '4.0 – 5.5' },
+    { key: 'b2', t: 'B2', name: 'Bậc 4', min: 6, range: '6.0 – 8.0' },
+    { key: 'c1', t: 'C1', name: 'Bậc 5', min: 8.5, range: '8.5 – 10' }
+  ];
+  function target() {
+    var k = store.get('target', '') || String(C.defaultTarget || 'b1').toLowerCase(), out = TARGETS[0];
+    TARGETS.forEach(function (t) { if (t.key === k) out = t; });
+    return out;
+  }
+  function setTarget(k) { store.set('target', k); }
+  function dateShort(ts) { var d = new Date(ts); return d.getDate() + '/' + (d.getMonth() + 1); }
+
+  /* ---------- liên kết giữa các trang ---------- */
+  function onSites() {
+    try { return /(^|\.)googleusercontent\.com$/i.test(location.hostname) || /sites\.google\.com/i.test(document.referrer || ''); } catch (e) { return false; }
+  }
+  function linkMode() { var m = C.linkMode || 'auto'; return m === 'auto' ? (onSites() ? 'site' : 'file') : m; }
+  function linkFor(key, hash) {
+    var u = '';
+    if (linkMode() === 'site') {
+      u = String((C.links || {})[key] || '').trim();
+      if (u && !/^https?:\/\//i.test(u)) { var base = String(C.siteUrl || '').trim().replace(/\/+$/, ''); u = base ? base + '/' + u.replace(/^\/+/, '') : ''; }
+      return u;                       // Google Sites không chuyển được phần #... vào trang nhúng
+    }
+    u = String((C.files || {})[key] || '').trim();
+    return u ? u + (hash ? '#' + hash : '') : '';
+  }
+  // Trong Google Sites: thử chuyển trang ngay trong tab; nếu bị chặn thì sau 0,45 giây mở tab mới.
+  function go(url) {
+    var left = false, mark = function () { left = true; };
+    window.addEventListener('beforeunload', mark); window.addEventListener('pagehide', mark);
+    var framed = true;
+    try { framed = window.top !== window.self; } catch (e) { framed = true; }
+    try { if (framed) window.top.location.href = url; else { window.location.href = url; return; } } catch (e) { }
+    setTimeout(function () {
+      if (left) return;
+      var w = null;
+      try { w = window.open(url, '_blank'); if (w) w.opener = null; } catch (e2) { }
+      if (!w) toast('Trình duyệt chặn mở trang. Hãy chọn trang ở menu phía trên của site.');
+    }, 450);
+  }
+  // tạo một liên kết tới trang khác: V.link('nghe', {class:'btn'}, 'Luyện tập') hoặc V.link('nghe#tu-vung', ...)
+  function link(target, attrs) {
+    var parts = String(target).split('#'), key = parts[0], hash = parts[1] || '';
+    var url = linkFor(key, hash), kids = Array.prototype.slice.call(arguments, 2), a;
+    attrs = attrs || {};
+    if (!url) {
+      attrs.type = 'button';
+      a = h('button', attrs, kids);
+      a.addEventListener('click', function () { toast('Trang này chưa được gắn link. Hãy chọn trang ở menu phía trên của site.'); });
+      return a;
+    }
+    attrs.href = url;
+    if (linkMode() === 'site') { attrs.target = '_top'; attrs.rel = 'noopener'; }
+    a = h('a', attrs, kids);
+    if (linkMode() === 'site') a.addEventListener('click', function (e) { e.preventDefault(); go(url); });
+    return a;
+  }
+  function pageInfo(key) { for (var i = 0; i < PAGES.length; i++) if (PAGES[i].key === key) return PAGES[i]; return PAGES[0]; }
+
+  /* ---------- khung trang: menu, tiêu đề, chuyển trang, chân trang ---------- */
+  var whoEl = null;
+  function drawWho() {
+    if (!whoEl) return;
+    clear(whoEl); var n = learnerName();
+    if (n) add(whoEl, ['Học viên: ', h('b', null, n)]);
+  }
+  function nav() {
+    whoEl = h('span', { class: 'nav-who' });
+    drawWho();
+    return h('header', { class: 'nav' }, h('div', { class: 'nav-in' },
+      link('home', { class: 'brand' }, C.brand || 'Ôn thi VSTEP', h('span', { class: 'lvl' }, C.level || 'B1–C1')),
+      whoEl,
+      h('nav', { class: 'nav-links', 'aria-label': 'Các trang' }, PAGES.map(function (p) {
+        return link(p.key, { class: 'nav-a' + (p.key === PAGE ? ' on' : ''), 'aria-current': p.key === PAGE ? 'page' : null }, p.t);
+      }))));
+  }
+  function pageHead(title, tag, sub) {
+    return h('div', { class: 'pagehead' },
+      h('h1', null, title, tag ? h('span', { class: 'lvl' }, tag) : null),
+      sub ? h('p', null, sub) : null);
+  }
+  function section(title, sub) {
+    var s = h('section', { class: 'sec' }, h('h2', null, title), sub ? h('p', { class: 'sub' }, sub) : null);
+    for (var i = 2; i < arguments.length; i++) add(s, arguments[i]);
+    return s;
+  }
+  function pager() {
+    var i = 0; PAGES.forEach(function (p, k) { if (p.key === PAGE) i = k; });
+    var prev = PAGES[i - 1], next = PAGES[i + 1];
+    return h('nav', { class: 'pager', 'aria-label': 'Trang trước và trang sau' },
+      prev ? link(prev.key, { class: 'prev' }, h('span', { class: 'dir' }, 'Trang trước'), h('span', { class: 'nm' }, prev.t)) : null,
+      next ? link(next.key, { class: 'next' }, h('span', { class: 'dir' }, 'Trang sau'), h('span', { class: 'nm' }, next.t)) : null);
+  }
+  function teacher() { return String(C.teacherName || '').trim() || 'giáo viên'; }
+  function cap(s) { s = String(s); return s.charAt(0).toUpperCase() + s.slice(1); }
+  function mount(render) {
+    var body = document.body; clear(body);
+    var root = h('main', { class: 'wrap', id: 'app' });
+    var navEl = nav();
+    body.appendChild(navEl);
+    // chiều cao thanh menu, để các thanh dính bên dưới không bị che
+    var setNavH = function () { document.documentElement.style.setProperty('--navh', navEl.offsetHeight + 'px'); };
+    setNavH(); window.addEventListener('resize', setNavH); window.addEventListener('load', setNavH);
+    body.appendChild(root);
+    render(root);
+    audioCheck(root);
+    root.appendChild(h('footer', { class: 'foot' },
+      (C.brand || 'Ôn thi VSTEP') + ' ' + (C.level || 'B1–C1') + '. Kết quả làm bài được lưu trên máy này' + (sheetOn() ? ' và gửi về bảng điểm của ' + teacher() + '.' : '.')));
+  }
+
+  /* ---------- ô nhập tên học viên ---------- */
+  function learnerBox(onChange) {
+    var box = h('div', { class: 'learner' });
+    function draw(edit) {
+      clear(box);
+      var name = learnerName();
+      if (name && !edit) {
+        add(box, [h('div', { class: 'lb-name' }, h('span', { class: 'muted small' }, 'Học viên'), h('b', null, name)),
+          h('button', { class: 'btn small', type: 'button', onclick: function () { draw(true); } }, 'Đổi tên')]);
+        return;
+      }
+      var inp = h('input', { class: 'field', type: 'text', id: 'lb-inp', maxlength: '60', autocomplete: 'name', placeholder: 'Nguyễn Văn An – lớp K12', value: name });
+      var save = function () {
+        var v = inp.value.trim();
+        if (v.length < 2) { toast('Hãy nhập họ tên (ít nhất 2 ký tự).'); inp.focus(); return; }
+        setLearner(v); drawWho(); draw(false); onChange && onChange();
+      };
+      inp.addEventListener('keydown', function (e) { if (e.key === 'Enter') save(); });
+      add(box, [h('label', { for: 'lb-inp', class: 'lb-label' }, 'Họ tên của bạn'),
+        h('div', { class: 'lb-row' }, inp, h('button', { class: 'btn primary', type: 'button', onclick: save }, 'Lưu tên')),
+        h('p', { class: 'small muted' }, 'Tên dùng để lưu bài làm và để ' + teacher() + ' biết bài của ai. Ghi thêm lớp để không trùng tên.')]);
+    }
+    draw(false);
+    return box;
+  }
+
+  /* ---------- âm thanh: file ghi sẵn trong thư mục audio/ ---------- */
+  function audioUrl(path) { return String(C.audioBase === undefined ? 'audio/' : C.audioBase) + path; }
+  function isSlow() { return !!store.get('slow', false); }
+  // dự phòng khi thiếu file: dùng giọng tiếng Anh có sẵn của trình duyệt
+  var TTS = {
+    ok: 'speechSynthesis' in window, voice: null,
+    pick: function () {
+      if (!this.ok) return null;
+      var v = speechSynthesis.getVoices().filter(function (x) { return /^en[-_]/i.test(x.lang); });
+      v.sort(function (a, b) { return (/en[-_]GB/i.test(b.lang) ? 1 : 0) - (/en[-_]GB/i.test(a.lang) ? 1 : 0); });
+      this.voice = v[0] || null; return this.voice;
+    },
+    stop: function () { if (this.ok) speechSynthesis.cancel(); },
+    say: function (text, opts) {
+      opts = opts || {};
+      if (!this.ok) { opts.onend && opts.onend(); return; }
+      speechSynthesis.cancel();
+      var u = new SpeechSynthesisUtterance(String(text)), voice = this.voice || this.pick();
+      if (voice) { u.voice = voice; u.lang = voice.lang; } else u.lang = 'en-GB';
+      u.rate = opts.rate || 0.9;
+      var ended = false, end = function () { if (!ended) { ended = true; opts.onend && opts.onend(); } };
+      u.onend = end; u.onerror = end;
+      setTimeout(end, 8000 + String(text).length * 120);
+      speechSynthesis.speak(u);
+    }
+  };
+  if (TTS.ok) { TTS.pick(); try { speechSynthesis.addEventListener('voiceschanged', function () { TTS.pick(); }); } catch (e) { } }
+  var curClip = null;
+  function stopClip() {
+    if (curClip) { try { curClip.pause(); } catch (e) { } curClip = null; }
+    TTS.stop();
+    Array.prototype.forEach.call(document.querySelectorAll('.playing'), function (el) { el.classList.remove('playing'); });
+    Array.prototype.forEach.call(document.querySelectorAll('audio'), function (el) { try { el.pause(); } catch (e) { } });
+  }
+  // phát một file ngắn: V.playClip('tu/checkout-f.mp3', {fallback: 'checkout', onend: fn})
+  function playClip(path, opts) {
+    opts = opts || {}; stopClip();
+    var a = new Audio(), finished = false, rate = isSlow() ? 0.7 : 1;
+    function end() { if (finished) return; finished = true; if (curClip === a) curClip = null; opts.onend && opts.onend(); }
+    function fail() {
+      if (finished) return;
+      if (opts.fallback && TTS.ok) { finished = true; if (curClip === a) curClip = null; TTS.say(opts.fallback, { rate: isSlow() ? 0.6 : 0.9, onend: opts.onend }); }
+      else { end(); toast('Không mở được file âm thanh. Kiểm tra thư mục audio nằm cạnh các file .html.'); }
+    }
+    a.addEventListener('ended', end); a.addEventListener('error', fail);
+    a.addEventListener('loadedmetadata', function () { a.playbackRate = rate; });
+    a.preload = 'auto'; a.src = audioUrl(path); a.defaultPlaybackRate = rate; a.playbackRate = rate;
+    curClip = a;
+    var p = a.play();
+    if (p && p.catch) p.catch(function (e) { if (e && e.name === 'AbortError') end(); else fail(); });
+  }
+  // thử mở một file âm thanh khi vào trang; nếu không mở được thì báo rõ ở đầu trang
+  function audioCheck(root) {
+    var a = new Audio(), finished = false;
+    function bad() {
+      if (finished) return; finished = true;
+      var addr = ''; try { addr = String(location.href).slice(0, 90); } catch (e) { }
+      var box = h('div', { class: 'notice bad audiowarn', role: 'alert' },
+        h('b', null, 'Trang chưa mở được file âm thanh.'),
+        h('ul', null,
+          h('li', null, 'Nếu bạn đang xem trang trong khung xem trước của một ứng dụng (ví dụ ứng dụng Claude): khung đó chỉ đọc được một file nên không lấy được âm thanh. Hãy mở bằng Chrome hoặc Edge: vào thư mục chứa trang rồi bấm đúp file index.html.'),
+          h('li', null, 'Nếu bạn đã mở bằng trình duyệt: kiểm tra thư mục audio có nằm cạnh các file .html không.')),
+        h('div', { class: 'small', style: { opacity: '.8' } }, 'Địa chỉ trang đang mở: ' + addr));
+      root.insertBefore(box, root.firstChild);
+    }
+    a.addEventListener('loadedmetadata', function () { finished = true; });
+    a.addEventListener('error', bad);
+    a.preload = 'metadata'; a.src = audioUrl('tu/available-f.mp3');
+    try { a.load(); } catch (e) { }
+  }
+  function clipButton(label, path, fallback, aria) {
+    var b = h('button', { class: 'btn small', type: 'button', 'aria-label': aria || label }, label);
+    b.addEventListener('click', function () {
+      if (b.classList.contains('playing')) { stopClip(); return; }
+      playClip(path, { fallback: fallback, onend: function () { b.classList.remove('playing'); } });
+      b.classList.add('playing');
+    });
+    return b;
+  }
+  // nút chọn tốc độ phát âm từ vựng (lưu chung cho mọi trang)
+  function speedToggle() {
+    var box = h('div', { class: 'pick' });
+    function draw() {
+      clear(box);
+      add(box, ['Tốc độ', h('div', { class: 'seg', role: 'group', 'aria-label': 'Tốc độ phát âm' }, [[false, 'Thường'], [true, 'Chậm']].map(function (o) {
+        return h('button', { type: 'button', 'aria-pressed': isSlow() === o[0] ? 'true' : 'false', onclick: function () { store.set('slow', o[0]); draw(); } }, o[1]);
+      }))]);
+    }
+    draw(); return box;
+  }
+  // thẻ từ vựng: {w, pos, ipa, vi, ex} – mỗi từ có giọng nữ, giọng nam và câu ví dụ
+  function wordCard(it) {
+    var s = slug(it.w);
+    return h('div', { class: 'word' },
+      h('div', { class: 'w', lang: 'en' }, it.w, it.pos ? h('span', { class: 'pos' }, it.pos) : null),
+      it.ipa ? h('div', { class: 'ipa' }, it.ipa) : null,
+      h('div', { class: 'vi' }, it.vi),
+      it.ex ? h('div', { class: 'ex', lang: 'en' }, it.ex) : null,
+      h('div', { class: 'say' },
+        clipButton('Giọng nữ', 'tu/' + s + '-f.mp3', it.w, 'Nghe giọng nữ đọc: ' + it.w),
+        clipButton('Giọng nam', 'tu/' + s + '-m.mp3', it.w, 'Nghe giọng nam đọc: ' + it.w),
+        it.ex ? clipButton('Câu ví dụ', 'tu/' + s + '-ex.mp3', it.ex, 'Nghe câu ví dụ: ' + it.ex) : null));
+  }
+
+  /* ---------- gửi kết quả về Google Sheet ---------- */
+  function sheetUrl() { return String(C.sheetUrl || '').trim(); }
+  function sheetOn() { return /^https:\/\/script\.google(usercontent)?\.com\//.test(sheetUrl()); }
+  // gửi bằng POST dạng form (không cần CORS); nếu fetch lỗi thì dùng form ẩn
+  function postSheet(payload, cb) {
+    var url = sheetUrl(), json = JSON.stringify(payload), finished = false;
+    var done = function (ok) { if (!finished) { finished = true; cb && cb(ok); } };
+    function formPost() {
+      try {
+        var name = 'vsend' + Date.now();
+        var ifr = h('iframe', { name: name, style: { display: 'none' } });
+        var f = h('form', { method: 'POST', action: url, target: name, style: { display: 'none' } }, h('input', { type: 'hidden', name: 'payload', value: json }));
+        document.body.appendChild(ifr); document.body.appendChild(f);
+        var t = setTimeout(function () { done(false); }, 25000);
+        ifr.addEventListener('load', function () { clearTimeout(t); done(true); setTimeout(function () { ifr.remove(); f.remove(); }, 2000); });
+        f.submit();
+      } catch (e) { done(false); }
+    }
+    try {
+      fetch(url, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: 'payload=' + encodeURIComponent(json) })
+        .then(function () { done(true); }, formPost);
+    } catch (e) { formPost(); }
+  }
+  // gửi một dòng kết quả: V.send('nghe', {'Đề': 'Bài 1', 'Kết quả': '6/8', ...}, cb)
+  function send(skill, row, cb) {
+    if (!sheetOn()) { cb && cb(false); return; }
+    var ordered = { 'Học viên': learnerName() || '(chưa nhập tên)' };
+    Object.keys(row || {}).forEach(function (k) { ordered[k] = row[k]; });
+    ordered['Mã'] = uid() + '-' + Date.now().toString(36);
+    postSheet({ skill: skill, cols: Object.keys(ordered), row: ordered, audio: [] }, cb);
+  }
+  function jsonp(params, cb) {
+    var cbName = '__vjp' + Date.now() + Math.floor(Math.random() * 1000), finished = false;
+    var q = Object.keys(params).map(function (k) { return k + '=' + encodeURIComponent(params[k]); }).join('&');
+    var sc = document.createElement('script');
+    function end(err, d) { if (finished) return; finished = true; try { delete window[cbName]; } catch (e) { window[cbName] = undefined; } sc.remove(); cb(err, d); }
+    window[cbName] = function (d) { end(null, d); };
+    sc.src = sheetUrl() + (sheetUrl().indexOf('?') >= 0 ? '&' : '?') + q + '&callback=' + cbName;
+    sc.onerror = function () { end(new Error('load')); };
+    setTimeout(function () { end(new Error('timeout')); }, 20000);
+    document.head.appendChild(sc);
+  }
+  // điểm và nhận xét giáo viên đã chấm cho học viên này (đọc từ Google Sheet)
+  function feedback(cb) {
+    var name = learnerName();
+    if (!sheetOn() || !name) { cb(null, []); return; }
+    jsonp({ action: 'feedback', name: name }, function (err, d) { cb(err, (d && d.items) || []); });
+  }
+
+  window.V = {
+    C: C, PAGE: PAGE, PAGES: PAGES, ICON: ICON, page: pageInfo(PAGE), pageInfo: pageInfo,
+    h: h, add: add, clear: clear, toast: toast, slug: slug,
+    store: store, learnerName: learnerName, setLearner: setLearner, learnerBox: learnerBox, uid: uid,
+    results: results, TARGETS: TARGETS, target: target, setTarget: setTarget, round05: round05, fmtScore: fmtScore, bandOf: bandOf, dateShort: dateShort,
+    link: link, linkFor: linkFor, linkMode: linkMode, go: go,
+    mount: mount, pageHead: pageHead, section: section, pager: pager, teacher: teacher, cap: cap,
+    audioUrl: audioUrl, isSlow: isSlow, playClip: playClip, stopClip: stopClip, clipButton: clipButton, speedToggle: speedToggle, wordCard: wordCard,
+    sheetOn: sheetOn, send: send, postSheet: postSheet, jsonp: jsonp, feedback: feedback
+  };
+})();
+</script>
+<script>
+/* ===== TRANG KỸ NĂNG (bản khung – nội dung sẽ thêm ở đợt sau) ===== */
+(function () {
+  'use strict';
+  var V = window.V, h = V.h, p = V.page;
+  var INTRO = {
+    nghe: 'Nghe hiểu: 3 phần, 35 câu trắc nghiệm, khoảng 40 phút.',
+    noi: 'Nói: 3 phần trong 12 phút.',
+    doc: 'Đọc hiểu: 4 bài đọc, 40 câu trắc nghiệm, 60 phút.',
+    viet: 'Viết: thư 120 từ và bài luận 250 từ trong 60 phút.'
+  };
+  var TABS = [['luyen-tap', 'Luyện tập'], ['tu-vung', 'Từ vựng mới']];
+  var tab = location.hash === '#tu-vung' ? 'tu-vung' : 'luyen-tap';
+
+  V.mount(function (root) {
+    var bar = h('div', { class: 'tabs', role: 'tablist' }), panel = h('div', { role: 'tabpanel' });
+    function draw() {
+      V.clear(bar); V.clear(panel);
+      TABS.forEach(function (t) {
+        bar.appendChild(h('button', { class: 'tab' + (t[0] === tab ? ' on' : ''), type: 'button', role: 'tab', 'aria-selected': t[0] === tab ? 'true' : 'false',
+          onclick: function () { tab = t[0]; try { history.replaceState(null, '', '#' + tab); } catch (e) { } draw(); } }, t[1]));
+      });
+      panel.appendChild(h('div', { class: 'empty' },
+        h('b', null, (tab === 'tu-vung' ? 'Từ vựng mới' : 'Luyện tập') + ' phần ' + p.t + ' đang được xây dựng'),
+        tab === 'tu-vung' ? 'Danh sách từ kèm phiên âm, nghĩa và nút nghe phát âm sẽ có ở đây.' : 'Bài luyện có chấm điểm và gửi kết quả cho ' + V.teacher() + ' sẽ có ở đây.'));
+    }
+    window.addEventListener('hashchange', function () { tab = location.hash === '#tu-vung' ? 'tu-vung' : 'luyen-tap'; draw(); });
+    root.appendChild(V.pageHead(p.t, p.en, INTRO[p.key]));
+    root.appendChild(bar); root.appendChild(panel);
+    draw();
+    root.appendChild(V.pager());
+  });
+})();
+</script>
+</body>
+</html>

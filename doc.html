@@ -1,0 +1,2655 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Luyện Đọc – Ôn thi VSTEP B1–C1</title>
+<meta name="description" content="Luyện Đọc VSTEP B1–C1: đề đọc 40 câu có bấm giờ, chấm điểm, chữa bài và từ vựng mới có phát âm giọng nam, giọng nữ.">
+<script>
+/* ================================================================
+   CÀI ĐẶT — chỉ cần sửa phần này (giữ nguyên dấu ngoặc kép "")
+   Phần này giống nhau ở cả 5 trang: sửa ở trang nào thì sửa luôn 4 trang còn lại.
+   ================================================================ */
+window.VSTEP_CONFIG = {
+  brand: "Ôn thi VSTEP",          // tên hiện ở góc trái thanh menu
+  levelName: "Bậc 3–5",           // các bậc khoá học luyện
+  level: "B1–C1",
+  defaultTarget: "b1",            // bậc mục tiêu khi học viên chưa tự chọn: "b1", "b2" hoặc "c1"
+  studentName: "",                // tên học viên (tuỳ chọn) — để "" thì web dùng chung cho mọi người
+  examDate: "",                   // ngày thi chung, dạng "2026-12-12" — để "" thì học viên tự chọn
+  sheetUrl: "",                   // link Ứng dụng web Google Sheet (…/exec) của RIÊNG trang này để nhận kết quả — để "" thì kết quả chỉ lưu trên máy học viên
+  teacherName: "thầy Hoàng",      // tên người chữa bài, ví dụ "cô Lan" — để "" sẽ hiện là "giáo viên"
+  teacherEmail: "",               // email nhận bài Viết/Nói của học viên (để "" nếu không dùng)
+
+  // CÁC FILE CỦA TRANG — đặt chung một thư mục, giữ nguyên tên
+  linkMode: "file",
+  files: { home: "index.html", nghe: "nghe.html", noi: "noi.html", doc: "doc.html", viet: "viet.html" },
+  audioBase: "audio/"             // thư mục chứa file nghe và file phát âm, đặt cạnh các file .html
+};
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ===== GIAO DIỆN DÙNG CHUNG (giống nhau ở mọi trang) ===== */
+:root{
+  --bg:#f4f5f9; --grid:#e6e9f0; --card:#fff; --ink:#1b2130; --muted:#5d6577; --line:#dfe3ea;
+  --blue-50:#e6f0ff; --blue-100:#d6e6ff; --blue-200:#b7cff5; --blue-400:#6f9fe6; --blue-600:#2563eb; --blue-700:#1d4ed8; --blue-900:#123a7a;
+  --red:#c62828; --ok:#15803d; --ok-soft:#e8f6ec; --bad:#b42318; --bad-soft:#fdecea; --warn:#8a4f06; --warn-soft:#fff5e0;
+  --font:"Be Vietnam Pro","Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background-color:var(--bg);background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:24px 24px;color:var(--ink);font-family:var(--font);font-size:17px;line-height:1.6;-webkit-text-size-adjust:100%;min-height:100vh}
+button,input,select,textarea{font:inherit;color:inherit}
+a{color:var(--blue-700)}
+h1,h2,h3,p{margin:0}
+:focus-visible{outline:3px solid var(--blue-600);outline-offset:2px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 18px}
+.muted{color:var(--muted)}
+.small{font-size:.9rem}
+
+/* thanh menu */
+.nav{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.96);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1040px;margin:0 auto;padding:8px 18px;display:flex;align-items:center;gap:8px 18px;flex-wrap:wrap}
+.brand{font-weight:800;font-size:1.12rem;color:var(--ink);text-decoration:none;white-space:nowrap;padding:6px 0;background:none;border:0;cursor:pointer}
+.brand .lvl{color:var(--red);font-weight:400;margin-left:7px}
+.nav-links{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;margin-left:auto}
+.nav-links::-webkit-scrollbar{display:none}
+.nav-a{white-space:nowrap;padding:8px 14px;border-radius:999px;font-weight:600;font-size:.98rem;color:var(--ink);text-decoration:none;border:1px solid transparent;background:none;cursor:pointer;line-height:1.3}
+.nav-a:hover{background:var(--blue-50);border-color:var(--blue-200)}
+.nav-a.on{background:var(--ink);color:#fff}
+.nav-who{font-size:.9rem;color:var(--muted);white-space:nowrap;max-width:230px;min-width:0;flex:0 1 auto;overflow:hidden;text-overflow:ellipsis}
+.nav-who b{color:var(--ink);font-weight:600}
+@media(max-width:700px){
+  .nav-in{padding:6px 14px}
+  .nav-links{order:3;width:100%;margin-left:-6px}
+  .nav-who{display:none}
+  .brand{padding:4px 0}
+  .nav-a{padding:7px 12px}
+}
+
+/* nút */
+.btn{appearance:none;border:1px solid var(--line);background:#fff;border-radius:10px;padding:9px 16px;cursor:pointer;font-weight:600;line-height:1.25;min-height:44px;display:inline-flex;align-items:center;justify-content:center;gap:7px;text-decoration:none;color:var(--ink)}
+.btn:hover{border-color:#aeb7c7}
+.btn.primary{background:var(--ink);border-color:var(--ink);color:#fff}
+.btn.primary:hover{background:#000}
+.btn.blue{background:var(--blue-600);border-color:var(--blue-600);color:#fff}
+.btn.blue:hover{background:var(--blue-700);border-color:var(--blue-700)}
+.btn.small{min-height:36px;padding:6px 12px;font-size:.9rem;border-radius:9px}
+.btn[disabled]{opacity:.5;cursor:not-allowed}
+.btn svg{width:18px;height:18px;flex:0 0 auto}
+
+/* khối nội dung */
+.sec{padding:34px 0 0}
+.sec > h2{font-size:1.45rem;font-weight:800;letter-spacing:-.01em;line-height:1.25;margin-bottom:6px}
+.sec > .sub{color:var(--muted);margin-bottom:14px;max-width:68ch}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.notice{border-radius:12px;padding:10px 14px;background:var(--blue-50);color:var(--blue-900);font-size:.95rem}
+.notice.warn{background:var(--warn-soft);color:var(--warn)}
+.notice.ok{background:var(--ok-soft);color:#14532d}
+.notice.bad{background:var(--bad-soft);color:#7f1d1d}
+.pill{display:inline-flex;align-items:center;padding:2px 10px;border-radius:999px;background:#eceef4;font-weight:600;font-size:.85rem;white-space:nowrap}
+.pill.ok{background:var(--ok-soft);color:var(--ok)}
+.pill.blue{background:var(--blue-50);color:var(--blue-900)}
+.field{border:1px solid #b9c1cf;border-radius:10px;padding:9px 12px;min-height:44px;background:#fff;min-width:0}
+.field:focus{outline:3px solid var(--blue-200);outline-offset:0;border-color:var(--blue-600)}
+
+/* bảng */
+.tblwrap{overflow-x:auto;background:#fff;border:1px solid var(--line);border-radius:14px}
+.tbl{width:100%;border-collapse:collapse;font-size:.98rem}
+.tbl th,.tbl td{text-align:left;padding:11px 16px;border-bottom:1px solid var(--line);vertical-align:top}
+.tbl tr:last-child td{border-bottom:0}
+.tbl th{font-size:.88rem;color:var(--muted);font-weight:600;background:#fafbfd;white-space:nowrap}
+.tbl td.num,.tbl th.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.tbl tr.hl td{background:var(--blue-50)}
+.tbl td.nw{white-space:nowrap}
+/* màn hình hẹp: mỗi dòng của bảng thành một khối xếp dọc */
+@media(max-width:700px){
+  .tbl.stack thead{display:none}
+  .tbl.stack,.tbl.stack tbody{display:block}
+  .tbl.stack tr{display:block;padding:12px 16px;border-bottom:1px solid var(--line)}
+  .tbl.stack tr:last-child{border-bottom:0}
+  .tbl.stack td{display:flex;justify-content:space-between;align-items:baseline;gap:14px;padding:3px 0;border:0;text-align:right;white-space:normal}
+  .tbl.stack td::before{content:attr(data-label);color:var(--muted);font-size:.88rem;text-align:left;flex:0 0 auto}
+  .tbl.stack td:first-child{font-size:1.05rem;padding-bottom:5px}
+  .tbl.stack td:first-child::before,.tbl.stack td.long::before{content:none}
+  .tbl.stack td.long{display:block;text-align:left;padding-top:6px}
+}
+
+/* tiêu đề trang con + thẻ chuyển phần */
+.pagehead{padding:30px 0 6px}
+.pagehead h1{font-size:clamp(2rem,5vw,2.6rem);font-weight:800;letter-spacing:-.02em;line-height:1.15}
+.pagehead h1 .lvl{color:var(--red);font-weight:400;font-size:.62em;margin-left:12px;letter-spacing:0}
+.pagehead p{color:var(--muted);font-size:1.05rem;margin-top:8px;max-width:64ch}
+.tabs{display:flex;gap:6px;margin:18px 0 16px;border-bottom:1px solid var(--line)}
+.tab{padding:10px 18px;border:1px solid transparent;border-bottom:0;border-radius:12px 12px 0 0;font-weight:700;color:var(--muted);text-decoration:none;background:none;cursor:pointer;margin-bottom:-1px}
+.tab:hover{color:var(--ink)}
+.tab.on{background:#fff;border-color:var(--line);color:var(--ink)}
+.empty{background:#fff;border:1px dashed #b9c1cf;border-radius:14px;padding:28px 22px;text-align:center;color:var(--muted)}
+.empty b{display:block;color:var(--ink);font-size:1.1rem;margin-bottom:4px}
+
+/* ô nhập họ tên học viên */
+.learner{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 18px;display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between}
+.learner .lb-label{font-weight:700;width:100%}
+.learner .lb-row{display:flex;gap:8px;width:100%}
+.learner .lb-row .field{flex:1 1 auto}
+.learner .btn{white-space:nowrap}
+.learner .lb-name{display:flex;flex-direction:column;line-height:1.35}
+.learner .lb-name b{font-size:1.15rem}
+.learner p{width:100%}
+.ipa{color:var(--blue-900);font-family:"Segoe UI","Lucida Sans Unicode","Arial Unicode MS",sans-serif}
+
+/* nhóm nút chọn một trong vài mục */
+.pick{display:flex;flex-wrap:wrap;gap:8px 10px;align-items:center;font-size:.95rem;font-weight:600}
+.seg{display:inline-flex;border:1.5px solid var(--ink);border-radius:10px;overflow:hidden}
+.seg button{appearance:none;border:0;border-left:1.5px solid var(--ink);background:#fff;padding:6px 16px;font-weight:700;cursor:pointer;min-height:38px;min-width:54px}
+.seg button:first-child{border-left:0}
+.seg button:hover{background:var(--blue-50)}
+.seg button[aria-pressed="true"]{background:var(--ink);color:#fff}
+.seg button:focus-visible{outline-offset:-3px}
+
+/* thẻ từ vựng có nút nghe phát âm */
+.words{display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(230px,1fr))}
+.word{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px 16px;display:flex;flex-direction:column;gap:2px}
+.word .w{font-size:1.3rem;font-weight:800;letter-spacing:-.01em;line-height:1.25}
+.word .pos{font-size:.82rem;color:var(--muted);font-weight:400;margin-left:6px}
+.word .ipa{color:var(--blue-900);font-family:"Segoe UI","Lucida Sans Unicode","Arial Unicode MS",sans-serif;font-size:.98rem}
+.word .vi{font-weight:600;margin-top:4px}
+.word .ex{color:var(--muted);font-size:.92rem;line-height:1.5;margin-top:2px}
+.word .say{margin-top:auto;padding-top:12px;display:flex;flex-wrap:wrap;gap:6px}
+.word .say .btn{white-space:nowrap;padding:6px 10px}
+.btn.playing{background:var(--blue-50);border-color:var(--blue-400)}
+
+/* chuyển trang trước / sau */
+.pager{display:flex;justify-content:space-between;gap:12px;margin:36px 0 0;padding-top:18px;border-top:1px solid var(--line)}
+.pager a,.pager button{display:flex;flex-direction:column;gap:0;text-decoration:none;color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px 16px;min-width:140px;cursor:pointer;text-align:left}
+.pager a:hover,.pager button:hover{border-color:var(--blue-400);background:var(--blue-50)}
+.pager .dir{font-size:.82rem;color:var(--muted)}
+.pager .nm{font-weight:700}
+.pager .next{text-align:right;margin-left:auto}
+
+.foot{margin-top:44px;padding:18px 0 34px;border-top:1px solid var(--line);color:var(--muted);font-size:.88rem}
+.toast{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:var(--ink);color:#fff;padding:10px 16px;border-radius:10px;z-index:99;max-width:92vw;font-size:.95rem}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+@media print{.nav,.pager,.btn{display:none!important}body{background:#fff}}
+.audiowarn{margin-top:16px;padding:14px 18px}
+.audiowarn ul{margin:6px 0 6px;padding-left:20px}
+.audiowarn li{margin-top:4px}
+/* ===== LUYỆN TẬP: danh sách bài, làm bài, chấm, chữa (dùng chung cho Nghe và Đọc) ===== */
+.test{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px 20px 8px;margin-bottom:18px}
+.test h2{font-size:1.35rem;font-weight:800;margin-bottom:4px}
+.parts{list-style:none;margin:0;padding:0}
+.parts li{display:grid;grid-template-columns:150px minmax(0,1fr) auto;gap:10px 18px;align-items:center;padding:14px 0;border-top:1px solid var(--line)}
+.parts li:first-child{border-top:0}
+.parts .pt{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.parts .pt b{font-size:1.08rem}
+.parts .pd{color:var(--muted);font-size:.95rem}
+.parts .last{display:block;color:var(--blue-900);font-weight:600;margin-top:2px}
+.parts .btn{min-width:128px}
+@media(max-width:700px){.parts li{grid-template-columns:1fr}.parts .btn{width:100%}}
+
+.dobar{position:sticky;top:calc(var(--navh, 57px) + 8px);z-index:10;display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;justify-content:space-between;background:var(--ink);color:#fff;border-radius:12px;padding:10px 16px;margin-bottom:16px}
+.dobar .count{margin-left:12px;font-size:.92rem;opacity:.85;font-variant-numeric:tabular-nums}
+.dobar .btn.primary{background:#fff;color:var(--ink);border-color:#fff}
+.dobar .btn.small{background:transparent;color:#fff;border-color:rgba(255,255,255,.45)}
+.parthead{font-size:1.3rem;font-weight:800;margin:26px 0 12px;display:flex;align-items:center;gap:10px}
+.item{background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px 20px 18px;margin-bottom:14px}
+.item h3{font-size:1.02rem;font-weight:700;margin-bottom:10px}
+.player audio{width:100%;max-width:560px;display:block;height:44px}
+.player .notice{margin-top:8px}
+.q{border:0;margin:16px 0 0;padding:0;min-width:0}
+.q legend,.q .qt{font-weight:600;padding:0;margin-bottom:8px;line-height:1.45}
+.q .qn{color:var(--blue-900);font-weight:800}
+.opt{display:flex;align-items:flex-start;gap:10px;padding:9px 12px;border:1px solid var(--line);border-radius:10px;margin-top:6px;cursor:pointer;line-height:1.4}
+label.opt:hover{border-color:var(--blue-400);background:var(--blue-50)}
+.opt input{width:19px;height:19px;margin:2px 0 0;flex:0 0 auto;accent-color:var(--blue-600)}
+.opt:has(input:checked){border-color:var(--blue-600);background:var(--blue-50)}
+.opt .lt{font-weight:800;min-width:1.1em}
+.q.rev .opt{cursor:default}
+.q.rev .qt .pill{margin-left:8px;vertical-align:1px}
+.pill.no{background:var(--bad-soft);color:var(--bad)}
+.opt.right{border-color:var(--ok);background:var(--ok-soft)}
+.opt.wrong{border-color:var(--bad);background:var(--bad-soft)}
+.opt .tag{margin-left:auto;font-size:.82rem;font-weight:700;white-space:nowrap;padding-left:10px}
+.opt.right .tag{color:var(--ok)}
+.opt.wrong .tag{color:var(--bad)}
+.why{margin-top:8px;padding:10px 14px;border-left:3px solid var(--blue-400);background:#f7f9fd;border-radius:0 10px 10px 0;font-size:.95rem}
+.why .ev{font-style:italic;color:var(--blue-900);margin-bottom:4px}
+.script{margin-top:16px;border-top:1px solid var(--line);padding-top:12px}
+.script summary{cursor:pointer;font-weight:700;color:var(--blue-700)}
+.script p{margin-top:8px;max-width:72ch}
+
+.score{display:flex;flex-wrap:wrap;gap:8px 26px;align-items:center;background:#fff;border:1.5px solid var(--ink);border-radius:16px;padding:18px 22px}
+.score .big{font-size:2.6rem;font-weight:800;letter-spacing:-.02em;line-height:1.1;white-space:nowrap}
+.score .big span{font-size:1rem;font-weight:600;letter-spacing:0;color:var(--muted)}
+.score > div:last-child{flex:1 1 300px}
+.score p{margin-top:2px;max-width:66ch}
+
+.vbar{display:flex;flex-wrap:wrap;gap:12px 24px;align-items:center;justify-content:space-between}
+.vbar .seg button{padding:6px 12px;font-size:.92rem}
+.quiz{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px 22px;max-width:640px}
+.quiz .qhead{display:flex;justify-content:space-between;gap:12px;margin-bottom:6px}
+.quiz > p{margin-bottom:12px}
+.qopts{display:grid;gap:8px;margin-top:16px}
+.qopts .btn{justify-content:flex-start;text-align:left}
+.qopts .btn.right{border-color:var(--ok);background:var(--ok-soft);opacity:1}
+.qopts .btn.wrong{border-color:var(--bad);background:var(--bad-soft);opacity:1}
+.qfb{margin-top:14px}
+.qfb p{margin-bottom:10px}
+.qfb .qw{font-weight:800}
+.qword{font-size:1.9rem;font-weight:800;letter-spacing:-.01em;margin:2px 0 12px}
+/* đang làm bài: thanh menu không dính nữa để dành chỗ cho bài */
+body.doing{--navh:0px}
+body.doing .nav{position:static}
+@media(max-width:700px){
+  .dobar{padding:8px 12px;flex-wrap:nowrap}
+  .dobar b,.dobar .count .long{display:none}
+  .dobar .count{margin-left:0}
+  .dobar .btn{min-height:38px;padding:6px 12px}
+}
+@media(max-width:700px){
+  .dobar > div{display:flex;align-items:center;gap:8px;flex-wrap:nowrap;white-space:nowrap}
+  .dobar .clock{margin-left:0}
+}
+@media(max-width:700px){
+  .dobar{gap:6px}
+  .dobar .row{gap:6px;flex-wrap:nowrap}
+  .dobar .btn{padding:6px 10px}
+}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chips button{appearance:none;border:1.5px solid var(--ink);background:#fff;border-radius:999px;padding:6px 16px;font-weight:700;cursor:pointer;min-height:38px}
+.chips button:hover{background:var(--blue-50)}
+.chips button[aria-pressed="true"]{background:var(--ink);color:#fff}
+.chips button .done{font-weight:400;font-size:.85rem;margin-left:6px;opacity:.8}
+.testpick{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;margin-bottom:14px;font-weight:600}
+/* ===== TRANG ĐỌC ===== */
+.wrap.wide{max-width:1280px}
+.dobar .clock{margin-left:14px;font-weight:700;font-variant-numeric:tabular-nums;background:rgba(255,255,255,.14);padding:3px 10px;border-radius:8px;white-space:nowrap}
+.dobar .clock.late{background:var(--red)}
+.read{margin-bottom:10px}
+.readgrid{display:grid;gap:16px;grid-template-columns:minmax(0,1fr)}
+.passage{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px 24px 22px;font-size:1.04rem;line-height:1.75}
+.passage h3{font-size:1.3rem;font-weight:800;line-height:1.3;margin-bottom:12px;letter-spacing:-.01em}
+.passage p{position:relative;margin-top:12px;padding-left:30px;border-radius:8px}
+.passage .pn{position:absolute;left:0;top:.28em;width:21px;height:21px;border-radius:50%;background:var(--blue-50);color:var(--blue-900);font-size:.78rem;font-weight:700;line-height:21px;text-align:center}
+.passage p.hl{background:#fff3c4;box-shadow:0 0 0 6px #fff3c4}
+.qcol{background:#fff;border:1px solid var(--line);border-radius:16px;padding:4px 20px 20px}
+@media(min-width:960px){
+  .readgrid{grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);align-items:start}
+  .passage{position:sticky;top:calc(var(--navh, 57px) + 12px);max-height:calc(100vh - var(--navh, 57px) - 24px);overflow:auto}
+  body.doing .passage{top:78px;max-height:calc(100vh - 90px)}
+}
+/* màn hình hẹp, đang làm bài: bài đọc dính ở nửa trên, câu hỏi cuộn bên dưới */
+@media(max-width:959px){
+  body.doing .passage{position:sticky;top:66px;max-height:42vh;overflow:auto;z-index:5;padding:14px 16px 16px;box-shadow:0 8px 16px rgba(27,33,48,.14)}
+  body.doing .passage h3{font-size:1.1rem;margin-bottom:6px}
+}
+.types{margin-top:14px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px 18px}
+.types .row{margin-top:8px}
+.q.rev .qt .pill + .pill{margin-left:6px}
+.plink{appearance:none;border:1px solid var(--blue-400);background:#fff;color:var(--blue-700);font:inherit;font-style:normal;font-weight:700;font-size:.85rem;border-radius:999px;padding:1px 10px;cursor:pointer}
+.plink:hover{background:var(--blue-50)}
+.dobar .clock:not(.late)::before{content:"Còn "}
+@media(max-width:700px){.dobar .clock:not(.late)::before{content:none}}
+</style>
+</head>
+<body>
+<noscript><p style="padding:20px">Trang này cần bật JavaScript để hoạt động.</p></noscript>
+<script>window.VSTEP_PAGE = "doc";</script>
+<script>
+/* ===== LÕI DÙNG CHUNG (giống nhau ở mọi trang, không cần sửa) ===== */
+(function () {
+  'use strict';
+  var C = window.VSTEP_CONFIG || {};
+  var PAGE = window.VSTEP_PAGE || 'home';
+  var PAGES = [
+    { key: 'home', t: 'Trang chủ', en: 'Home' },
+    { key: 'nghe', t: 'Nghe', en: 'Listening' },
+    { key: 'noi', t: 'Nói', en: 'Speaking' },
+    { key: 'doc', t: 'Đọc', en: 'Reading' },
+    { key: 'viet', t: 'Viết', en: 'Writing' }
+  ];
+  var ICON = {
+    nghe: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="3" y="14" width="4.5" height="6.5" rx="1.6"/><rect x="16.5" y="14" width="4.5" height="6.5" rx="1.6"/></svg>',
+    noi: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H10l-5 4v-4H4z"/><path d="M8.5 9h7M8.5 12h4.5"/></svg>',
+    doc: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 6.5C10 5 7 4.5 3.5 4.5v13c3.5 0 6.5.5 8.5 2 2-1.5 5-2 8.5-2v-13C17 4.5 14 5 12 6.500z"/><path d="M12 6.500v13"/></svg>',
+    viet: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l1.2-4.500L16.5 4.200l3.3 3.300L8.5 18.800z"/><path d="M14 6.700l3.3 3.3"/></svg>',
+    loa: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.500v5h3.500l5 4v-13l-5 4z"/><path d="M16 9a4.2 4.2 0 0 1 0 6"/><path d="M18.5 6.500a8 8 0 0 1 0 11"/></svg>'
+  };
+
+  /* ---------- DOM ---------- */
+  function h(tag, attrs) {
+    var el = document.createElement(tag);
+    if (attrs) {
+      for (var k in attrs) {
+        var v = attrs[k];
+        if (v === null || v === undefined || v === false) continue;
+        if (k === 'class') el.className = v;
+        else if (k === 'html') el.innerHTML = v;
+        else if (k.slice(0, 2) === 'on' && typeof v === 'function') el.addEventListener(k.slice(2), v);
+        else if (k === 'style' && typeof v === 'object') { for (var s in v) el.style[s] = v[s]; }
+        else el.setAttribute(k, v === true ? '' : v);
+      }
+    }
+    for (var i = 2; i < arguments.length; i++) add(el, arguments[i]);
+    return el;
+  }
+  function add(el, kid) {
+    if (kid === null || kid === undefined || kid === false) return;
+    if (Array.isArray(kid)) { kid.forEach(function (k) { add(el, k); }); return; }
+    if (typeof kid === 'string' || typeof kid === 'number') el.appendChild(document.createTextNode(String(kid)));
+    else el.appendChild(kid);
+  }
+  function clear(el) { while (el.firstChild) el.removeChild(el.firstChild); return el; }
+  var toastEl = null;
+  function toast(msg) {
+    if (toastEl) toastEl.remove();
+    toastEl = h('div', { class: 'toast', role: 'status' }, msg);
+    document.body.appendChild(toastEl);
+    var el = toastEl; setTimeout(function () { el.remove(); }, 4200);
+  }
+
+  /* ---------- lưu trên máy (an toàn khi trình duyệt chặn) ---------- */
+  var mem = {};
+  var GLOBAL_KEYS = { learner: 1, slow: 1, uid: 1 };
+  function slug(t) {
+    return String(t || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/đ/g, 'd').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+  }
+  var store = {
+    who: '',
+    // mỗi học viên (theo tên) có kho kết quả riêng trên cùng một máy; cả 5 trang dùng chung kho này
+    full: function (k, who) { var w = GLOBAL_KEYS[k] ? '' : (who === undefined ? this.who : who); return 'vstep2.' + (w ? 'u_' + w + '.' : '') + k; },
+    raw: function (fk, d) {
+      try { var v = localStorage.getItem(fk); if (v !== null) return JSON.parse(v); } catch (e) { }
+      return (fk in mem) ? mem[fk] : d;
+    },
+    get: function (k, d) { return this.raw(this.full(k), d); },
+    set: function (k, v) { var fk = this.full(k); mem[fk] = v; try { localStorage.setItem(fk, JSON.stringify(v)); } catch (e) { } }
+  };
+  store.who = slug(store.get('learner', '') || C.studentName || '');
+  function learnerName() { return String(store.get('learner', '') || C.studentName || '').trim(); }
+  function setLearner(n) {
+    n = String(n || '').trim().replace(/\s+/g, ' ');
+    var anon = store.raw(store.full('results', ''), []), anonTarget = store.raw(store.full('target', ''), '');
+    store.set('learner', n); store.who = slug(n);
+    if (n && anonTarget && !store.get('target', '')) store.set('target', anonTarget);
+    // bài làm trước khi nhập tên được chuyển sang tên vừa nhập
+    if (n && anon.length && !store.get('results', []).length) {
+      store.set('results', anon);
+      try { localStorage.removeItem(store.full('results', '')); } catch (e) { }
+      delete mem[store.full('results', '')];
+    }
+    return n;
+  }
+  function uid() { var u = store.get('uid', ''); if (!u) { u = Math.random().toString(36).slice(2, 8); store.set('uid', u); } return u; }
+
+  /* ---------- kết quả làm bài ----------
+     Mỗi bài làm xong, trang kỹ năng gọi V.results.add({...}) với:
+       skill: 'nghe' | 'noi' | 'doc' | 'viet'
+       kind:  'luyen-tap' | 'tu-vung'
+       title: tên bài, ví dụ "Bài 1 – Phần 1"
+       correct, total: số câu đúng / tổng số câu (nếu có)
+       score10: điểm quy về thang 10 (nếu chấm được)                       */
+  var results = {
+    all: function () { return store.get('results', []); },
+    of: function (skill) { return this.all().filter(function (r) { return r.skill === skill; }); },
+    // sửa một kết quả đã lưu (tìm theo ts), ví dụ đánh dấu đã gửi: V.results.mark(rec.ts, {sent: true})
+    mark: function (ts, patch) {
+      var a = this.all();
+      a.forEach(function (r) { if (r.ts === ts) for (var k in patch) r[k] = patch[k]; });
+      store.set('results', a);
+    },
+    add: function (r) {
+      var rec = { ts: Date.now() }; for (var k in r) rec[k] = r[k];
+      var a = this.all(); a.unshift(rec); if (a.length > 300) a.length = 300;
+      store.set('results', a); return rec;
+    }
+  };
+  function round05(x) { return Math.round(x * 2) / 2; }
+  function fmtScore(x) { return (Math.round(x * 10) / 10).toFixed(1); }
+  // quy điểm trung bình (đã làm tròn 0,5) ra bậc VSTEP.3-5
+  function bandOf(score) {
+    var s = round05(score);
+    if (s >= 8.5) return { key: 'c1', t: 'C1', name: 'Bậc 5' };
+    if (s >= 6) return { key: 'b2', t: 'B2', name: 'Bậc 4' };
+    if (s >= 4) return { key: 'b1', t: 'B1', name: 'Bậc 3' };
+    return { key: 'none', t: 'Chưa đạt B1', name: '' };
+  }
+  // bậc mục tiêu học viên tự chọn (lưu theo tên học viên)
+  var TARGETS = [
+    { key: 'b1', t: 'B1', name: 'Bậc 3', min: 4, range: '4.0 – 5.5' },
+    { key: 'b2', t: 'B2', name: 'Bậc 4', min: 6, range: '6.0 – 8.0' },
+    { key: 'c1', t: 'C1', name: 'Bậc 5', min: 8.5, range: '8.5 – 10' }
+  ];
+  function target() {
+    var k = store.get('target', '') || String(C.defaultTarget || 'b1').toLowerCase(), out = TARGETS[0];
+    TARGETS.forEach(function (t) { if (t.key === k) out = t; });
+    return out;
+  }
+  function setTarget(k) { store.set('target', k); }
+  function dateShort(ts) { var d = new Date(ts); return d.getDate() + '/' + (d.getMonth() + 1); }
+
+  /* ---------- liên kết giữa các trang ---------- */
+  function onSites() {
+    try { return /(^|\.)googleusercontent\.com$/i.test(location.hostname) || /sites\.google\.com/i.test(document.referrer || ''); } catch (e) { return false; }
+  }
+  function linkMode() { var m = C.linkMode || 'auto'; return m === 'auto' ? (onSites() ? 'site' : 'file') : m; }
+  function linkFor(key, hash) {
+    var u = '';
+    if (linkMode() === 'site') {
+      u = String((C.links || {})[key] || '').trim();
+      if (u && !/^https?:\/\//i.test(u)) { var base = String(C.siteUrl || '').trim().replace(/\/+$/, ''); u = base ? base + '/' + u.replace(/^\/+/, '') : ''; }
+      return u;                       // Google Sites không chuyển được phần #... vào trang nhúng
+    }
+    u = String((C.files || {})[key] || '').trim();
+    return u ? u + (hash ? '#' + hash : '') : '';
+  }
+  // Trong Google Sites: thử chuyển trang ngay trong tab; nếu bị chặn thì sau 0,45 giây mở tab mới.
+  function go(url) {
+    var left = false, mark = function () { left = true; };
+    window.addEventListener('beforeunload', mark); window.addEventListener('pagehide', mark);
+    var framed = true;
+    try { framed = window.top !== window.self; } catch (e) { framed = true; }
+    try { if (framed) window.top.location.href = url; else { window.location.href = url; return; } } catch (e) { }
+    setTimeout(function () {
+      if (left) return;
+      var w = null;
+      try { w = window.open(url, '_blank'); if (w) w.opener = null; } catch (e2) { }
+      if (!w) toast('Trình duyệt chặn mở trang. Hãy chọn trang ở menu phía trên của site.');
+    }, 450);
+  }
+  // tạo một liên kết tới trang khác: V.link('nghe', {class:'btn'}, 'Luyện tập') hoặc V.link('nghe#tu-vung', ...)
+  function link(target, attrs) {
+    var parts = String(target).split('#'), key = parts[0], hash = parts[1] || '';
+    var url = linkFor(key, hash), kids = Array.prototype.slice.call(arguments, 2), a;
+    attrs = attrs || {};
+    if (!url) {
+      attrs.type = 'button';
+      a = h('button', attrs, kids);
+      a.addEventListener('click', function () { toast('Trang này chưa được gắn link. Hãy chọn trang ở menu phía trên của site.'); });
+      return a;
+    }
+    attrs.href = url;
+    if (linkMode() === 'site') { attrs.target = '_top'; attrs.rel = 'noopener'; }
+    a = h('a', attrs, kids);
+    if (linkMode() === 'site') a.addEventListener('click', function (e) { e.preventDefault(); go(url); });
+    return a;
+  }
+  function pageInfo(key) { for (var i = 0; i < PAGES.length; i++) if (PAGES[i].key === key) return PAGES[i]; return PAGES[0]; }
+
+  /* ---------- khung trang: menu, tiêu đề, chuyển trang, chân trang ---------- */
+  var whoEl = null;
+  function drawWho() {
+    if (!whoEl) return;
+    clear(whoEl); var n = learnerName();
+    if (n) add(whoEl, ['Học viên: ', h('b', null, n)]);
+  }
+  function nav() {
+    whoEl = h('span', { class: 'nav-who' });
+    drawWho();
+    return h('header', { class: 'nav' }, h('div', { class: 'nav-in' },
+      link('home', { class: 'brand' }, C.brand || 'Ôn thi VSTEP', h('span', { class: 'lvl' }, C.level || 'B1–C1')),
+      whoEl,
+      h('nav', { class: 'nav-links', 'aria-label': 'Các trang' }, PAGES.map(function (p) {
+        return link(p.key, { class: 'nav-a' + (p.key === PAGE ? ' on' : ''), 'aria-current': p.key === PAGE ? 'page' : null }, p.t);
+      }))));
+  }
+  function pageHead(title, tag, sub) {
+    return h('div', { class: 'pagehead' },
+      h('h1', null, title, tag ? h('span', { class: 'lvl' }, tag) : null),
+      sub ? h('p', null, sub) : null);
+  }
+  function section(title, sub) {
+    var s = h('section', { class: 'sec' }, h('h2', null, title), sub ? h('p', { class: 'sub' }, sub) : null);
+    for (var i = 2; i < arguments.length; i++) add(s, arguments[i]);
+    return s;
+  }
+  function pager() {
+    var i = 0; PAGES.forEach(function (p, k) { if (p.key === PAGE) i = k; });
+    var prev = PAGES[i - 1], next = PAGES[i + 1];
+    return h('nav', { class: 'pager', 'aria-label': 'Trang trước và trang sau' },
+      prev ? link(prev.key, { class: 'prev' }, h('span', { class: 'dir' }, 'Trang trước'), h('span', { class: 'nm' }, prev.t)) : null,
+      next ? link(next.key, { class: 'next' }, h('span', { class: 'dir' }, 'Trang sau'), h('span', { class: 'nm' }, next.t)) : null);
+  }
+  function teacher() { return String(C.teacherName || '').trim() || 'giáo viên'; }
+  function cap(s) { s = String(s); return s.charAt(0).toUpperCase() + s.slice(1); }
+  function mount(render) {
+    var body = document.body; clear(body);
+    var root = h('main', { class: 'wrap', id: 'app' });
+    var navEl = nav();
+    body.appendChild(navEl);
+    // chiều cao thanh menu, để các thanh dính bên dưới không bị che
+    var setNavH = function () { document.documentElement.style.setProperty('--navh', navEl.offsetHeight + 'px'); };
+    setNavH(); window.addEventListener('resize', setNavH); window.addEventListener('load', setNavH);
+    body.appendChild(root);
+    render(root);
+    audioCheck(root);
+    root.appendChild(h('footer', { class: 'foot' },
+      (C.brand || 'Ôn thi VSTEP') + ' ' + (C.level || 'B1–C1') + '. Kết quả làm bài được lưu trên máy này' + (sheetOn() ? ' và gửi về bảng điểm của ' + teacher() + '.' : '.')));
+  }
+
+  /* ---------- ô nhập tên học viên ---------- */
+  function learnerBox(onChange) {
+    var box = h('div', { class: 'learner' });
+    function draw(edit) {
+      clear(box);
+      var name = learnerName();
+      if (name && !edit) {
+        add(box, [h('div', { class: 'lb-name' }, h('span', { class: 'muted small' }, 'Học viên'), h('b', null, name)),
+          h('button', { class: 'btn small', type: 'button', onclick: function () { draw(true); } }, 'Đổi tên')]);
+        return;
+      }
+      var inp = h('input', { class: 'field', type: 'text', id: 'lb-inp', maxlength: '60', autocomplete: 'name', placeholder: 'Nguyễn Văn An – lớp K12', value: name });
+      var save = function () {
+        var v = inp.value.trim();
+        if (v.length < 2) { toast('Hãy nhập họ tên (ít nhất 2 ký tự).'); inp.focus(); return; }
+        setLearner(v); drawWho(); draw(false); onChange && onChange();
+      };
+      inp.addEventListener('keydown', function (e) { if (e.key === 'Enter') save(); });
+      add(box, [h('label', { for: 'lb-inp', class: 'lb-label' }, 'Họ tên của bạn'),
+        h('div', { class: 'lb-row' }, inp, h('button', { class: 'btn primary', type: 'button', onclick: save }, 'Lưu tên')),
+        h('p', { class: 'small muted' }, 'Tên dùng để lưu bài làm và để ' + teacher() + ' biết bài của ai. Ghi thêm lớp để không trùng tên.')]);
+    }
+    draw(false);
+    return box;
+  }
+
+  /* ---------- âm thanh: file ghi sẵn trong thư mục audio/ ---------- */
+  function audioUrl(path) { return String(C.audioBase === undefined ? 'audio/' : C.audioBase) + path; }
+  function isSlow() { return !!store.get('slow', false); }
+  // dự phòng khi thiếu file: dùng giọng tiếng Anh có sẵn của trình duyệt
+  var TTS = {
+    ok: 'speechSynthesis' in window, voice: null,
+    pick: function () {
+      if (!this.ok) return null;
+      var v = speechSynthesis.getVoices().filter(function (x) { return /^en[-_]/i.test(x.lang); });
+      v.sort(function (a, b) { return (/en[-_]GB/i.test(b.lang) ? 1 : 0) - (/en[-_]GB/i.test(a.lang) ? 1 : 0); });
+      this.voice = v[0] || null; return this.voice;
+    },
+    stop: function () { if (this.ok) speechSynthesis.cancel(); },
+    say: function (text, opts) {
+      opts = opts || {};
+      if (!this.ok) { opts.onend && opts.onend(); return; }
+      speechSynthesis.cancel();
+      var u = new SpeechSynthesisUtterance(String(text)), voice = this.voice || this.pick();
+      if (voice) { u.voice = voice; u.lang = voice.lang; } else u.lang = 'en-GB';
+      u.rate = opts.rate || 0.9;
+      var ended = false, end = function () { if (!ended) { ended = true; opts.onend && opts.onend(); } };
+      u.onend = end; u.onerror = end;
+      setTimeout(end, 8000 + String(text).length * 120);
+      speechSynthesis.speak(u);
+    }
+  };
+  if (TTS.ok) { TTS.pick(); try { speechSynthesis.addEventListener('voiceschanged', function () { TTS.pick(); }); } catch (e) { } }
+  var curClip = null;
+  function stopClip() {
+    if (curClip) { try { curClip.pause(); } catch (e) { } curClip = null; }
+    TTS.stop();
+    Array.prototype.forEach.call(document.querySelectorAll('.playing'), function (el) { el.classList.remove('playing'); });
+    Array.prototype.forEach.call(document.querySelectorAll('audio'), function (el) { try { el.pause(); } catch (e) { } });
+  }
+  // phát một file ngắn: V.playClip('tu/checkout-f.mp3', {fallback: 'checkout', onend: fn})
+  function playClip(path, opts) {
+    opts = opts || {}; stopClip();
+    var a = new Audio(), finished = false, rate = isSlow() ? 0.7 : 1;
+    function end() { if (finished) return; finished = true; if (curClip === a) curClip = null; opts.onend && opts.onend(); }
+    function fail() {
+      if (finished) return;
+      if (opts.fallback && TTS.ok) { finished = true; if (curClip === a) curClip = null; TTS.say(opts.fallback, { rate: isSlow() ? 0.6 : 0.9, onend: opts.onend }); }
+      else { end(); toast('Không mở được file âm thanh. Kiểm tra thư mục audio nằm cạnh các file .html.'); }
+    }
+    a.addEventListener('ended', end); a.addEventListener('error', fail);
+    a.addEventListener('loadedmetadata', function () { a.playbackRate = rate; });
+    a.preload = 'auto'; a.src = audioUrl(path); a.defaultPlaybackRate = rate; a.playbackRate = rate;
+    curClip = a;
+    var p = a.play();
+    if (p && p.catch) p.catch(function (e) { if (e && e.name === 'AbortError') end(); else fail(); });
+  }
+  // thử mở một file âm thanh khi vào trang; nếu không mở được thì báo rõ ở đầu trang
+  function audioCheck(root) {
+    var a = new Audio(), finished = false;
+    function bad() {
+      if (finished) return; finished = true;
+      var addr = ''; try { addr = String(location.href).slice(0, 90); } catch (e) { }
+      var box = h('div', { class: 'notice bad audiowarn', role: 'alert' },
+        h('b', null, 'Trang chưa mở được file âm thanh.'),
+        h('ul', null,
+          h('li', null, 'Nếu bạn đang xem trang trong khung xem trước của một ứng dụng (ví dụ ứng dụng Claude): khung đó chỉ đọc được một file nên không lấy được âm thanh. Hãy mở bằng Chrome hoặc Edge: vào thư mục chứa trang rồi bấm đúp file index.html.'),
+          h('li', null, 'Nếu bạn đã mở bằng trình duyệt: kiểm tra thư mục audio có nằm cạnh các file .html không.')),
+        h('div', { class: 'small', style: { opacity: '.8' } }, 'Địa chỉ trang đang mở: ' + addr));
+      root.insertBefore(box, root.firstChild);
+    }
+    a.addEventListener('loadedmetadata', function () { finished = true; });
+    a.addEventListener('error', bad);
+    a.preload = 'metadata'; a.src = audioUrl('tu/available-f.mp3');
+    try { a.load(); } catch (e) { }
+  }
+  function clipButton(label, path, fallback, aria) {
+    var b = h('button', { class: 'btn small', type: 'button', 'aria-label': aria || label }, label);
+    b.addEventListener('click', function () {
+      if (b.classList.contains('playing')) { stopClip(); return; }
+      playClip(path, { fallback: fallback, onend: function () { b.classList.remove('playing'); } });
+      b.classList.add('playing');
+    });
+    return b;
+  }
+  // nút chọn tốc độ phát âm từ vựng (lưu chung cho mọi trang)
+  function speedToggle() {
+    var box = h('div', { class: 'pick' });
+    function draw() {
+      clear(box);
+      add(box, ['Tốc độ', h('div', { class: 'seg', role: 'group', 'aria-label': 'Tốc độ phát âm' }, [[false, 'Thường'], [true, 'Chậm']].map(function (o) {
+        return h('button', { type: 'button', 'aria-pressed': isSlow() === o[0] ? 'true' : 'false', onclick: function () { store.set('slow', o[0]); draw(); } }, o[1]);
+      }))]);
+    }
+    draw(); return box;
+  }
+  // thẻ từ vựng: {w, pos, ipa, vi, ex} – mỗi từ có giọng nữ, giọng nam và câu ví dụ
+  function wordCard(it) {
+    var s = slug(it.w);
+    return h('div', { class: 'word' },
+      h('div', { class: 'w', lang: 'en' }, it.w, it.pos ? h('span', { class: 'pos' }, it.pos) : null),
+      it.ipa ? h('div', { class: 'ipa' }, it.ipa) : null,
+      h('div', { class: 'vi' }, it.vi),
+      it.ex ? h('div', { class: 'ex', lang: 'en' }, it.ex) : null,
+      h('div', { class: 'say' },
+        clipButton('Giọng nữ', 'tu/' + s + '-f.mp3', it.w, 'Nghe giọng nữ đọc: ' + it.w),
+        clipButton('Giọng nam', 'tu/' + s + '-m.mp3', it.w, 'Nghe giọng nam đọc: ' + it.w),
+        it.ex ? clipButton('Câu ví dụ', 'tu/' + s + '-ex.mp3', it.ex, 'Nghe câu ví dụ: ' + it.ex) : null));
+  }
+
+  /* ---------- gửi kết quả về Google Sheet ---------- */
+  function sheetUrl() { return String(C.sheetUrl || '').trim(); }
+  function sheetOn() { return /^https:\/\/script\.google(usercontent)?\.com\//.test(sheetUrl()); }
+  // gửi bằng POST dạng form (không cần CORS); nếu fetch lỗi thì dùng form ẩn
+  function postSheet(payload, cb) {
+    var url = sheetUrl(), json = JSON.stringify(payload), finished = false;
+    var done = function (ok) { if (!finished) { finished = true; cb && cb(ok); } };
+    function formPost() {
+      try {
+        var name = 'vsend' + Date.now();
+        var ifr = h('iframe', { name: name, style: { display: 'none' } });
+        var f = h('form', { method: 'POST', action: url, target: name, style: { display: 'none' } }, h('input', { type: 'hidden', name: 'payload', value: json }));
+        document.body.appendChild(ifr); document.body.appendChild(f);
+        var t = setTimeout(function () { done(false); }, 25000);
+        ifr.addEventListener('load', function () { clearTimeout(t); done(true); setTimeout(function () { ifr.remove(); f.remove(); }, 2000); });
+        f.submit();
+      } catch (e) { done(false); }
+    }
+    try {
+      fetch(url, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: 'payload=' + encodeURIComponent(json) })
+        .then(function () { done(true); }, formPost);
+    } catch (e) { formPost(); }
+  }
+  // gửi một dòng kết quả: V.send('nghe', {'Đề': 'Bài 1', 'Kết quả': '6/8', ...}, cb)
+  function send(skill, row, cb) {
+    if (!sheetOn()) { cb && cb(false); return; }
+    var ordered = { 'Học viên': learnerName() || '(chưa nhập tên)' };
+    Object.keys(row || {}).forEach(function (k) { ordered[k] = row[k]; });
+    ordered['Mã'] = uid() + '-' + Date.now().toString(36);
+    postSheet({ skill: skill, cols: Object.keys(ordered), row: ordered, audio: [] }, cb);
+  }
+  function jsonp(params, cb) {
+    var cbName = '__vjp' + Date.now() + Math.floor(Math.random() * 1000), finished = false;
+    var q = Object.keys(params).map(function (k) { return k + '=' + encodeURIComponent(params[k]); }).join('&');
+    var sc = document.createElement('script');
+    function end(err, d) { if (finished) return; finished = true; try { delete window[cbName]; } catch (e) { window[cbName] = undefined; } sc.remove(); cb(err, d); }
+    window[cbName] = function (d) { end(null, d); };
+    sc.src = sheetUrl() + (sheetUrl().indexOf('?') >= 0 ? '&' : '?') + q + '&callback=' + cbName;
+    sc.onerror = function () { end(new Error('load')); };
+    setTimeout(function () { end(new Error('timeout')); }, 20000);
+    document.head.appendChild(sc);
+  }
+  // điểm và nhận xét giáo viên đã chấm cho học viên này (đọc từ Google Sheet)
+  function feedback(cb) {
+    var name = learnerName();
+    if (!sheetOn() || !name) { cb(null, []); return; }
+    jsonp({ action: 'feedback', name: name }, function (err, d) { cb(err, (d && d.items) || []); });
+  }
+
+  window.V = {
+    C: C, PAGE: PAGE, PAGES: PAGES, ICON: ICON, page: pageInfo(PAGE), pageInfo: pageInfo,
+    h: h, add: add, clear: clear, toast: toast, slug: slug,
+    store: store, learnerName: learnerName, setLearner: setLearner, learnerBox: learnerBox, uid: uid,
+    results: results, TARGETS: TARGETS, target: target, setTarget: setTarget, round05: round05, fmtScore: fmtScore, bandOf: bandOf, dateShort: dateShort,
+    link: link, linkFor: linkFor, linkMode: linkMode, go: go,
+    mount: mount, pageHead: pageHead, section: section, pager: pager, teacher: teacher, cap: cap,
+    audioUrl: audioUrl, isSlow: isSlow, playClip: playClip, stopClip: stopClip, clipButton: clipButton, speedToggle: speedToggle, wordCard: wordCard,
+    sheetOn: sheetOn, send: send, postSheet: postSheet, jsonp: jsonp, feedback: feedback
+  };
+})();
+</script>
+<script>
+/* ===== NỘI DUNG TRANG ĐỌC: đề đọc và từ vựng (soạn riêng cho trang này) ===== */
+window.DOC_DATA = {
+ "tests": [
+  {
+   "id": "de1",
+   "title": "Đề 1",
+   "passages": [
+    {
+     "id": "b1",
+     "title": "Bài đọc 1",
+     "level": "B1",
+     "minutes": 12,
+     "name": "The Night Market on Mill Street",
+     "paras": [
+      "Every Friday evening, Mill Street in the small town of Ashby changes completely. At five o'clock the road is closed to cars, and by six it is full of tables, lights and the smell of cooking. This is the Ashby Night Market, and it has become the most popular event in the town.",
+      "The market started eight years ago with only twelve stalls. A local teacher, Helen Marsh, had the idea after visiting a similar market on holiday. She thought it would give people a reason to stay in the town centre in the evening instead of driving to the shopping centre outside the town. Today there are more than seventy stalls, and visitors come from villages up to thirty kilometres away.",
+      "Food is the main attraction. You can find fresh bread, cheese from nearby farms, and hot dishes from many different countries. Prices are low because the sellers do not have to pay rent for a shop. Many of them are young people who are testing a business idea before they open a real restaurant. In fact, three restaurants in Ashby began as market stalls.",
+      "However, the market is not only about food. Local musicians play near the fountain, and there is a corner where children can paint and make things while their parents shop. Older residents say that it reminds them of the town when they were young, when neighbours met in the street and talked.",
+      "Not everyone was happy at first. Some shop owners on Mill Street worried that they would lose customers, and people living nearby complained about the noise. The organisers listened. The market now closes at ten o'clock, and the shops stay open late on Fridays so that they can benefit from the crowds too. Most of them now say that Friday is their best day of the week."
+     ],
+     "qs": [
+      {
+       "t": "Ý chính",
+       "q": "What is the passage mainly about?",
+       "o": [
+        "How to start a food business",
+        "The history of the town of Ashby",
+        "A weekly market and what it has done for a town",
+        "Problems caused by street markets"
+       ],
+       "a": 2,
+       "p": 0,
+       "ev": "This is the Ashby Night Market, and it has become the most popular event in the town.",
+       "why": "Cả bài kể về chợ đêm thứ Sáu: bắt đầu thế nào, có gì, và thị trấn được lợi ra sao. Các phương án khác chỉ là chi tiết nhỏ hoặc không đúng trọng tâm."
+      },
+      {
+       "t": "Chi tiết",
+       "q": "When is Mill Street closed to cars?",
+       "o": [
+        "At five o'clock on Fridays",
+        "At six o'clock on Fridays",
+        "At ten o'clock on Fridays",
+        "All day on Saturdays"
+       ],
+       "a": 0,
+       "p": 1,
+       "ev": "At five o'clock the road is closed to cars, and by six it is full of tables",
+       "why": "Đường đóng lúc 5 giờ; 6 giờ là lúc chợ đã đông; 10 giờ là giờ chợ tan (đoạn 5)."
+      },
+      {
+       "t": "Chi tiết",
+       "q": "Why did Helen Marsh start the market?",
+       "o": [
+        "To earn money for the local school",
+        "To help farmers sell their cheese",
+        "To attract tourists from other countries",
+        "To keep people in the town centre in the evening"
+       ],
+       "a": 3,
+       "p": 2,
+       "ev": "She thought it would give people a reason to stay in the town centre in the evening",
+       "why": "Lý do được nêu trực tiếp: để người dân có lý do ở lại trung tâm thị trấn buổi tối thay vì lái xe ra trung tâm mua sắm."
+      },
+      {
+       "t": "Từ vựng",
+       "q": "The word \"similar\" in paragraph 2 is closest in meaning to",
+       "o": [
+        "famous",
+        "alike",
+        "cheap",
+        "crowded"
+       ],
+       "a": 1,
+       "p": 2,
+       "ev": "after visiting a similar market on holiday",
+       "why": "\"Similar\" = tương tự, giống. Bà thấy một khu chợ giống như vậy khi đi nghỉ nên nảy ra ý tưởng."
+      },
+      {
+       "t": "Chi tiết",
+       "q": "How many stalls does the market have now?",
+       "o": [
+        "Eight",
+        "Twelve",
+        "More than seventy",
+        "Exactly thirty"
+       ],
+       "a": 2,
+       "p": 2,
+       "ev": "Today there are more than seventy stalls",
+       "why": "Bài có nhiều con số dễ lẫn: 8 là số năm, 12 là số quầy lúc đầu, 30 là số ki-lô-mét. Hiện nay có hơn 70 quầy."
+      },
+      {
+       "t": "Chi tiết",
+       "q": "Why are prices at the market low?",
+       "o": [
+        "The sellers do not pay rent for a shop.",
+        "The food is made by students.",
+        "The town pays part of the cost.",
+        "The sellers want to finish before ten o'clock."
+       ],
+       "a": 0,
+       "p": 3,
+       "ev": "Prices are low because the sellers do not have to pay rent for a shop.",
+       "why": "Lý do đứng ngay sau \"because\": người bán không phải trả tiền thuê cửa hàng."
+      },
+      {
+       "t": "Quy chiếu",
+       "q": "The word \"them\" in paragraph 3 refers to",
+       "o": [
+        "prices",
+        "restaurants",
+        "farms",
+        "sellers"
+       ],
+       "a": 3,
+       "p": 3,
+       "ev": "the sellers do not have to pay rent for a shop. Many of them are young people",
+       "why": "\"Them\" thay cho danh từ số nhiều chỉ người ở câu trước: \"the sellers\". Chỉ người bán mới có thể là \"young people\"."
+      },
+      {
+       "t": "Câu hỏi NOT",
+       "q": "Which of the following is NOT mentioned as something people can do at the market?",
+       "o": [
+        "Listen to live music",
+        "Watch films outdoors",
+        "Buy cheese from local farms",
+        "Let their children paint"
+       ],
+       "a": 1,
+       "p": 4,
+       "ev": "Local musicians play near the fountain, and there is a corner where children can paint",
+       "why": "Nhạc sống và góc vẽ cho trẻ em ở đoạn 4, phô mai ở đoạn 3. Bài không hề nhắc tới chiếu phim."
+      },
+      {
+       "t": "Chi tiết",
+       "q": "What were some shop owners worried about at first?",
+       "o": [
+        "Losing customers",
+        "The noise at night",
+        "Higher rent",
+        "Traffic problems"
+       ],
+       "a": 0,
+       "p": 5,
+       "ev": "Some shop owners on Mill Street worried that they would lose customers",
+       "why": "Chủ cửa hàng lo mất khách. Tiếng ồn là điều người dân sống gần đó phàn nàn, không phải chủ cửa hàng."
+      },
+      {
+       "t": "Suy luận",
+       "q": "What can be inferred about the shops on Mill Street today?",
+       "o": [
+        "Most of them have closed.",
+        "They open only on Fridays.",
+        "They now benefit from the market.",
+        "They sell the same food as the stalls."
+       ],
+       "a": 2,
+       "p": 5,
+       "ev": "Most of them now say that Friday is their best day of the week.",
+       "why": "Cửa hàng mở muộn vào thứ Sáu và nói đó là ngày bán tốt nhất tuần, tức là họ được lợi từ khu chợ."
+      }
+     ]
+    },
+    {
+     "id": "b2",
+     "title": "Bài đọc 2",
+     "level": "B1–B2",
+     "minutes": 14,
+     "name": "It Is Never Too Late to Learn an Instrument",
+     "paras": [
+      "Many adults believe that music is something you must begin in childhood. If you did not have piano lessons at the age of six, the thinking goes, you have missed your chance. Music teachers disagree. In recent years, the number of adult beginners has grown steadily, and teachers report that these students often make faster progress in the first year than children do.",
+      "There are good reasons for this. Adults choose to learn; nobody is forcing them to practise. They understand instructions quickly, and they can explain exactly what they find difficult. They also know what kind of music they love, which gives them a clear goal. A child may spend months on exercises without knowing why, but an adult who dreams of playing a favourite song will work patiently towards it.",
+      "Of course, adults face difficulties that children do not. The first is time. Work and family leave few free hours, and practice is easily postponed. The second is less obvious: adults are afraid of sounding bad. A seven-year-old will happily play wrong notes in front of anyone. A forty-year-old, who is used to being good at things, may find it painful to be a beginner again, and some give up for this reason alone.",
+      "Teachers who work with adults therefore give rather different advice. They recommend short, regular practice: fifteen minutes every day is far more useful than two hours on Sunday. They suggest recording yourself once a month, because progress that is invisible from day to day becomes clear when you compare recordings. Above all, they encourage students to play with other people as soon as possible. Joining a group, even a very simple one, turns practice from a lonely duty into a social activity.",
+      "The rewards go beyond music itself. Adult learners often say that playing helps them forget the worries of work, since it is impossible to think about emails while reading notes. Many also find new friends. And there is a quiet satisfaction in doing something difficult simply because you want to, with no examination and nobody to impress."
+     ],
+     "qs": [
+      {
+       "t": "Ý chính",
+       "q": "What is the main idea of the passage?",
+       "o": [
+        "Children learn music more easily than adults.",
+        "Adults can learn an instrument well, although they face particular difficulties.",
+        "Music lessons should start at the age of six.",
+        "Playing in a group is the best way to learn music."
+       ],
+       "a": 1,
+       "p": 0,
+       "ev": "Music teachers disagree. … Of course, adults face difficulties that children do not.",
+       "why": "Bài bác bỏ ý \"phải học nhạc từ nhỏ\", nêu lợi thế của người lớn, rồi nêu khó khăn và cách vượt qua. Phương án B gói đủ cả hai vế."
+      },
+      {
+       "t": "Chi tiết",
+       "q": "According to paragraph 1, what do teachers report about adult beginners?",
+       "o": [
+        "Their number is falling.",
+        "They usually stop after one year.",
+        "They prefer the piano to other instruments.",
+        "They often progress faster than children in the first year."
+       ],
+       "a": 3,
+       "p": 1,
+       "ev": "these students often make faster progress in the first year than children do",
+       "why": "Số người lớn bắt đầu học đang tăng (\"grown steadily\"), và trong năm đầu họ thường tiến bộ nhanh hơn trẻ em."
+      },
+      {
+       "t": "Câu hỏi NOT",
+       "q": "Which of the following is NOT given as an advantage of adult learners?",
+       "o": [
+        "They have more free time.",
+        "They have chosen to learn.",
+        "They understand instructions quickly.",
+        "They know what music they love."
+       ],
+       "a": 0,
+       "p": 2,
+       "ev": "Adults choose to learn … They understand instructions quickly … They also know what kind of music they love",
+       "why": "Ba lợi thế ở đoạn 2 đều có trong các phương án B, C, D. Thời gian rảnh thì ngược lại: đoạn 3 nói người lớn thiếu thời gian."
+      },
+      {
+       "t": "Quy chiếu",
+       "q": "The word \"it\" at the end of paragraph 2 refers to",
+       "o": [
+        "an exercise",
+        "a clear goal",
+        "playing a favourite song",
+        "an instruction"
+       ],
+       "a": 2,
+       "p": 2,
+       "ev": "an adult who dreams of playing a favourite song will work patiently towards it",
+       "why": "\"Work towards it\" = cố gắng để đạt điều đó. Điều người lớn mơ ước trong chính câu này là chơi được bài hát yêu thích."
+      },
+      {
+       "t": "Từ vựng",
+       "q": "The word \"postponed\" in paragraph 3 is closest in meaning to",
+       "o": [
+        "forgotten",
+        "shortened",
+        "enjoyed",
+        "delayed"
+       ],
+       "a": 3,
+       "p": 3,
+       "ev": "Work and family leave few free hours, and practice is easily postponed.",
+       "why": "\"Postpone\" = hoãn lại, để sau, cùng nghĩa với \"delay\". Bận việc và gia đình nên việc tập hay bị dời lại."
+      },
+      {
+       "t": "Chi tiết",
+       "q": "According to paragraph 3, why do some adults give up?",
+       "o": [
+        "The lessons are too expensive.",
+        "They dislike sounding bad as beginners.",
+        "Their teachers are too strict.",
+        "They cannot read notes."
+       ],
+       "a": 1,
+       "p": 3,
+       "ev": "may find it painful to be a beginner again, and some give up for this reason alone",
+       "why": "Người lớn quen làm tốt mọi việc nên thấy khó chịu khi chơi dở như người mới học; một số bỏ cuộc chỉ vì lý do này."
+      },
+      {
+       "t": "Chi tiết",
+       "q": "Why do teachers suggest recording yourself once a month?",
+       "o": [
+        "It makes your progress easier to notice.",
+        "It helps you remember the notes.",
+        "Teachers can listen to it later.",
+        "It replaces daily practice."
+       ],
+       "a": 0,
+       "p": 4,
+       "ev": "progress that is invisible from day to day becomes clear when you compare recordings",
+       "why": "Tiến bộ từng ngày không thấy được (\"invisible\"), nhưng so các bản thu thì thấy rõ."
+      },
+      {
+       "t": "Chi tiết",
+       "q": "What do teachers encourage adult students to do \"above all\"?",
+       "o": [
+        "Practise for two hours on Sundays",
+        "Take an examination",
+        "Play with other people",
+        "Learn to read notes first"
+       ],
+       "a": 2,
+       "p": 4,
+       "ev": "Above all, they encourage students to play with other people as soon as possible.",
+       "why": "\"Above all\" = quan trọng hơn hết. Ngay sau cụm này là lời khuyên chơi nhạc cùng người khác. Tập hai tiếng vào Chủ nhật là điều bài khuyên không nên."
+      },
+      {
+       "t": "Mục đích",
+       "q": "Why does the author mention emails in paragraph 5?",
+       "o": [
+        "To show that adults are too busy to practise",
+        "To show that playing takes all of your attention",
+        "To suggest practising at work",
+        "To explain how teachers contact their students"
+       ],
+       "a": 1,
+       "p": 5,
+       "ev": "it is impossible to think about emails while reading notes",
+       "why": "Email là ví dụ cho nỗi lo công việc: khi đang đọc nốt nhạc thì không thể nghĩ tới chuyện khác, tức là chơi nhạc chiếm trọn sự chú ý."
+      },
+      {
+       "t": "Thái độ",
+       "q": "The author's attitude towards adult learners is",
+       "o": [
+        "doubtful",
+        "amused",
+        "critical",
+        "encouraging"
+       ],
+       "a": 3,
+       "p": 0,
+       "ev": "there is a quiet satisfaction in doing something difficult simply because you want to",
+       "why": "Từ tiêu đề đến câu kết, tác giả đều khích lệ: nêu lợi thế, cách vượt khó và phần thưởng của việc học khi đã lớn."
+      }
+     ]
+    },
+    {
+     "id": "b3",
+     "title": "Bài đọc 3",
+     "level": "B2",
+     "minutes": 16,
+     "name": "Why Time-Saving Inventions Do Not Save Time",
+     "paras": [
+      "The washing machine, the vacuum cleaner and the microwave oven were all sold with the same promise: they would free people from housework. Yet surveys carried out across much of the twentieth century showed something puzzling. Although homes filled up with machines, the number of hours spent on housework hardly changed for decades.",
+      "Historians who studied this puzzle found that the machines had not failed. What had changed was what people expected. When washing clothes meant a whole day of heavy labour, a family might wear the same shirts for a week. Once a machine could do the job in an hour, clean clothes every day became normal. The technology reduced the effort needed for each wash, but it increased the number of washes. Standards rose to fill the time that had been saved.",
+      "The same pattern can be seen far beyond the home. Email was supposed to make office communication quicker, and a single message certainly takes less time than a letter. But because sending one costs almost nothing, people send far more of them, and many workers now spend a large part of the day simply reading and answering messages. Something similar happens on the roads. When a city builds a wider road to reduce traffic jams, driving becomes more attractive, more people choose to travel by car, and within a few years the new road is as crowded as the old one.",
+      "Economists describe this as a rebound effect. When a technology makes an activity cheaper, whether in money, time or effort, we tend to do more of that activity, and the expected saving partly or wholly disappears. This does not mean that the inventions are useless. People with washing machines really do have cleaner clothes, and wider roads really do carry more travellers. The benefit is real, but it arrives in a different form from the one that was advertised: we get more of the activity rather than more free time.",
+      "Understanding the rebound effect is useful at a personal level too. A new app that promises to organise your tasks will not, by itself, give you a free afternoon. It will make it easier to take on more tasks. If what you actually want is time, the app is only half of the answer. The other half is a decision, made in advance, not to fill the space that it creates."
+     ],
+     "qs": [
+      {
+       "t": "Ý chính",
+       "q": "Which of the following would be the best title for the passage?",
+       "o": [
+        "Why Saving Effort Does Not Always Save Time",
+        "The History of the Washing Machine",
+        "How to Organise Your Tasks",
+        "The Dangers of Modern Technology"
+       ],
+       "a": 0,
+       "p": 0,
+       "ev": "we get more of the activity rather than more free time",
+       "why": "Máy giặt, email, đường sá đều minh hoạ một ý: công nghệ giảm công sức cho mỗi việc nhưng ta làm nhiều việc hơn nên không dư thời gian. Bài không nói công nghệ nguy hiểm."
+      },
+      {
+       "t": "Chi tiết",
+       "q": "What was \"puzzling\", according to paragraph 1?",
+       "o": [
+        "Machines were too expensive for most families.",
+        "People refused to use the new machines.",
+        "Housework took about as long as before.",
+        "The machines often broke down."
+       ],
+       "a": 2,
+       "p": 1,
+       "ev": "Although homes filled up with machines, the number of hours spent on housework hardly changed for decades.",
+       "why": "Điều khó hiểu: nhà đầy máy móc mà số giờ làm việc nhà hầu như không đổi (\"hardly changed\")."
+      },
+      {
+       "t": "Chi tiết",
+       "q": "According to paragraph 2, what changed after washing machines became common?",
+       "o": [
+        "Families bought fewer clothes.",
+        "People expected to wear clean clothes more often.",
+        "Washing took a whole day.",
+        "Clothes became cheaper."
+       ],
+       "a": 1,
+       "p": 2,
+       "ev": "What had changed was what people expected. … clean clothes every day became normal.",
+       "why": "Thứ thay đổi là kỳ vọng: trước mặc một áo cả tuần, sau có máy thì ngày nào cũng phải có đồ sạch. Giặt mất cả ngày là chuyện trước khi có máy."
+      },
+      {
+       "t": "Diễn đạt lại",
+       "q": "The sentence \"Standards rose to fill the time that had been saved\" means that",
+       "o": [
+        "people rested during the time they saved.",
+        "machines became more expensive over time.",
+        "housework became less important.",
+        "people used the saved time to meet higher expectations."
+       ],
+       "a": 3,
+       "p": 2,
+       "ev": "The technology reduced the effort needed for each wash, but it increased the number of washes.",
+       "why": "Tiêu chuẩn (standards) tăng lên và \"lấp đầy\" khoảng thời gian tiết kiệm được: thời gian dư ra lại dùng để giặt nhiều lần hơn."
+      },
+      {
+       "t": "Chi tiết",
+       "q": "According to paragraph 3, why do people send so many emails?",
+       "o": [
+        "Sending one costs almost nothing.",
+        "Letters are no longer delivered.",
+        "Their managers require it.",
+        "Emails are easier to read than letters."
+       ],
+       "a": 0,
+       "p": 3,
+       "ev": "because sending one costs almost nothing, people send far more of them",
+       "why": "Nguyên nhân đứng sau \"because\": gửi một email gần như không tốn gì nên người ta gửi nhiều hơn hẳn."
+      },
+      {
+       "t": "Mục đích",
+       "q": "What does the example of the wider road show?",
+       "o": [
+        "Cities should stop building roads.",
+        "Drivers prefer old roads.",
+        "Traffic jams are caused by bad drivers.",
+        "An improvement can attract so much extra use that its benefit disappears."
+       ],
+       "a": 3,
+       "p": 3,
+       "ev": "more people choose to travel by car, and within a few years the new road is as crowded as the old one",
+       "why": "Đường rộng hơn làm nhiều người đi xe hơn, vài năm sau lại tắc như cũ. Ví dụ này minh hoạ đúng \"pattern\" đã nêu, tác giả không khuyên ngừng làm đường."
+      },
+      {
+       "t": "Từ vựng",
+       "q": "The word \"wholly\" in paragraph 4 is closest in meaning to",
+       "o": [
+        "slowly",
+        "rarely",
+        "completely",
+        "unfairly"
+       ],
+       "a": 2,
+       "p": 4,
+       "ev": "the expected saving partly or wholly disappears",
+       "why": "\"Partly or wholly\" = một phần hoặc toàn bộ. \"Wholly\" cùng gốc với \"whole\", nghĩa là hoàn toàn."
+      },
+      {
+       "t": "Suy luận",
+       "q": "Which statement would the author most probably agree with?",
+       "o": [
+        "Time-saving inventions are useless.",
+        "Inventions bring real benefits, though not always the ones promised.",
+        "People should stop using email.",
+        "Housework is easier today than office work."
+       ],
+       "a": 1,
+       "p": 4,
+       "ev": "The benefit is real, but it arrives in a different form from the one that was advertised",
+       "why": "Tác giả nói rõ phát minh không vô dụng: lợi ích có thật nhưng ở dạng khác với lời quảng cáo."
+      },
+      {
+       "t": "Quy chiếu",
+       "q": "The word \"it\" in the last sentence of the passage refers to",
+       "o": [
+        "the afternoon",
+        "the decision",
+        "the answer",
+        "the app"
+       ],
+       "a": 3,
+       "p": 5,
+       "ev": "the app is only half of the answer. The other half is a decision … not to fill the space that it creates",
+       "why": "Thứ tạo ra khoảng trống thời gian là ứng dụng (the app). Quyết định (decision) là việc không lấp khoảng trống đó."
+      },
+      {
+       "t": "Chi tiết",
+       "q": "What does the author suggest readers do if they want more free time?",
+       "o": [
+        "Decide beforehand not to take on more tasks",
+        "Buy better apps",
+        "Work faster",
+        "Avoid new technology"
+       ],
+       "a": 0,
+       "p": 5,
+       "ev": "The other half is a decision, made in advance, not to fill the space that it creates.",
+       "why": "\"Made in advance\" = quyết định từ trước. Muốn có thời gian thì phải tự quyết không nhận thêm việc vào chỗ trống vừa có."
+      }
+     ]
+    },
+    {
+     "id": "b4",
+     "title": "Bài đọc 4",
+     "level": "C1",
+     "minutes": 18,
+     "name": "When a Measure Becomes a Target",
+     "paras": [
+      "Modern organisations run on numbers. Schools are judged by examination results, hospitals by waiting times, and companies by quarterly sales. The appeal is obvious: a number seems objective, it allows comparison, and it tells managers at a glance whether things are improving. Yet there is a well-documented tendency for such figures to lose their meaning at precisely the moment they begin to matter. The economist Charles Goodhart observed this in the 1970s, and the idea is now commonly summarised as follows: when a measure becomes a target, it ceases to be a good measure.",
+      "The reasoning is straightforward. A measurement is useful because it reflects something we care about but cannot observe directly. Examination results, for instance, are a window onto how much pupils have learned. But once teachers are rewarded or punished according to those results, they acquire a strong incentive to raise the number itself, by whatever means are available. Lessons narrow to the topics most likely to be tested; time is devoted to examination technique rather than understanding. Scores go up. Whether learning has gone up with them is another question entirely, and the scores can no longer answer it.",
+      "A story frequently told in this connection concerns a colonial government that, alarmed by the number of poisonous snakes in a city, offered a payment for every dead snake handed in. Enterprising residents are said to have responded by breeding snakes in order to collect the reward. When the authorities discovered this and cancelled the scheme, the breeders released their now worthless animals, leaving the city with more snakes than before. Historians doubt that events unfolded quite so neatly, but the tale survives because the logic it illustrates is so recognisable.",
+      "It would be a mistake to conclude that measurement should be abandoned. Without figures, judgement falls back on impression and reputation, which are hardly more reliable and considerably easier to manipulate. The more defensible lesson is that no single indicator can carry the weight of an entire purpose. Organisations that cope best tend to use several measures that are difficult to improve simultaneously by trickery, to change them from time to time, and above all to keep asking the people who do the work what the numbers are failing to show.",
+      "There is a further, less comfortable implication. Those who design targets usually assume that the people being measured share their aims and merely need encouragement. In practice, a target quietly replaces the original aim with a simpler one. Whoever sets it should therefore expect to receive exactly what was asked for, and should think carefully about whether that is what was wanted."
+     ],
+     "qs": [
+      {
+       "t": "Mục đích",
+       "q": "What is the main purpose of the passage?",
+       "o": [
+        "To argue that organisations should stop using numbers",
+        "To describe the life of a famous economist",
+        "To compare schools with hospitals",
+        "To explain how turning a measurement into a target can distort it"
+       ],
+       "a": 3,
+       "p": 0,
+       "ev": "when a measure becomes a target, it ceases to be a good measure",
+       "why": "Bài giải thích vì sao con số mất ý nghĩa khi bị biến thành mục tiêu, kèm ví dụ và cách ứng phó. Đoạn 4 nói rõ không nên bỏ việc đo lường, nên A sai."
+      },
+      {
+       "t": "Chi tiết",
+       "q": "According to paragraph 1, why are numbers attractive to organisations?",
+       "o": [
+        "They are cheap to collect.",
+        "They seem objective and make comparison easy.",
+        "They cannot be manipulated.",
+        "They are required by law."
+       ],
+       "a": 1,
+       "p": 1,
+       "ev": "a number seems objective, it allows comparison, and it tells managers at a glance whether things are improving",
+       "why": "\"The appeal is obvious\" rồi liệt kê: có vẻ khách quan, so sánh được, nhìn là biết. Cả bài cho thấy con số có thể bị thao túng, nên C trái ý bài."
+      },
+      {
+       "t": "Từ vựng",
+       "q": "The word \"ceases\" in paragraph 1 is closest in meaning to",
+       "o": [
+        "stops",
+        "begins",
+        "fails",
+        "continues"
+       ],
+       "a": 0,
+       "p": 1,
+       "ev": "it ceases to be a good measure",
+       "why": "\"Cease to be\" = thôi không còn là. Từ gần nghĩa nhất là \"stops\". \"Fails\" (thất bại) nghe hợp nhưng không cùng nghĩa."
+      },
+      {
+       "t": "Diễn đạt lại",
+       "q": "In paragraph 2, examination results are described as \"a window\" because they",
+       "o": [
+        "are easy to see through.",
+        "are published openly.",
+        "give an indirect view of what pupils have learned.",
+        "show which teachers work hardest."
+       ],
+       "a": 2,
+       "p": 2,
+       "ev": "it reflects something we care about but cannot observe directly",
+       "why": "Ẩn dụ \"cửa sổ\": qua điểm thi ta nhìn gián tiếp thấy thứ không quan sát trực tiếp được, là việc học của học sinh."
+      },
+      {
+       "t": "Suy luận",
+       "q": "What does the author imply about rising scores in paragraph 2?",
+       "o": [
+        "They prove that teaching has improved.",
+        "They may not reflect a real increase in learning.",
+        "They are usually the result of cheating.",
+        "They matter more than understanding."
+       ],
+       "a": 1,
+       "p": 2,
+       "ev": "Whether learning has gone up with them is another question entirely, and the scores can no longer answer it.",
+       "why": "Điểm tăng nhưng việc học có tăng theo không thì điểm số không còn trả lời được. Tác giả nói về dạy lệch theo đề, không nói về gian lận."
+      },
+      {
+       "t": "Mục đích",
+       "q": "Why does the author include the story about snakes?",
+       "o": [
+        "To show that colonial governments were cruel",
+        "To prove that snakes are hard to control",
+        "To illustrate how rewarding a number can produce the opposite of what was intended",
+        "To entertain readers with an unusual event"
+       ],
+       "a": 2,
+       "p": 3,
+       "ev": "leaving the city with more snakes than before … the logic it illustrates is so recognisable",
+       "why": "Thưởng theo số rắn chết khiến người ta nuôi rắn, cuối cùng rắn nhiều hơn trước: thưởng theo con số cho kết quả ngược với ý định."
+      },
+      {
+       "t": "Thái độ",
+       "q": "What is the author's view of the snake story?",
+       "o": [
+        "It is completely true.",
+        "It is a deliberate lie.",
+        "It is irrelevant to modern organisations.",
+        "Its details are doubtful, but its lesson is sound."
+       ],
+       "a": 3,
+       "p": 3,
+       "ev": "Historians doubt that events unfolded quite so neatly, but the tale survives because the logic it illustrates is so recognisable.",
+       "why": "Các dấu hiệu \"are said to\", \"Historians doubt\" cho thấy tác giả dè dặt về độ chính xác, nhưng sau \"but\" vẫn khẳng định bài học của câu chuyện."
+      },
+      {
+       "t": "Quy chiếu",
+       "q": "The word \"which\" in paragraph 4 refers to",
+       "o": [
+        "impression and reputation",
+        "figures",
+        "organisations",
+        "measures"
+       ],
+       "a": 0,
+       "p": 4,
+       "ev": "judgement falls back on impression and reputation, which are hardly more reliable",
+       "why": "\"Which\" đứng ngay sau và thay cho \"impression and reputation\": ấn tượng và danh tiếng cũng chẳng đáng tin hơn con số."
+      },
+      {
+       "t": "Câu hỏi NOT",
+       "q": "According to paragraph 4, which of the following do successful organisations NOT do?",
+       "o": [
+        "Use several measures at once",
+        "Change their measures from time to time",
+        "Rely on one carefully chosen indicator",
+        "Ask workers what the numbers fail to show"
+       ],
+       "a": 2,
+       "p": 4,
+       "ev": "no single indicator can carry the weight of an entire purpose",
+       "why": "Ba việc A, B, D được liệt kê ở câu cuối đoạn 4. Dựa vào một chỉ số duy nhất là điều bài nói không nên."
+      },
+      {
+       "t": "Suy luận",
+       "q": "What does the final paragraph suggest that people who set targets should do?",
+       "o": [
+        "Trust that workers share their aims",
+        "Consider whether the target really represents what they want",
+        "Set simpler targets",
+        "Offer larger rewards"
+       ],
+       "a": 1,
+       "p": 5,
+       "ev": "should think carefully about whether that is what was wanted",
+       "why": "Người đặt chỉ tiêu sẽ nhận đúng thứ mình yêu cầu, nên phải cân nhắc xem chỉ tiêu ấy có đúng là điều mình thật sự muốn không."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "de2",
+   "title": "Đề 2",
+   "passages": [
+    {
+     "id": "b1",
+     "title": "Bài đọc 1",
+     "level": "B1",
+     "minutes": 12,
+     "name": "A Library of Things",
+     "paras": [
+      "When people in the town of Westbrook need a drill, a tent or a sewing machine, many of them no longer go to a shop. Instead, they walk to a small building next to the bus station. It looks like an ordinary library, but there are no books on its shelves. This is the Westbrook Library of Things, where members can borrow more than four hundred useful objects.",
+      "The idea came from Sam Ortiz, a retired engineer. A few years ago he noticed that his garage was full of tools that he used only once or twice a year. His neighbours had the same tools, and they hardly ever used them either. \"It made no sense,\" he says. \"Why should every house on the street own a ladder?\" He asked his neighbours to share, and the project grew from there.",
+      "Joining is simple. Members pay twenty pounds a year and can then borrow up to five things at a time for one week. The most popular items are carpet cleaners, drills and camping equipment. In summer, there is a waiting list for tents. Everything is checked by volunteers when it comes back, and small repairs are done in the workshop behind the building.",
+      "The library saves its members money, but that is not its only advantage. People who live in small flats do not have to find space for things they rarely use. Fewer new products need to be made, which is better for the environment. Members also say they have met more of their neighbours since they joined, because the library has become a place to stop and chat.",
+      "Of course, there are problems too. Some things come back late or dirty, and a few have been broken. Sam is not worried. \"Less than two per cent of our items are damaged each year,\" he explains. \"Most people are careful, because they know that their neighbours will need the same thing next week.\""
+     ],
+     "qs": [
+      {
+       "t": "Ý chính",
+       "q": "What is the passage mainly about?",
+       "o": [
+        "How to repair household tools",
+        "A new bookshop in a small town",
+        "Problems between neighbours",
+        "A place where people borrow useful objects"
+       ],
+       "a": 3,
+       "p": 0,
+       "ev": "This is the Westbrook Library of Things, where members can borrow more than four hundred useful objects.",
+       "why": "Cả bài giới thiệu \"thư viện đồ dùng\": ai nghĩ ra, hoạt động thế nào, lợi ích và khó khăn. Nơi này không có sách nên B sai."
+      },
+      {
+       "t": "Chi tiết",
+       "q": "Where is the Library of Things?",
+       "o": [
+        "In Sam's garage",
+        "Next to the bus station",
+        "Inside a shop",
+        "Behind a workshop"
+       ],
+       "a": 1,
+       "p": 1,
+       "ev": "they walk to a small building next to the bus station",
+       "why": "Toà nhà nằm cạnh bến xe buýt. Xưởng sửa chữa nằm phía sau toà nhà, còn ga-ra của Sam chỉ là nơi ông nảy ra ý tưởng."
+      },
+      {
+       "t": "Chi tiết",
+       "q": "What did Sam Ortiz notice a few years ago?",
+       "o": [
+        "He owned tools that he rarely used.",
+        "Tools had become too expensive.",
+        "His neighbours had no tools.",
+        "His garage was too small."
+       ],
+       "a": 0,
+       "p": 2,
+       "ev": "his garage was full of tools that he used only once or twice a year",
+       "why": "Ông nhận ra ga-ra đầy dụng cụ mà mỗi năm chỉ dùng một hai lần. Hàng xóm cũng có đúng những dụng cụ đó, nên C sai."
+      },
+      {
+       "t": "Từ vựng",
+       "q": "The phrase \"hardly ever\" in paragraph 2 is closest in meaning to",
+       "o": [
+        "very often",
+        "never again",
+        "almost never",
+        "quite carefully"
+       ],
+       "a": 2,
+       "p": 2,
+       "ev": "His neighbours had the same tools, and they hardly ever used them either.",
+       "why": "\"Hardly ever\" = hầu như không bao giờ. Chữ \"either\" cho thấy hàng xóm cũng ít dùng như Sam."
+      },
+      {
+       "t": "Chi tiết",
+       "q": "How long can members keep the things they borrow?",
+       "o": [
+        "Five days",
+        "One week",
+        "Two weeks",
+        "One year"
+       ],
+       "a": 1,
+       "p": 3,
+       "ev": "can then borrow up to five things at a time for one week",
+       "why": "Dễ lẫn các con số: 5 là số món được mượn một lần, một năm là thời hạn đóng phí. Thời gian mượn là một tuần."
+      },
+      {
+       "t": "Câu hỏi NOT",
+       "q": "Which of the following is NOT mentioned as one of the most popular items?",
+       "o": [
+        "Carpet cleaners",
+        "Drills",
+        "Camping equipment",
+        "Sewing machines"
+       ],
+       "a": 3,
+       "p": 3,
+       "ev": "The most popular items are carpet cleaners, drills and camping equipment.",
+       "why": "Máy khâu có xuất hiện ở đoạn 1, nhưng không nằm trong danh sách ba món được mượn nhiều nhất ở đoạn 3."
+      },
+      {
+       "t": "Quy chiếu",
+       "q": "The word \"it\" in paragraph 3 refers to",
+       "o": [
+        "each thing that has been borrowed",
+        "the workshop",
+        "the waiting list",
+        "the building"
+       ],
+       "a": 0,
+       "p": 3,
+       "ev": "Everything is checked by volunteers when it comes back",
+       "why": "\"It\" thay cho \"everything\": mọi món đồ được kiểm tra khi được trả lại."
+      },
+      {
+       "t": "Chi tiết",
+       "q": "According to paragraph 4, why is the library good for the environment?",
+       "o": [
+        "Members walk there instead of driving.",
+        "It uses very little electricity.",
+        "Fewer new products have to be made.",
+        "Volunteers recycle broken items."
+       ],
+       "a": 2,
+       "p": 4,
+       "ev": "Fewer new products need to be made, which is better for the environment.",
+       "why": "Nhiều người dùng chung một món nên phải sản xuất ít đồ mới hơn; mệnh đề \"which is better for the environment\" nói rõ điều này."
+      },
+      {
+       "t": "Suy luận",
+       "q": "What can be inferred about some members from paragraph 4?",
+       "o": [
+        "Most of them live in large houses.",
+        "They have got to know their neighbours better.",
+        "They visit the library only in summer.",
+        "They prefer buying new things."
+       ],
+       "a": 1,
+       "p": 4,
+       "ev": "they have met more of their neighbours since they joined",
+       "why": "Thư viện thành nơi dừng chân trò chuyện, hội viên gặp nhiều hàng xóm hơn, tức là họ quen biết nhau hơn."
+      },
+      {
+       "t": "Chi tiết",
+       "q": "Why is Sam not worried about damage?",
+       "o": [
+        "Very few items are damaged.",
+        "Members pay for all repairs.",
+        "The library has insurance.",
+        "Volunteers can fix everything."
+       ],
+       "a": 0,
+       "p": 5,
+       "ev": "Less than two per cent of our items are damaged each year",
+       "why": "Mỗi năm chưa tới 2% số đồ bị hỏng vì đa số người mượn cẩn thận."
+      }
+     ]
+    },
+    {
+     "id": "b2",
+     "title": "Bài đọc 2",
+     "level": "B1–B2",
+     "minutes": 14,
+     "name": "Why Teenagers Are Not Lazy in the Morning",
+     "paras": [
+      "Parents of teenagers often complain about the same thing: their children stay up late at night and cannot get out of bed in the morning. It is easy to blame mobile phones or laziness. However, scientists who study sleep say that the main cause is biological, and that teenagers have less control over it than adults think.",
+      "Our bodies follow an internal clock that tells us when to feel sleepy and when to wake up. During the teenage years, this clock moves later. A child of ten may feel tired at nine in the evening, but at fifteen the same person may not feel sleepy until eleven or even later. Since teenagers still need about nine hours of sleep, their bodies are not ready to wake up until eight o'clock or after.",
+      "School timetables do not take this into account. In many countries, lessons begin at eight o'clock or earlier, so students must get up when their bodies are still in the middle of the night. As a result, they lose one or two hours of sleep on every school day. They try to make up for it by sleeping until noon at the weekend, which only confuses the body clock further.",
+      "The effects are serious. Tired students find it harder to pay attention and to remember what they have learned. They are more likely to feel sad or anxious, and they have more accidents, both on the sports field and on the road.",
+      "For this reason, some schools have experimented with a later start. Where the first lesson was moved to half past eight or nine o'clock, teachers generally reported that students were more awake in morning classes and were absent less often. The change is not easy to organise, however. Bus timetables have to be rewritten, after-school activities finish later, and working parents may find the new hours inconvenient.",
+      "Until schools change, experts suggest some simple steps. Teenagers should keep screens out of the bedroom, get plenty of daylight in the morning, and get up at a similar time every day, including weekends. These habits will not move the body clock back to childhood, but they can stop it from moving later still."
+     ],
+     "qs": [
+      {
+       "t": "Ý chính",
+       "q": "What is the main idea of the passage?",
+       "o": [
+        "Teenagers use their phones too much at night.",
+        "Schools should give less homework.",
+        "Teenagers' late sleeping has a biological cause and serious effects.",
+        "Parents should be stricter about bedtime."
+       ],
+       "a": 2,
+       "p": 0,
+       "ev": "scientists who study sleep say that the main cause is biological",
+       "why": "Bài giải thích nguyên nhân sinh học khiến thiếu niên ngủ muộn, hậu quả khi trường vào học sớm và cách giảm nhẹ. Điện thoại và sự lười chỉ là điều người ta hay đổ lỗi."
+      },
+      {
+       "t": "Chi tiết",
+       "q": "According to paragraph 1, what do scientists say is the main cause of the problem?",
+       "o": [
+        "Biology",
+        "Mobile phones",
+        "Laziness",
+        "Homework"
+       ],
+       "a": 0,
+       "p": 1,
+       "ev": "the main cause is biological",
+       "why": "Sau \"However\" là ý của các nhà khoa học: nguyên nhân chính là sinh học, không phải điện thoại hay lười biếng."
+      },
+      {
+       "t": "Chi tiết",
+       "q": "What happens to the body clock during the teenage years?",
+       "o": [
+        "It stops working.",
+        "It moves earlier.",
+        "It becomes irregular.",
+        "It moves later."
+       ],
+       "a": 3,
+       "p": 2,
+       "ev": "During the teenage years, this clock moves later.",
+       "why": "Đồng hồ sinh học lùi muộn hơn: 10 tuổi buồn ngủ lúc 9 giờ tối, 15 tuổi phải tới 11 giờ hoặc muộn hơn."
+      },
+      {
+       "t": "Quy chiếu",
+       "q": "The word \"this\" in the first sentence of paragraph 3 refers to",
+       "o": [
+        "the school timetable",
+        "the change in teenagers' body clock",
+        "sleeping late at the weekend",
+        "the need to do homework"
+       ],
+       "a": 1,
+       "p": 3,
+       "ev": "School timetables do not take this into account.",
+       "why": "\"This\" chỉ điều vừa nói ở đoạn 2: đồng hồ sinh học của thiếu niên lùi muộn nên cơ thể chưa sẵn sàng thức trước 8 giờ."
+      },
+      {
+       "t": "Từ vựng",
+       "q": "The phrase \"make up for\" in paragraph 3 is closest in meaning to",
+       "o": [
+        "invent",
+        "forget",
+        "explain",
+        "compensate for"
+       ],
+       "a": 3,
+       "p": 3,
+       "ev": "They try to make up for it by sleeping until noon at the weekend",
+       "why": "\"Make up for\" = bù lại. Học sinh ngủ bù tới trưa vào cuối tuần cho những giờ ngủ đã mất."
+      },
+      {
+       "t": "Câu hỏi NOT",
+       "q": "Which of the following is NOT mentioned as an effect of too little sleep?",
+       "o": [
+        "Putting on weight",
+        "Difficulty paying attention",
+        "Feeling anxious",
+        "Having more accidents"
+       ],
+       "a": 0,
+       "p": 4,
+       "ev": "Tired students find it harder to pay attention … more likely to feel sad or anxious, and they have more accidents",
+       "why": "Đoạn 4 nêu: khó tập trung, khó nhớ, dễ buồn lo, nhiều tai nạn hơn. Tăng cân không được nhắc tới."
+      },
+      {
+       "t": "Chi tiết",
+       "q": "What did teachers report in schools that started later?",
+       "o": [
+        "Students got lower marks.",
+        "Students went to bed even later.",
+        "Students were more awake and missed school less often.",
+        "Parents complained about the change."
+       ],
+       "a": 2,
+       "p": 5,
+       "ev": "students were more awake in morning classes and were absent less often",
+       "why": "Giáo viên thấy học sinh tỉnh táo hơn trong các tiết buổi sáng và ít vắng mặt hơn."
+      },
+      {
+       "t": "Chi tiết",
+       "q": "Why is a later start difficult to organise?",
+       "o": [
+        "Teachers refuse to work later.",
+        "It affects transport and family schedules.",
+        "It costs schools a lot of money.",
+        "Students dislike the idea."
+       ],
+       "a": 1,
+       "p": 5,
+       "ev": "Bus timetables have to be rewritten, after-school activities finish later, and working parents may find the new hours inconvenient.",
+       "why": "Ba khó khăn được nêu đều thuộc về lịch trình: xe buýt, hoạt động sau giờ học, giờ giấc của phụ huynh đi làm."
+      },
+      {
+       "t": "Suy luận",
+       "q": "What can be inferred from the last paragraph?",
+       "o": [
+        "Good habits can reduce the problem but cannot remove it completely.",
+        "Teenagers can easily return to a child's sleeping pattern.",
+        "Screens have no effect on sleep.",
+        "Weekends are the best time to catch up on sleep."
+       ],
+       "a": 0,
+       "p": 6,
+       "ev": "These habits will not move the body clock back to childhood, but they can stop it from moving later still.",
+       "why": "Thói quen tốt không đưa đồng hồ sinh học về như hồi nhỏ, chỉ ngăn nó lùi muộn thêm: giảm được chứ không xoá hẳn vấn đề."
+      },
+      {
+       "t": "Thái độ",
+       "q": "The author's attitude towards teenagers who sleep late is",
+       "o": [
+        "critical",
+        "amused",
+        "indifferent",
+        "understanding"
+       ],
+       "a": 3,
+       "p": 0,
+       "ev": "teenagers have less control over it than adults think",
+       "why": "Ngay tiêu đề đã nói thiếu niên \"không lười\". Tác giả giải thích rằng các em ít kiểm soát được chuyện này, tức là thông cảm chứ không chê trách."
+      }
+     ]
+    },
+    {
+     "id": "b3",
+     "title": "Bài đọc 3",
+     "level": "B2",
+     "minutes": 16,
+     "name": "The Open-Plan Office Experiment",
+     "paras": [
+      "Walk into the headquarters of almost any large company today and you will see the same scene: long rows of desks in a single enormous room, with hardly a wall or a door in sight. The open-plan office has become so common that it is easy to forget it was once a radical idea, introduced with great optimism.",
+      "The argument for it was partly financial. Walls take up space, and space costs money; removing them allows far more employees to fit on each floor. But managers also believed that open offices would improve the way people worked. If colleagues could see one another, the reasoning went, they would talk more, share ideas more freely and solve problems faster. The office would become a place of constant, creative conversation.",
+      "When researchers finally tested this belief, the results were surprising. In one widely reported study, employees at two companies wore small electronic devices that recorded how often they spoke to colleagues, both before and after their offices were converted to an open plan. Face-to-face conversation did not rise. It fell sharply, while the number of emails and instant messages increased.",
+      "The explanation seems to lie in a basic human need for privacy. In a room where everyone can hear everything, people become careful about what they say. A quick question to a colleague may disturb ten other people, so it feels more polite to send a message instead. Many workers also put on headphones in order to concentrate, which sends a clear signal that they do not wish to be interrupted. The open space, designed to bring people together, ends up teaching them to avoid one another.",
+      "Noise is the other common complaint. Surveys consistently find that the sound of other people's conversations is what office workers dislike most, and that it is far more distracting than mechanical noise such as traffic. The brain can learn to ignore a steady hum, but it finds human speech almost impossible to shut out.",
+      "None of this means that every company should rebuild its walls. Private offices are expensive and can leave people isolated. A more promising approach is to offer a choice of spaces: quiet rooms for work that demands concentration, shared tables for teamwork, and small booths for phone calls. What the evidence does suggest is that simply removing the walls, and hoping that collaboration will follow, is likely to disappoint."
+     ],
+     "qs": [
+      {
+       "t": "Ý chính",
+       "q": "What is the main idea of the passage?",
+       "o": [
+        "Offices should have no walls at all.",
+        "Open-plan offices have not brought the benefits that were expected.",
+        "Email is replacing conversation everywhere.",
+        "Office workers dislike their managers."
+       ],
+       "a": 1,
+       "p": 0,
+       "ev": "simply removing the walls, and hoping that collaboration will follow, is likely to disappoint",
+       "why": "Văn phòng mở được kỳ vọng giúp mọi người trao đổi nhiều hơn, nhưng nghiên cứu cho thấy điều ngược lại. Câu kết tóm lại đúng ý này."
+      },
+      {
+       "t": "Chi tiết",
+       "q": "According to paragraph 2, what was one reason for introducing open-plan offices?",
+       "o": [
+        "Workers asked for them.",
+        "Walls were considered dangerous.",
+        "Open offices were quieter.",
+        "More employees could fit into the same space."
+       ],
+       "a": 3,
+       "p": 2,
+       "ev": "removing them allows far more employees to fit on each floor",
+       "why": "Lý do tài chính: bỏ tường thì mỗi tầng xếp được nhiều nhân viên hơn hẳn."
+      },
+      {
+       "t": "Từ vựng",
+       "q": "The word \"radical\" in paragraph 1 is closest in meaning to",
+       "o": [
+        "costly",
+        "popular",
+        "revolutionary",
+        "old-fashioned"
+       ],
+       "a": 2,
+       "p": 1,
+       "ev": "it is easy to forget it was once a radical idea, introduced with great optimism",
+       "why": "\"Radical idea\" = ý tưởng mới mẻ, táo bạo, khác hẳn cái cũ, gần nghĩa với \"revolutionary\". Câu này đối lập \"phổ biến bây giờ\" với \"táo bạo ngày trước\"."
+      },
+      {
+       "t": "Chi tiết",
+       "q": "What did the study described in paragraph 3 find?",
+       "o": [
+        "People talked face to face less and sent more messages.",
+        "People talked more and sent fewer emails.",
+        "Nothing changed after the move.",
+        "People began to work longer hours."
+       ],
+       "a": 0,
+       "p": 3,
+       "ev": "It fell sharply, while the number of emails and instant messages increased.",
+       "why": "Sau khi chuyển sang văn phòng mở, trò chuyện trực tiếp giảm mạnh, còn email và tin nhắn tăng lên."
+      },
+      {
+       "t": "Chi tiết",
+       "q": "According to paragraph 4, why do people send a message instead of speaking?",
+       "o": [
+        "Managers require written records.",
+        "Typing is faster than talking.",
+        "They do not want to disturb others or be overheard.",
+        "They sit too far from their colleagues."
+       ],
+       "a": 2,
+       "p": 4,
+       "ev": "A quick question to a colleague may disturb ten other people, so it feels more polite to send a message instead.",
+       "why": "Trong phòng ai cũng nghe thấy hết, hỏi một câu có thể làm phiền mười người, nên người ta nhắn tin cho lịch sự và kín đáo."
+      },
+      {
+       "t": "Mục đích",
+       "q": "Why does the author mention headphones in paragraph 4?",
+       "o": [
+        "To show that offices are too quiet",
+        "To show how workers signal that they do not want to be interrupted",
+        "To recommend a useful product",
+        "To explain why music improves work"
+       ],
+       "a": 1,
+       "p": 4,
+       "ev": "which sends a clear signal that they do not wish to be interrupted",
+       "why": "Tai nghe là ví dụ cho việc nhân viên tự tách mình ra: đeo tai nghe là tín hiệu \"đừng làm phiền\"."
+      },
+      {
+       "t": "Quy chiếu",
+       "q": "The word \"it\" in the phrase \"it is far more distracting\" in paragraph 5 refers to",
+       "o": [
+        "the brain",
+        "mechanical noise",
+        "a survey",
+        "the sound of other people's conversations"
+       ],
+       "a": 3,
+       "p": 5,
+       "ev": "the sound of other people's conversations is what office workers dislike most, and that it is far more distracting than mechanical noise",
+       "why": "\"It\" thay cho chủ ngữ của mệnh đề trước: tiếng người khác nói chuyện, thứ gây xao nhãng hơn tiếng máy móc."
+      },
+      {
+       "t": "Chi tiết",
+       "q": "According to paragraph 5, why is speech so distracting?",
+       "o": [
+        "The brain cannot easily ignore it.",
+        "It is louder than traffic.",
+        "Office walls are too thin.",
+        "Workers talk for too long."
+       ],
+       "a": 0,
+       "p": 5,
+       "ev": "it finds human speech almost impossible to shut out",
+       "why": "Não có thể quen với tiếng ù đều đều, nhưng gần như không thể gạt tiếng người nói ra ngoài."
+      },
+      {
+       "t": "Câu hỏi NOT",
+       "q": "Which of the following is NOT part of the approach recommended in paragraph 6?",
+       "o": [
+        "Quiet rooms for concentration",
+        "Shared tables for teamwork",
+        "A private office for every employee",
+        "Booths for phone calls"
+       ],
+       "a": 2,
+       "p": 6,
+       "ev": "Private offices are expensive and can leave people isolated.",
+       "why": "Tác giả đề xuất nhiều kiểu không gian để chọn (phòng yên tĩnh, bàn chung, buồng gọi điện), và nói rõ phòng riêng thì đắt, dễ làm người ta cô lập."
+      },
+      {
+       "t": "Suy luận",
+       "q": "Which statement would the author most probably agree with?",
+       "o": [
+        "Companies should return to private offices.",
+        "Good office design needs more than taking away walls.",
+        "Collaboration is not important at work.",
+        "Workers should stop using email."
+       ],
+       "a": 1,
+       "p": 6,
+       "ev": "A more promising approach is to offer a choice of spaces",
+       "why": "Tác giả không đòi dựng lại tường, cũng không bác bỏ việc hợp tác; ông chỉ cho rằng chỉ bỏ tường thôi là chưa đủ, cần thiết kế nhiều loại không gian."
+      }
+     ]
+    },
+    {
+     "id": "b4",
+     "title": "Bài đọc 4",
+     "level": "C1",
+     "minutes": 18,
+     "name": "The Missing Bullet Holes",
+     "paras": [
+      "During the Second World War, American military officers faced a practical question. Bombers were returning from missions riddled with bullet holes, and too many were not returning at all. Adding armour would protect the aircraft, but armour is heavy, and a heavier plane uses more fuel and is harder to manoeuvre. The armour therefore had to be placed only where it would do the most good. The officers, as the story is usually told, examined the returning planes, recorded where the damage was concentrated, and proposed to reinforce those areas: mainly the wings and the body of the aircraft.",
+      "The statistician Abraham Wald, who had been asked to advise, reached the opposite conclusion. The armour, he argued, should go where the bullet holes were not, particularly around the engines. His reasoning was that the officers were looking at an unrepresentative sample. They could only inspect the planes that had come back. If bullets struck all parts of an aircraft more or less at random, then the absence of holes around the engines of the survivors could mean only one thing: planes hit there had not survived to be counted.",
+      "The error that Wald identified is now known as survivorship bias: drawing conclusions from the cases that passed through some process of selection while overlooking those that did not. It is easy to describe and remarkably hard to avoid, because the missing cases are, by definition, invisible.",
+      "Examples are not difficult to find. Books on business success study companies that have prospered and list the habits they share, such as bold leadership or a willingness to take risks. Yet the same habits may have been just as common among the far larger number of firms that failed and were never written about. Similarly, we admire old buildings for their quality and conclude that people built better in the past, forgetting that the badly built houses of earlier centuries fell down long ago. And the dropout who founds a billion-dollar company is celebrated, while thousands who left university and achieved nothing remarkable attract no attention at all.",
+      "The remedy is not to distrust success stories altogether but to ask a further question whenever one is offered as evidence: what would the failures look like, and has anyone counted them? Sometimes the answer is reassuring. Often, however, it reveals that the feature we took for the cause of success was merely common to everyone who tried, winners and losers alike.",
+      "Wald's contribution, then, was not a new mathematical technique. It was a change of attention, from the evidence that was in front of the officers to the evidence that could not be. That shift is as valuable in a boardroom or a newspaper as it was on an airfield."
+     ],
+     "qs": [
+      {
+       "t": "Mục đích",
+       "q": "What is the main purpose of the passage?",
+       "o": [
+        "To explain a common error in reasoning and how to guard against it",
+        "To describe the design of wartime bombers",
+        "To criticise military officers",
+        "To tell the life story of a statistician"
+       ],
+       "a": 0,
+       "p": 0,
+       "ev": "The error that Wald identified is now known as survivorship bias",
+       "why": "Chuyện máy bay chỉ là ví dụ mở đầu. Bài nhằm giải thích \"survivorship bias\", đưa thêm ví dụ và nêu cách tránh (đoạn 5)."
+      },
+      {
+       "t": "Chi tiết",
+       "q": "According to paragraph 1, why could armour not be added to the whole plane?",
+       "o": [
+        "It was too expensive.",
+        "There was not enough metal.",
+        "The extra weight would harm the plane's performance.",
+        "The pilots refused to accept it."
+       ],
+       "a": 2,
+       "p": 1,
+       "ev": "armour is heavy, and a heavier plane uses more fuel and is harder to manoeuvre",
+       "why": "Giáp nặng làm máy bay tốn nhiên liệu và khó điều khiển, nên chỉ được đặt ở nơi có ích nhất."
+      },
+      {
+       "t": "Từ vựng",
+       "q": "The phrase \"riddled with\" in paragraph 1 is closest in meaning to",
+       "o": [
+        "protected from",
+        "full of",
+        "repaired after",
+        "free of"
+       ],
+       "a": 1,
+       "p": 1,
+       "ev": "Bombers were returning from missions riddled with bullet holes",
+       "why": "\"Riddled with\" = đầy, chi chít (thường là thứ không mong muốn). Máy bay trở về chi chít lỗ đạn."
+      },
+      {
+       "t": "Chi tiết",
+       "q": "Where did Wald say the armour should be placed?",
+       "o": [
+        "On the wings",
+        "On the body of the aircraft",
+        "Where most holes had been found",
+        "Where the returning planes had no holes"
+       ],
+       "a": 3,
+       "p": 2,
+       "ev": "The armour, he argued, should go where the bullet holes were not, particularly around the engines.",
+       "why": "Wald kết luận ngược với các sĩ quan: bọc giáp ở chỗ máy bay trở về không có lỗ đạn, nhất là quanh động cơ."
+      },
+      {
+       "t": "Suy luận",
+       "q": "What did the lack of holes around the engines of the returning planes indicate?",
+       "o": [
+        "Planes hit in the engines usually did not return.",
+        "Enemy bullets never hit the engines.",
+        "The engines were already armoured.",
+        "The officers had counted wrongly."
+       ],
+       "a": 0,
+       "p": 2,
+       "ev": "planes hit there had not survived to be counted",
+       "why": "Nếu đạn trúng ngẫu nhiên khắp máy bay mà máy bay trở về không có lỗ ở động cơ, thì những chiếc trúng đạn ở đó đã không về được."
+      },
+      {
+       "t": "Diễn đạt lại",
+       "q": "The statement that \"the missing cases are, by definition, invisible\" means that",
+       "o": [
+        "researchers deliberately hide failures.",
+        "failures are extremely rare.",
+        "the cases left out are exactly the ones we cannot see.",
+        "the definition of the error is unclear."
+       ],
+       "a": 2,
+       "p": 3,
+       "ev": "It is easy to describe and remarkably hard to avoid, because the missing cases are, by definition, invisible.",
+       "why": "\"By definition\" = theo đúng bản chất của nó. Những trường hợp bị loại ra chính là những trường hợp ta không nhìn thấy, nên lỗi này khó tránh."
+      },
+      {
+       "t": "Mục đích",
+       "q": "Why does the author mention old buildings in paragraph 4?",
+       "o": [
+        "To praise the builders of the past",
+        "To show that modern buildings are poorly made",
+        "To compare architecture with business",
+        "To give another example of judging only by what has survived"
+       ],
+       "a": 3,
+       "p": 4,
+       "ev": "forgetting that the badly built houses of earlier centuries fell down long ago",
+       "why": "\"Similarly\" báo hiệu thêm một ví dụ cùng loại: ta chỉ thấy nhà cổ còn đứng vững, nhà xây ẩu đã sập từ lâu."
+      },
+      {
+       "t": "Quy chiếu",
+       "q": "The word \"they\" in the phrase \"the habits they share\" in paragraph 4 refers to",
+       "o": [
+        "books on business success",
+        "companies that have prospered",
+        "bold leaders",
+        "firms that failed"
+       ],
+       "a": 1,
+       "p": 4,
+       "ev": "study companies that have prospered and list the habits they share",
+       "why": "\"They\" thay cho \"companies that have prospered\": sách liệt kê các thói quen mà những công ty thành công có chung."
+      },
+      {
+       "t": "Câu hỏi NOT",
+       "q": "Which of the following is NOT given as an example of survivorship bias?",
+       "o": [
+        "Studies of successful companies",
+        "Admiration for old buildings",
+        "Stories of successful dropouts",
+        "Reports of new medical treatments"
+       ],
+       "a": 3,
+       "p": 4,
+       "ev": "Books on business success … we admire old buildings … the dropout who founds a billion-dollar company",
+       "why": "Đoạn 4 có ba ví dụ: công ty thành công, nhà cổ, người bỏ học lập công ty tỉ đô. Y học không được nhắc tới."
+      },
+      {
+       "t": "Suy luận",
+       "q": "According to the final paragraph, what was most important about Wald's contribution?",
+       "o": [
+        "He invented a new formula.",
+        "He saved the army a great deal of money.",
+        "He directed attention to the evidence that was absent.",
+        "He proved that the officers were careless."
+       ],
+       "a": 2,
+       "p": 6,
+       "ev": "It was a change of attention, from the evidence that was in front of the officers to the evidence that could not be.",
+       "why": "Đóng góp của Wald không phải kỹ thuật toán mới mà là chuyển sự chú ý sang những bằng chứng không có mặt."
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "vocab": [
+  {
+   "id": "b1",
+   "title": "Bài đọc 1",
+   "level": "B1",
+   "words": [
+    {
+     "w": "stall",
+     "pos": "n",
+     "ipa": "/stɔːl/",
+     "vi": "quầy hàng, sạp",
+     "ex": "The market started with only twelve stalls."
+    },
+    {
+     "w": "popular",
+     "pos": "adj",
+     "ipa": "/ˈpɒpjələ(r)/",
+     "vi": "được nhiều người ưa thích",
+     "ex": "It is the most popular event in the town."
+    },
+    {
+     "w": "local",
+     "pos": "adj",
+     "ipa": "/ˈləʊkl/",
+     "vi": "thuộc địa phương",
+     "ex": "Local musicians play near the fountain."
+    },
+    {
+     "w": "attraction",
+     "pos": "n",
+     "ipa": "/əˈtrækʃn/",
+     "vi": "điểm thu hút",
+     "ex": "Food is the main attraction."
+    },
+    {
+     "w": "event",
+     "pos": "n",
+     "ipa": "/ɪˈvent/",
+     "vi": "sự kiện",
+     "ex": "It has become the most popular event in the town."
+    },
+    {
+     "w": "fountain",
+     "pos": "n",
+     "ipa": "/ˈfaʊntən/",
+     "vi": "đài phun nước",
+     "ex": "We met next to the fountain in the square."
+    },
+    {
+     "w": "resident",
+     "pos": "n",
+     "ipa": "/ˈrezɪdənt/",
+     "vi": "cư dân",
+     "ex": "Older residents remember the town when they were young."
+    },
+    {
+     "w": "remind",
+     "pos": "v",
+     "ipa": "/rɪˈmaɪnd/",
+     "vi": "gợi nhớ, nhắc nhở",
+     "ex": "This song reminds me of my childhood."
+    },
+    {
+     "w": "neighbour",
+     "pos": "n",
+     "ipa": "/ˈneɪbə(r)/",
+     "vi": "hàng xóm",
+     "ex": "Neighbours met in the street and talked."
+    },
+    {
+     "w": "customer",
+     "pos": "n",
+     "ipa": "/ˈkʌstəmə(r)/",
+     "vi": "khách hàng",
+     "ex": "Shop owners worried that they would lose customers."
+    },
+    {
+     "w": "organiser",
+     "pos": "n",
+     "ipa": "/ˈɔːɡənaɪzə(r)/",
+     "vi": "người tổ chức",
+     "ex": "The organisers listened to the complaints."
+    },
+    {
+     "w": "crowd",
+     "pos": "n",
+     "ipa": "/kraʊd/",
+     "vi": "đám đông",
+     "ex": "The shops can benefit from the crowds too."
+    }
+   ]
+  },
+  {
+   "id": "b2",
+   "title": "Bài đọc 2",
+   "level": "B1–B2",
+   "words": [
+    {
+     "w": "instrument",
+     "pos": "n",
+     "ipa": "/ˈɪnstrəmənt/",
+     "vi": "nhạc cụ",
+     "ex": "It is never too late to learn an instrument."
+    },
+    {
+     "w": "beginner",
+     "pos": "n",
+     "ipa": "/bɪˈɡɪnə(r)/",
+     "vi": "người mới bắt đầu",
+     "ex": "The number of adult beginners has grown."
+    },
+    {
+     "w": "steadily",
+     "pos": "adv",
+     "ipa": "/ˈstedəli/",
+     "vi": "đều đặn, vững chắc",
+     "ex": "Prices have risen steadily this year."
+    },
+    {
+     "w": "progress",
+     "pos": "n",
+     "ipa": "/ˈprəʊɡres/",
+     "vi": "sự tiến bộ",
+     "ex": "She is making good progress in English."
+    },
+    {
+     "w": "instruction",
+     "pos": "n",
+     "ipa": "/ɪnˈstrʌkʃn/",
+     "vi": "lời hướng dẫn",
+     "ex": "Adults understand instructions quickly."
+    },
+    {
+     "w": "patiently",
+     "pos": "adv",
+     "ipa": "/ˈpeɪʃntli/",
+     "vi": "một cách kiên nhẫn",
+     "ex": "He waited patiently for his turn."
+    },
+    {
+     "w": "obvious",
+     "pos": "adj",
+     "ipa": "/ˈɒbviəs/",
+     "vi": "rõ ràng, hiển nhiên",
+     "ex": "The second problem is less obvious."
+    },
+    {
+     "w": "give up",
+     "pos": "phr v",
+     "ipa": "/ˌɡɪv ˈʌp/",
+     "vi": "bỏ cuộc",
+     "ex": "Some adults give up for this reason alone."
+    },
+    {
+     "w": "invisible",
+     "pos": "adj",
+     "ipa": "/ɪnˈvɪzəbl/",
+     "vi": "không nhìn thấy được",
+     "ex": "Daily progress is almost invisible."
+    },
+    {
+     "w": "reward",
+     "pos": "n",
+     "ipa": "/rɪˈwɔːd/",
+     "vi": "phần thưởng, điều đáng giá",
+     "ex": "The rewards go beyond music itself."
+    },
+    {
+     "w": "satisfaction",
+     "pos": "n",
+     "ipa": "/ˌsætɪsˈfækʃn/",
+     "vi": "sự hài lòng, thoả mãn",
+     "ex": "There is a quiet satisfaction in doing something difficult."
+    },
+    {
+     "w": "impress",
+     "pos": "v",
+     "ipa": "/ɪmˈpres/",
+     "vi": "gây ấn tượng",
+     "ex": "He wanted to impress his new manager."
+    }
+   ]
+  },
+  {
+   "id": "b3",
+   "title": "Bài đọc 3",
+   "level": "B2",
+   "words": [
+    {
+     "w": "promise",
+     "pos": "n",
+     "ipa": "/ˈprɒmɪs/",
+     "vi": "lời hứa",
+     "ex": "The machines were sold with the same promise."
+    },
+    {
+     "w": "survey",
+     "pos": "n",
+     "ipa": "/ˈsɜːveɪ/",
+     "vi": "cuộc khảo sát",
+     "ex": "Surveys showed something puzzling."
+    },
+    {
+     "w": "puzzling",
+     "pos": "adj",
+     "ipa": "/ˈpʌzlɪŋ/",
+     "vi": "khó hiểu",
+     "ex": "The result of the experiment was puzzling."
+    },
+    {
+     "w": "labour",
+     "pos": "n",
+     "ipa": "/ˈleɪbə(r)/",
+     "vi": "lao động, công việc nặng",
+     "ex": "Washing clothes meant a whole day of heavy labour."
+    },
+    {
+     "w": "effort",
+     "pos": "n",
+     "ipa": "/ˈefət/",
+     "vi": "công sức, nỗ lực",
+     "ex": "The technology reduced the effort needed for each wash."
+    },
+    {
+     "w": "standard",
+     "pos": "n",
+     "ipa": "/ˈstændəd/",
+     "vi": "tiêu chuẩn",
+     "ex": "Standards rose to fill the time that had been saved."
+    },
+    {
+     "w": "pattern",
+     "pos": "n",
+     "ipa": "/ˈpætn/",
+     "vi": "khuôn mẫu, quy luật lặp lại",
+     "ex": "The same pattern can be seen beyond the home."
+    },
+    {
+     "w": "attractive",
+     "pos": "adj",
+     "ipa": "/əˈtræktɪv/",
+     "vi": "hấp dẫn",
+     "ex": "A wider road makes driving more attractive."
+    },
+    {
+     "w": "rebound",
+     "pos": "n",
+     "ipa": "/ˈriːbaʊnd/",
+     "vi": "sự bật ngược trở lại",
+     "ex": "Economists describe this as a rebound effect."
+    },
+    {
+     "w": "wholly",
+     "pos": "adv",
+     "ipa": "/ˈhəʊlli/",
+     "vi": "hoàn toàn, toàn bộ",
+     "ex": "The saving partly or wholly disappears."
+    },
+    {
+     "w": "advertise",
+     "pos": "v",
+     "ipa": "/ˈædvətaɪz/",
+     "vi": "quảng cáo",
+     "ex": "The benefit is different from the one that was advertised."
+    },
+    {
+     "w": "take on",
+     "pos": "phr v",
+     "ipa": "/ˌteɪk ˈɒn/",
+     "vi": "nhận thêm (việc)",
+     "ex": "The app makes it easier to take on more tasks."
+    }
+   ]
+  },
+  {
+   "id": "b4",
+   "title": "Bài đọc 4",
+   "level": "C1",
+   "words": [
+    {
+     "w": "objective",
+     "pos": "adj",
+     "ipa": "/əbˈdʒektɪv/",
+     "vi": "khách quan",
+     "ex": "A number seems objective."
+    },
+    {
+     "w": "tendency",
+     "pos": "n",
+     "ipa": "/ˈtendənsi/",
+     "vi": "xu hướng, khuynh hướng",
+     "ex": "There is a tendency for such figures to lose their meaning."
+    },
+    {
+     "w": "cease",
+     "pos": "v",
+     "ipa": "/siːs/",
+     "vi": "ngừng, thôi",
+     "ex": "It ceases to be a good measure."
+    },
+    {
+     "w": "incentive",
+     "pos": "n",
+     "ipa": "/ɪnˈsentɪv/",
+     "vi": "động cơ thúc đẩy, sự khuyến khích",
+     "ex": "They have a strong incentive to raise the number."
+    },
+    {
+     "w": "devote",
+     "pos": "v",
+     "ipa": "/dɪˈvəʊt/",
+     "vi": "dành (thời gian, công sức) cho",
+     "ex": "Time is devoted to examination technique."
+    },
+    {
+     "w": "enterprising",
+     "pos": "adj",
+     "ipa": "/ˈentəpraɪzɪŋ/",
+     "vi": "tháo vát, dám nghĩ dám làm",
+     "ex": "Enterprising residents found a way to earn money."
+    },
+    {
+     "w": "scheme",
+     "pos": "n",
+     "ipa": "/skiːm/",
+     "vi": "chương trình, kế hoạch",
+     "ex": "The authorities cancelled the scheme."
+    },
+    {
+     "w": "illustrate",
+     "pos": "v",
+     "ipa": "/ˈɪləstreɪt/",
+     "vi": "minh hoạ",
+     "ex": "The story illustrates a familiar problem."
+    },
+    {
+     "w": "abandon",
+     "pos": "v",
+     "ipa": "/əˈbændən/",
+     "vi": "từ bỏ",
+     "ex": "Measurement should not be abandoned."
+    },
+    {
+     "w": "manipulate",
+     "pos": "v",
+     "ipa": "/məˈnɪpjuleɪt/",
+     "vi": "thao túng",
+     "ex": "Reputation is easier to manipulate than figures."
+    },
+    {
+     "w": "indicator",
+     "pos": "n",
+     "ipa": "/ˈɪndɪkeɪtə(r)/",
+     "vi": "chỉ số, dấu hiệu",
+     "ex": "No single indicator can show everything."
+    },
+    {
+     "w": "simultaneously",
+     "pos": "adv",
+     "ipa": "/ˌsɪmlˈteɪniəsli/",
+     "vi": "đồng thời, cùng lúc",
+     "ex": "It is hard to improve several measures simultaneously."
+    }
+   ]
+  }
+ ]
+};
+</script>
+<script>
+/* ===== TỪ VỰNG MỚI (dùng chung cho các trang kỹ năng) =====
+   V.vocabTab(panel, { skill: 'nghe', groups: [{title, level, words:[{w,pos,ipa,vi,ex}]}], source: 'các bài nghe', listenFirst: true })
+   listenFirst = true: bài kiểm tra phát âm trước rồi mới chọn nghĩa (trang Nghe); false: hiện chữ, bấm nghe nếu muốn. */
+(function () {
+  'use strict';
+  var V = window.V, h = V.h;
+  var picked = {};
+  function shuffle(a) { a = a.slice(); for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)), t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+  function top() { try { window.scrollTo(0, 0); } catch (e) { } }
+
+  V.vocabTab = function (panel, o) {
+    var n = o.groups.length;
+    if (picked[o.skill] === undefined) picked[o.skill] = ({ b1: 0, b2: Math.floor((n - 1) / 2), c1: n - 1 })[V.target().key] || 0;
+    function view() {
+      V.stopClip(); V.clear(panel);
+      var g = o.groups[picked[o.skill]];
+      panel.appendChild(h('div', { class: 'vbar' },
+        h('div', { class: 'pick' }, 'Nhóm từ', h('div', { class: 'seg', role: 'group', 'aria-label': 'Nhóm từ' }, o.groups.map(function (x, i) {
+          return h('button', { type: 'button', 'aria-pressed': i === picked[o.skill] ? 'true' : 'false', title: 'Trình độ ' + x.level, onclick: function () { picked[o.skill] = i; view(); } }, x.title);
+        }))),
+        V.speedToggle()));
+      panel.appendChild(h('p', { class: 'muted', style: { margin: '12px 0 14px', maxWidth: '70ch' } },
+        g.words.length + ' từ lấy từ ' + (o.source ? o.source + ' ' : '') + g.title + ', trình độ ' + g.level + '. Nghe giọng nữ và giọng nam, đọc theo, rồi làm bài kiểm tra nhanh.'));
+      panel.appendChild(h('div', { class: 'words' }, g.words.map(V.wordCard)));
+      panel.appendChild(h('div', { class: 'row', style: { marginTop: '18px' } },
+        h('button', { class: 'btn primary', type: 'button', onclick: function () { quiz(g); } }, 'Kiểm tra nhanh ' + Math.min(10, g.words.length) + ' từ')));
+    }
+    function quiz(g) {
+      V.stopClip(); top();
+      var qs = shuffle(g.words).slice(0, 10), i = 0, right = 0, missed = [];
+      function ask() {
+        V.stopClip(); V.clear(panel);
+        var w = qs[i], voice = Math.random() < 0.5 ? 'f' : 'm';
+        var opts = shuffle([w].concat(shuffle(g.words.filter(function (x) { return x !== w; })).slice(0, 3)));
+        var fb = h('div', { class: 'qfb', role: 'status' }), box = h('div', { class: 'qopts' });
+        function listen() { V.playClip('tu/' + V.slug(w.w) + '-' + voice + '.mp3', { fallback: w.w }); }
+        opts.forEach(function (op) {
+          var b = h('button', { class: 'btn', type: 'button' }, op.vi);
+          b.addEventListener('click', function () {
+            Array.prototype.forEach.call(box.querySelectorAll('button'), function (x) { x.disabled = true; });
+            var ok = op === w; if (ok) right++; else missed.push(w);
+            b.classList.add(ok ? 'right' : 'wrong');
+            if (!ok) Array.prototype.forEach.call(box.querySelectorAll('button'), function (x, k) { if (opts[k] === w) x.classList.add('right'); });
+            V.add(fb, [h('p', null, h('b', null, ok ? 'Đúng. ' : 'Chưa đúng. '), h('span', { lang: 'en', class: 'qw' }, w.w), ' ', h('span', { class: 'ipa' }, w.ipa), ' = ' + w.vi),
+              h('button', { class: 'btn primary', type: 'button', onclick: function () { i++; if (i < qs.length) ask(); else done(); } }, i + 1 < qs.length ? 'Câu tiếp' : 'Xem kết quả')]);
+            fb.querySelector('button').focus();
+          });
+          box.appendChild(b);
+        });
+        panel.appendChild(h('div', { class: 'quiz' },
+          h('div', { class: 'qhead' }, h('b', null, 'Kiểm tra nhanh, ' + g.title), h('span', { class: 'muted' }, 'Từ ' + (i + 1) + '/' + qs.length)),
+          o.listenFirst ? h('p', null, 'Nghe rồi chọn nghĩa đúng của từ.') : [h('p', null, 'Chọn nghĩa đúng của từ.'), h('div', { class: 'qword', lang: 'en' }, w.w)],
+          h('button', { class: 'btn ' + (o.listenFirst ? 'blue' : 'small'), type: 'button', onclick: listen }, h('span', { html: V.ICON.loa, style: { display: 'inline-flex' } }), o.listenFirst ? 'Nghe lại' : 'Nghe phát âm'),
+          box, fb,
+          h('button', { class: 'btn small', type: 'button', style: { marginTop: '16px' }, onclick: view }, 'Thoát')));
+        if (o.listenFirst) listen();
+      }
+      function done() {
+        V.stopClip(); V.clear(panel);
+        var title = 'Từ vựng ' + g.title;
+        var rec = V.results.add({ skill: o.skill, kind: 'tu-vung', title: title, correct: right, total: qs.length, sent: false });
+        if (V.sheetOn()) V.send(o.skill, { 'Đề': 'Từ vựng', 'Phần': g.title, 'Kết quả': right + '/' + qs.length,
+          'Chi tiết đáp án': missed.length ? 'Sai: ' + missed.map(function (w) { return w.w; }).join(', ') : 'Đúng hết', 'Mục tiêu': V.target().t }, function (ok) { if (ok) V.results.mark(rec.ts, { sent: true }); });
+        panel.appendChild(h('div', { class: 'score' },
+          h('div', { class: 'big' }, right + '/' + qs.length, h('span', null, ' từ đúng')),
+          h('div', null, h('b', null, title), h('p', null, missed.length ? 'Xem lại các từ chưa đúng bên dưới rồi thử lại.' : 'Bạn nhớ hết các từ được hỏi.'))));
+        if (missed.length) panel.appendChild(h('div', { class: 'words', style: { marginTop: '16px' } }, missed.map(V.wordCard)));
+        panel.appendChild(h('div', { class: 'row', style: { marginTop: '18px' } },
+          h('button', { class: 'btn primary', type: 'button', onclick: function () { quiz(g); } }, 'Kiểm tra lại'),
+          h('button', { class: 'btn', type: 'button', onclick: view }, 'Về danh sách từ')));
+      }
+      ask();
+    }
+    view();
+  };
+})();
+/* ===== TRANG ĐỌC ===== */
+(function () {
+  'use strict';
+  var V = window.V, h = V.h, D = window.DOC_DATA;
+  var LETTERS = ['A', 'B', 'C', 'D'];
+  var TABS = [['luyen-tap', 'Luyện tập'], ['tu-vung', 'Từ vựng mới']];
+  function hashTab() { return location.hash === '#tu-vung' ? 'tu-vung' : 'luyen-tap'; }
+  var tab = hashTab();
+  var bar, panel, root, timerId = null;
+
+  // đánh số câu liên tục trong cả đề: bài 1 câu 1–10, bài 2 câu 11–20…
+  D.tests.forEach(function (t) {
+    var n = 0, mins = 0;
+    t.passages.forEach(function (p) {
+      p.first = n + 1;
+      p.qs.forEach(function (q) { n++; q.n = n; });
+      p.count = p.qs.length; mins += p.minutes;
+      p.words = p.paras.join(' ').split(/\s+/).length;
+    });
+    t.count = n; t.minutes = mins;
+  });
+  function lastResult(title) {
+    var r = V.results.of('doc').filter(function (x) { return x.title === title; })[0];
+    return r ? r.correct + '/' + r.total + ' câu đúng (' + V.dateShort(r.ts) + ')' : '';
+  }
+  function top() { try { if (document.body.classList.contains('doing')) bar.scrollIntoView(); else window.scrollTo(0, 0); } catch (e) { } }
+  function doing(on) { document.body.classList.toggle('doing', !!on); }
+  function stopTimer() { if (timerId) { clearInterval(timerId); timerId = null; } }
+  function mmss(s) { s = Math.max(0, Math.round(s)); return Math.floor(s / 60) + ':' + ('0' + (s % 60)).slice(-2); }
+  function wide(on) { root.classList.toggle('wide', !!on); }
+
+  /* ================= DANH SÁCH BÀI ================= */
+  function listView() {
+    stopTimer(); wide(false); doing(false); V.clear(panel);
+    var tg = V.target();
+    var tip = { b1: 'Với mục tiêu B1, hãy làm chắc Bài đọc 1 và 2. Bài 3 và 4 làm được câu nào hay câu đó, nhưng đừng bỏ trống.',
+      b2: 'Với mục tiêu B2, ba bài đầu cần đúng phần lớn. Tập giữ đúng thời gian cho từng bài.',
+      c1: 'Với mục tiêu C1, hãy làm cả đề trong 60 phút như thi thật và nhắm đúng từ 34/40 câu.' }[tg.key];
+    panel.appendChild(h('p', { class: 'notice', style: { marginBottom: '16px' } }, tip));
+    var cur = Math.min(V.store.get('doc.de', 0), D.tests.length - 1);
+    panel.appendChild(h('div', { class: 'testpick' }, 'Chọn đề', h('div', { class: 'chips', role: 'group', 'aria-label': 'Chọn đề' }, D.tests.map(function (t, i) {
+      var w = V.results.of('doc').filter(function (x) { return x.title === t.title + ', cả đề'; })[0];
+      return h('button', { type: 'button', 'aria-pressed': i === cur ? 'true' : 'false', onclick: function () { V.store.set('doc.de', i); listView(); } },
+        t.title, w ? h('span', { class: 'done' }, w.correct + '/' + w.total) : null);
+    }))));
+    [D.tests[cur]].forEach(function (t) {
+      var rows = t.passages.map(function (p) {
+        var title = t.title + ', ' + p.title, last = lastResult(title);
+        return h('li', null,
+          h('div', { class: 'pt' }, h('b', null, p.title), h('span', { class: 'pill blue' }, p.level)),
+          h('div', { class: 'pd' }, h('span', { lang: 'en' }, p.name), '. Khoảng ' + (Math.round(p.words / 10) * 10) + ' từ, 10 câu, ' + p.minutes + ' phút.', last ? h('span', { class: 'last' }, 'Lần gần nhất: ' + last) : null),
+          h('button', { class: 'btn blue', type: 'button', onclick: function () { start(t, [p], title, p.minutes); } }, 'Làm ' + p.title));
+      });
+      var whole = t.title + ', cả đề', lastW = lastResult(whole);
+      rows.push(h('li', null,
+        h('div', { class: 'pt' }, h('b', null, 'Cả đề'), h('span', { class: 'pill blue' }, 'B1–C1')),
+        h('div', { class: 'pd' }, 'Làm liền bốn bài, ' + t.count + ' câu trong ' + t.minutes + ' phút. Kết quả được quy ra thang điểm 10.', lastW ? h('span', { class: 'last' }, 'Lần gần nhất: ' + lastW) : null),
+        h('button', { class: 'btn primary', type: 'button', onclick: function () { start(t, t.passages, whole, t.minutes); } }, 'Làm cả đề')));
+      panel.appendChild(h('section', { class: 'test' }, h('h2', null, t.title), h('ul', { class: 'parts' }, rows)));
+    });
+  }
+
+  /* ================= BÀI ĐỌC ================= */
+  function passageBox(p) {
+    return h('div', { class: 'passage', lang: 'en', tabindex: '0', 'aria-label': 'Bài đọc: ' + p.name },
+      h('h3', null, p.name),
+      p.paras.map(function (t, i) { return h('p', { id: p.id + '-para-' + (i + 1) }, h('span', { class: 'pn', 'aria-hidden': 'true' }, String(i + 1)), t); }));
+  }
+
+  /* ================= LÀM BÀI ================= */
+  function start(test, ps, title, minutes) {
+    stopTimer(); V.clear(panel); wide(true); doing(true); top();
+    var answers = {}, total = 0, t0 = Date.now(), limit = minutes * 60, warned = false;
+    ps.forEach(function (p) { total += p.count; });
+    var count = h('span', { class: 'count' }), clock = h('span', { class: 'clock', role: 'timer' }), warn = h('div');
+    function upd() { V.add(V.clear(count), [h('span', { class: 'long' }, 'Đã chọn '), Object.keys(answers).length + '/' + total, h('span', { class: 'long' }, ' câu')]); }
+    function tick() {
+      var left = limit - (Date.now() - t0) / 1000;
+      clock.textContent = left > 0 ? mmss(left) : 'Hết giờ';
+      clock.classList.toggle('late', left <= 0);
+      if (left <= 0 && !warned) { warned = true; V.toast('Đã hết ' + minutes + ' phút. Bạn vẫn có thể làm tiếp rồi nộp bài.'); }
+    }
+    panel.appendChild(h('div', { class: 'dobar' },
+      h('div', null, h('b', null, title), count, clock),
+      h('div', { class: 'row' }, h('button', { class: 'btn small', type: 'button', onclick: function () { listView(); top(); } }, 'Thoát'),
+        h('button', { class: 'btn primary', type: 'button', onclick: function () { trySubmit(); } }, 'Nộp bài'))));
+    ps.forEach(function (p) {
+      var qcol = h('div', { class: 'qcol' });
+      p.qs.forEach(function (q) {
+        var fs = h('fieldset', { class: 'q' }, h('legend', null, h('span', { class: 'qn' }, 'Câu ' + q.n + '.'), ' ', h('span', { lang: 'en' }, q.q)));
+        q.o.forEach(function (o, i) {
+          var id = 'q' + q.n + '-' + i, r = h('input', { type: 'radio', name: 'q' + q.n, id: id });
+          r.addEventListener('change', function () { answers[q.n] = i; upd(); V.clear(warn); });
+          fs.appendChild(h('label', { class: 'opt', for: id }, r, h('span', { class: 'lt' }, LETTERS[i]), h('span', { lang: 'en' }, o)));
+        });
+        qcol.appendChild(fs);
+      });
+      panel.appendChild(h('section', { class: 'read' },
+        h('h2', { class: 'parthead' }, p.title, h('span', { class: 'pill blue' }, p.level), h('span', { class: 'muted small', style: { fontWeight: '400' } }, 'Câu ' + p.first + '–' + (p.first + p.count - 1))),
+        h('div', { class: 'readgrid' }, passageBox(p), qcol)));
+    });
+    panel.appendChild(warn);
+    panel.appendChild(h('div', { class: 'row', style: { marginTop: '18px' } },
+      h('button', { class: 'btn primary', type: 'button', onclick: function () { trySubmit(); } }, 'Nộp bài')));
+    upd(); tick(); timerId = setInterval(tick, 1000); top();
+
+    function trySubmit(force) {
+      var left = total - Object.keys(answers).length;
+      if (left > 0 && !force) {
+        V.clear(warn).appendChild(h('div', { class: 'notice warn', style: { marginTop: '14px' }, role: 'alert' },
+          'Còn ' + left + ' câu chưa chọn. Câu bỏ trống tính là sai. ',
+          h('button', { class: 'btn small', type: 'button', style: { marginLeft: '8px' }, onclick: function () { trySubmit(true); } }, 'Vẫn nộp bài')));
+        warn.scrollIntoView({ block: 'center' });
+        return;
+      }
+      resultView(test, ps, title, minutes, answers, total, (Date.now() - t0) / 1000);
+    }
+  }
+
+  /* ================= KẾT QUẢ VÀ CHỮA BÀI ================= */
+  function resultView(test, ps, title, minutes, answers, total, used) {
+    stopTimer(); V.clear(panel); wide(true); doing(false); top();
+    var correct = 0, wrong = [], types = {}, order = [];
+    ps.forEach(function (p) { p.qs.forEach(function (q) {
+      if (!types[q.t]) { types[q.t] = { ok: 0, all: 0 }; order.push(q.t); }
+      types[q.t].all++;
+      if (answers[q.n] === q.a) { correct++; types[q.t].ok++; }
+      else wrong.push(q.n + '(' + (answers[q.n] === undefined ? 'bỏ trống' : LETTERS[answers[q.n]]) + ', đúng ' + LETTERS[q.a] + ')');
+    }); });
+    var score10 = Math.round(correct / total * 100) / 10, whole = ps.length === test.passages.length;
+    var weak = order.filter(function (t) { return types[t].ok < types[t].all; }).map(function (t) { return t + ' ' + (types[t].all - types[t].ok) + '/' + types[t].all; });
+    var rec = V.results.add({ skill: 'doc', kind: 'luyen-tap', title: title, correct: correct, total: total, score10: score10, full: whole, sent: false });
+
+    var sendBox = h('p', { class: 'small muted', role: 'status' });
+    function send() {
+      if (!V.sheetOn()) { sendBox.textContent = 'Kết quả đã được lưu trên máy này.'; return; }
+      sendBox.textContent = 'Đang gửi kết quả cho ' + V.teacher() + '…';
+      V.send('doc', { 'Đề': test.title, 'Phần': whole ? 'Cả đề' : ps[0].title, 'Kết quả': correct + '/' + total, 'Điểm /10': V.fmtScore(score10),
+        'Thời gian': mmss(used) + ' / ' + minutes + ':00', 'Chi tiết đáp án': wrong.length ? 'Sai: ' + wrong.join('; ') : 'Đúng hết',
+        'Dạng câu sai': weak.join('; ') || 'Không', 'Mục tiêu': V.target().t }, function (ok) {
+        V.clear(sendBox);
+        if (ok) { V.results.mark(rec.ts, { sent: true }); sendBox.textContent = 'Đã lưu và gửi kết quả cho ' + V.teacher() + '.'; }
+        else V.add(sendBox, ['Đã lưu trên máy này nhưng chưa gửi được cho ' + V.teacher() + '. ', h('button', { class: 'btn small', type: 'button', onclick: send }, 'Gửi lại')]);
+      });
+    }
+    var verdict, timeNote = 'Thời gian làm bài: ' + mmss(used) + ' trên ' + minutes + ' phút' + (used > minutes * 60 ? ', quá giờ.' : '.');
+    if (whole) {
+      var band = V.bandOf(score10), tg = V.target();
+      verdict = 'Điểm Đọc ước lượng: ' + V.fmtScore(V.round05(score10)) + '/10, ' + (band.key === 'none' ? 'chưa tới mốc B1' : 'tương đương ' + band.t) + '. ' +
+        (V.round05(score10) >= tg.min ? 'Bạn đã đạt mốc mục tiêu ' + tg.t + ' ở kỹ năng Đọc.' : 'Mốc mục tiêu ' + tg.t + ' cần từ ' + V.fmtScore(tg.min) + ' điểm.');
+    } else verdict = correct === total ? 'Đúng hết. Hãy thử bài tiếp theo.' : 'Xem phần chữa bài bên dưới, tìm lại câu chứa đáp án trong bài rồi làm lại.';
+    panel.appendChild(h('div', { class: 'score' },
+      h('div', { class: 'big' }, correct + '/' + total, h('span', null, ' câu đúng')),
+      h('div', null, h('b', null, title), h('p', null, verdict), h('p', { class: 'small muted' }, timeNote), sendBox)));
+    panel.appendChild(h('div', { class: 'types' }, h('b', null, 'Theo dạng câu hỏi'),
+      h('div', { class: 'row' }, order.map(function (t) {
+        var x = types[t]; return h('span', { class: 'pill ' + (x.ok === x.all ? 'ok' : x.ok * 2 < x.all ? 'no' : '') }, t + ': ' + x.ok + '/' + x.all);
+      }))));
+    panel.appendChild(h('div', { class: 'row', style: { margin: '14px 0 6px' } },
+      h('button', { class: 'btn primary', type: 'button', onclick: function () { start(test, ps, title, minutes); } }, 'Làm lại'),
+      h('button', { class: 'btn', type: 'button', onclick: function () { listView(); top(); } }, 'Về danh sách bài')));
+    send();
+
+    ps.forEach(function (p) {
+      var pbox = passageBox(p), qcol = h('div', { class: 'qcol' });
+      function show(n) {
+        Array.prototype.forEach.call(pbox.querySelectorAll('p.hl'), function (x) { x.classList.remove('hl'); });
+        var el = pbox.querySelector('#' + p.id + '-para-' + n);
+        if (el) { el.classList.add('hl'); el.scrollIntoView({ block: 'nearest', behavior: 'smooth' }); }
+      }
+      p.qs.forEach(function (q) {
+        var mine = answers[q.n], ok = mine === q.a;
+        var box = h('div', { class: 'q rev ' + (ok ? 'ok' : 'bad') },
+          h('div', { class: 'qt' }, h('span', { class: 'qn' }, 'Câu ' + q.n + '.'), ' ', h('span', { lang: 'en' }, q.q),
+            h('span', { class: 'pill ' + (ok ? 'ok' : 'no') }, ok ? 'Đúng' : mine === undefined ? 'Bỏ trống' : 'Sai'), h('span', { class: 'pill' }, q.t)));
+        q.o.forEach(function (o, i) {
+          box.appendChild(h('div', { class: 'opt' + (i === q.a ? ' right' : i === mine ? ' wrong' : '') },
+            h('span', { class: 'lt' }, LETTERS[i]), h('span', { lang: 'en' }, o),
+            i === q.a ? h('span', { class: 'tag' }, 'Đáp án đúng') : i === mine ? h('span', { class: 'tag' }, 'Bạn chọn') : null));
+        });
+        box.appendChild(h('div', { class: 'why' },
+          h('div', { class: 'ev' }, q.p ? h('button', { class: 'plink', type: 'button', onclick: function () { show(q.p); } }, 'Đoạn ' + q.p) : h('b', null, 'Cả bài'), ' ', h('span', { lang: 'en' }, '“' + q.ev + '”')),
+          q.why));
+        qcol.appendChild(box);
+      });
+      panel.appendChild(h('section', { class: 'read' },
+        h('h2', { class: 'parthead' }, 'Chữa ' + p.title, h('span', { class: 'pill blue' }, p.level)),
+        h('div', { class: 'readgrid' }, pbox, qcol)));
+    });
+    panel.appendChild(h('div', { class: 'row', style: { marginTop: '18px' } },
+      h('button', { class: 'btn primary', type: 'button', onclick: function () { start(test, ps, title, minutes); } }, 'Làm lại'),
+      h('button', { class: 'btn', type: 'button', onclick: function () { listView(); top(); } }, 'Về danh sách bài')));
+  }
+
+  /* ================= KHUNG TRANG ================= */
+  function draw() {
+    V.clear(bar);
+    TABS.forEach(function (t) {
+      bar.appendChild(h('button', { class: 'tab' + (t[0] === tab ? ' on' : ''), type: 'button', role: 'tab', 'aria-selected': t[0] === tab ? 'true' : 'false',
+        onclick: function () { tab = t[0]; try { history.replaceState(null, '', '#' + tab); } catch (e) { } draw(); } }, t[1]));
+    });
+    if (tab === 'tu-vung') { stopTimer(); wide(false); doing(false); V.vocabTab(panel, { skill: 'doc', groups: D.vocab, source: '', listenFirst: false }); }
+    else listView();
+  }
+  V.mount(function (r) {
+    root = r;
+    bar = h('div', { class: 'tabs', role: 'tablist' }); panel = h('div', { role: 'tabpanel' });
+    window.addEventListener('hashchange', function () { tab = hashTab(); draw(); });
+    root.appendChild(V.pageHead('Đọc', 'Reading', 'Bài đọc theo đúng định dạng VSTEP.3-5: 4 bài, 40 câu, 60 phút, độ khó tăng dần từ B1 đến C1.'));
+    root.appendChild(h('div', { style: { marginTop: '14px' } }, V.learnerBox(function () { draw(); })));
+    root.appendChild(bar); root.appendChild(panel);
+    draw();
+    root.appendChild(V.pager());
+  });
+})();
+</script>
+</body>
+</html>
