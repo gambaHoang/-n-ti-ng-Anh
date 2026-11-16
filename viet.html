@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Luyện Viết – Ôn thi VSTEP B1–C1</title>
-<meta name="description" content="Luyện Viết VSTEP B1–C1 và từ vựng mới có phát âm.">
+<meta name="description" content="Luyện Viết VSTEP B1–C1: đề viết thư và bài luận có bấm giờ, đếm từ, bài viết mẫu để so sánh và từ vựng mới có phát âm giọng nam, giọng nữ.">
 <script>
 /* ================================================================
    CÀI ĐẶT — chỉ cần sửa phần này (giữ nguyên dấu ngoặc kép "")
@@ -178,6 +178,203 @@ h1,h2,h3,p{margin:0}
 .audiowarn{margin-top:16px;padding:14px 18px}
 .audiowarn ul{margin:6px 0 6px;padding-left:20px}
 .audiowarn li{margin-top:4px}
+/* ===== LUYỆN TẬP: danh sách bài, làm bài, chấm, chữa (dùng chung cho Nghe và Đọc) ===== */
+.test{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px 20px 8px;margin-bottom:18px}
+.test h2{font-size:1.35rem;font-weight:800;margin-bottom:4px}
+.parts{list-style:none;margin:0;padding:0}
+.parts li{display:grid;grid-template-columns:150px minmax(0,1fr) auto;gap:10px 18px;align-items:center;padding:14px 0;border-top:1px solid var(--line)}
+.parts li:first-child{border-top:0}
+.parts .pt{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.parts .pt b{font-size:1.08rem}
+.parts .pd{color:var(--muted);font-size:.95rem}
+.parts .last{display:block;color:var(--blue-900);font-weight:600;margin-top:2px}
+.parts .btn{min-width:128px}
+@media(max-width:700px){.parts li{grid-template-columns:1fr}.parts .btn{width:100%}}
+
+.dobar{position:sticky;top:calc(var(--navh, 57px) + 8px);z-index:10;display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;justify-content:space-between;background:var(--ink);color:#fff;border-radius:12px;padding:10px 16px;margin-bottom:16px}
+.dobar .count{margin-left:12px;font-size:.92rem;opacity:.85;font-variant-numeric:tabular-nums}
+.dobar .btn.primary{background:#fff;color:var(--ink);border-color:#fff}
+.dobar .btn.small{background:transparent;color:#fff;border-color:rgba(255,255,255,.45)}
+.parthead{font-size:1.3rem;font-weight:800;margin:26px 0 12px;display:flex;align-items:center;gap:10px}
+.item{background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px 20px 18px;margin-bottom:14px}
+.item h3{font-size:1.02rem;font-weight:700;margin-bottom:10px}
+.player audio{width:100%;max-width:560px;display:block;height:44px}
+.player .notice{margin-top:8px}
+.q{border:0;margin:16px 0 0;padding:0;min-width:0}
+.q legend,.q .qt{font-weight:600;padding:0;margin-bottom:8px;line-height:1.45}
+.q .qn{color:var(--blue-900);font-weight:800}
+.opt{display:flex;align-items:flex-start;gap:10px;padding:9px 12px;border:1px solid var(--line);border-radius:10px;margin-top:6px;cursor:pointer;line-height:1.4}
+label.opt:hover{border-color:var(--blue-400);background:var(--blue-50)}
+.opt input{width:19px;height:19px;margin:2px 0 0;flex:0 0 auto;accent-color:var(--blue-600)}
+.opt:has(input:checked){border-color:var(--blue-600);background:var(--blue-50)}
+.opt .lt{font-weight:800;min-width:1.1em}
+.q.rev .opt{cursor:default}
+.q.rev .qt .pill{margin-left:8px;vertical-align:1px}
+.pill.no{background:var(--bad-soft);color:var(--bad)}
+.opt.right{border-color:var(--ok);background:var(--ok-soft)}
+.opt.wrong{border-color:var(--bad);background:var(--bad-soft)}
+.opt .tag{margin-left:auto;font-size:.82rem;font-weight:700;white-space:nowrap;padding-left:10px}
+.opt.right .tag{color:var(--ok)}
+.opt.wrong .tag{color:var(--bad)}
+.why{margin-top:8px;padding:10px 14px;border-left:3px solid var(--blue-400);background:#f7f9fd;border-radius:0 10px 10px 0;font-size:.95rem}
+.why .ev{font-style:italic;color:var(--blue-900);margin-bottom:4px}
+.script{margin-top:16px;border-top:1px solid var(--line);padding-top:12px}
+.script summary{cursor:pointer;font-weight:700;color:var(--blue-700)}
+.script p{margin-top:8px;max-width:72ch}
+
+.score{display:flex;flex-wrap:wrap;gap:8px 26px;align-items:center;background:#fff;border:1.5px solid var(--ink);border-radius:16px;padding:18px 22px}
+.score .big{font-size:2.6rem;font-weight:800;letter-spacing:-.02em;line-height:1.1;white-space:nowrap}
+.score .big span{font-size:1rem;font-weight:600;letter-spacing:0;color:var(--muted)}
+.score > div:last-child{flex:1 1 300px}
+.score p{margin-top:2px;max-width:66ch}
+
+.vbar{display:flex;flex-wrap:wrap;gap:12px 24px;align-items:center;justify-content:space-between}
+.vbar .seg button{padding:6px 12px;font-size:.92rem}
+.quiz{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px 22px;max-width:640px}
+.quiz .qhead{display:flex;justify-content:space-between;gap:12px;margin-bottom:6px}
+.quiz > p{margin-bottom:12px}
+.qopts{display:grid;gap:8px;margin-top:16px}
+.qopts .btn{justify-content:flex-start;text-align:left}
+.qopts .btn.right{border-color:var(--ok);background:var(--ok-soft);opacity:1}
+.qopts .btn.wrong{border-color:var(--bad);background:var(--bad-soft);opacity:1}
+.qfb{margin-top:14px}
+.qfb p{margin-bottom:10px}
+.qfb .qw{font-weight:800}
+.qword{font-size:1.9rem;font-weight:800;letter-spacing:-.01em;margin:2px 0 12px}
+/* đang làm bài: thanh menu không dính nữa để dành chỗ cho bài */
+body.doing{--navh:0px}
+body.doing .nav{position:static}
+@media(max-width:700px){
+  .dobar{padding:8px 12px;flex-wrap:nowrap}
+  .dobar b,.dobar .count .long{display:none}
+  .dobar .count{margin-left:0}
+  .dobar .btn{min-height:38px;padding:6px 12px}
+}
+@media(max-width:700px){
+  .dobar > div{display:flex;align-items:center;gap:8px;flex-wrap:nowrap;white-space:nowrap}
+  .dobar .clock{margin-left:0}
+}
+@media(max-width:700px){
+  .dobar{gap:6px}
+  .dobar .row{gap:6px;flex-wrap:nowrap}
+  .dobar .btn{padding:6px 10px}
+}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chips button{appearance:none;border:1.5px solid var(--ink);background:#fff;border-radius:999px;padding:6px 16px;font-weight:700;cursor:pointer;min-height:38px}
+.chips button:hover{background:var(--blue-50)}
+.chips button[aria-pressed="true"]{background:var(--ink);color:#fff}
+.chips button .done{font-weight:400;font-size:.85rem;margin-left:6px;opacity:.8}
+.testpick{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;margin-bottom:14px;font-weight:600}
+/* ===== TRANG NÓI: lượt nói có ghi âm, sơ đồ chủ đề, bài nói mẫu, tự chấm ===== */
+.sq{padding:14px 0 6px;border-top:1px solid var(--line)}
+.item h3 + .sq{border-top:0;padding-top:2px}
+.sq .qt{font-weight:600;line-height:1.45;margin-bottom:10px}
+.sq .qn{color:var(--blue-900);font-weight:800}
+.qx.veil{filter:blur(7px);cursor:pointer;user-select:none}
+.acts{display:flex;flex-wrap:wrap;gap:10px 12px;align-items:center}
+.speak{display:flex;flex-wrap:wrap;gap:8px 10px;align-items:center;min-height:44px;flex:1 1 280px;min-width:0}
+.item > .speak{margin-top:12px}
+.speak audio,.mine audio{height:40px;flex:1 1 220px;min-width:0;max-width:420px}
+.speak .clock,.prep .clock{font-variant-numeric:tabular-nums;font-weight:800}
+.speak .lim{color:var(--muted);font-size:.9rem;white-space:nowrap}
+.btn.rec{border-color:var(--bad);color:var(--bad)}
+.btn.rec:hover{background:var(--bad-soft);border-color:var(--bad)}
+.btn.stop{background:var(--bad);border-color:var(--bad);color:#fff}
+.btn.stop:hover{border-color:var(--bad)}
+.speak .dot,.btn .dot{width:11px;height:11px;border-radius:50%;background:var(--bad);display:inline-block;flex:0 0 auto}
+.btn .sqr{width:11px;height:11px;border-radius:2px;background:#fff;display:inline-block;flex:0 0 auto}
+.speak.live > .dot{animation:noi-pulse 1.1s ease-in-out infinite}
+@keyframes noi-pulse{50%{opacity:.2}}
+@media (prefers-reduced-motion:reduce){.speak.live > .dot{animation:none}}
+.recbar{flex:1 1 120px;height:8px;border-radius:99px;background:#eceef4;overflow:hidden;min-width:80px;max-width:320px}
+.recbar i{display:block;height:100%;width:0;background:var(--bad)}
+.prep{display:inline-flex;flex-wrap:wrap;gap:8px;align-items:center;font-weight:600}
+.btn.small svg{width:16px;height:16px}
+
+.sit{font-size:1.05rem;max-width:70ch}
+.opts3{margin:10px 0 14px;padding:0;list-style:none;display:grid;gap:6px;counter-reset:o;max-width:560px}
+.opts3 li{counter-increment:o;border:1.5px solid var(--ink);border-radius:10px;padding:8px 14px;background:#fff;font-weight:600;display:flex;gap:10px}
+.opts3 li::before{content:counter(o) ".";font-weight:800;color:var(--blue-900)}
+
+.mind{margin:6px 0 16px}
+.mm-topic{border:2px solid var(--ink);border-radius:14px;padding:12px 18px;font-weight:800;font-size:1.1rem;line-height:1.35;text-align:center;max-width:520px;margin:0 auto;background:var(--blue-50)}
+.mm-ideas{list-style:none;margin:0;padding:26px 0 0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;position:relative}
+.mm-ideas::before{content:"";position:absolute;left:calc(12.5% - 3px);right:calc(12.5% - 5px);top:10.5px;border-top:2px solid var(--ink)}
+.mm-ideas::after{content:"";position:absolute;left:50%;top:0;height:10.5px;border-left:2px solid var(--ink)}
+.mm-ideas li{position:relative;border:1.5px solid var(--ink);border-radius:12px;padding:10px 10px;text-align:center;background:#fff;font-weight:600;line-height:1.35;display:flex;align-items:center;justify-content:center}
+.mm-ideas li::before{content:"";position:absolute;left:50%;top:-15.5px;height:15.5px;border-left:2px solid var(--ink)}
+.mm-ideas li.own{border-style:dashed;color:var(--muted);font-weight:400;font-style:italic}
+@media(max-width:700px){
+  .mm-ideas{grid-template-columns:repeat(2,minmax(0,1fr));padding-top:12px}
+  .mm-ideas::before,.mm-ideas::after,.mm-ideas li::before{display:none}
+}
+
+.hint{margin-top:14px;border-top:1px dashed var(--line);padding-top:10px}
+.hint summary{cursor:pointer;font-weight:700;color:var(--blue-700)}
+.hint ul{margin:8px 0 0;padding-left:20px;max-width:72ch}
+.hint .frame{margin-top:8px;padding:8px 12px;border-radius:10px;background:#f7f9fd;color:var(--blue-900);font-style:italic}
+
+.mine{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center;margin-top:10px}
+.mine .lab{font-weight:700;white-space:nowrap}
+.model{margin-top:12px;border:1px solid var(--line);border-left:3px solid var(--blue-400);border-radius:0 12px 12px 0;padding:12px 16px 14px;background:#f7f9fd}
+.model .mh{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center}
+.model .mh b{margin-right:auto}
+.model .seg button{padding:5px 12px;font-size:.9rem;min-height:36px}
+.model .mtext p{margin-top:8px;max-width:72ch}
+mark.hl{background:#ffec99;color:inherit;padding:0 2px;border-radius:3px}
+.phr{list-style:none;margin:12px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:6px}
+.phr li{background:#fff;border:1px solid var(--line);border-radius:8px;padding:3px 10px;font-size:.9rem;line-height:1.45}
+.rq{font-weight:600;line-height:1.45}
+
+.assess{background:#fff;border:1.5px solid var(--ink);border-radius:16px;padding:18px 20px 20px;margin-top:26px}
+.assess h2{font-size:1.3rem;font-weight:800;margin-bottom:4px}
+.assess .q legend{font-weight:800}
+.assess .opt .lv{font-weight:800;min-width:4.3em;color:var(--blue-900)}
+.assess .send{display:flex;gap:10px;align-items:flex-start;margin-top:16px;line-height:1.45}
+.assess .send input{width:19px;height:19px;margin-top:2px;flex:0 0 auto;accent-color:var(--blue-600)}
+.fb{list-style:none;margin:0;padding:0}
+.fb li{padding:10px 0;border-top:1px solid var(--line)}
+.fb li:first-child{border-top:0}
+.fb .when{color:var(--muted);font-size:.9rem;margin-right:8px}
+.steps{margin:0 0 16px;padding-left:22px;max-width:74ch}
+.steps li{margin-top:2px}
+@media(max-width:700px){
+  .dobar .btn .long{display:none}
+  .speak{flex-basis:100%}
+  .assess{padding:14px 14px 16px}
+  .assess .opt{flex-wrap:wrap}
+  .assess .opt .lv{min-width:0}
+}
+/* ===== TRANG VIẾT: đề bài, ô viết có đếm từ, bài viết của học viên, máy soát nhanh ===== */
+.dobar .clock{margin-left:12px;font-variant-numeric:tabular-nums;font-weight:800}
+.dobar .clock.late{color:#ffb4a8}
+.prompt p{max-width:72ch;margin-top:8px}
+.prompt p:first-child{margin-top:0}
+.prompt .ask{font-weight:700}
+.prompt ul{margin:6px 0 0;padding-left:22px;max-width:70ch}
+.prompt .req{color:var(--muted);font-size:.93rem}
+.msg{margin:10px 0 2px;padding:10px 16px;border-left:3px solid var(--ink);background:#f7f9fd;border-radius:0 10px 10px 0;font-style:italic;max-width:68ch}
+.wbox{display:block;width:100%;min-height:260px;margin-top:14px;padding:14px 16px;border:1.5px solid var(--ink);border-radius:12px;font:inherit;font-size:1.02rem;line-height:1.7;resize:vertical;background:#fff;color:var(--ink)}
+.wbox.long{min-height:440px}
+.wbox:focus{outline:3px solid var(--blue-200);outline-offset:1px;border-color:var(--blue-600)}
+.wcount{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:center;margin-top:8px;font-weight:700;font-variant-numeric:tabular-nums}
+.wcount .need{color:var(--muted);font-weight:400}
+.mytext{white-space:pre-wrap;overflow-wrap:anywhere;border:1px solid var(--line);border-radius:12px;padding:12px 16px;background:#fff;margin-top:8px;max-width:76ch;line-height:1.7}
+.mytext.none{color:var(--muted)}
+.lab2{font-weight:800;margin-top:16px;display:block}
+.qc{list-style:none;margin:8px 0 0;padding:0;display:grid;gap:6px;max-width:76ch}
+.qc li{display:flex;gap:9px;align-items:flex-start;line-height:1.45}
+.qc li::before{flex:0 0 22px;height:22px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:.8rem;color:#fff;margin-top:1px}
+.qc li.ok::before{content:"✓";background:var(--ok)}
+.qc li.no::before{content:"!";background:var(--bad)}
+.qc li.tip::before{content:"i";background:var(--blue-600)}
+.model .mtext p{white-space:pre-line}
+.assess h3{font-size:1.08rem;font-weight:800;margin:18px 0 0;padding-top:14px;border-top:1px solid var(--line)}
+.assess h3:first-of-type{border-top:0;padding-top:0}
+@media(max-width:700px){
+  .wbox{min-height:220px;padding:12px 12px}
+  .wbox.long{min-height:340px}
+}
 </style>
 </head>
 <body>
@@ -608,33 +805,926 @@ h1,h2,h3,p{margin:0}
 })();
 </script>
 <script>
-/* ===== TRANG KỸ NĂNG (bản khung – nội dung sẽ thêm ở đợt sau) ===== */
+/* ===== NỘI DUNG TRANG VIẾT: đề viết, bài viết mẫu và từ vựng (soạn riêng cho trang này) ===== */
+window.VIET_DATA = {
+ "tests": [
+  {
+   "id": "de1",
+   "title": "Đề 1",
+   "t1": {
+    "vi": "trả lời thư bạn sắp đến thăm thành phố của mình",
+    "kind": "thân mật",
+    "intro": "You received an email from your English friend, Jane. She is planning to visit your city next month. Read part of her email below.",
+    "msg": "I'm so excited about my trip! I'll have about four days in your city. When is the best time of the month to come? What places should I see while I'm there? And is there anything special I need to bring with me?",
+    "task": "Write an email responding to Jane.",
+    "points": [],
+    "outline": [
+     "Chào, cảm ơn thư; nói mình vui vì bạn sắp đến.",
+     "Trả lời câu 1: nên đến lúc nào trong tháng, vì sao.",
+     "Trả lời câu 2: hai, ba nơi nên đi, mỗi nơi một lý do ngắn.",
+     "Trả lời câu 3: cần mang theo gì.",
+     "Kết thư: mong gặp bạn, lời chào cuối."
+    ],
+    "b1": {
+     "text": "Dear Jane,\n\nThank you for your email. I am very happy that you are going to visit my city next month.\n\nI think you should come in the last week of the month. The weather is cooler then, and there is a food festival near the river at the weekend.\n\nThere are many interesting places to see. First, you should visit the Old Quarter, because it has a lot of small streets and good street food. You can also go to the History Museum and walk around the lake in the evening. If you like nature, we can take a day trip to the mountains.\n\nPlease bring comfortable shoes, because we will walk a lot. You should also bring a light raincoat.\n\nI am looking forward to seeing you.\n\nBest wishes,\nLan",
+     "ph": [
+      [
+       "Thank you for your email",
+       "cảm ơn bạn đã viết thư"
+      ],
+      [
+       "I think you should",
+       "mình nghĩ bạn nên"
+      ],
+      [
+       "You can also",
+       "bạn cũng có thể"
+      ],
+      [
+       "I am looking forward to seeing you",
+       "mình rất mong được gặp bạn"
+      ],
+      [
+       "Best wishes",
+       "lời chào cuối thư"
+      ]
+     ]
+    },
+    "b2": {
+     "text": "Hi Jane,\n\nIt was lovely to hear from you, and I'm thrilled that you're finally coming to visit!\n\nIf your dates are flexible, I'd suggest coming in the last week of the month. By then the rainy season is almost over, so the evenings are pleasantly cool, and you'd be just in time for the food festival by the river.\n\nFour days is enough to see the highlights. You can't leave without exploring the Old Quarter, which is famous for its narrow streets and incredible street food. I'd also recommend the History Museum, and if you fancy a break from the city, we could spend a day hiking in the mountains nearby.\n\nAs for packing, comfortable walking shoes are a must, and it's worth bringing a light raincoat just in case. Don't worry about anything else. You can borrow whatever you need from me.\n\nLet me know your flight details so I can pick you up at the airport.\n\nSee you soon,\nLan",
+     "ph": [
+      [
+       "It was lovely to hear from you",
+       "thật vui khi nhận được thư bạn"
+      ],
+      [
+       "I'd suggest",
+       "mình gợi ý"
+      ],
+      [
+       "You can't leave without",
+       "bạn không thể về mà chưa"
+      ],
+      [
+       "I'd also recommend",
+       "mình cũng khuyên bạn"
+      ],
+      [
+       "As for",
+       "còn về"
+      ],
+      [
+       "it's worth bringing",
+       "nên mang theo"
+      ],
+      [
+       "Let me know",
+       "cho mình biết"
+      ]
+     ]
+    }
+   },
+   "t2": {
+    "vi": "lợi và hại của mua sắm trên mạng",
+    "kind": "lợi và hại",
+    "text": "Nowadays, more and more people buy clothes, books and even food on the internet instead of going to shops.",
+    "q": "Write an essay to discuss the advantages and disadvantages of online shopping.",
+    "outline": [
+     "Mở bài: nêu hiện tượng, nói bài sẽ bàn cả lợi và hại.",
+     "Thân bài 1, lợi: tiện (mua lúc nào cũng được), giá rẻ hơn nhờ so sánh, nhiều hàng để chọn.",
+     "Thân bài 2, hại: không xem được hàng trước, phải chờ giao, dễ tiêu quá tay, trang web không an toàn.",
+     "Kết bài: tóm lại hai mặt và nêu ý kiến của mình."
+    ],
+    "b1": {
+     "text": "Nowadays, online shopping is very popular. Many people buy things on the internet instead of going to shops. In this essay, I will discuss the advantages and disadvantages of online shopping.\n\nOnline shopping has some clear advantages. Firstly, it is very convenient. People can buy things at any time, even at night, and they do not need to leave their house. This is very useful for busy people and for people who live far from big shops. Secondly, online shops often have lower prices. Customers can compare the prices on different websites in a few minutes and choose the cheapest one. Thirdly, there are more products to choose from. For example, I can find English books online that I cannot find in my town. Therefore, online shopping is especially helpful for people who live in small towns.\n\nHowever, online shopping also has some disadvantages. The first problem is that customers cannot see or touch the products before they buy them. Sometimes the colour or the size is different from the picture, so they have to send the product back. The second problem is that people have to wait several days for their order to arrive. In addition, it is easy to spend too much money, because buying online only takes one click. Finally, some websites are not safe, and people can lose their money.\n\nIn conclusion, online shopping saves time and money, but it also has some risks. I think it is a good way to shop if people choose good websites and think carefully before they buy.",
+     "ph": [
+      [
+       "In this essay, I will discuss",
+       "trong bài này, tôi sẽ bàn về"
+      ],
+      [
+       "Firstly",
+       "thứ nhất"
+      ],
+      [
+       "For example",
+       "ví dụ"
+      ],
+      [
+       "However",
+       "tuy nhiên"
+      ],
+      [
+       "The first problem is that",
+       "vấn đề thứ nhất là"
+      ],
+      [
+       "In addition",
+       "ngoài ra"
+      ],
+      [
+       "In conclusion",
+       "kết luận lại"
+      ]
+     ]
+    },
+    "b2": {
+     "text": "Over the past decade, online shopping has grown from a novelty into an everyday habit for millions of people. While it has undoubtedly made life easier in many ways, it also brings a number of drawbacks that are worth considering.\n\nThe most obvious benefit of shopping online is convenience. Customers can browse thousands of products at any time of day without travelling or queuing, which is particularly valuable for people with busy schedules or those living in remote areas. A second advantage is price. Because it takes only a few seconds to compare different sellers, competition is fierce, and prices are often lower than in traditional shops. Finally, the internet offers a far wider choice. Items that would never be stocked by a local store, such as specialist books or foreign brands, are only a click away.\n\nOn the other hand, online shopping has some significant disadvantages. The main one is that buyers cannot examine goods before paying for them. Clothes may not fit, and the quality of a product can be very different from what the photographs suggest, so returning items becomes a regular inconvenience. Another concern is security, since personal and financial details may be stolen if a website is not properly protected. In addition, the ease of buying with a single click encourages people to spend more than they intended. There is also a wider social cost: as more customers move online, small local shops struggle to survive, and town centres lose some of their life.\n\nIn conclusion, online shopping offers clear advantages in terms of convenience, price and choice, but these come with real risks for both individuals and communities. In my view, the sensible approach is to enjoy its benefits while continuing to support local shops whenever possible.",
+     "ph": [
+      [
+       "While it has undoubtedly",
+       "tuy rõ ràng là nó đã"
+      ],
+      [
+       "The most obvious benefit of",
+       "lợi ích dễ thấy nhất của"
+      ],
+      [
+       "which is particularly valuable for",
+       "điều này đặc biệt có giá trị với"
+      ],
+      [
+       "On the other hand",
+       "mặt khác"
+      ],
+      [
+       "Another concern is",
+       "một mối lo khác là"
+      ],
+      [
+       "in terms of",
+       "xét về"
+      ],
+      [
+       "In my view",
+       "theo quan điểm của tôi"
+      ]
+     ]
+    }
+   }
+  }
+ ],
+ "vocab": [
+  {
+   "id": "thu",
+   "title": "Viết thư",
+   "level": "B1",
+   "words": [
+    {
+     "w": "I am writing to",
+     "pos": "phr",
+     "ipa": "/aɪ əm ˈraɪtɪŋ tə/",
+     "vi": "tôi viết thư này để",
+     "ex": "I am writing to ask about your English course."
+    },
+    {
+     "w": "thank you for",
+     "pos": "phr",
+     "ipa": "/ˈθæŋk ju fə(r)/",
+     "vi": "cảm ơn bạn vì",
+     "ex": "Thank you for your invitation."
+    },
+    {
+     "w": "hear from you",
+     "pos": "phr",
+     "ipa": "/ˈhɪə frəm ju/",
+     "vi": "nhận tin của bạn",
+     "ex": "I hope to hear from you soon."
+    },
+    {
+     "w": "enquire",
+     "pos": "v",
+     "ipa": "/ɪnˈkwaɪə(r)/",
+     "vi": "hỏi thông tin",
+     "ex": "I would like to enquire about the price."
+    },
+    {
+     "w": "grateful",
+     "pos": "adj",
+     "ipa": "/ˈɡreɪtfl/",
+     "vi": "biết ơn",
+     "ex": "I would be grateful if you could send me the form."
+    },
+    {
+     "w": "I would appreciate",
+     "pos": "phr",
+     "ipa": "/aɪ wʊd əˈpriːʃieɪt/",
+     "vi": "tôi sẽ rất cảm kích",
+     "ex": "I would appreciate a quick reply."
+    },
+    {
+     "w": "inconvenience",
+     "pos": "n",
+     "ipa": "/ˌɪnkənˈviːniəns/",
+     "vi": "sự bất tiện",
+     "ex": "I am sorry for the inconvenience."
+    },
+    {
+     "w": "unfortunately",
+     "pos": "adv",
+     "ipa": "/ʌnˈfɔːtʃənətli/",
+     "vi": "thật không may",
+     "ex": "Unfortunately, I cannot come to your party."
+    },
+    {
+     "w": "let me know",
+     "pos": "phr",
+     "ipa": "/ˌlet mi ˈnəʊ/",
+     "vi": "cho tôi biết",
+     "ex": "Please let me know your decision."
+    },
+    {
+     "w": "attach",
+     "pos": "v",
+     "ipa": "/əˈtætʃ/",
+     "vi": "đính kèm",
+     "ex": "I attach a copy of the receipt."
+    },
+    {
+     "w": "refund",
+     "pos": "n",
+     "ipa": "/ˈriːfʌnd/",
+     "vi": "tiền hoàn lại",
+     "ex": "I would like a full refund."
+    },
+    {
+     "w": "best wishes",
+     "pos": "phr",
+     "ipa": "/ˌbest ˈwɪʃɪz/",
+     "vi": "lời chúc tốt đẹp (kết thư)",
+     "ex": "Best wishes to you and your family."
+    },
+    {
+     "w": "yours faithfully",
+     "pos": "phr",
+     "ipa": "/ˌjɔːz ˈfeɪθfəli/",
+     "vi": "trân trọng (kết thư trang trọng)",
+     "ex": "We write Yours faithfully after Dear Sir or Madam."
+    },
+    {
+     "w": "yours sincerely",
+     "pos": "phr",
+     "ipa": "/ˌjɔːz sɪnˈsɪəli/",
+     "vi": "trân trọng (khi biết tên người nhận)",
+     "ex": "We write Yours sincerely after Dear Mr Brown."
+    }
+   ]
+  },
+  {
+   "id": "luan",
+   "title": "Bài luận",
+   "level": "B1–B2",
+   "words": [
+    {
+     "w": "nowadays",
+     "pos": "adv",
+     "ipa": "/ˈnaʊədeɪz/",
+     "vi": "ngày nay",
+     "ex": "Nowadays, most people have a mobile phone."
+    },
+    {
+     "w": "firstly",
+     "pos": "adv",
+     "ipa": "/ˈfɜːstli/",
+     "vi": "thứ nhất",
+     "ex": "Firstly, it is cheaper."
+    },
+    {
+     "w": "furthermore",
+     "pos": "adv",
+     "ipa": "/ˌfɜːðəˈmɔː(r)/",
+     "vi": "hơn nữa",
+     "ex": "Furthermore, it saves a lot of time."
+    },
+    {
+     "w": "such as",
+     "pos": "phr",
+     "ipa": "/ˈsʌtʃ əz/",
+     "vi": "chẳng hạn như",
+     "ex": "I like sports such as football and tennis."
+    },
+    {
+     "w": "in conclusion",
+     "pos": "phr",
+     "ipa": "/ɪn kənˈkluːʒn/",
+     "vi": "kết luận lại",
+     "ex": "In conclusion, both ideas have good points."
+    },
+    {
+     "w": "one reason is that",
+     "pos": "phr",
+     "ipa": "/wʌn ˈriːzn ɪz ðət/",
+     "vi": "một lý do là",
+     "ex": "One reason is that cities have more jobs."
+    },
+    {
+     "w": "as well as",
+     "pos": "phr",
+     "ipa": "/əz ˈwel əz/",
+     "vi": "cũng như",
+     "ex": "It is good for the body as well as the mind."
+    },
+    {
+     "w": "instead of",
+     "pos": "phr",
+     "ipa": "/ɪnˈsted əv/",
+     "vi": "thay vì",
+     "ex": "Many people shop online instead of going to shops."
+    },
+    {
+     "w": "on the one hand",
+     "pos": "phr",
+     "ipa": "/ɒn ðə ˈwʌn hænd/",
+     "vi": "một mặt",
+     "ex": "On the one hand, it is very convenient."
+    },
+    {
+     "w": "disadvantage",
+     "pos": "n",
+     "ipa": "/ˌdɪsədˈvɑːntɪdʒ/",
+     "vi": "bất lợi",
+     "ex": "The main disadvantage is the cost."
+    },
+    {
+     "w": "it is clear that",
+     "pos": "phr",
+     "ipa": "/ɪt ɪz ˈklɪə ðət/",
+     "vi": "rõ ràng là",
+     "ex": "It is clear that the problem is serious."
+    },
+    {
+     "w": "due to",
+     "pos": "prep",
+     "ipa": "/ˈdjuː tə/",
+     "vi": "do, vì",
+     "ex": "The flight was late due to bad weather."
+    },
+    {
+     "w": "in other words",
+     "pos": "phr",
+     "ipa": "/ɪn ˈʌðə wɜːdz/",
+     "vi": "nói cách khác",
+     "ex": "In other words, we need to act now."
+    },
+    {
+     "w": "in my view",
+     "pos": "phr",
+     "ipa": "/ɪn ˈmaɪ vjuː/",
+     "vi": "theo quan điểm của tôi",
+     "ex": "In my view, this is the best solution."
+    }
+   ]
+  },
+  {
+   "id": "lapluan",
+   "title": "Lập luận",
+   "level": "B2–C1",
+   "words": [
+    {
+     "w": "it is often argued that",
+     "pos": "phr",
+     "ipa": "/ɪt ɪz ˌɒfn ˈɑːɡjuːd ðət/",
+     "vi": "người ta thường cho rằng",
+     "ex": "It is often argued that money cannot buy happiness."
+    },
+    {
+     "w": "there is no doubt that",
+     "pos": "phr",
+     "ipa": "/ðeər ɪz nəʊ ˈdaʊt ðət/",
+     "vi": "chắc chắn là",
+     "ex": "There is no doubt that technology has changed our lives."
+    },
+    {
+     "w": "outweigh",
+     "pos": "v",
+     "ipa": "/ˌaʊtˈweɪ/",
+     "vi": "lớn hơn, vượt trội hơn",
+     "ex": "The benefits outweigh the risks."
+    },
+    {
+     "w": "consequently",
+     "pos": "adv",
+     "ipa": "/ˈkɒnsɪkwəntli/",
+     "vi": "do đó",
+     "ex": "He did not study. Consequently, he failed the exam."
+    },
+    {
+     "w": "nevertheless",
+     "pos": "adv",
+     "ipa": "/ˌnevəðəˈles/",
+     "vi": "tuy vậy",
+     "ex": "The plan is expensive. Nevertheless, it is worth trying."
+    },
+    {
+     "w": "to a large extent",
+     "pos": "phr",
+     "ipa": "/tu ə ˌlɑːdʒ ɪkˈstent/",
+     "vi": "ở mức độ lớn",
+     "ex": "To a large extent, I agree with this view."
+    },
+    {
+     "w": "in terms of",
+     "pos": "phr",
+     "ipa": "/ɪn ˈtɜːmz əv/",
+     "vi": "xét về mặt",
+     "ex": "The city is attractive in terms of jobs."
+    },
+    {
+     "w": "lead to",
+     "pos": "phr v",
+     "ipa": "/ˈliːd tə/",
+     "vi": "dẫn tới",
+     "ex": "Too much stress can lead to health problems."
+    },
+    {
+     "w": "tackle",
+     "pos": "v",
+     "ipa": "/ˈtækl/",
+     "vi": "giải quyết",
+     "ex": "The government must tackle this problem."
+    },
+    {
+     "w": "downside",
+     "pos": "n",
+     "ipa": "/ˈdaʊnsaɪd/",
+     "vi": "mặt trái",
+     "ex": "The downside of the job is the long hours."
+    },
+    {
+     "w": "take into account",
+     "pos": "phr",
+     "ipa": "/ˌteɪk ɪntu əˈkaʊnt/",
+     "vi": "tính đến, cân nhắc",
+     "ex": "We should take the cost into account."
+    },
+    {
+     "w": "I am convinced that",
+     "pos": "phr",
+     "ipa": "/aɪ əm kənˈvɪnst ðət/",
+     "vi": "tôi tin chắc rằng",
+     "ex": "I am convinced that education is the key."
+    },
+    {
+     "w": "by contrast",
+     "pos": "phr",
+     "ipa": "/baɪ ˈkɒntrɑːst/",
+     "vi": "trái lại",
+     "ex": "The city is noisy. By contrast, the village is quiet."
+    },
+    {
+     "w": "a growing number of",
+     "pos": "phr",
+     "ipa": "/ə ˌɡrəʊɪŋ ˈnʌmbər əv/",
+     "vi": "ngày càng nhiều",
+     "ex": "A growing number of people work from home."
+    }
+   ]
+  }
+ ]
+};
+</script>
+<script>
+/* ===== TỪ VỰNG MỚI (dùng chung cho các trang kỹ năng) =====
+   V.vocabTab(panel, { skill: 'nghe', groups: [{title, level, words:[{w,pos,ipa,vi,ex}]}], source: 'các bài nghe', listenFirst: true })
+   listenFirst = true: bài kiểm tra phát âm trước rồi mới chọn nghĩa (trang Nghe); false: hiện chữ, bấm nghe nếu muốn. */
 (function () {
   'use strict';
-  var V = window.V, h = V.h, p = V.page;
-  var INTRO = {
-    nghe: 'Nghe hiểu: 3 phần, 35 câu trắc nghiệm, khoảng 40 phút.',
-    noi: 'Nói: 3 phần trong 12 phút.',
-    doc: 'Đọc hiểu: 4 bài đọc, 40 câu trắc nghiệm, 60 phút.',
-    viet: 'Viết: thư 120 từ và bài luận 250 từ trong 60 phút.'
-  };
-  var TABS = [['luyen-tap', 'Luyện tập'], ['tu-vung', 'Từ vựng mới']];
-  var tab = location.hash === '#tu-vung' ? 'tu-vung' : 'luyen-tap';
+  var V = window.V, h = V.h;
+  var picked = {};
+  function shuffle(a) { a = a.slice(); for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)), t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+  function top() { try { window.scrollTo(0, 0); } catch (e) { } }
 
-  V.mount(function (root) {
-    var bar = h('div', { class: 'tabs', role: 'tablist' }), panel = h('div', { role: 'tabpanel' });
-    function draw() {
-      V.clear(bar); V.clear(panel);
-      TABS.forEach(function (t) {
-        bar.appendChild(h('button', { class: 'tab' + (t[0] === tab ? ' on' : ''), type: 'button', role: 'tab', 'aria-selected': t[0] === tab ? 'true' : 'false',
-          onclick: function () { tab = t[0]; try { history.replaceState(null, '', '#' + tab); } catch (e) { } draw(); } }, t[1]));
-      });
-      panel.appendChild(h('div', { class: 'empty' },
-        h('b', null, (tab === 'tu-vung' ? 'Từ vựng mới' : 'Luyện tập') + ' phần ' + p.t + ' đang được xây dựng'),
-        tab === 'tu-vung' ? 'Danh sách từ kèm phiên âm, nghĩa và nút nghe phát âm sẽ có ở đây.' : 'Bài luyện có chấm điểm và gửi kết quả cho ' + V.teacher() + ' sẽ có ở đây.'));
+  V.vocabTab = function (panel, o) {
+    var n = o.groups.length;
+    if (picked[o.skill] === undefined) picked[o.skill] = ({ b1: 0, b2: Math.floor((n - 1) / 2), c1: n - 1 })[V.target().key] || 0;
+    function view() {
+      V.stopClip(); V.clear(panel);
+      var g = o.groups[picked[o.skill]];
+      panel.appendChild(h('div', { class: 'vbar' },
+        h('div', { class: 'pick' }, 'Nhóm từ', h('div', { class: 'seg', role: 'group', 'aria-label': 'Nhóm từ' }, o.groups.map(function (x, i) {
+          return h('button', { type: 'button', 'aria-pressed': i === picked[o.skill] ? 'true' : 'false', title: 'Trình độ ' + x.level, onclick: function () { picked[o.skill] = i; view(); } }, x.title);
+        }))),
+        V.speedToggle()));
+      panel.appendChild(h('p', { class: 'muted', style: { margin: '12px 0 14px', maxWidth: '70ch' } },
+        g.words.length + ' từ lấy từ ' + (o.source ? o.source + ' ' : '') + g.title + ', trình độ ' + g.level + '. Nghe giọng nữ và giọng nam, đọc theo, rồi làm bài kiểm tra nhanh.'));
+      panel.appendChild(h('div', { class: 'words' }, g.words.map(V.wordCard)));
+      panel.appendChild(h('div', { class: 'row', style: { marginTop: '18px' } },
+        h('button', { class: 'btn primary', type: 'button', onclick: function () { quiz(g); } }, 'Kiểm tra nhanh ' + Math.min(10, g.words.length) + ' từ')));
     }
-    window.addEventListener('hashchange', function () { tab = location.hash === '#tu-vung' ? 'tu-vung' : 'luyen-tap'; draw(); });
-    root.appendChild(V.pageHead(p.t, p.en, INTRO[p.key]));
+    function quiz(g) {
+      V.stopClip(); top();
+      var qs = shuffle(g.words).slice(0, 10), i = 0, right = 0, missed = [];
+      function ask() {
+        V.stopClip(); V.clear(panel);
+        var w = qs[i], voice = Math.random() < 0.5 ? 'f' : 'm';
+        var opts = shuffle([w].concat(shuffle(g.words.filter(function (x) { return x !== w; })).slice(0, 3)));
+        var fb = h('div', { class: 'qfb', role: 'status' }), box = h('div', { class: 'qopts' });
+        function listen() { V.playClip('tu/' + V.slug(w.w) + '-' + voice + '.mp3', { fallback: w.w }); }
+        opts.forEach(function (op) {
+          var b = h('button', { class: 'btn', type: 'button' }, op.vi);
+          b.addEventListener('click', function () {
+            Array.prototype.forEach.call(box.querySelectorAll('button'), function (x) { x.disabled = true; });
+            var ok = op === w; if (ok) right++; else missed.push(w);
+            b.classList.add(ok ? 'right' : 'wrong');
+            if (!ok) Array.prototype.forEach.call(box.querySelectorAll('button'), function (x, k) { if (opts[k] === w) x.classList.add('right'); });
+            V.add(fb, [h('p', null, h('b', null, ok ? 'Đúng. ' : 'Chưa đúng. '), h('span', { lang: 'en', class: 'qw' }, w.w), ' ', h('span', { class: 'ipa' }, w.ipa), ' = ' + w.vi),
+              h('button', { class: 'btn primary', type: 'button', onclick: function () { i++; if (i < qs.length) ask(); else done(); } }, i + 1 < qs.length ? 'Câu tiếp' : 'Xem kết quả')]);
+            fb.querySelector('button').focus();
+          });
+          box.appendChild(b);
+        });
+        panel.appendChild(h('div', { class: 'quiz' },
+          h('div', { class: 'qhead' }, h('b', null, 'Kiểm tra nhanh, ' + g.title), h('span', { class: 'muted' }, 'Từ ' + (i + 1) + '/' + qs.length)),
+          o.listenFirst ? h('p', null, 'Nghe rồi chọn nghĩa đúng của từ.') : [h('p', null, 'Chọn nghĩa đúng của từ.'), h('div', { class: 'qword', lang: 'en' }, w.w)],
+          h('button', { class: 'btn ' + (o.listenFirst ? 'blue' : 'small'), type: 'button', onclick: listen }, h('span', { html: V.ICON.loa, style: { display: 'inline-flex' } }), o.listenFirst ? 'Nghe lại' : 'Nghe phát âm'),
+          box, fb,
+          h('button', { class: 'btn small', type: 'button', style: { marginTop: '16px' }, onclick: view }, 'Thoát')));
+        if (o.listenFirst) listen();
+      }
+      function done() {
+        V.stopClip(); V.clear(panel);
+        var title = 'Từ vựng ' + g.title;
+        var rec = V.results.add({ skill: o.skill, kind: 'tu-vung', title: title, correct: right, total: qs.length, sent: false });
+        if (V.sheetOn()) V.send(o.skill, { 'Đề': 'Từ vựng', 'Phần': g.title, 'Kết quả': right + '/' + qs.length,
+          'Chi tiết đáp án': missed.length ? 'Sai: ' + missed.map(function (w) { return w.w; }).join(', ') : 'Đúng hết', 'Mục tiêu': V.target().t }, function (ok) { if (ok) V.results.mark(rec.ts, { sent: true }); });
+        panel.appendChild(h('div', { class: 'score' },
+          h('div', { class: 'big' }, right + '/' + qs.length, h('span', null, ' từ đúng')),
+          h('div', null, h('b', null, title), h('p', null, missed.length ? 'Xem lại các từ chưa đúng bên dưới rồi thử lại.' : 'Bạn nhớ hết các từ được hỏi.'))));
+        if (missed.length) panel.appendChild(h('div', { class: 'words', style: { marginTop: '16px' } }, missed.map(V.wordCard)));
+        panel.appendChild(h('div', { class: 'row', style: { marginTop: '18px' } },
+          h('button', { class: 'btn primary', type: 'button', onclick: function () { quiz(g); } }, 'Kiểm tra lại'),
+          h('button', { class: 'btn', type: 'button', onclick: view }, 'Về danh sách từ')));
+      }
+      ask();
+    }
+    view();
+  };
+})();
+/* ===== TRANG VIẾT ===== */
+(function () {
+  'use strict';
+  var V = window.V, h = V.h, D = window.VIET_DATA;
+  var TABS = [['luyen-tap', 'Luyện tập'], ['tu-vung', 'Từ vựng mới']];
+  function hashTab() { return location.hash === '#tu-vung' ? 'tu-vung' : 'luyen-tap'; }
+  var tab = hashTab(), bar, panel, timerId = null;
+
+  var TASKS = [
+    { id: 't1', title: 'Bài 1', name: 'Viết thư', level: 'B1–B2', min: 120, mins: 20, weight: 1, paras: 3,
+      how: 'Viết một bức thư hoặc email ít nhất 120 từ trong khoảng 20 phút. Bài 1 chiếm 1/3 điểm bài thi Viết.',
+      frame: 'Dear …, / Thank you for … / I am writing to … / I look forward to hearing from you. / Best wishes,' },
+    { id: 't2', title: 'Bài 2', name: 'Viết bài luận', level: 'B2–C1', min: 250, mins: 40, weight: 2, paras: 4,
+      how: 'Viết một bài luận ít nhất 250 từ trong khoảng 40 phút. Bài 2 chiếm 2/3 điểm bài thi Viết.',
+      frame: 'Nowadays, … / Firstly, … / In addition, … / However, … / In conclusion, …' }
+  ];
+  var CRIT = [
+    ['Hoàn thành yêu cầu', ['Thiếu nhiều ý đề yêu cầu, hoặc viết quá ngắn.', 'Trả lời đủ các ý chính và đủ số từ, nhưng mỗi ý còn sơ sài.', 'Đủ mọi ý, mỗi ý có giải thích hoặc ví dụ; giọng văn đúng với người nhận.', 'Các ý được phát triển sâu, lập luận thuyết phục; giọng văn nhất quán.'],
+      'Gạch chân từng yêu cầu trong đề, viết xong thì dò lại xem đã trả lời đủ chưa.'],
+    ['Bố cục và liên kết', ['Ý lộn xộn, không chia đoạn.', 'Có chia đoạn; nối ý bằng and, but, because, so.', 'Mở bài, thân bài, kết bài rõ; mỗi đoạn một ý chính; từ nối đa dạng.', 'Bố cục chặt chẽ, các đoạn nối với nhau tự nhiên, chuyển ý mượt.'],
+      'Lập dàn ý 3 phút trước khi viết; mỗi đoạn mở bằng một câu nêu ý chính.'],
+    ['Từ vựng', ['Vốn từ hạn chế, lặp nhiều, sai chính tả nhiều.', 'Đủ từ cho chủ đề quen thuộc; còn lặp từ, sai chính tả đôi chỗ.', 'Vốn từ khá rộng, dùng đúng các cụm từ đi với nhau; ít lỗi chính tả.', 'Từ chính xác, linh hoạt, diễn đạt tự nhiên; hầu như không sai.'],
+      'Học các cụm từ được tô vàng trong bài mẫu và dùng lại trong bài viết sau.'],
+    ['Ngữ pháp', ['Chủ yếu câu rất ngắn; sai nhiều nên khó hiểu.', 'Câu đơn và vài câu ghép khá đúng; còn lỗi thì, mạo từ nhưng vẫn hiểu được.', 'Có câu phức (mệnh đề quan hệ, câu điều kiện); lỗi không gây hiểu nhầm.', 'Câu đa dạng, linh hoạt; hiếm khi sai.'],
+      'Chép lại 3 câu dài trong bài mẫu rồi tự viết câu tương tự về chủ đề khác.']
+  ];
+  var LEVELS = [['Dưới B1', 3], ['B1', 5], ['B2', 7], ['C1', 9]];
+  var LINKS = ['firstly', 'first', 'secondly', 'second', 'thirdly', 'finally', 'however', 'moreover', 'furthermore', 'in addition', 'besides', 'for example', 'for instance', 'such as',
+    'because', 'therefore', 'as a result', 'consequently', 'although', 'while', 'whereas', 'on the other hand', 'nevertheless', 'despite', 'instead', 'also', 'in conclusion', 'to sum up', 'in my opinion', 'in my view'];
+
+  function mmss(s) { s = Math.max(0, Math.round(s)); return Math.floor(s / 60) + ':' + ('0' + (s % 60)).slice(-2); }
+  function count(text) { return (String(text || '').match(/\S+/g) || []).length; }
+  function top() { try { if (document.body.classList.contains('doing')) bar.scrollIntoView(); else window.scrollTo(0, 0); } catch (e) { } }
+  function doing(on) { document.body.classList.toggle('doing', !!on); }
+  function stopTimer() { if (timerId) { clearInterval(timerId); timerId = null; } }
+  function shown(score) { return V.fmtScore(V.round05(score)); }
+  function draftKey(test, tk) { return 'viet.nhap.' + test.id + '.' + tk.id; }
+  function draft(test, tk) { return String(V.store.get(draftKey(test, tk), '') || ''); }
+  function lastResult(title) {
+    var r = V.results.of('viet').filter(function (x) { return x.title === title && typeof x.score10 === 'number'; })[0];
+    return r ? 'tự chấm ' + shown(r.score10) + ' điểm (' + V.dateShort(r.ts) + ')' : '';
+  }
+  function seg(label, key, def, opts, onchange) {
+    var box = h('div', { class: 'pick' });
+    function draw() {
+      var cur = V.store.get(key, def);
+      V.add(V.clear(box), [label, h('div', { class: 'seg', role: 'group', 'aria-label': label }, opts.map(function (o) {
+        return h('button', { type: 'button', 'aria-pressed': cur === o[0] ? 'true' : 'false', onclick: function () { V.store.set(key, o[0]); draw(); if (onchange) onchange(o[0]); } }, o[1]);
+      }))]);
+    }
+    draw();
+    return box;
+  }
+  function hint(title, lines, frame) {
+    return h('details', { class: 'hint' }, h('summary', null, title),
+      lines && lines.length ? h('ul', null, lines.map(function (x) { return h('li', null, x); })) : null,
+      frame ? h('div', { class: 'frame', lang: 'en' }, frame) : null);
+  }
+  // đề bài, trình bày như trên giấy thi
+  function prompt(test, tk) {
+    var t = test[tk.id];
+    if (tk.id === 't1') return h('div', { class: 'prompt', lang: 'en' }, h('p', null, t.intro), t.msg ? h('blockquote', { class: 'msg' }, t.msg) : null,
+      h('p', { class: 'ask' }, t.task), t.points && t.points.length ? h('ul', null, t.points.map(function (x) { return h('li', null, x); })) : null,
+      h('p', { class: 'req' }, 'You should write at least 120 words. You do not need to include your name or addresses.'));
+    return h('div', { class: 'prompt', lang: 'en' }, h('p', null, t.text), h('p', { class: 'ask' }, t.q),
+      h('p', { class: 'req' }, 'Include reasons and any relevant examples to support your answer. You should write at least 250 words.'));
+  }
+
+  /* ---------- máy soát nhanh: chỉ đếm và soát lỗi hình thức ---------- */
+  function quick(text, tk) {
+    var out = [], n = count(text), paras = text.split(/\n/).filter(function (s) { return s.trim().length > 25; }).length;
+    out.push([n >= tk.min, n + ' từ' + (n >= tk.min ? ', đủ yêu cầu ít nhất ' + tk.min + ' từ.' : ', còn thiếu ' + (tk.min - n) + ' từ so với yêu cầu ' + tk.min + ' từ.')]);
+    out.push([paras >= tk.paras, paras + ' đoạn. ' + (paras >= tk.paras ? 'Bài có chia đoạn.' : tk.id === 't1' ? 'Thư nên có ít nhất 3 đoạn: mở đầu, nội dung, kết thư. Xuống dòng để tách đoạn.' : 'Bài luận nên có ít nhất 4 đoạn: mở bài, hai đoạn thân bài, kết bài. Xuống dòng để tách đoạn.')]);
+    if (tk.id === 't1') {
+      var hi = /^\s*(dear|hi|hello)\b/i.test(text), bye = /(best wishes|regards|yours sincerely|yours faithfully|yours|love|see you|take care|cheers)\b[^\n]*(\n[^\n]*)?\s*$/i.test(text.slice(-160));
+      out.push([hi, hi ? 'Có lời chào đầu thư.' : 'Chưa thấy lời chào đầu thư (Dear …, hoặc Hi …,).']);
+      out.push([bye, bye ? 'Có lời chào cuối thư.' : 'Chưa thấy lời chào cuối thư (Best wishes, Yours sincerely, …).']);
+    }
+    var low = ' ' + text.toLowerCase().replace(/\s+/g, ' ') + ' ', found = LINKS.filter(function (w) { return new RegExp('[^a-z]' + w + '[^a-z]').test(low); }), need = tk.id === 't1' ? 2 : 5;
+    out.push([found.length >= need, 'Từ nối đã dùng (' + found.length + '): ' + (found.length ? found.join(', ') : 'chưa có') + '.' + (found.length >= need ? '' : ' Hãy thêm từ nối như however, in addition, for example.')]);
+    var bad = [];
+    if (/(^|[^A-Za-z'’])i(?=[\s'’,.!?]|$)/.test(text)) bad.push('chữ “I” (tôi) phải viết hoa');
+    if (/[.!?]\s+[a-z]/.test(text.replace(/(^|[^A-Za-z'’])i(?=[\s'’,.!?]|$)/g, '$1I').replace(/\b(e\.g|i\.e|etc|a\.m|p\.m)\.\s+/gi, ' ')) || /^\s*[a-z]/.test(text)) bad.push('có câu chưa viết hoa chữ đầu');
+    if (/[,;!?][A-Za-z]/.test(text)) bad.push('thiếu dấu cách sau dấu câu');
+    var chat = text.match(/\b(u|ur|pls|plz|thx|bc|gonna|wanna|im|dont|cant|wont)\b/gi);
+    if (chat) bad.push('có từ viết tắt kiểu tin nhắn (' + chat.slice(0, 3).join(', ') + ')');
+    var rep = text.match(/\b([A-Za-z]+)\s+\1\b/i);
+    if (rep && !/^(that|had|very)$/i.test(rep[1])) bad.push('từ bị lặp liền nhau (“' + rep[0] + '”)');
+    out.push([!bad.length, bad.length ? 'Cần sửa: ' + bad.join('; ') + '.' : 'Không thấy lỗi viết hoa, dấu cách hay viết tắt kiểu tin nhắn.']);
+    if (tk.id === 't2') {
+      var short = text.match(/\b[A-Za-z]+n['’]t\b|\b(I|it|they|we|you|he|she|that|there)['’](m|s|re|ve|d|ll)\b/g);
+      if (short) out.push([null, 'Bài luận nên viết đầy đủ (do not, it is) thay cho dạng rút gọn: ' + short.slice(0, 3).join(', ') + '.']);
+    }
+    return out;
+  }
+
+  /* ================= DANH SÁCH ĐỀ ================= */
+  function listView() {
+    stopTimer(); doing(false); V.clear(panel);
+    var tg = V.target();
+    var tip = { b1: 'Với mục tiêu B1, hãy viết đủ số từ, trả lời đủ các ý đề hỏi và chia đoạn rõ. Đọc bài mẫu mức B1 để học cách mở đầu, nối ý và kết bài.',
+      b2: 'Với mục tiêu B2, mỗi ý cần có giải thích hoặc ví dụ; bài luận có mở bài, thân bài, kết bài rõ. So bài của mình với bài mẫu mức B2–C1.',
+      c1: 'Với mục tiêu C1, hãy luyện cả đề trong 60 phút; chú ý lập luận, cách nhượng bộ và dùng từ chính xác ở Bài 2.' }[tg.key];
+    panel.appendChild(h('p', { class: 'notice', style: { marginBottom: '16px' } }, tip));
+    var cur = Math.min(V.store.get('viet.de', 0), D.tests.length - 1);
+    panel.appendChild(h('div', { class: 'testpick' }, 'Chọn đề', h('div', { class: 'chips', role: 'group', 'aria-label': 'Chọn đề' }, D.tests.map(function (t, i) {
+      var w = V.results.of('viet').filter(function (x) { return x.title === t.title + ', cả đề' && typeof x.score10 === 'number'; })[0];
+      return h('button', { type: 'button', 'aria-pressed': i === cur ? 'true' : 'false', onclick: function () { V.store.set('viet.de', i); listView(); } },
+        t.title, w ? h('span', { class: 'done' }, shown(w.score10)) : null);
+    }))));
+    var t = D.tests[cur];
+    function extra(title, tks) {
+      var last = lastResult(title), n = 0;
+      tks.forEach(function (tk) { n += count(draft(t, tk)); });
+      return [last ? h('span', { class: 'last' }, 'Lần gần nhất: ' + last) : null, n ? h('span', { class: 'last' }, 'Đang có bản nháp ' + n + ' từ.') : null];
+    }
+    var rows = TASKS.map(function (tk) {
+      var title = t.title + ', ' + tk.title, x = t[tk.id];
+      return h('li', null,
+        h('div', { class: 'pt' }, h('b', null, tk.title), h('span', { class: 'pill blue' }, tk.level)),
+        h('div', { class: 'pd' }, h('b', { style: { color: 'var(--ink)' } }, tk.name + '. '),
+          (tk.id === 't1' ? 'Thư ' + x.kind + ': ' : 'Bài luận ' + x.kind + ': ') + x.vi + '. Ít nhất ' + tk.min + ' từ, ' + tk.mins + ' phút.', extra(title, [tk])),
+        h('button', { class: 'btn blue', type: 'button', onclick: function () { start(t, [tk], title); } }, 'Viết ' + tk.title));
+    });
+    var whole = t.title + ', cả đề';
+    rows.push(h('li', null,
+      h('div', { class: 'pt' }, h('b', null, 'Cả đề'), h('span', { class: 'pill blue' }, 'B1–C1')),
+      h('div', { class: 'pd' }, 'Viết liền hai bài trong 60 phút như thi thật. Nộp bài xong thì so với bài mẫu và tự chấm theo 4 tiêu chí.', extra(whole, [])),
+      h('button', { class: 'btn primary', type: 'button', onclick: function () { start(t, TASKS, whole); } }, 'Viết cả đề')));
+    panel.appendChild(h('section', { class: 'test' }, h('h2', null, t.title), h('ul', { class: 'parts' }, rows)));
+    panel.appendChild(h('div', { class: 'row', style: { margin: '-4px 0 18px' } },
+      h('button', { class: 'btn', type: 'button', onclick: function () { reviewView(t, TASKS, whole, null, 0); } }, 'Chỉ xem bài mẫu của ' + t.title)));
+    panel.appendChild(h('p', { class: 'small muted', style: { maxWidth: '74ch' } },
+      'Bài đang viết được lưu nháp trên máy này, thoát ra vào lại vẫn còn.' + (V.sheetOn() ? ' Khi lưu kết quả, bạn có thể gửi bài cho ' + V.teacher() + ' chấm.' : ' Muốn ' + V.teacher() + ' chấm, hãy chép bài viết gửi cho ' + V.teacher() + '.')));
+    panel.appendChild(fbBlock());
+  }
+  // điểm và nhận xét giáo viên đã chấm cho các bài viết đã gửi
+  function fbBlock() {
+    var box = h('div');
+    if (!V.sheetOn() || !V.learnerName()) return box;
+    V.feedback(function (err, items) {
+      items = (items || []).filter(function (it) { return V.slug(it.skill) === 'viet'; });
+      if (err || !items.length) return;
+      box.appendChild(h('section', { class: 'test', style: { marginTop: '18px' } }, h('h2', null, V.cap(V.teacher()) + ' đã chấm'),
+        h('ul', { class: 'fb' }, items.slice(0, 5).map(function (it) {
+          return h('li', null, h('span', { class: 'when' }, String(it.time || '').slice(0, 10)), h('b', null, [it.de, it.part].filter(Boolean).join(', ')),
+            it.diem !== '' ? h('span', { class: 'pill ok', style: { marginLeft: '8px' } }, it.diem + ' điểm') : null,
+            it.nhanxet ? h('div', null, it.nhanxet) : null);
+        }))));
+    });
+    return box;
+  }
+
+  /* ================= VIẾT BÀI ================= */
+  function start(test, tasks, title) {
+    stopTimer(); V.clear(panel); doing(true);
+    var total = 0, boxes = {}, t0 = Date.now(), armed = 0;
+    tasks.forEach(function (tk) { total += tk.mins * 60; });
+    var clock = h('span', { class: 'clock', role: 'timer' }), cnt = h('span', { class: 'count' }), warn = h('div');
+    function tick() {
+      var left = total - (Date.now() - t0) / 1000;
+      clock.textContent = left > 0 ? mmss(left) : 'Hết giờ';
+      if (left <= 0 && !clock.classList.contains('late')) { clock.classList.add('late'); V.toast('Đã hết ' + Math.round(total / 60) + ' phút. Bạn vẫn viết tiếp được, nhưng khi thi thật thì phải dừng bút.'); }
+    }
+    function upd() {
+      var n = 0; tasks.forEach(function (tk) { if (boxes[tk.id]) n += count(boxes[tk.id].value); });
+      V.add(V.clear(cnt), [n + ' ', h('span', { class: 'long' }, 'từ')]);
+    }
+    function submit() {
+      var short = [], all = 0;
+      tasks.forEach(function (tk) { var n = count(boxes[tk.id].value); all += n; if (n < tk.min) short.push(tk.title + ' mới có ' + n + '/' + tk.min + ' từ'); });
+      if (!all) { V.toast('Bạn chưa viết gì. Hãy viết bài rồi mới nộp.'); return; }
+      if (short.length && Date.now() - armed > 8000) {
+        armed = Date.now();
+        V.clear(warn).appendChild(h('div', { class: 'notice warn', style: { marginBottom: '14px' }, role: 'alert' }, short.join('; ') + '. Bấm Nộp bài lần nữa nếu bạn vẫn muốn nộp.'));
+        return;
+      }
+      var texts = {}; tasks.forEach(function (tk) { texts[tk.id] = boxes[tk.id].value.trim(); });
+      reviewView(test, tasks, title, texts, Math.max(1, Math.round((Date.now() - t0) / 60000)));
+    }
+    panel.appendChild(h('div', { class: 'dobar' },
+      h('div', null, h('b', null, title), cnt, clock),
+      h('div', { class: 'row' }, h('button', { class: 'btn small', type: 'button', onclick: function () { V.toast('Bài đang viết đã được lưu nháp.'); listView(); top(); } }, 'Thoát'),
+        h('button', { class: 'btn primary', type: 'button', onclick: submit }, 'Nộp bài'))));
+    panel.appendChild(warn);
+    tasks.forEach(function (tk) {
+      var t = test[tk.id], num = h('b', null, '0 từ'), state = h('span');
+      var ta = h('textarea', { class: 'wbox' + (tk.id === 't2' ? ' long' : ''), lang: 'en', spellcheck: 'false', autocapitalize: 'sentences', 'aria-label': tk.title + ', ô viết bài',
+        placeholder: tk.id === 't1' ? 'Dear …,' : 'Viết bài luận của bạn ở đây…' });
+      ta.value = draft(test, tk); boxes[tk.id] = ta;
+      var saveT = null;
+      function draw() {
+        var n = count(ta.value);
+        num.textContent = n + ' từ';
+        V.clear(state).appendChild(n >= tk.min ? h('span', { class: 'pill ok' }, 'Đủ số từ') : h('span', { class: 'need' }, 'cần ít nhất ' + tk.min + ' từ, còn thiếu ' + (tk.min - n)));
+        upd();
+      }
+      ta.addEventListener('input', function () {
+        draw(); V.clear(warn);
+        clearTimeout(saveT); saveT = setTimeout(function () { V.store.set(draftKey(test, tk), ta.value); }, 400);
+      });
+      ta.addEventListener('blur', function () { V.store.set(draftKey(test, tk), ta.value); });
+      panel.appendChild(h('h2', { class: 'parthead' }, tk.title + ': ' + tk.name, h('span', { class: 'pill blue' }, tk.level)));
+      panel.appendChild(h('p', { class: 'muted', style: { margin: '-6px 0 12px', maxWidth: '74ch' } }, tk.how));
+      panel.appendChild(h('article', { class: 'item' }, h('h3', null, 'Đề bài'), prompt(test, tk), ta, h('div', { class: 'wcount' }, num, state),
+        hint('Gợi ý dàn ý', t.outline, tk.frame)));
+      draw();
+    });
+    panel.appendChild(h('div', { class: 'row', style: { marginTop: '18px' } }, h('button', { class: 'btn primary', type: 'button', onclick: submit }, 'Nộp bài')));
+    tick(); timerId = setInterval(tick, 1000); top();
+  }
+
+  /* ================= BÀI MẪU, MÁY SOÁT NHANH, TỰ CHẤM ================= */
+  function mark(text, ph) {
+    if (!ph || !ph.length) return text;
+    var list = ph.map(function (x) { return x[0]; }).sort(function (a, b) { return b.length - a.length; })
+      .map(function (s) { return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); });
+    var out = [];
+    text.split(new RegExp('\\b(' + list.join('|') + ')\\b', 'gi')).forEach(function (s, i) { if (s) out.push(i % 2 ? h('mark', { class: 'hl' }, s) : s); });
+    return out;
+  }
+  // texts = null: chỉ xem bài mẫu
+  function reviewView(test, tasks, title, texts, mins) {
+    stopTimer(); V.clear(panel); doing(false); top();
+    var viewOnly = !texts, models = [], whole = tasks.length === TASKS.length;
+    function level() { return V.store.get('viet.lv', V.target().key === 'b1' ? 'b1' : 'b2'); }
+    function edit() { start(test, tasks, title); }
+    function back() { listView(); top(); }
+    var fresh = h('button', { class: 'btn', type: 'button' }, 'Viết lại từ đầu'), armed = 0;
+    fresh.addEventListener('click', function () {
+      if (Date.now() - armed > 5000) { armed = Date.now(); fresh.textContent = 'Bấm lần nữa để xoá bài cũ'; setTimeout(function () { fresh.textContent = 'Viết lại từ đầu'; }, 5000); return; }
+      tasks.forEach(function (tk) { V.store.set(draftKey(test, tk), ''); });
+      edit();
+    });
+
+    if (viewOnly) panel.appendChild(h('p', { class: 'notice', style: { marginBottom: '14px' } }, 'Bạn đang xem bài mẫu của ' + test.title + '. Tự viết trước rồi mới so với bài mẫu thì nhớ lâu hơn.'));
+    else {
+      var sum = 0; tasks.forEach(function (tk) { sum += count(texts[tk.id]); });
+      panel.appendChild(h('div', { class: 'score' },
+        h('div', { class: 'big' }, String(sum), h('span', null, ' từ')),
+        h('div', null, h('b', null, title), h('p', null, tasks.map(function (tk) { return tk.title + ': ' + count(texts[tk.id]) + ' từ (yêu cầu ít nhất ' + tk.min + ')'; }).join('. ') + '. Thời gian viết: ' + mins + ' phút.'))));
+      panel.appendChild(h('ol', { class: 'steps', style: { marginTop: '14px' } },
+        h('li', null, 'Xem máy soát nhanh số từ, số đoạn và lỗi hình thức.'),
+        h('li', null, 'Đọc bài mẫu và các cụm từ được tô vàng, so với bài của bạn.'),
+        h('li', null, 'Tự chấm theo 4 tiêu chí ở cuối trang rồi lưu kết quả.')));
+    }
+    panel.appendChild(h('div', { class: 'row', style: { margin: '14px 0 6px' } },
+      viewOnly ? h('button', { class: 'btn primary', type: 'button', onclick: edit }, 'Viết đề này') : [h('button', { class: 'btn', type: 'button', onclick: edit }, 'Sửa bài viết'), fresh],
+      h('button', { class: 'btn', type: 'button', onclick: back }, 'Về danh sách đề')));
+
+    function modelBox(tk) {
+      var box = h('div', { class: 'model' }), t = test[tk.id];
+      function draw() {
+        var lv = level(), m = t[lv];
+        V.clear(box).appendChild(h('div', { class: 'mh' },
+          h('b', null, 'Bài viết mẫu (' + count(m.text) + ' từ)'),
+          h('div', { class: 'seg', role: 'group', 'aria-label': 'Mức của bài mẫu' }, [['b1', 'Mức B1'], ['b2', 'Mức B2–C1']].map(function (o) {
+            return h('button', { type: 'button', 'aria-pressed': lv === o[0] ? 'true' : 'false', onclick: function () { V.store.set('viet.lv', o[0]); models.forEach(function (f) { f(); }); } }, o[1]);
+          }))));
+        box.appendChild(h('div', { class: 'mtext', lang: 'en' }, m.text.split(/\n\s*\n/).map(function (para) { return h('p', null, mark(para, m.ph)); })));
+        box.appendChild(h('ul', { class: 'phr' }, m.ph.map(function (x) { return h('li', null, h('b', { lang: 'en' }, x[0]), ' ' + x[1]); })));
+      }
+      models.push(draw); draw();
+      return box;
+    }
+    tasks.forEach(function (tk) {
+      var t = test[tk.id], mine = null;
+      if (!viewOnly) {
+        var text = texts[tk.id];
+        mine = [h('span', { class: 'lab2' }, 'Bài viết của bạn'),
+          text ? h('div', { class: 'mytext', lang: 'en' }, text) : h('div', { class: 'mytext none' }, 'Bạn chưa viết bài này.'),
+          text ? [h('span', { class: 'lab2' }, 'Máy soát nhanh'),
+            h('ul', { class: 'qc' }, quick(text, tk).map(function (r) { return h('li', { class: r[0] === null ? 'tip' : r[0] ? 'ok' : 'no' }, r[1]); })),
+            h('p', { class: 'small muted', style: { marginTop: '6px' } }, 'Máy chỉ đếm và soát lỗi hình thức; nội dung, từ vựng và ngữ pháp do bạn tự chấm hoặc ' + V.teacher() + ' chấm.')] : null];
+      }
+      panel.appendChild(h('h2', { class: 'parthead' }, tk.title + ': ' + tk.name, h('span', { class: 'pill blue' }, tk.level)));
+      panel.appendChild(h('article', { class: 'item' }, h('h3', null, 'Đề bài'), prompt(test, tk), mine, modelBox(tk), hint('Dàn ý của bài mẫu', t.outline)));
+    });
+    var done = viewOnly ? [] : tasks.filter(function (tk) { return texts[tk.id]; });
+    if (done.length) panel.appendChild(assess());
+    panel.appendChild(h('div', { class: 'row', style: { marginTop: '18px' } },
+      h('button', { class: 'btn primary', type: 'button', onclick: edit }, viewOnly ? 'Viết đề này' : 'Sửa bài viết'),
+      h('button', { class: 'btn', type: 'button', onclick: back }, 'Về danh sách đề')));
+
+    /* ---------- tự chấm theo 4 tiêu chí của bài thi Viết ---------- */
+    function assess() {
+      var box = h('section', { class: 'assess' }), pick = {}, warn = h('div');
+      var sendText = h('input', { type: 'checkbox', id: 'viet-send-text', checked: true });
+      box.appendChild(h('h2', null, 'Tự chấm bài viết'));
+      box.appendChild(h('p', { class: 'muted', style: { maxWidth: '72ch' } }, 'Bài thi Viết được chấm theo 4 tiêu chí. Ở mỗi tiêu chí, chọn dòng giống bài viết của bạn nhất.' + (done.length > 1 ? ' Bài 2 được tính gấp đôi Bài 1.' : '')));
+      done.forEach(function (tk) {
+        if (done.length > 1) box.appendChild(h('h3', null, tk.title + ': ' + tk.name));
+        CRIT.forEach(function (c, ci) {
+          var name = tk.id + 'c' + ci, fs = h('fieldset', { class: 'q' }, h('legend', null, (ci + 1) + '. ' + c[0]));
+          c[1].forEach(function (text, li) {
+            var id = name + '-' + li, r = h('input', { type: 'radio', name: name, id: id });
+            r.addEventListener('change', function () { pick[name] = li; V.clear(warn); });
+            fs.appendChild(h('label', { class: 'opt', for: id }, r, h('span', { class: 'lv' }, LEVELS[li][0]), h('span', null, text)));
+          });
+          box.appendChild(fs);
+        });
+      });
+      if (V.sheetOn()) box.appendChild(h('label', { class: 'send', for: 'viet-send-text' }, sendText,
+        h('span', null, 'Gửi kèm bài viết để ' + V.teacher() + ' đọc và chấm. Bỏ chọn nếu bạn chỉ muốn gửi điểm tự chấm.')));
+      box.appendChild(warn);
+      box.appendChild(h('div', { class: 'row', style: { marginTop: '16px' } }, h('button', { class: 'btn primary', type: 'button', onclick: save }, 'Lưu kết quả')));
+      function save() {
+        var left = done.length * CRIT.length - Object.keys(pick).length;
+        if (left > 0) {
+          V.clear(warn).appendChild(h('div', { class: 'notice warn', style: { marginTop: '14px' }, role: 'alert' }, 'Còn ' + left + ' tiêu chí chưa chọn.'));
+          return;
+        }
+        var num = 0, den = 0, crit = CRIT.map(function () { return 0; }), detail = [];
+        done.forEach(function (tk) {
+          var s = 0;
+          CRIT.forEach(function (c, ci) { var v = LEVELS[pick[tk.id + 'c' + ci]][1]; s += v; crit[ci] += v * tk.weight; });
+          num += s / CRIT.length * tk.weight; den += tk.weight;
+          detail.push(tk.title + ': ' + CRIT.map(function (c, ci) { return c[0] + ' ' + LEVELS[pick[tk.id + 'c' + ci]][0]; }).join(', '));
+        });
+        var low = 0; crit.forEach(function (v, i) { if (v < crit[low]) low = i; });
+        var score10 = Math.round(num / den * 10) / 10, full = whole && done.length === TASKS.length;
+        var rec = V.results.add({ skill: 'viet', kind: 'luyen-tap', title: title, score10: score10, full: full, self: true, sent: false });
+        var band = V.bandOf(score10), tg = V.target(), s05 = V.round05(score10), sendBox = h('p', { class: 'small muted', role: 'status' });
+        var verdict = 'Điểm Viết tự chấm: ' + V.fmtScore(s05) + '/10, ' + (band.key === 'none' ? 'chưa tới mốc B1' : 'tương đương ' + band.t) + '. ' +
+          (s05 >= tg.min ? 'Theo tự chấm, bạn đã ở mốc mục tiêu ' + tg.t + '.' : 'Mốc mục tiêu ' + tg.t + ' cần từ ' + V.fmtScore(tg.min) + ' điểm.') +
+          ' Tiêu chí nên luyện trước: ' + CRIT[low][0] + '. ' + CRIT[low][2];
+        V.clear(box).classList.remove('assess'); box.style.marginTop = '26px';
+        box.appendChild(h('div', { class: 'score' },
+          h('div', { class: 'big' }, V.fmtScore(s05), h('span', null, ' /10 tự chấm')),
+          h('div', null, h('b', null, title), h('p', null, verdict), sendBox)));
+        box.scrollIntoView({ block: 'center' });
+        var row = { 'Đề': test.title, 'Phần': whole ? 'Cả đề' : tasks[0].title, 'Số từ': done.map(function (tk) { return tk.title + ': ' + count(texts[tk.id]); }).join('; '),
+          'Thời gian': mins + ' phút', 'Tự chấm /10': V.fmtScore(score10), 'Chi tiết tự chấm': detail.join('. '), 'Mục tiêu': tg.t };
+        if (sendText.checked) row['Bài viết'] = done.map(function (tk) { return (done.length > 1 ? tk.title.toUpperCase() + '\n' : '') + texts[tk.id]; }).join('\n\n');
+        function send() {
+          if (!V.sheetOn()) { sendBox.textContent = 'Kết quả đã được lưu trên máy này. Điểm thật do giám khảo chấm; hãy chép bài viết gửi cho ' + V.teacher() + ' để được chấm và nhận xét.'; return; }
+          sendBox.textContent = 'Đang gửi cho ' + V.teacher() + '…';
+          V.send('viet', row, function (ok) {
+            V.clear(sendBox);
+            if (ok) {
+              V.results.mark(rec.ts, { sent: true });
+              sendBox.textContent = 'Đã lưu và gửi cho ' + V.teacher() + (row['Bài viết'] ? ' kèm bài viết.' : '.') + ' Điểm và nhận xét của ' + V.teacher() + ' sẽ hiện ở danh sách đề.';
+            } else V.add(sendBox, ['Đã lưu trên máy này nhưng chưa gửi được cho ' + V.teacher() + '. ', h('button', { class: 'btn small', type: 'button', onclick: send }, 'Gửi lại')]);
+          });
+        }
+        send();
+      }
+      return box;
+    }
+  }
+
+  /* ================= KHUNG TRANG ================= */
+  function draw() {
+    V.clear(bar);
+    TABS.forEach(function (t) {
+      bar.appendChild(h('button', { class: 'tab' + (t[0] === tab ? ' on' : ''), type: 'button', role: 'tab', 'aria-selected': t[0] === tab ? 'true' : 'false',
+        onclick: function () { tab = t[0]; try { history.replaceState(null, '', '#' + tab); } catch (e) { } draw(); } }, t[1]));
+    });
+    if (tab === 'tu-vung') { stopTimer(); doing(false); V.vocabTab(panel, { skill: 'viet', groups: D.vocab, source: 'nhóm cụm từ', listenFirst: false }); } else listView();
+  }
+  V.mount(function (root) {
+    bar = h('div', { class: 'tabs', role: 'tablist' }); panel = h('div', { role: 'tabpanel' });
+    window.addEventListener('hashchange', function () { tab = hashTab(); draw(); });
+    root.appendChild(V.pageHead('Viết', 'Writing', 'Bài viết theo đúng định dạng VSTEP.3-5: một bức thư và một bài luận trong 60 phút. Viết có bấm giờ và đếm từ, rồi so với bài viết mẫu.'));
+    root.appendChild(h('div', { style: { marginTop: '14px' } }, V.learnerBox(function () { draw(); })));
     root.appendChild(bar); root.appendChild(panel);
     draw();
     root.appendChild(V.pager());
