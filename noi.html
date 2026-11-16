@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Luyện Nói – Ôn thi VSTEP B1–C1</title>
-<meta name="description" content="Luyện Nói VSTEP B1–C1 và từ vựng mới có phát âm.">
+<meta name="description" content="Luyện Nói VSTEP B1–C1: đề nói đủ 3 phần có ghi âm, bấm giờ, bài nói mẫu để so sánh và từ vựng mới có phát âm giọng nam, giọng nữ.">
 <script>
 /* ================================================================
    CÀI ĐẶT — chỉ cần sửa phần này (giữ nguyên dấu ngoặc kép "")
@@ -178,6 +178,173 @@ h1,h2,h3,p{margin:0}
 .audiowarn{margin-top:16px;padding:14px 18px}
 .audiowarn ul{margin:6px 0 6px;padding-left:20px}
 .audiowarn li{margin-top:4px}
+/* ===== LUYỆN TẬP: danh sách bài, làm bài, chấm, chữa (dùng chung cho Nghe và Đọc) ===== */
+.test{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px 20px 8px;margin-bottom:18px}
+.test h2{font-size:1.35rem;font-weight:800;margin-bottom:4px}
+.parts{list-style:none;margin:0;padding:0}
+.parts li{display:grid;grid-template-columns:150px minmax(0,1fr) auto;gap:10px 18px;align-items:center;padding:14px 0;border-top:1px solid var(--line)}
+.parts li:first-child{border-top:0}
+.parts .pt{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.parts .pt b{font-size:1.08rem}
+.parts .pd{color:var(--muted);font-size:.95rem}
+.parts .last{display:block;color:var(--blue-900);font-weight:600;margin-top:2px}
+.parts .btn{min-width:128px}
+@media(max-width:700px){.parts li{grid-template-columns:1fr}.parts .btn{width:100%}}
+
+.dobar{position:sticky;top:calc(var(--navh, 57px) + 8px);z-index:10;display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;justify-content:space-between;background:var(--ink);color:#fff;border-radius:12px;padding:10px 16px;margin-bottom:16px}
+.dobar .count{margin-left:12px;font-size:.92rem;opacity:.85;font-variant-numeric:tabular-nums}
+.dobar .btn.primary{background:#fff;color:var(--ink);border-color:#fff}
+.dobar .btn.small{background:transparent;color:#fff;border-color:rgba(255,255,255,.45)}
+.parthead{font-size:1.3rem;font-weight:800;margin:26px 0 12px;display:flex;align-items:center;gap:10px}
+.item{background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px 20px 18px;margin-bottom:14px}
+.item h3{font-size:1.02rem;font-weight:700;margin-bottom:10px}
+.player audio{width:100%;max-width:560px;display:block;height:44px}
+.player .notice{margin-top:8px}
+.q{border:0;margin:16px 0 0;padding:0;min-width:0}
+.q legend,.q .qt{font-weight:600;padding:0;margin-bottom:8px;line-height:1.45}
+.q .qn{color:var(--blue-900);font-weight:800}
+.opt{display:flex;align-items:flex-start;gap:10px;padding:9px 12px;border:1px solid var(--line);border-radius:10px;margin-top:6px;cursor:pointer;line-height:1.4}
+label.opt:hover{border-color:var(--blue-400);background:var(--blue-50)}
+.opt input{width:19px;height:19px;margin:2px 0 0;flex:0 0 auto;accent-color:var(--blue-600)}
+.opt:has(input:checked){border-color:var(--blue-600);background:var(--blue-50)}
+.opt .lt{font-weight:800;min-width:1.1em}
+.q.rev .opt{cursor:default}
+.q.rev .qt .pill{margin-left:8px;vertical-align:1px}
+.pill.no{background:var(--bad-soft);color:var(--bad)}
+.opt.right{border-color:var(--ok);background:var(--ok-soft)}
+.opt.wrong{border-color:var(--bad);background:var(--bad-soft)}
+.opt .tag{margin-left:auto;font-size:.82rem;font-weight:700;white-space:nowrap;padding-left:10px}
+.opt.right .tag{color:var(--ok)}
+.opt.wrong .tag{color:var(--bad)}
+.why{margin-top:8px;padding:10px 14px;border-left:3px solid var(--blue-400);background:#f7f9fd;border-radius:0 10px 10px 0;font-size:.95rem}
+.why .ev{font-style:italic;color:var(--blue-900);margin-bottom:4px}
+.script{margin-top:16px;border-top:1px solid var(--line);padding-top:12px}
+.script summary{cursor:pointer;font-weight:700;color:var(--blue-700)}
+.script p{margin-top:8px;max-width:72ch}
+
+.score{display:flex;flex-wrap:wrap;gap:8px 26px;align-items:center;background:#fff;border:1.5px solid var(--ink);border-radius:16px;padding:18px 22px}
+.score .big{font-size:2.6rem;font-weight:800;letter-spacing:-.02em;line-height:1.1;white-space:nowrap}
+.score .big span{font-size:1rem;font-weight:600;letter-spacing:0;color:var(--muted)}
+.score > div:last-child{flex:1 1 300px}
+.score p{margin-top:2px;max-width:66ch}
+
+.vbar{display:flex;flex-wrap:wrap;gap:12px 24px;align-items:center;justify-content:space-between}
+.vbar .seg button{padding:6px 12px;font-size:.92rem}
+.quiz{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px 22px;max-width:640px}
+.quiz .qhead{display:flex;justify-content:space-between;gap:12px;margin-bottom:6px}
+.quiz > p{margin-bottom:12px}
+.qopts{display:grid;gap:8px;margin-top:16px}
+.qopts .btn{justify-content:flex-start;text-align:left}
+.qopts .btn.right{border-color:var(--ok);background:var(--ok-soft);opacity:1}
+.qopts .btn.wrong{border-color:var(--bad);background:var(--bad-soft);opacity:1}
+.qfb{margin-top:14px}
+.qfb p{margin-bottom:10px}
+.qfb .qw{font-weight:800}
+.qword{font-size:1.9rem;font-weight:800;letter-spacing:-.01em;margin:2px 0 12px}
+/* đang làm bài: thanh menu không dính nữa để dành chỗ cho bài */
+body.doing{--navh:0px}
+body.doing .nav{position:static}
+@media(max-width:700px){
+  .dobar{padding:8px 12px;flex-wrap:nowrap}
+  .dobar b,.dobar .count .long{display:none}
+  .dobar .count{margin-left:0}
+  .dobar .btn{min-height:38px;padding:6px 12px}
+}
+@media(max-width:700px){
+  .dobar > div{display:flex;align-items:center;gap:8px;flex-wrap:nowrap;white-space:nowrap}
+  .dobar .clock{margin-left:0}
+}
+@media(max-width:700px){
+  .dobar{gap:6px}
+  .dobar .row{gap:6px;flex-wrap:nowrap}
+  .dobar .btn{padding:6px 10px}
+}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chips button{appearance:none;border:1.5px solid var(--ink);background:#fff;border-radius:999px;padding:6px 16px;font-weight:700;cursor:pointer;min-height:38px}
+.chips button:hover{background:var(--blue-50)}
+.chips button[aria-pressed="true"]{background:var(--ink);color:#fff}
+.chips button .done{font-weight:400;font-size:.85rem;margin-left:6px;opacity:.8}
+.testpick{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;margin-bottom:14px;font-weight:600}
+/* ===== TRANG NÓI: lượt nói có ghi âm, sơ đồ chủ đề, bài nói mẫu, tự chấm ===== */
+.sq{padding:14px 0 6px;border-top:1px solid var(--line)}
+.item h3 + .sq{border-top:0;padding-top:2px}
+.sq .qt{font-weight:600;line-height:1.45;margin-bottom:10px}
+.sq .qn{color:var(--blue-900);font-weight:800}
+.qx.veil{filter:blur(7px);cursor:pointer;user-select:none}
+.acts{display:flex;flex-wrap:wrap;gap:10px 12px;align-items:center}
+.speak{display:flex;flex-wrap:wrap;gap:8px 10px;align-items:center;min-height:44px;flex:1 1 280px;min-width:0}
+.item > .speak{margin-top:12px}
+.speak audio,.mine audio{height:40px;flex:1 1 220px;min-width:0;max-width:420px}
+.speak .clock,.prep .clock{font-variant-numeric:tabular-nums;font-weight:800}
+.speak .lim{color:var(--muted);font-size:.9rem;white-space:nowrap}
+.btn.rec{border-color:var(--bad);color:var(--bad)}
+.btn.rec:hover{background:var(--bad-soft);border-color:var(--bad)}
+.btn.stop{background:var(--bad);border-color:var(--bad);color:#fff}
+.btn.stop:hover{border-color:var(--bad)}
+.speak .dot,.btn .dot{width:11px;height:11px;border-radius:50%;background:var(--bad);display:inline-block;flex:0 0 auto}
+.btn .sqr{width:11px;height:11px;border-radius:2px;background:#fff;display:inline-block;flex:0 0 auto}
+.speak.live > .dot{animation:noi-pulse 1.1s ease-in-out infinite}
+@keyframes noi-pulse{50%{opacity:.2}}
+@media (prefers-reduced-motion:reduce){.speak.live > .dot{animation:none}}
+.recbar{flex:1 1 120px;height:8px;border-radius:99px;background:#eceef4;overflow:hidden;min-width:80px;max-width:320px}
+.recbar i{display:block;height:100%;width:0;background:var(--bad)}
+.prep{display:inline-flex;flex-wrap:wrap;gap:8px;align-items:center;font-weight:600}
+.btn.small svg{width:16px;height:16px}
+
+.sit{font-size:1.05rem;max-width:70ch}
+.opts3{margin:10px 0 14px;padding:0;list-style:none;display:grid;gap:6px;counter-reset:o;max-width:560px}
+.opts3 li{counter-increment:o;border:1.5px solid var(--ink);border-radius:10px;padding:8px 14px;background:#fff;font-weight:600;display:flex;gap:10px}
+.opts3 li::before{content:counter(o) ".";font-weight:800;color:var(--blue-900)}
+
+.mind{margin:6px 0 16px}
+.mm-topic{border:2px solid var(--ink);border-radius:14px;padding:12px 18px;font-weight:800;font-size:1.1rem;line-height:1.35;text-align:center;max-width:520px;margin:0 auto;background:var(--blue-50)}
+.mm-ideas{list-style:none;margin:0;padding:26px 0 0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;position:relative}
+.mm-ideas::before{content:"";position:absolute;left:calc(12.5% - 3px);right:calc(12.5% - 5px);top:10.5px;border-top:2px solid var(--ink)}
+.mm-ideas::after{content:"";position:absolute;left:50%;top:0;height:10.5px;border-left:2px solid var(--ink)}
+.mm-ideas li{position:relative;border:1.5px solid var(--ink);border-radius:12px;padding:10px 10px;text-align:center;background:#fff;font-weight:600;line-height:1.35;display:flex;align-items:center;justify-content:center}
+.mm-ideas li::before{content:"";position:absolute;left:50%;top:-15.5px;height:15.5px;border-left:2px solid var(--ink)}
+.mm-ideas li.own{border-style:dashed;color:var(--muted);font-weight:400;font-style:italic}
+@media(max-width:700px){
+  .mm-ideas{grid-template-columns:repeat(2,minmax(0,1fr));padding-top:12px}
+  .mm-ideas::before,.mm-ideas::after,.mm-ideas li::before{display:none}
+}
+
+.hint{margin-top:14px;border-top:1px dashed var(--line);padding-top:10px}
+.hint summary{cursor:pointer;font-weight:700;color:var(--blue-700)}
+.hint ul{margin:8px 0 0;padding-left:20px;max-width:72ch}
+.hint .frame{margin-top:8px;padding:8px 12px;border-radius:10px;background:#f7f9fd;color:var(--blue-900);font-style:italic}
+
+.mine{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center;margin-top:10px}
+.mine .lab{font-weight:700;white-space:nowrap}
+.model{margin-top:12px;border:1px solid var(--line);border-left:3px solid var(--blue-400);border-radius:0 12px 12px 0;padding:12px 16px 14px;background:#f7f9fd}
+.model .mh{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center}
+.model .mh b{margin-right:auto}
+.model .seg button{padding:5px 12px;font-size:.9rem;min-height:36px}
+.model .mtext p{margin-top:8px;max-width:72ch}
+mark.hl{background:#ffec99;color:inherit;padding:0 2px;border-radius:3px}
+.phr{list-style:none;margin:12px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:6px}
+.phr li{background:#fff;border:1px solid var(--line);border-radius:8px;padding:3px 10px;font-size:.9rem;line-height:1.45}
+.rq{font-weight:600;line-height:1.45}
+
+.assess{background:#fff;border:1.5px solid var(--ink);border-radius:16px;padding:18px 20px 20px;margin-top:26px}
+.assess h2{font-size:1.3rem;font-weight:800;margin-bottom:4px}
+.assess .q legend{font-weight:800}
+.assess .opt .lv{font-weight:800;min-width:4.3em;color:var(--blue-900)}
+.assess .send{display:flex;gap:10px;align-items:flex-start;margin-top:16px;line-height:1.45}
+.assess .send input{width:19px;height:19px;margin-top:2px;flex:0 0 auto;accent-color:var(--blue-600)}
+.fb{list-style:none;margin:0;padding:0}
+.fb li{padding:10px 0;border-top:1px solid var(--line)}
+.fb li:first-child{border-top:0}
+.fb .when{color:var(--muted);font-size:.9rem;margin-right:8px}
+.steps{margin:0 0 16px;padding-left:22px;max-width:74ch}
+.steps li{margin-top:2px}
+@media(max-width:700px){
+  .dobar .btn .long{display:none}
+  .speak{flex-basis:100%}
+  .assess{padding:14px 14px 16px}
+  .assess .opt{flex-wrap:wrap}
+  .assess .opt .lv{min-width:0}
+}
 </style>
 </head>
 <body>
@@ -569,12 +736,13 @@ h1,h2,h3,p{margin:0}
     } catch (e) { formPost(); }
   }
   // gửi một dòng kết quả: V.send('nghe', {'Đề': 'Bài 1', 'Kết quả': '6/8', ...}, cb)
-  function send(skill, row, cb) {
+  // audio (tuỳ chọn): [{name, type, b64}] – bản ghi âm bài Nói gửi kèm
+  function send(skill, row, cb, audio) {
     if (!sheetOn()) { cb && cb(false); return; }
     var ordered = { 'Học viên': learnerName() || '(chưa nhập tên)' };
     Object.keys(row || {}).forEach(function (k) { ordered[k] = row[k]; });
     ordered['Mã'] = uid() + '-' + Date.now().toString(36);
-    postSheet({ skill: skill, cols: Object.keys(ordered), row: ordered, audio: [] }, cb);
+    postSheet({ skill: skill, cols: Object.keys(ordered), row: ordered, audio: audio || [] }, cb);
   }
   function jsonp(params, cb) {
     var cbName = '__vjp' + Date.now() + Math.floor(Math.random() * 1000), finished = false;
@@ -607,33 +775,1281 @@ h1,h2,h3,p{margin:0}
 })();
 </script>
 <script>
-/* ===== TRANG KỸ NĂNG (bản khung – nội dung sẽ thêm ở đợt sau) ===== */
+/* ===== NỘI DUNG TRANG NÓI: đề nói, bài nói mẫu và từ vựng (soạn riêng cho trang này) ===== */
+window.NOI_DATA = {
+ "tests": [
+  {
+   "id": "de1",
+   "title": "Đề 1",
+   "p1": [
+    {
+     "topic": "Free time",
+     "vi": "thời gian rảnh",
+     "intro": "Let's talk about your free time.",
+     "qs": [
+      {
+       "q": "What do you usually do in your free time?",
+       "a": "In my free time, I usually listen to music or watch films at home. I work all week, so I just want to relax in the evenings. At the weekend, I sometimes play badminton with my friends in the park near my house, which is good fun and keeps me fit.",
+       "ph": [
+        [
+         "In my free time",
+         "lúc rảnh"
+        ],
+        [
+         "keeps me fit",
+         "giúp tôi khoẻ mạnh"
+        ]
+       ]
+      },
+      {
+       "q": "Do you prefer spending your free time alone or with other people?",
+       "a": "It depends on my mood, to be honest. After a busy day, I prefer being alone with a good book. But at the weekend, I'd rather go out with my friends, because talking and laughing together helps me forget about work.",
+       "ph": [
+        [
+         "It depends on",
+         "còn tuỳ vào"
+        ],
+        [
+         "I'd rather",
+         "tôi thích … hơn"
+        ]
+       ]
+      },
+      {
+       "q": "Is there a new hobby you would like to try?",
+       "a": "Yes, I'd love to learn how to play the guitar. I've wanted to try it since I was a student, but I've never had enough time. If I'm less busy next year, I'm going to take a class at the weekend.",
+       "ph": [
+        [
+         "I'd love to",
+         "tôi rất muốn"
+        ],
+        [
+         "take a class",
+         "đi học một lớp"
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "topic": "Your neighbourhood",
+     "vi": "khu phố nơi bạn ở",
+     "intro": "Now, let's talk about your neighbourhood.",
+     "qs": [
+      {
+       "q": "Can you describe the area where you live?",
+       "a": "I live in a small street about five kilometres from the city centre. It's quite a quiet area, with a lot of trees and a small market at the end of the road. Most of my neighbours have lived there for a long time, so everybody knows each other.",
+       "ph": [
+        [
+         "quite a quiet area",
+         "một khu khá yên tĩnh"
+        ],
+        [
+         "knows each other",
+         "quen biết nhau"
+        ]
+       ]
+      },
+      {
+       "q": "What do you like most about your neighbourhood?",
+       "a": "What I like most is that it's very convenient. There's a supermarket, a pharmacy and several coffee shops within walking distance, so I don't need to use my motorbike very often. The people are friendly too, and they always say hello.",
+       "ph": [
+        [
+         "What I like most is",
+         "điều tôi thích nhất là"
+        ],
+        [
+         "within walking distance",
+         "đi bộ là tới"
+        ]
+       ]
+      },
+      {
+       "q": "Is there anything you would like to change about it?",
+       "a": "Well, the traffic is the main problem. In the morning, the street is full of cars and motorbikes, and it's really noisy. I wish there were a small park as well, because children in my area have nowhere to play.",
+       "ph": [
+        [
+         "the main problem",
+         "vấn đề chính"
+        ],
+        [
+         "I wish there were",
+         "tôi ước gì có"
+        ]
+       ]
+      }
+     ]
+    }
+   ],
+   "p2": {
+    "vi": "chọn cách liên hoan cuối khoá học",
+    "sit": "Your English class is finishing next week, and the class wants to do something together to celebrate.",
+    "opts": [
+     "having a picnic in a park",
+     "having dinner at a restaurant",
+     "going to a karaoke bar"
+    ],
+    "ask": "Which do you think is the best choice?",
+    "outline": [
+     "Chọn: đi dã ngoại ở công viên.",
+     "Lý do 1: rẻ, mỗi người mang một món nên ai cũng tham gia được.",
+     "Lý do 2: chỗ rộng, cả lớp chơi trò chơi, chụp ảnh và nói chuyện được với nhau.",
+     "Không chọn nhà hàng (đắt, ngồi yên một chỗ) và karaoke (ồn, có bạn ngại hát).",
+     "Kết lại: dã ngoại hợp với cả lớp nhất."
+    ],
+    "b1": {
+     "text": "In my opinion, the best choice is having a picnic in a park. First, it is cheap. Everyone can bring some food or drinks from home, so nobody has to spend a lot of money. Second, a park has a lot of space. We can sit together, play games and take photos, and we can talk to everybody in the class.\n\nI don't think a restaurant is a good idea, because it is expensive for some students, and we have to sit at the table all evening. Karaoke is fun, but it is very noisy, and some people in my class are shy and don't like singing.\n\nSo I think a picnic is the best way to celebrate the end of our course.",
+     "ph": [
+      [
+       "In my opinion",
+       "theo tôi"
+      ],
+      [
+       "the best choice is",
+       "lựa chọn tốt nhất là"
+      ],
+      [
+       "I don't think",
+       "tôi không nghĩ là"
+      ],
+      [
+       "the best way to",
+       "cách tốt nhất để"
+      ]
+     ]
+    },
+    "b2": {
+     "text": "All three options sound enjoyable, but if I had to choose, I'd go for the picnic in a park.\n\nThe main reason is that it suits everyone. A picnic costs very little, because each person can simply bring a dish to share, so nobody feels left out for financial reasons. It's also far more relaxed than the other two options. We'd have plenty of space to play games, take group photos and chat with different people, rather than only talking to the person sitting next to us.\n\nA restaurant dinner is certainly more comfortable, especially if the weather is bad, but it tends to be expensive, and a long table makes it hard for the whole class to talk together. As for karaoke, I can see why people like it. However, it's so loud that you can hardly have a conversation, and the shyer members of the class might feel under pressure to sing.\n\nOf course, a picnic depends on the weather, so we'd need a backup plan, such as moving to a café nearby. Overall, though, I believe a picnic is the most inclusive and memorable way to celebrate.",
+     "ph": [
+      [
+       "if I had to choose, I'd go for",
+       "nếu phải chọn, tôi sẽ chọn"
+      ],
+      [
+       "The main reason is that",
+       "lý do chính là"
+      ],
+      [
+       "rather than",
+       "thay vì"
+      ],
+      [
+       "tends to be",
+       "thường thì"
+      ],
+      [
+       "As for",
+       "còn về"
+      ],
+      [
+       "Overall",
+       "nhìn chung"
+      ]
+     ]
+    }
+   },
+   "p3": {
+    "vi": "lợi ích của việc đọc sách",
+    "topic": "Reading books brings many benefits",
+    "ideas": [
+     "widens your knowledge",
+     "reduces stress",
+     "improves language skills"
+    ],
+    "outline": [
+     "Mở bài: nhắc lại chủ đề, nói mình đồng ý.",
+     "Ý 1: mở rộng hiểu biết (lịch sử, khoa học, cuộc sống ở nơi khác), kèm một ví dụ của mình.",
+     "Ý 2: giảm căng thẳng sau giờ làm, dễ ngủ hơn.",
+     "Ý 3: tăng vốn từ, nói và viết tốt hơn, nhất là khi học ngoại ngữ.",
+     "Ý riêng: tập trung tốt hơn hoặc hiểu người khác hơn. Kết bài."
+    ],
+    "b1": {
+     "text": "I think reading books is very good for us, for three main reasons.\n\nFirst, reading widens our knowledge. From books, we can learn about history, science and life in other countries. For example, I learned a lot about Japan from a book before I travelled there.\n\nSecond, reading reduces stress. After a long day at work, I often read a few pages in bed. It helps me relax and sleep better.\n\nThird, reading improves our language skills. When we read, we see a lot of new words and good sentences. This is very useful for people who are learning English, like me.\n\nFinally, I think reading also helps us to concentrate, because we have to sit quietly and think.\n\nFor these reasons, I believe everyone should read more books.",
+     "ph": [
+      [
+       "for three main reasons",
+       "vì ba lý do chính"
+      ],
+      [
+       "For example",
+       "ví dụ"
+      ],
+      [
+       "It helps me",
+       "nó giúp tôi"
+      ],
+      [
+       "This is very useful for",
+       "điều này rất có ích cho"
+      ],
+      [
+       "For these reasons",
+       "vì những lý do này"
+      ]
+     ]
+    },
+    "b2": {
+     "text": "I'd like to talk about the benefits of reading books, which I think are often underestimated nowadays.\n\nTo begin with, reading is one of the most effective ways to broaden our knowledge. A good book lets us learn from experts and from people who lived in completely different times and places. For instance, I knew very little about economics until I read a couple of popular books on the subject, and they changed the way I think about money.\n\nAnother benefit is that reading helps us to deal with stress. When I'm absorbed in a novel, I forget about my deadlines for a while. Unlike scrolling through social media, which often leaves me feeling more tired, reading actually calms me down.\n\nReading also has a direct impact on our language skills. Regular readers pick up vocabulary and sentence patterns without even noticing, and that is why they usually write and speak more clearly. This is especially true for people learning a foreign language.\n\nOn top of that, I'd add one idea of my own: reading fiction makes us more understanding. When we follow a character's thoughts, we learn to see the world from someone else's point of view.\n\nTo sum up, reading enriches our minds, relaxes us and makes us better communicators, so it's a habit well worth developing.",
+     "ph": [
+      [
+       "To begin with",
+       "trước hết"
+      ],
+      [
+       "broaden our knowledge",
+       "mở rộng hiểu biết"
+      ],
+      [
+       "Another benefit is that",
+       "một lợi ích nữa là"
+      ],
+      [
+       "has a direct impact on",
+       "tác động trực tiếp tới"
+      ],
+      [
+       "On top of that",
+       "thêm vào đó"
+      ],
+      [
+       "To sum up",
+       "tóm lại"
+      ]
+     ]
+    },
+    "fu": [
+     {
+      "q": "Do you think people read less today than in the past?",
+      "a": "Yes, I think so, at least when it comes to printed books. Most people now spend their free time on their phones, watching short videos or chatting. However, I wouldn't say that people have stopped reading completely. They still read news, blogs and e-books online, so the habit has changed rather than disappeared.",
+      "ph": [
+       [
+        "when it comes to",
+        "khi nói về"
+       ],
+       [
+        "I wouldn't say that",
+        "tôi không cho là"
+       ]
+      ]
+     },
+     {
+      "q": "Are e-books better than printed books?",
+      "a": "Both have their advantages. E-books are convenient, because you can carry hundreds of them on one small device, and they're usually cheaper. On the other hand, many people, including me, find printed books easier on the eyes and nicer to hold. So I'd say it depends on the situation: e-books for travelling, and printed books for reading at home.",
+      "ph": [
+       [
+        "Both have their advantages",
+        "cả hai đều có ưu điểm"
+       ],
+       [
+        "On the other hand",
+        "mặt khác"
+       ]
+      ]
+     },
+     {
+      "q": "How can parents encourage their children to read more?",
+      "a": "I think the most important thing is to set an example. If children see their parents reading, they're more likely to pick up a book themselves. Parents can also read bedtime stories, take their children to the library, and let them choose books they're really interested in, instead of forcing them to read.",
+      "ph": [
+       [
+        "set an example",
+        "làm gương"
+       ],
+       [
+        "they're more likely to",
+        "chúng dễ … hơn"
+       ]
+      ]
+     }
+    ]
+   }
+  }
+ ],
+ "vocab": [
+  {
+   "id": "p1",
+   "title": "Phần 1",
+   "level": "B1",
+   "words": [
+    {
+     "w": "to be honest",
+     "pos": "phr",
+     "ipa": "/tə bi ˈɒnɪst/",
+     "vi": "thành thật mà nói",
+     "ex": "To be honest, I don't cook very often."
+    },
+    {
+     "w": "it depends",
+     "pos": "phr",
+     "ipa": "/ɪt dɪˈpendz/",
+     "vi": "còn tuỳ",
+     "ex": "It depends on the weather."
+    },
+    {
+     "w": "be keen on",
+     "pos": "phr",
+     "ipa": "/bi ˈkiːn ɒn/",
+     "vi": "rất thích",
+     "ex": "I'm keen on playing badminton."
+    },
+    {
+     "w": "hang out",
+     "pos": "phr v",
+     "ipa": "/ˌhæŋ ˈaʊt/",
+     "vi": "đi chơi, tụ tập",
+     "ex": "I often hang out with my friends at the weekend."
+    },
+    {
+     "w": "once in a while",
+     "pos": "phr",
+     "ipa": "/ˌwʌns ɪn ə ˈwaɪl/",
+     "vi": "thỉnh thoảng",
+     "ex": "Once in a while, we eat out at a restaurant."
+    },
+    {
+     "w": "used to",
+     "pos": "modal",
+     "ipa": "/ˈjuːst tə/",
+     "vi": "đã từng (nay không còn)",
+     "ex": "I used to live in the countryside."
+    },
+    {
+     "w": "look forward to",
+     "pos": "phr v",
+     "ipa": "/ˌlʊk ˈfɔːwəd tə/",
+     "vi": "mong chờ",
+     "ex": "I'm looking forward to the holiday."
+    },
+    {
+     "w": "would rather",
+     "pos": "modal",
+     "ipa": "/wʊd ˈrɑːðə(r)/",
+     "vi": "thích … hơn",
+     "ex": "I'd rather stay at home tonight."
+    },
+    {
+     "w": "within walking distance",
+     "pos": "phr",
+     "ipa": "/wɪˌðɪn ˈwɔːkɪŋ ˌdɪstəns/",
+     "vi": "đi bộ là tới",
+     "ex": "The market is within walking distance of my house."
+    },
+    {
+     "w": "crowded",
+     "pos": "adj",
+     "ipa": "/ˈkraʊdɪd/",
+     "vi": "đông đúc",
+     "ex": "The market is always crowded in the morning."
+    },
+    {
+     "w": "peaceful",
+     "pos": "adj",
+     "ipa": "/ˈpiːsfl/",
+     "vi": "yên bình",
+     "ex": "My hometown is small and peaceful."
+    },
+    {
+     "w": "relaxing",
+     "pos": "adj",
+     "ipa": "/rɪˈlæksɪŋ/",
+     "vi": "thư giãn",
+     "ex": "Listening to music is very relaxing."
+    },
+    {
+     "w": "spare time",
+     "pos": "n",
+     "ipa": "/ˌspeə ˈtaɪm/",
+     "vi": "thời gian rảnh",
+     "ex": "I read a lot in my spare time."
+    },
+    {
+     "w": "get on well with",
+     "pos": "phr v",
+     "ipa": "/ɡet ɒn ˈwel wɪð/",
+     "vi": "hoà hợp với",
+     "ex": "I get on well with my neighbours."
+    }
+   ]
+  },
+  {
+   "id": "p2",
+   "title": "Phần 2",
+   "level": "B1–B2",
+   "words": [
+    {
+     "w": "option",
+     "pos": "n",
+     "ipa": "/ˈɒpʃn/",
+     "vi": "lựa chọn, phương án",
+     "ex": "The first option is the cheapest."
+    },
+    {
+     "w": "suitable",
+     "pos": "adj",
+     "ipa": "/ˈsuːtəbl/",
+     "vi": "phù hợp",
+     "ex": "This gift is suitable for a child."
+    },
+    {
+     "w": "affordable",
+     "pos": "adj",
+     "ipa": "/əˈfɔːdəbl/",
+     "vi": "giá vừa túi tiền",
+     "ex": "The food there is tasty and affordable."
+    },
+    {
+     "w": "compared with",
+     "pos": "phr",
+     "ipa": "/kəmˈpeəd wɪð/",
+     "vi": "so với",
+     "ex": "Compared with a taxi, the bus is much cheaper."
+    },
+    {
+     "w": "rather than",
+     "pos": "phr",
+     "ipa": "/ˈrɑːðə ðən/",
+     "vi": "thay vì",
+     "ex": "I would walk rather than drive."
+    },
+    {
+     "w": "drawback",
+     "pos": "n",
+     "ipa": "/ˈdrɔːbæk/",
+     "vi": "điểm bất lợi",
+     "ex": "The only drawback is the high price."
+    },
+    {
+     "w": "pros and cons",
+     "pos": "n",
+     "ipa": "/ˌprəʊz ən ˈkɒnz/",
+     "vi": "ưu và nhược điểm",
+     "ex": "Every option has its pros and cons."
+    },
+    {
+     "w": "in my opinion",
+     "pos": "phr",
+     "ipa": "/ɪn ˈmaɪ əˌpɪnjən/",
+     "vi": "theo ý tôi",
+     "ex": "In my opinion, the second idea is better."
+    },
+    {
+     "w": "practical",
+     "pos": "adj",
+     "ipa": "/ˈpræktɪkl/",
+     "vi": "thiết thực",
+     "ex": "A bag is a practical present."
+    },
+    {
+     "w": "time-consuming",
+     "pos": "adj",
+     "ipa": "/ˈtaɪm kənˌsjuːmɪŋ/",
+     "vi": "tốn thời gian",
+     "ex": "Cooking for twenty people is time-consuming."
+    },
+    {
+     "w": "worth",
+     "pos": "adj",
+     "ipa": "/wɜːθ/",
+     "vi": "đáng (làm gì)",
+     "ex": "The museum is worth visiting."
+    },
+    {
+     "w": "on the other hand",
+     "pos": "phr",
+     "ipa": "/ɒn ði ˈʌðə hænd/",
+     "vi": "mặt khác",
+     "ex": "It is cheap. On the other hand, it is slow."
+    },
+    {
+     "w": "the main reason",
+     "pos": "phr",
+     "ipa": "/ðə ˌmeɪn ˈriːzn/",
+     "vi": "lý do chính",
+     "ex": "The main reason is the cost."
+    },
+    {
+     "w": "solution",
+     "pos": "n",
+     "ipa": "/səˈluːʃn/",
+     "vi": "giải pháp",
+     "ex": "I think this is the best solution."
+    }
+   ]
+  },
+  {
+   "id": "p3",
+   "title": "Phần 3",
+   "level": "B2–C1",
+   "words": [
+    {
+     "w": "benefit",
+     "pos": "n",
+     "ipa": "/ˈbenɪfɪt/",
+     "vi": "lợi ích",
+     "ex": "Regular exercise has many benefits."
+    },
+    {
+     "w": "to begin with",
+     "pos": "phr",
+     "ipa": "/tə bɪˈɡɪn wɪð/",
+     "vi": "trước hết",
+     "ex": "To begin with, it saves money."
+    },
+    {
+     "w": "in addition",
+     "pos": "phr",
+     "ipa": "/ɪn əˈdɪʃn/",
+     "vi": "ngoài ra",
+     "ex": "In addition, it is good for our health."
+    },
+    {
+     "w": "for instance",
+     "pos": "phr",
+     "ipa": "/fər ˈɪnstəns/",
+     "vi": "ví dụ như",
+     "ex": "For instance, I walk to work every day."
+    },
+    {
+     "w": "as a result",
+     "pos": "phr",
+     "ipa": "/əz ə rɪˈzʌlt/",
+     "vi": "kết quả là",
+     "ex": "As a result, people feel less stressed."
+    },
+    {
+     "w": "broaden",
+     "pos": "v",
+     "ipa": "/ˈbrɔːdn/",
+     "vi": "mở rộng",
+     "ex": "Travelling broadens our minds."
+    },
+    {
+     "w": "play an important role",
+     "pos": "phr",
+     "ipa": "/ˌpleɪ ən ɪmˌpɔːtnt ˈrəʊl/",
+     "vi": "đóng vai trò quan trọng",
+     "ex": "Teachers play an important role in our lives."
+    },
+    {
+     "w": "have an impact on",
+     "pos": "phr",
+     "ipa": "/hæv ən ˈɪmpækt ɒn/",
+     "vi": "có tác động tới",
+     "ex": "Technology has a big impact on education."
+    },
+    {
+     "w": "to some extent",
+     "pos": "phr",
+     "ipa": "/tə ˌsʌm ɪkˈstent/",
+     "vi": "ở một mức độ nào đó",
+     "ex": "To some extent, I agree with this idea."
+    },
+    {
+     "w": "whereas",
+     "pos": "conj",
+     "ipa": "/ˌweərˈæz/",
+     "vi": "trong khi đó",
+     "ex": "I love the city, whereas my parents prefer the countryside."
+    },
+    {
+     "w": "to sum up",
+     "pos": "phr",
+     "ipa": "/tə ˌsʌm ˈʌp/",
+     "vi": "tóm lại",
+     "ex": "To sum up, reading is a useful habit."
+    },
+    {
+     "w": "from my point of view",
+     "pos": "phr",
+     "ipa": "/frəm ˌmaɪ ˌpɔɪnt əv ˈvjuː/",
+     "vi": "theo quan điểm của tôi",
+     "ex": "From my point of view, this is a serious problem."
+    },
+    {
+     "w": "raise awareness",
+     "pos": "phr",
+     "ipa": "/ˌreɪz əˈweənəs/",
+     "vi": "nâng cao nhận thức",
+     "ex": "Schools should raise awareness of this issue."
+    },
+    {
+     "w": "in the long run",
+     "pos": "phr",
+     "ipa": "/ɪn ðə ˈlɒŋ rʌn/",
+     "vi": "về lâu dài",
+     "ex": "In the long run, it will save money."
+    }
+   ]
+  }
+ ]
+};
+</script>
+<script>
+/* ===== TỪ VỰNG MỚI (dùng chung cho các trang kỹ năng) =====
+   V.vocabTab(panel, { skill: 'nghe', groups: [{title, level, words:[{w,pos,ipa,vi,ex}]}], source: 'các bài nghe', listenFirst: true })
+   listenFirst = true: bài kiểm tra phát âm trước rồi mới chọn nghĩa (trang Nghe); false: hiện chữ, bấm nghe nếu muốn. */
 (function () {
   'use strict';
-  var V = window.V, h = V.h, p = V.page;
-  var INTRO = {
-    nghe: 'Nghe hiểu: 3 phần, 35 câu trắc nghiệm, khoảng 40 phút.',
-    noi: 'Nói: 3 phần trong 12 phút.',
-    doc: 'Đọc hiểu: 4 bài đọc, 40 câu trắc nghiệm, 60 phút.',
-    viet: 'Viết: thư 120 từ và bài luận 250 từ trong 60 phút.'
-  };
-  var TABS = [['luyen-tap', 'Luyện tập'], ['tu-vung', 'Từ vựng mới']];
-  var tab = location.hash === '#tu-vung' ? 'tu-vung' : 'luyen-tap';
+  var V = window.V, h = V.h;
+  var picked = {};
+  function shuffle(a) { a = a.slice(); for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)), t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+  function top() { try { window.scrollTo(0, 0); } catch (e) { } }
 
-  V.mount(function (root) {
-    var bar = h('div', { class: 'tabs', role: 'tablist' }), panel = h('div', { role: 'tabpanel' });
-    function draw() {
-      V.clear(bar); V.clear(panel);
-      TABS.forEach(function (t) {
-        bar.appendChild(h('button', { class: 'tab' + (t[0] === tab ? ' on' : ''), type: 'button', role: 'tab', 'aria-selected': t[0] === tab ? 'true' : 'false',
-          onclick: function () { tab = t[0]; try { history.replaceState(null, '', '#' + tab); } catch (e) { } draw(); } }, t[1]));
-      });
-      panel.appendChild(h('div', { class: 'empty' },
-        h('b', null, (tab === 'tu-vung' ? 'Từ vựng mới' : 'Luyện tập') + ' phần ' + p.t + ' đang được xây dựng'),
-        tab === 'tu-vung' ? 'Danh sách từ kèm phiên âm, nghĩa và nút nghe phát âm sẽ có ở đây.' : 'Bài luyện có chấm điểm và gửi kết quả cho ' + V.teacher() + ' sẽ có ở đây.'));
+  V.vocabTab = function (panel, o) {
+    var n = o.groups.length;
+    if (picked[o.skill] === undefined) picked[o.skill] = ({ b1: 0, b2: Math.floor((n - 1) / 2), c1: n - 1 })[V.target().key] || 0;
+    function view() {
+      V.stopClip(); V.clear(panel);
+      var g = o.groups[picked[o.skill]];
+      panel.appendChild(h('div', { class: 'vbar' },
+        h('div', { class: 'pick' }, 'Nhóm từ', h('div', { class: 'seg', role: 'group', 'aria-label': 'Nhóm từ' }, o.groups.map(function (x, i) {
+          return h('button', { type: 'button', 'aria-pressed': i === picked[o.skill] ? 'true' : 'false', title: 'Trình độ ' + x.level, onclick: function () { picked[o.skill] = i; view(); } }, x.title);
+        }))),
+        V.speedToggle()));
+      panel.appendChild(h('p', { class: 'muted', style: { margin: '12px 0 14px', maxWidth: '70ch' } },
+        g.words.length + ' từ lấy từ ' + (o.source ? o.source + ' ' : '') + g.title + ', trình độ ' + g.level + '. Nghe giọng nữ và giọng nam, đọc theo, rồi làm bài kiểm tra nhanh.'));
+      panel.appendChild(h('div', { class: 'words' }, g.words.map(V.wordCard)));
+      panel.appendChild(h('div', { class: 'row', style: { marginTop: '18px' } },
+        h('button', { class: 'btn primary', type: 'button', onclick: function () { quiz(g); } }, 'Kiểm tra nhanh ' + Math.min(10, g.words.length) + ' từ')));
     }
-    window.addEventListener('hashchange', function () { tab = location.hash === '#tu-vung' ? 'tu-vung' : 'luyen-tap'; draw(); });
-    root.appendChild(V.pageHead(p.t, p.en, INTRO[p.key]));
+    function quiz(g) {
+      V.stopClip(); top();
+      var qs = shuffle(g.words).slice(0, 10), i = 0, right = 0, missed = [];
+      function ask() {
+        V.stopClip(); V.clear(panel);
+        var w = qs[i], voice = Math.random() < 0.5 ? 'f' : 'm';
+        var opts = shuffle([w].concat(shuffle(g.words.filter(function (x) { return x !== w; })).slice(0, 3)));
+        var fb = h('div', { class: 'qfb', role: 'status' }), box = h('div', { class: 'qopts' });
+        function listen() { V.playClip('tu/' + V.slug(w.w) + '-' + voice + '.mp3', { fallback: w.w }); }
+        opts.forEach(function (op) {
+          var b = h('button', { class: 'btn', type: 'button' }, op.vi);
+          b.addEventListener('click', function () {
+            Array.prototype.forEach.call(box.querySelectorAll('button'), function (x) { x.disabled = true; });
+            var ok = op === w; if (ok) right++; else missed.push(w);
+            b.classList.add(ok ? 'right' : 'wrong');
+            if (!ok) Array.prototype.forEach.call(box.querySelectorAll('button'), function (x, k) { if (opts[k] === w) x.classList.add('right'); });
+            V.add(fb, [h('p', null, h('b', null, ok ? 'Đúng. ' : 'Chưa đúng. '), h('span', { lang: 'en', class: 'qw' }, w.w), ' ', h('span', { class: 'ipa' }, w.ipa), ' = ' + w.vi),
+              h('button', { class: 'btn primary', type: 'button', onclick: function () { i++; if (i < qs.length) ask(); else done(); } }, i + 1 < qs.length ? 'Câu tiếp' : 'Xem kết quả')]);
+            fb.querySelector('button').focus();
+          });
+          box.appendChild(b);
+        });
+        panel.appendChild(h('div', { class: 'quiz' },
+          h('div', { class: 'qhead' }, h('b', null, 'Kiểm tra nhanh, ' + g.title), h('span', { class: 'muted' }, 'Từ ' + (i + 1) + '/' + qs.length)),
+          o.listenFirst ? h('p', null, 'Nghe rồi chọn nghĩa đúng của từ.') : [h('p', null, 'Chọn nghĩa đúng của từ.'), h('div', { class: 'qword', lang: 'en' }, w.w)],
+          h('button', { class: 'btn ' + (o.listenFirst ? 'blue' : 'small'), type: 'button', onclick: listen }, h('span', { html: V.ICON.loa, style: { display: 'inline-flex' } }), o.listenFirst ? 'Nghe lại' : 'Nghe phát âm'),
+          box, fb,
+          h('button', { class: 'btn small', type: 'button', style: { marginTop: '16px' }, onclick: view }, 'Thoát')));
+        if (o.listenFirst) listen();
+      }
+      function done() {
+        V.stopClip(); V.clear(panel);
+        var title = 'Từ vựng ' + g.title;
+        var rec = V.results.add({ skill: o.skill, kind: 'tu-vung', title: title, correct: right, total: qs.length, sent: false });
+        if (V.sheetOn()) V.send(o.skill, { 'Đề': 'Từ vựng', 'Phần': g.title, 'Kết quả': right + '/' + qs.length,
+          'Chi tiết đáp án': missed.length ? 'Sai: ' + missed.map(function (w) { return w.w; }).join(', ') : 'Đúng hết', 'Mục tiêu': V.target().t }, function (ok) { if (ok) V.results.mark(rec.ts, { sent: true }); });
+        panel.appendChild(h('div', { class: 'score' },
+          h('div', { class: 'big' }, right + '/' + qs.length, h('span', null, ' từ đúng')),
+          h('div', null, h('b', null, title), h('p', null, missed.length ? 'Xem lại các từ chưa đúng bên dưới rồi thử lại.' : 'Bạn nhớ hết các từ được hỏi.'))));
+        if (missed.length) panel.appendChild(h('div', { class: 'words', style: { marginTop: '16px' } }, missed.map(V.wordCard)));
+        panel.appendChild(h('div', { class: 'row', style: { marginTop: '18px' } },
+          h('button', { class: 'btn primary', type: 'button', onclick: function () { quiz(g); } }, 'Kiểm tra lại'),
+          h('button', { class: 'btn', type: 'button', onclick: view }, 'Về danh sách từ')));
+      }
+      ask();
+    }
+    view();
+  };
+})();
+/* ===== TRANG NÓI ===== */
+(function () {
+  'use strict';
+  var V = window.V, h = V.h, D = window.NOI_DATA;
+  var TABS = [['luyen-tap', 'Luyện tập'], ['tu-vung', 'Từ vựng mới']];
+  function hashTab() { return location.hash === '#tu-vung' ? 'tu-vung' : 'luyen-tap'; }
+  var tab = hashTab(), bar, panel;
+
+  var PARTS = [
+    { id: 'p1', title: 'Phần 1', name: 'Tương tác xã hội', level: 'B1', how: 'Giám khảo hỏi 6 câu về 2 chủ đề quen thuộc, tổng cộng khoảng 3 phút. Mỗi câu nói 3–4 câu, khoảng 20–30 giây.' },
+    { id: 'p2', title: 'Phần 2', name: 'Thảo luận giải pháp', level: 'B1–B2', how: 'Bạn nhận một tình huống và 3 giải pháp. Chuẩn bị 1 phút, rồi chọn giải pháp tốt nhất, nêu lý do và nói vì sao không chọn hai giải pháp kia. Nói khoảng 2 phút.' },
+    { id: 'p3', title: 'Phần 3', name: 'Phát triển chủ đề', level: 'B2–C1', how: 'Bạn nói về một chủ đề theo sơ đồ gợi ý, có thể thêm ý riêng. Chuẩn bị 1 phút, nói 2–3 phút, sau đó trả lời 3 câu hỏi thêm.' }
+  ];
+  var LIMIT = { q: 45, long: 180, fu: 60 }, PREP = 60;
+  var HINT = {
+    q: { lines: ['Trả lời thẳng vào câu hỏi, rồi thêm một lý do và một ví dụ.', 'Nói 3–4 câu. Đừng chỉ trả lời Yes hoặc No.'], frame: 'Well, I usually … because … For example, …' },
+    p2: { frame: 'I think the best option is … because … I wouldn’t choose … because … So, …' },
+    p3: { frame: 'First of all, … In addition, … Another point is that … To sum up, …' },
+    fu: { lines: ['Nêu ý kiến của bạn, giải thích bằng một lý do, thêm ví dụ hoặc so sánh.', 'Mỗi câu nói khoảng 30–45 giây.'], frame: 'I think … The main reason is that … For instance, …' }
+  };
+  var CRIT = [
+    ['Ngữ pháp', ['Chủ yếu nói từng cụm từ hoặc câu rất ngắn; sai nhiều nên khó hiểu.', 'Dùng được câu đơn và vài câu ghép; còn lỗi nhưng người nghe vẫn hiểu.', 'Dùng khá đúng nhiều kiểu câu, có câu phức; lỗi không gây hiểu nhầm.', 'Câu phức đa dạng, hiếm khi sai và thường tự sửa được.'],
+      'Chép lại 3 câu dài trong bài mẫu rồi tự đặt câu tương tự về bản thân.'],
+    ['Từ vựng', ['Thiếu từ để diễn đạt ý, phải dừng lại nhiều hoặc chêm tiếng Việt.', 'Đủ từ cho chủ đề quen thuộc; hay lặp từ, đôi khi dùng sai từ.', 'Vốn từ khá rộng, ít lặp; thiếu từ thì biết diễn đạt vòng.', 'Dùng từ chính xác, linh hoạt, có nhiều cụm từ tự nhiên.'],
+      'Học các cụm từ được tô vàng trong bài mẫu và dùng lại khi nói lần sau.'],
+    ['Phát âm', ['Nhiều từ phát âm sai, người nghe phải đoán.', 'Người nghe hiểu được dù còn sai một số âm và trọng âm.', 'Phát âm rõ, trọng âm từ khá đúng, có lên xuống giọng.', 'Phát âm tự nhiên; dùng trọng âm câu và ngữ điệu để nhấn ý.'],
+      'Bấm Nghe bài mẫu, dừng sau từng câu và nói theo, rồi so với bản ghi của mình.'],
+    ['Độ trôi chảy', ['Ngập ngừng lâu ở hầu hết các câu, khó nói hết ý.', 'Nói liền được các ý ngắn; còn dừng để tìm từ, sửa câu.', 'Nói khá đều, ít dừng lâu, nói đủ thời lượng của từng phần.', 'Nói tự nhiên, gần như không phải tìm từ, kể cả với ý trừu tượng.'],
+      'Nói lại đúng đề này 2–3 lần, mỗi lần cố nói liền hơn và đủ thời gian.'],
+    ['Nội dung và mạch lạc', ['Trả lời rất ngắn, thiếu ý hoặc lạc đề.', 'Trả lời đúng câu hỏi, có lý do đơn giản; nối ý bằng and, but, because.', 'Có mở bài, thân bài, kết bài; mỗi ý có lý do và ví dụ; từ nối đa dạng.', 'Lập luận chặt chẽ, có so sánh và nhượng bộ; chuyển ý mượt.'],
+      'Trước khi nói, ghi 3 ý chính theo dàn ý gợi ý, mỗi ý thêm một lý do hoặc ví dụ.']
+  ];
+  var LEVELS = [['Dưới B1', 3], ['B1', 5], ['B2', 7], ['C1', 9]];
+
+  // các lượt nói của một đề: 6 câu Phần 1, 1 bài Phần 2, 1 bài và 3 câu hỏi thêm ở Phần 3
+  function cap1(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
+  D.tests.forEach(function (t) {
+    var n = 0; t.items = { p1: [], p2: [], p3: [] };
+    t.p1.forEach(function (tp, ti) {
+      tp.qs.forEach(function (q, qi) {
+        n++;
+        t.items.p1.push({ key: 'q' + n, kind: 'q', topic: ti, label: 'Câu ' + n, file: 'phan1-cau' + n, q: q.q, say: (qi === 0 ? tp.intro + ' ' : '') + q.q, clip: 'q' + n, limit: LIMIT.q,
+          model: { one: { text: q.a, ph: q.ph, clip: 'a' + n } } });
+      });
+    });
+    var o = t.p2.opts;
+    t.items.p2.push({ key: 'p2', kind: 'long', label: 'Phần 2', file: 'phan2', q: t.p2.sit, clip: 'p2', limit: LIMIT.long, outline: t.p2.outline,
+      say: 'Now, let\'s move on to Part 2. Here is the situation. ' + t.p2.sit + ' There are three options: ' + o[0] + ', ' + o[1] + ', or ' + o[2] + '. ' + t.p2.ask,
+      model: { b1: { text: t.p2.b1.text, ph: t.p2.b1.ph, clip: 'p2-b1' }, b2: { text: t.p2.b2.text, ph: t.p2.b2.ph, clip: 'p2-b2' } } });
+    t.items.p3.push({ key: 'p3', kind: 'long', label: 'Phần 3', file: 'phan3', q: t.p3.topic, clip: 'p3', limit: LIMIT.long, outline: t.p3.outline,
+      say: 'Now, let\'s move on to Part 3. Your topic is: ' + t.p3.topic + '. You can use the ideas suggested, and your own ideas. You have one minute to prepare.',
+      model: { b1: { text: t.p3.b1.text, ph: t.p3.b1.ph, clip: 'p3-b1' }, b2: { text: t.p3.b2.text, ph: t.p3.b2.ph, clip: 'p3-b2' } } });
+    t.p3.fu.forEach(function (f, i) {
+      t.items.p3.push({ key: 'f' + (i + 1), kind: 'fu', label: 'Câu hỏi thêm ' + (i + 1), file: 'phan3-hoi-them' + (i + 1), q: f.q, say: f.q, clip: 'f' + (i + 1), limit: LIMIT.fu,
+        model: { one: { text: f.a, ph: f.ph, clip: 'fa' + (i + 1) } } });
+    });
+  });
+
+  function fmt(s) { s = Math.max(0, Math.round(s)); return Math.floor(s / 60) + ':' + ('0' + (s % 60)).slice(-2); }
+  function dura(s) { s = Math.round(s); var m = Math.floor(s / 60); return (m ? m + ' phút ' : '') + (s % 60) + ' giây'; }
+  function top() { try { if (document.body.classList.contains('doing')) bar.scrollIntoView(); else window.scrollTo(0, 0); } catch (e) { } }
+  function doing(on) { document.body.classList.toggle('doing', !!on); }
+  function shown(score) { return V.fmtScore(V.round05(score)); }
+  function lastResult(title) {
+    var r = V.results.of('noi').filter(function (x) { return x.title === title && typeof x.score10 === 'number'; })[0];
+    return r ? 'tự chấm ' + shown(r.score10) + ' điểm (' + V.dateShort(r.ts) + ')' : '';
+  }
+  var framed = (function () { try { return window.self !== window.top; } catch (e) { return true; } })();
+
+  /* ---------- micro và ghi âm ---------- */
+  var Mic = {
+    can: !!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia && window.MediaRecorder),
+    state: 'idle', stream: null,          // idle: chưa hỏi; asking; on; blocked; none: trình duyệt không ghi âm được
+    mime: function () {
+      var c = ['audio/webm;codecs=opus', 'audio/webm', 'audio/mp4', 'audio/ogg;codecs=opus'];
+      for (var i = 0; i < c.length; i++) { try { if (MediaRecorder.isTypeSupported(c[i])) return c[i]; } catch (e) { } }
+      return '';
+    },
+    open: function (cb) {
+      var me = this;
+      if (me.stream && me.stream.active) { me.state = 'on'; cb(true); return; }
+      if (!me.can) { me.state = 'none'; cb(false); return; }
+      me.state = 'asking';
+      var p;
+      try { p = navigator.mediaDevices.getUserMedia({ audio: true }); } catch (e) { me.state = 'blocked'; cb(false); return; }
+      p.then(function (s) { me.stream = s; me.state = 'on'; cb(true); }, function () { me.state = 'blocked'; cb(false); });
+    },
+    close: function () {
+      if (this.stream) { try { this.stream.getTracks().forEach(function (t) { t.stop(); }); } catch (e) { } }
+      this.stream = null; if (this.state === 'on' || this.state === 'asking') this.state = 'idle';
+    }
+  };
+  var live = null, prep = null, AC = null;   // lượt đang ghi, đồng hồ chuẩn bị đang chạy
+  function stopLive(cb) { if (live) live.stop(cb); else if (cb) cb(); }
+  function stopPrep() { if (prep) prep.cancel(); }
+  function beep() {
+    try {
+      AC = AC || new (window.AudioContext || window.webkitAudioContext)();
+      var o = AC.createOscillator(), g = AC.createGain();
+      o.frequency.value = 880; g.gain.value = 0.07; o.connect(g); g.connect(AC.destination); o.start(); o.stop(AC.currentTime + 0.25);
+    } catch (e) { }
+  }
+  function dropTakes(takes) { Object.keys(takes || {}).forEach(function (k) { if (takes[k].url) { try { URL.revokeObjectURL(takes[k].url); } catch (e) { } } }); }
+  var held = null;                           // các bản ghi đang giữ (để xoá khi rời bài)
+  function cleanup() { stopPrep(); if (live) live.stop(); V.stopClip(); Mic.close(); if (held) { dropTakes(held); held = null; } }
+  // bản ghi của trình duyệt thường không ghi độ dài: tua tới cuối một lần để trình phát tính được
+  function fixDur(a) {
+    a.addEventListener('loadedmetadata', function () {
+      if (a.duration === Infinity || isNaN(a.duration)) {
+        var back = function () { a.removeEventListener('timeupdate', back); a.currentTime = 0; };
+        a.addEventListener('timeupdate', back); try { a.currentTime = 1e101; } catch (e) { }
+      }
+    });
+    return a;
+  }
+  function own(a) {
+    a.addEventListener('play', function () {
+      if (a._hold) return;
+      if (document.querySelector('.playing')) {
+        a._hold = true; V.stopClip();
+        var p = a.play(); if (p && p.catch) p.catch(function () { });
+        setTimeout(function () { a._hold = false; }, 0);
+      }
+      Array.prototype.forEach.call(document.querySelectorAll('audio'), function (o) { if (o !== a) o.pause(); });
+    });
+    return fixDur(a);
+  }
+  function extOf(type) { return /mp4/.test(type) ? '.m4a' : /ogg/.test(type) ? '.ogg' : '.webm'; }
+
+  // một ô nói: ghi âm nếu có micro, nếu không thì chỉ bấm giờ.  S = { takes, changed(), auto(), askMic(cb) }
+  function speakBox(it, S) {
+    var box = h('div', { class: 'speak' }), state = S.takes[it.key] ? 'done' : 'idle', timer = null, t0 = 0, mr = null, chunks = [], clock = null, fill = null, waiters = [];
+    function draw() {
+      V.clear(box); box.classList.toggle('live', state === 'rec');
+      var micOn = Mic.state === 'on', tk = S.takes[it.key];
+      if (state === 'rec') {
+        clock = h('span', { class: 'clock', role: 'timer' }, '0:00'); fill = h('i');
+        V.add(box, [h('button', { class: 'btn stop', type: 'button', 'aria-label': 'Dừng, ' + it.label, onclick: function () { stop(); } }, h('span', { class: 'sqr' }), 'Dừng'),
+          h('span', { class: 'dot', 'aria-hidden': 'true' }), clock, h('span', { class: 'lim' }, '/ ' + fmt(it.limit)), h('div', { class: 'recbar' }, fill)]);
+        return;
+      }
+      if (state === 'wait') { box.appendChild(h('span', { class: 'lim' }, 'Đang lưu…')); return; }
+      if (state === 'done' && tk) {
+        if (tk.url) box.appendChild(own(h('audio', { controls: true, preload: 'metadata', src: tk.url, 'aria-label': 'Bài nói của bạn, ' + it.label })));
+        else box.appendChild(h('span', { class: 'pill ok' }, 'Đã nói ' + fmt(tk.secs)));
+        box.appendChild(h('button', { class: 'btn small', type: 'button', 'aria-label': 'Nói lại, ' + it.label, onclick: start }, tk.url ? 'Ghi lại' : 'Nói lại'));
+        return;
+      }
+      V.add(box, [h('button', { class: 'btn rec', type: 'button', 'aria-label': (micOn ? 'Ghi âm' : 'Bắt đầu nói') + ', ' + it.label, onclick: start }, h('span', { class: 'dot' }), micOn ? 'Ghi âm' : 'Bắt đầu nói'),
+        h('span', { class: 'lim' }, 'tối đa ' + fmt(it.limit))]);
+    }
+    function start() {
+      if (state === 'rec' || state === 'wait') return;
+      if (Mic.state === 'asking') { V.toast('Hãy trả lời ô hỏi quyền dùng micro của trình duyệt trước.'); return; }
+      if (Mic.state === 'idle') { S.askMic(begin); return; }
+      begin();
+    }
+    function begin() {
+      if (state === 'rec' || state === 'wait') return;
+      stopLive(); stopPrep(); V.stopClip();
+      var old = S.takes[it.key];
+      if (old && old.url) { try { URL.revokeObjectURL(old.url); } catch (e) { } }
+      delete S.takes[it.key];
+      chunks = []; mr = null;
+      if (Mic.state === 'on' && Mic.stream && Mic.stream.active) {
+        try {
+          var m = Mic.mime(), o = { audioBitsPerSecond: 24000 };
+          if (m) o.mimeType = m;
+          mr = new MediaRecorder(Mic.stream, o);
+          mr.ondataavailable = function (e) { if (e.data && e.data.size) chunks.push(e.data); };
+          mr.start(1000);
+        } catch (e) { mr = null; }
+      }
+      t0 = Date.now(); state = 'rec'; live = { stop: stop }; draw(); S.changed();
+      timer = setInterval(tick, 250);
+    }
+    function tick() {
+      var s = (Date.now() - t0) / 1000;
+      if (clock) clock.textContent = fmt(Math.floor(s));
+      if (fill) fill.style.width = Math.min(100, s / it.limit * 100) + '%';
+      if (s >= it.limit) { beep(); stop(); }
+    }
+    function stop(cb) {
+      if (state === 'wait') { if (cb) waiters.push(cb); return; }
+      if (state !== 'rec') { if (cb) cb(); return; }
+      clearInterval(timer); timer = null; live = null;
+      var secs = Math.round((Date.now() - t0) / 1000), rec = mr, got = chunks, ended = false;
+      mr = null; state = 'wait'; draw();
+      function fin(tk) {
+        if (ended) return;
+        ended = true; state = tk ? 'done' : 'idle'; if (tk) S.takes[it.key] = tk;
+        draw(); S.changed(); if (cb) cb();
+        waiters.splice(0).forEach(function (f) { f(); });
+      }
+      if (!rec) { fin(secs >= 1 ? { secs: secs } : null); return; }
+      rec.onstop = function () {
+        var type = String(rec.mimeType || 'audio/webm').split(';')[0], blob = new Blob(got, { type: type });
+        if (secs < 1) fin(null);
+        else fin(blob.size ? { secs: secs, blob: blob, url: URL.createObjectURL(blob), type: type } : { secs: secs });
+      };
+      try { rec.stop(); } catch (e) { rec.onstop(); }
+      setTimeout(function () { if (!ended) rec.onstop(); }, 1500);   // phòng khi trình duyệt không báo đã dừng
+    }
+    box.start = start;
+    box.redraw = function () { if (state !== 'rec' && state !== 'wait') draw(); };
+    box.isIdle = function () { return state === 'idle' && !S.takes[it.key]; };
+    draw();
+    return box;
+  }
+  // đồng hồ 1 phút chuẩn bị của Phần 2 và Phần 3
+  function prepBox(sb, S) {
+    var el = h('span', { class: 'prep' }), t = null, left = 0, out = null;
+    function idle() {
+      if (t) clearInterval(t);
+      t = null; if (prep && prep.cancel === idle) prep = null;
+      V.clear(el).appendChild(h('button', { class: 'btn small', type: 'button', onclick: run }, 'Chuẩn bị 1 phút'));
+    }
+    function run() {
+      if (t) return;
+      stopLive(); stopPrep(); V.stopClip();
+      left = PREP; out = h('span', { class: 'clock', role: 'timer' }, fmt(left));
+      V.add(V.clear(el), ['Chuẩn bị ', out, h('button', { class: 'btn small', type: 'button', onclick: function () { idle(); sb.start(); } }, 'Nói luôn')]);
+      prep = { cancel: idle };
+      t = setInterval(function () {
+        left--; out.textContent = fmt(left);
+        if (left <= 0) { idle(); beep(); if (S.auto()) sb.start(); else V.toast('Hết 1 phút chuẩn bị. Bấm nút để bắt đầu nói.'); }
+      }, 1000);
+    }
+    el.run = run; idle();
+    return el;
+  }
+  // nút nghe lời giám khảo; nghe xong thì gọi after()
+  function askBtn(test, it, label, after) {
+    var b = h('button', { class: 'btn small', type: 'button', 'aria-label': label + ', ' + it.label }, h('span', { html: V.ICON.loa, style: { display: 'inline-flex' } }), label);
+    b.addEventListener('click', function () {
+      if (b.classList.contains('playing')) { V.stopClip(); return; }
+      stopLive(); stopPrep();
+      V.playClip('noi/' + test.id + '/' + it.clip + '.mp3', { fallback: it.say, onend: function () { b.classList.remove('playing'); if (after) after(); } });
+      b.classList.add('playing');
+    });
+    return b;
+  }
+  function seg(label, key, def, opts, onchange) {
+    var box = h('div', { class: 'pick' });
+    function draw() {
+      var cur = V.store.get(key, def);
+      V.add(V.clear(box), [label, h('div', { class: 'seg', role: 'group', 'aria-label': label }, opts.map(function (o) {
+        return h('button', { type: 'button', 'aria-pressed': cur === o[0] ? 'true' : 'false', onclick: function () { V.store.set(key, o[0]); draw(); if (onchange) onchange(o[0]); } }, o[1]);
+      }))]);
+    }
+    draw();
+    return box;
+  }
+  function mind(p3) {
+    return h('div', { class: 'mind', lang: 'en' }, h('div', { class: 'mm-topic' }, p3.topic),
+      h('ul', { class: 'mm-ideas' }, p3.ideas.map(function (x) { return h('li', null, x); }), h('li', { class: 'own' }, 'your own ideas')));
+  }
+  function sitBlock(p2) {
+    return [h('p', { class: 'sit', lang: 'en' }, p2.sit + ' ' + p2.ask), h('ol', { class: 'opts3', lang: 'en' }, p2.opts.map(function (o) { return h('li', null, cap1(o)); }))];
+  }
+  function hint(title, lines, frame) {
+    return h('details', { class: 'hint' }, h('summary', null, title),
+      lines && lines.length ? h('ul', null, lines.map(function (x) { return h('li', null, x); })) : null,
+      frame ? h('div', { class: 'frame', lang: 'en' }, frame) : null);
+  }
+
+  /* ================= DANH SÁCH ĐỀ ================= */
+  function partDesc(t, p) {
+    if (p.id === 'p1') return '6 câu hỏi về 2 chủ đề: ' + t.p1[0].vi + ' và ' + t.p1[1].vi + '. Mỗi câu nói khoảng 20–30 giây.';
+    if (p.id === 'p2') return 'Tình huống: ' + t.p2.vi + '. Chuẩn bị 1 phút, nói khoảng 2 phút.';
+    return 'Chủ đề: ' + t.p3.vi + '. Chuẩn bị 1 phút, nói 2–3 phút, rồi trả lời 3 câu hỏi thêm.';
+  }
+  function listView() {
+    cleanup(); doing(false); V.clear(panel);
+    var tg = V.target();
+    var tip = { b1: 'Với mục tiêu B1, hãy luyện chắc Phần 1 và Phần 2: trả lời đủ ý và có lý do. Nghe bài mẫu mức B1 rồi nói lại theo.',
+      b2: 'Với mục tiêu B2, mỗi phần cần nói đủ thời lượng, mỗi ý có lý do và ví dụ. So bài của mình với bài mẫu mức B2–C1.',
+      c1: 'Với mục tiêu C1, hãy luyện cả đề liền 12 phút; chú ý lập luận, cách chuyển ý và cách diễn đạt tự nhiên ở Phần 3.' }[tg.key];
+    panel.appendChild(h('p', { class: 'notice', style: { marginBottom: '16px' } }, tip));
+    var cur = Math.min(V.store.get('noi.de', 0), D.tests.length - 1);
+    panel.appendChild(h('div', { class: 'testpick' }, 'Chọn đề', h('div', { class: 'chips', role: 'group', 'aria-label': 'Chọn đề' }, D.tests.map(function (t, i) {
+      var w = V.results.of('noi').filter(function (x) { return x.title === t.title + ', cả đề' && typeof x.score10 === 'number'; })[0];
+      return h('button', { type: 'button', 'aria-pressed': i === cur ? 'true' : 'false', onclick: function () { V.store.set('noi.de', i); listView(); } },
+        t.title, w ? h('span', { class: 'done' }, shown(w.score10)) : null);
+    }))));
+    var t = D.tests[cur];
+    var rows = PARTS.map(function (p) {
+      var title = t.title + ', ' + p.title, last = lastResult(title);
+      return h('li', null,
+        h('div', { class: 'pt' }, h('b', null, p.title), h('span', { class: 'pill blue' }, p.level)),
+        h('div', { class: 'pd' }, h('b', { style: { color: 'var(--ink)' } }, p.name + '. '), partDesc(t, p), last ? h('span', { class: 'last' }, 'Lần gần nhất: ' + last) : null),
+        h('button', { class: 'btn blue', type: 'button', onclick: function () { start(t, [p], title); } }, 'Luyện ' + p.title));
+    });
+    var whole = t.title + ', cả đề', lastW = lastResult(whole);
+    rows.push(h('li', null,
+      h('div', { class: 'pt' }, h('b', null, 'Cả đề'), h('span', { class: 'pill blue' }, 'B1–C1')),
+      h('div', { class: 'pd' }, 'Nói liền ba phần như thi thật, khoảng 12 phút. Xong thì nghe lại, so với bài mẫu và tự chấm theo 5 tiêu chí.', lastW ? h('span', { class: 'last' }, 'Lần gần nhất: ' + lastW) : null),
+      h('button', { class: 'btn primary', type: 'button', onclick: function () { start(t, PARTS, whole); } }, 'Luyện cả đề')));
+    panel.appendChild(h('section', { class: 'test' }, h('h2', null, t.title), h('ul', { class: 'parts' }, rows)));
+    panel.appendChild(h('div', { class: 'row', style: { margin: '-4px 0 18px' } },
+      h('button', { class: 'btn', type: 'button', onclick: function () { reviewView(t, PARTS, whole, {}, true); } }, 'Chỉ xem bài mẫu của ' + t.title)));
+    panel.appendChild(h('p', { class: 'small muted', style: { maxWidth: '74ch' } },
+      'Khi bắt đầu, trình duyệt sẽ hỏi quyền dùng micro để ghi âm. Bản ghi nằm trên máy của bạn' + (V.sheetOn() ? ' và chỉ được gửi cho ' + V.teacher() + ' khi bạn bấm gửi.' : '; bạn có thể tải về để gửi cho ' + V.teacher() + ' chấm.')));
+    panel.appendChild(fbBlock());
+  }
+  // điểm và nhận xét giáo viên đã chấm cho các bài nói đã gửi
+  function fbBlock() {
+    var box = h('div');
+    if (!V.sheetOn() || !V.learnerName()) return box;
+    V.feedback(function (err, items) {
+      items = (items || []).filter(function (it) { return V.slug(it.skill) === 'noi'; });
+      if (err || !items.length) return;
+      box.appendChild(h('section', { class: 'test', style: { marginTop: '18px' } }, h('h2', null, V.cap(V.teacher()) + ' đã chấm'),
+        h('ul', { class: 'fb' }, items.slice(0, 5).map(function (it) {
+          return h('li', null, h('span', { class: 'when' }, String(it.time || '').slice(0, 10)), h('b', null, [it.de, it.part].filter(Boolean).join(', ')),
+            it.diem !== '' ? h('span', { class: 'pill ok', style: { marginLeft: '8px' } }, it.diem + ' điểm') : null,
+            it.nhanxet ? h('div', null, it.nhanxet) : null);
+        }))));
+    });
+    return box;
+  }
+
+  /* ================= LUYỆN NÓI ================= */
+  function start(test, parts, title) {
+    cleanup(); V.clear(panel); doing(true);
+    var takes = {}, boxes = [], total = 0;
+    held = takes;
+    parts.forEach(function (p) { total += test.items[p.id].length; });
+    var count = h('span', { class: 'count' }), micBox = h('div', { style: { marginBottom: '14px' } });
+    var S = {
+      takes: takes,
+      auto: function () { return V.store.get('noi.auto', true) !== false; },
+      changed: function () { V.add(V.clear(count), [h('span', { class: 'long' }, 'Đã nói '), Object.keys(takes).length + '/' + total, h('span', { class: 'long' }, ' lượt')]); },
+      askMic: function (cb) { Mic.open(function () { drawMic(); if (cb) cb(); }); drawMic(); }
+    };
+    function drawMic() {
+      V.clear(micBox);
+      boxes.forEach(function (b) { b.redraw(); });
+      if (Mic.state === 'on') micBox.appendChild(h('p', { class: 'notice ok' }, 'Micro đã bật. Bản ghi âm chỉ nằm trên máy của bạn' + (V.sheetOn() ? ' cho tới khi bạn bấm gửi cho ' + V.teacher() + '.' : '; tải lại trang là mất, nên hãy tải về nếu muốn giữ.')));
+      else if (Mic.state === 'asking') micBox.appendChild(h('p', { class: 'notice' }, 'Trình duyệt đang hỏi quyền dùng micro. Hãy chọn Cho phép (Allow) để ghi âm bài nói.'));
+      else if (Mic.state !== 'idle') micBox.appendChild(h('div', { class: 'notice warn', role: 'status' },
+        h('b', null, Mic.state === 'none' ? 'Trình duyệt này không ghi âm được. ' : 'Trang chưa được dùng micro. '),
+        'Bạn vẫn luyện được: trang bấm giờ, còn bạn nói to thành tiếng. ',
+        framed ? 'Trang đang nằm trong một trang khác nên micro có thể bị chặn; hãy mở trang ở thẻ mới rồi cho phép dùng micro.' : 'Muốn ghi âm, hãy cho phép trang dùng micro (biểu tượng ổ khoá cạnh địa chỉ trang) rồi thử lại.',
+        h('div', { class: 'row', style: { marginTop: '8px' } },
+          Mic.can ? h('button', { class: 'btn small', type: 'button', onclick: function () { S.askMic(); } }, 'Thử bật lại micro') : null,
+          h('a', { class: 'btn small', href: String(location.href), target: '_blank', rel: 'noopener' }, 'Mở trang ở thẻ mới'))));
+    }
+    var exitBtn = h('button', { class: 'btn small', type: 'button' }, 'Thoát'), armed = 0;
+    exitBtn.addEventListener('click', function () {
+      if (!Object.keys(takes).length || Date.now() - armed < 5000) { listView(); top(); return; }
+      armed = Date.now(); exitBtn.textContent = 'Bấm lần nữa';
+      V.toast('Thoát thì các lượt nói vừa ghi sẽ mất. Bấm Thoát lần nữa nếu bạn chắc chắn.');
+      setTimeout(function () { exitBtn.textContent = 'Thoát'; }, 5000);
+    });
+    function finish() { stopPrep(); V.stopClip(); stopLive(function () { held = null; reviewView(test, parts, title, takes, false); }); }
+    panel.appendChild(h('div', { class: 'dobar' },
+      h('div', null, h('b', null, title), count),
+      h('div', { class: 'row' }, exitBtn, h('button', { class: 'btn primary', type: 'button', onclick: finish }, h('span', null, 'Xong', h('span', { class: 'long' }, ', xem bài mẫu'))))));
+    panel.appendChild(micBox);
+    function veil(on) { Array.prototype.forEach.call(panel.querySelectorAll('.qx'), function (el) { el.classList.toggle('veil', !!on); }); }
+    panel.appendChild(h('div', { class: 'vbar', style: { marginBottom: '6px' } },
+      seg('Nghe xong câu hỏi', 'noi.auto', true, [[true, 'Tự bắt đầu'], [false, 'Tôi tự bấm']]),
+      seg('Chữ câu hỏi', 'noi.veil', false, [[false, 'Hiện'], [true, 'Ẩn']], veil),
+      V.speedToggle()));
+
+    function qx(text) {
+      var el = h('span', { class: 'qx', lang: 'en', title: 'Bấm để hiện câu hỏi' }, text);
+      el.addEventListener('click', function () { el.classList.remove('veil'); });
+      return el;
+    }
+    function qRow(it) {
+      var sb = speakBox(it, S); boxes.push(sb);
+      return h('div', { class: 'sq' },
+        h('div', { class: 'qt' }, h('span', { class: 'qn' }, it.label + '.'), ' ', qx(it.q)),
+        h('div', { class: 'acts' }, askBtn(test, it, 'Nghe câu hỏi', function () { if (S.auto() && sb.isIdle()) sb.start(); }), sb));
+    }
+    function longCard(it, head, body, hintFrame) {
+      var sb = speakBox(it, S), pb = prepBox(sb, S); boxes.push(sb);
+      return h('article', { class: 'item' }, h('h3', null, head), body,
+        h('div', { class: 'acts' }, askBtn(test, it, 'Nghe giám khảo đọc', function () { if (S.auto() && sb.isIdle()) pb.run(); }), pb),
+        sb, hint('Gợi ý dàn ý', it.outline, hintFrame));
+    }
+    parts.forEach(function (p) {
+      panel.appendChild(h('h2', { class: 'parthead' }, p.title + ': ' + p.name, h('span', { class: 'pill blue' }, p.level)));
+      panel.appendChild(h('p', { class: 'muted', style: { margin: '-6px 0 12px', maxWidth: '74ch' } }, p.how));
+      if (p.id === 'p1') test.p1.forEach(function (tp, ti) {
+        var card = h('article', { class: 'item' }, h('h3', null, 'Chủ đề ' + (ti + 1) + ': ', h('span', { lang: 'en' }, tp.topic), ' (' + tp.vi + ')'));
+        test.items.p1.forEach(function (it) { if (it.topic === ti) card.appendChild(qRow(it)); });
+        card.appendChild(hint('Gợi ý cách trả lời', HINT.q.lines, HINT.q.frame));
+        panel.appendChild(card);
+      });
+      if (p.id === 'p2') panel.appendChild(longCard(test.items.p2[0], 'Tình huống', sitBlock(test.p2), HINT.p2.frame));
+      if (p.id === 'p3') {
+        panel.appendChild(longCard(test.items.p3[0], 'Chủ đề', mind(test.p3), HINT.p3.frame));
+        var card = h('article', { class: 'item' }, h('h3', null, 'Câu hỏi thêm'));
+        test.items.p3.forEach(function (it) { if (it.kind === 'fu') card.appendChild(qRow(it)); });
+        card.appendChild(hint('Gợi ý cách trả lời', HINT.fu.lines, HINT.fu.frame));
+        panel.appendChild(card);
+      }
+    });
+    panel.appendChild(h('div', { class: 'row', style: { marginTop: '18px' } },
+      h('button', { class: 'btn primary', type: 'button', onclick: finish }, 'Xong, xem bài mẫu')));
+    veil(V.store.get('noi.veil', false));
+    S.changed(); top();
+    S.askMic();
+  }
+
+  /* ================= NGHE LẠI, BÀI MẪU, TỰ CHẤM ================= */
+  function mark(text, ph) {
+    if (!ph || !ph.length) return text;
+    var list = ph.map(function (x) { return x[0]; }).sort(function (a, b) { return b.length - a.length; })
+      .map(function (s) { return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); });
+    var out = [];
+    text.split(new RegExp('\\b(' + list.join('|') + ')\\b', 'gi')).forEach(function (seg, i) { if (seg) out.push(i % 2 ? h('mark', { class: 'hl' }, seg) : seg); });
+    return out;
+  }
+  function reviewView(test, parts, title, takes, viewOnly) {
+    stopPrep(); if (live) live.stop(); V.stopClip(); Mic.close();
+    held = takes; V.clear(panel); doing(false); top();
+    var its = [], models = [];
+    parts.forEach(function (p) { its = its.concat(test.items[p.id]); });
+    var spoken = its.filter(function (it) { return takes[it.key]; }), secs = 0;
+    spoken.forEach(function (it) { secs += takes[it.key].secs; });
+    var hasAudio = spoken.some(function (it) { return takes[it.key].blob; });
+    function level() { return V.store.get('noi.lv', V.target().key === 'b1' ? 'b1' : 'b2'); }
+    function again() { start(test, parts, title); }
+    function back() { listView(); top(); }
+
+    if (viewOnly) panel.appendChild(h('p', { class: 'notice', style: { marginBottom: '14px' } }, 'Bạn đang xem bài mẫu của ' + test.title + '. Tự nói trước rồi mới so với bài mẫu thì nhớ lâu hơn.'));
+    else {
+      panel.appendChild(h('div', { class: 'score' },
+        h('div', { class: 'big' }, spoken.length + '/' + its.length, h('span', null, ' lượt nói')),
+        h('div', null, h('b', null, title), h('p', null, spoken.length ? 'Bạn đã nói tổng cộng ' + dura(secs) + '.' : 'Bạn chưa nói lượt nào. Hãy xem bài mẫu rồi luyện lại.'))));
+      if (spoken.length) panel.appendChild(h('ol', { class: 'steps', style: { marginTop: '14px' } },
+        h('li', null, hasAudio ? 'Nghe lại từng lượt nói của bạn.' : 'Nhớ lại từng lượt nói của bạn.'),
+        h('li', null, 'Bấm Nghe bài mẫu, đọc bài mẫu và các cụm từ được tô vàng.'),
+        h('li', null, 'Tự chấm theo 5 tiêu chí ở cuối trang rồi lưu kết quả.')));
+    }
+    panel.appendChild(h('div', { class: 'vbar', style: { margin: '14px 0 6px' } },
+      h('div', { class: 'row' }, viewOnly ? h('button', { class: 'btn primary', type: 'button', onclick: again }, 'Luyện đề này') : h('button', { class: 'btn', type: 'button', onclick: again }, 'Luyện lại'),
+        h('button', { class: 'btn', type: 'button', onclick: back }, 'Về danh sách đề')),
+      V.speedToggle()));
+
+    function fileName(it, tk) { return (V.slug(V.learnerName()) || 'bai-noi') + '-' + V.slug(test.title) + '-' + it.file + extOf(tk.type); }
+    function mine(it) {
+      if (viewOnly) return null;
+      var tk = takes[it.key], lab = h('span', { class: 'lab' }, 'Bài nói của bạn');
+      if (!tk) return h('div', { class: 'mine' }, lab, h('span', { class: 'muted' }, 'Chưa nói lượt này.'));
+      if (!tk.url) return h('div', { class: 'mine' }, lab, h('span', { class: 'muted' }, 'Đã nói ' + fmt(tk.secs) + ', không ghi âm.'));
+      return h('div', { class: 'mine' }, lab, own(h('audio', { controls: true, preload: 'metadata', src: tk.url, 'aria-label': 'Bài nói của bạn, ' + it.label })),
+        h('a', { class: 'btn small', href: tk.url, download: fileName(it, tk) }, 'Tải về'));
+    }
+    function modelBox(it) {
+      var box = h('div', { class: 'model' }), two = !!it.model.b1;
+      function draw() {
+        var lv = two ? level() : 'one', m = it.model[lv];
+        V.clear(box).appendChild(h('div', { class: 'mh' },
+          h('b', null, two ? 'Bài nói mẫu' : 'Câu trả lời mẫu'),
+          two ? h('div', { class: 'seg', role: 'group', 'aria-label': 'Mức của bài mẫu' }, [['b1', 'Mức B1'], ['b2', 'Mức B2–C1']].map(function (o) {
+            return h('button', { type: 'button', 'aria-pressed': lv === o[0] ? 'true' : 'false', onclick: function () { V.stopClip(); V.store.set('noi.lv', o[0]); models.forEach(function (f) { f(); }); } }, o[1]);
+          })) : null,
+          V.clipButton('Nghe bài mẫu', 'noi/' + test.id + '/' + m.clip + '.mp3', m.text, 'Nghe bài mẫu, ' + it.label)));
+        box.appendChild(h('div', { class: 'mtext', lang: 'en' }, m.text.split(/\n\s*\n/).map(function (para) { return h('p', null, mark(para, m.ph)); })));
+        if (m.ph && m.ph.length) box.appendChild(h('ul', { class: 'phr' }, m.ph.map(function (x) { return h('li', null, h('b', { lang: 'en' }, x[0]), ' ' + x[1]); })));
+      }
+      if (two) models.push(draw);
+      draw();
+      return box;
+    }
+    function qRev(it) {
+      return h('div', { class: 'sq' },
+        h('div', { class: 'qt' }, h('span', { class: 'qn' }, it.label + '.'), ' ', h('span', { lang: 'en' }, it.q)),
+        h('div', { class: 'acts' }, askBtn(test, it, 'Nghe câu hỏi')), mine(it), modelBox(it));
+    }
+    function longRev(it, head, body) {
+      return h('article', { class: 'item' }, h('h3', null, head), body,
+        h('div', { class: 'acts' }, askBtn(test, it, 'Nghe giám khảo đọc')), mine(it), modelBox(it), hint('Dàn ý của bài mẫu', it.outline));
+    }
+    parts.forEach(function (p) {
+      panel.appendChild(h('h2', { class: 'parthead' }, p.title + ': ' + p.name, h('span', { class: 'pill blue' }, p.level)));
+      if (p.id === 'p1') test.p1.forEach(function (tp, ti) {
+        var card = h('article', { class: 'item' }, h('h3', null, 'Chủ đề ' + (ti + 1) + ': ', h('span', { lang: 'en' }, tp.topic), ' (' + tp.vi + ')'));
+        test.items.p1.forEach(function (it) { if (it.topic === ti) card.appendChild(qRev(it)); });
+        panel.appendChild(card);
+      });
+      if (p.id === 'p2') panel.appendChild(longRev(test.items.p2[0], 'Tình huống', sitBlock(test.p2)));
+      if (p.id === 'p3') {
+        panel.appendChild(longRev(test.items.p3[0], 'Chủ đề', mind(test.p3)));
+        var card = h('article', { class: 'item' }, h('h3', null, 'Câu hỏi thêm'));
+        test.items.p3.forEach(function (it) { if (it.kind === 'fu') card.appendChild(qRev(it)); });
+        panel.appendChild(card);
+      }
+    });
+    if (!viewOnly && spoken.length) panel.appendChild(assess());
+    panel.appendChild(h('div', { class: 'row', style: { marginTop: '18px' } },
+      h('button', { class: 'btn primary', type: 'button', onclick: again }, viewOnly ? 'Luyện đề này' : 'Luyện lại'),
+      h('button', { class: 'btn', type: 'button', onclick: back }, 'Về danh sách đề')));
+
+    /* ---------- tự chấm theo 5 tiêu chí của bài thi Nói ---------- */
+    function assess() {
+      var box = h('section', { class: 'assess' }), pick = {}, warn = h('div');
+      var sendAudio = h('input', { type: 'checkbox', id: 'noi-send-audio', checked: true });
+      box.appendChild(h('h2', null, 'Tự chấm bài nói'));
+      box.appendChild(h('p', { class: 'muted', style: { maxWidth: '72ch' } }, 'Bài thi Nói được chấm theo 5 tiêu chí. Ở mỗi tiêu chí, chọn dòng giống bài nói của bạn nhất. Chấm thật với mình thì mới biết cần luyện gì.'));
+      CRIT.forEach(function (c, ci) {
+        var fs = h('fieldset', { class: 'q' }, h('legend', null, (ci + 1) + '. ' + c[0]));
+        c[1].forEach(function (text, li) {
+          var id = 'cr' + ci + '-' + li, r = h('input', { type: 'radio', name: 'cr' + ci, id: id });
+          r.addEventListener('change', function () { pick[ci] = li; V.clear(warn); });
+          fs.appendChild(h('label', { class: 'opt', for: id }, r, h('span', { class: 'lv' }, LEVELS[li][0]), h('span', null, text)));
+        });
+        box.appendChild(fs);
+      });
+      if (V.sheetOn() && hasAudio) box.appendChild(h('label', { class: 'send', for: 'noi-send-audio' }, sendAudio,
+        h('span', null, 'Gửi kèm các bản ghi âm để ' + V.teacher() + ' nghe và chấm. Bỏ chọn nếu bạn chỉ muốn gửi điểm tự chấm.')));
+      box.appendChild(warn);
+      box.appendChild(h('div', { class: 'row', style: { marginTop: '16px' } }, h('button', { class: 'btn primary', type: 'button', onclick: save }, 'Lưu kết quả')));
+      function save() {
+        var left = CRIT.length - Object.keys(pick).length;
+        if (left > 0) {
+          V.clear(warn).appendChild(h('div', { class: 'notice warn', style: { marginTop: '14px' }, role: 'alert' }, 'Còn ' + left + ' tiêu chí chưa chọn.'));
+          return;
+        }
+        var sum = 0, low = 0;
+        CRIT.forEach(function (c, ci) { sum += LEVELS[pick[ci]][1]; if (pick[ci] < pick[low]) low = ci; });
+        var score10 = Math.round(sum / CRIT.length * 10) / 10, whole = parts.length === PARTS.length;
+        var detail = CRIT.map(function (c, ci) { return c[0] + ': ' + LEVELS[pick[ci]][0]; }).join('; ');
+        var rec = V.results.add({ skill: 'noi', kind: 'luyen-tap', title: title, score10: score10, full: whole, self: true, sent: false });
+        var band = V.bandOf(score10), tg = V.target(), s05 = V.round05(score10), sendBox = h('p', { class: 'small muted', role: 'status' });
+        var verdict = 'Điểm Nói tự chấm: ' + V.fmtScore(s05) + '/10, ' + (band.key === 'none' ? 'chưa tới mốc B1' : 'tương đương ' + band.t) + '. ' +
+          (s05 >= tg.min ? 'Theo tự chấm, bạn đã ở mốc mục tiêu ' + tg.t + '.' : 'Mốc mục tiêu ' + tg.t + ' cần từ ' + V.fmtScore(tg.min) + ' điểm.') +
+          ' Tiêu chí nên luyện trước: ' + CRIT[low][0] + '. ' + CRIT[low][2];
+        V.clear(box).classList.remove('assess'); box.style.marginTop = '26px';
+        box.appendChild(h('div', { class: 'score' },
+          h('div', { class: 'big' }, V.fmtScore(s05), h('span', null, ' /10 tự chấm')),
+          h('div', null, h('b', null, title), h('p', null, verdict), sendBox)));
+        box.scrollIntoView({ block: 'center' });
+        var row = { 'Đề': test.title, 'Phần': whole ? 'Cả đề' : parts[0].title, 'Kết quả': spoken.length + '/' + its.length + ' lượt nói, ' + dura(secs),
+          'Tự chấm /10': V.fmtScore(score10), 'Chi tiết tự chấm': detail, 'Mục tiêu': tg.t };
+        function send() {
+          if (!V.sheetOn()) {
+            sendBox.textContent = 'Kết quả đã được lưu trên máy này. Điểm thật do giám khảo chấm' + (hasAudio ? '; hãy bấm Tải về ở từng bản ghi rồi gửi cho ' + V.teacher() + ' để được chấm và nhận xét.' : '.');
+            return;
+          }
+          sendBox.textContent = 'Đang gửi cho ' + V.teacher() + '…';
+          pack(sendAudio.checked, function (audio, tooBig) {
+            V.send('noi', row, function (ok) {
+              V.clear(sendBox);
+              if (ok) {
+                V.results.mark(rec.ts, { sent: true });
+                sendBox.textContent = 'Đã lưu và gửi cho ' + V.teacher() + (audio.length ? ' kèm ' + audio.length + ' bản ghi âm.' : '.') +
+                  (tooBig ? ' Bản ghi âm quá lớn nên chưa gửi kèm được; hãy tải về và gửi riêng.' : '') + ' Điểm và nhận xét của ' + V.teacher() + ' sẽ hiện ở danh sách đề.';
+              } else V.add(sendBox, ['Đã lưu trên máy này nhưng chưa gửi được cho ' + V.teacher() + '. ', h('button', { class: 'btn small', type: 'button', onclick: send }, 'Gửi lại')]);
+            }, audio);
+          });
+        }
+        send();
+      }
+      // đổi các bản ghi thành chữ (base64) để gửi kèm về Google Sheet
+      function pack(want, cb) {
+        var list = want ? spoken.filter(function (it) { return takes[it.key].blob; }) : [], size = 0, out = [], i = 0;
+        list.forEach(function (it) { size += takes[it.key].blob.size; });
+        if (!list.length || size > 9e6) { cb([], size > 9e6); return; }
+        (function next() {
+          if (i >= list.length) { cb(out, false); return; }
+          var it = list[i++], tk = takes[it.key], fr = new FileReader();
+          fr.onload = function () { out.push({ name: test.title + ' - ' + it.label + extOf(tk.type), type: tk.type, b64: String(fr.result).split(',')[1] || '' }); next(); };
+          fr.onerror = next;
+          fr.readAsDataURL(tk.blob);
+        })();
+      }
+      return box;
+    }
+  }
+
+  /* ================= KHUNG TRANG ================= */
+  function draw() {
+    V.clear(bar);
+    TABS.forEach(function (t) {
+      bar.appendChild(h('button', { class: 'tab' + (t[0] === tab ? ' on' : ''), type: 'button', role: 'tab', 'aria-selected': t[0] === tab ? 'true' : 'false',
+        onclick: function () { tab = t[0]; try { history.replaceState(null, '', '#' + tab); } catch (e) { } draw(); } }, t[1]));
+    });
+    if (tab === 'tu-vung') { cleanup(); doing(false); V.vocabTab(panel, { skill: 'noi', groups: D.vocab, source: 'các bài nói mẫu', listenFirst: false }); } else listView();
+  }
+  V.mount(function (root) {
+    bar = h('div', { class: 'tabs', role: 'tablist' }); panel = h('div', { role: 'tabpanel' });
+    window.addEventListener('hashchange', function () { tab = hashTab(); draw(); });
+    root.appendChild(V.pageHead('Nói', 'Speaking', 'Bài nói theo đúng định dạng VSTEP.3-5: 3 phần trong 12 phút. Nghe giám khảo hỏi, ghi âm câu trả lời, nghe lại và so với bài nói mẫu.'));
+    root.appendChild(h('div', { style: { marginTop: '14px' } }, V.learnerBox(function () { draw(); })));
     root.appendChild(bar); root.appendChild(panel);
     draw();
     root.appendChild(V.pager());

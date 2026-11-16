@@ -569,12 +569,13 @@ h1,h2,h3,p{margin:0}
     } catch (e) { formPost(); }
   }
   // gửi một dòng kết quả: V.send('nghe', {'Đề': 'Bài 1', 'Kết quả': '6/8', ...}, cb)
-  function send(skill, row, cb) {
+  // audio (tuỳ chọn): [{name, type, b64}] – bản ghi âm bài Nói gửi kèm
+  function send(skill, row, cb, audio) {
     if (!sheetOn()) { cb && cb(false); return; }
     var ordered = { 'Học viên': learnerName() || '(chưa nhập tên)' };
     Object.keys(row || {}).forEach(function (k) { ordered[k] = row[k]; });
     ordered['Mã'] = uid() + '-' + Date.now().toString(36);
-    postSheet({ skill: skill, cols: Object.keys(ordered), row: ordered, audio: [] }, cb);
+    postSheet({ skill: skill, cols: Object.keys(ordered), row: ordered, audio: audio || [] }, cb);
   }
   function jsonp(params, cb) {
     var cbName = '__vjp' + Date.now() + Math.floor(Math.random() * 1000), finished = false;
