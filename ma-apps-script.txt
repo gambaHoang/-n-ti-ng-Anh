@@ -1,0 +1,181 @@
+/**
+ * BẢNG ĐIỂM VSTEP B1–C1 — nhận kết quả từ web ôn thi (Nghe, Đọc, Viết, Nói)
+ * -----------------------------------------------------------------------
+ * Cách dùng (chi tiết trong file hướng dẫn, mục "Nhận kết quả về Google Sheet"):
+ *   1. Tạo 1 Google Sheet mới → Tiện ích mở rộng → Apps Script.
+ *   2. Xoá hết code mẫu, dán TOÀN BỘ file này vào → bấm Lưu.
+ *   3. Triển khai → Tuỳ chọn triển khai mới → Loại: Ứng dụng web
+ *      · Thực thi với tư cách: Tôi   · Người có quyền truy cập: Bất kỳ ai
+ *   4. Copy "URL ứng dụng web" (…/exec) → dán vào sheetUrl ở đầu cả 5 file index, nghe, noi, doc, viet.
+ *
+ * Bản 2 (16/11/2026): điểm không còn bị đổi thành ngày tháng; trang hỏi lại để biết chắc bài đã vào bảng.
+ *
+ * Mỗi kỹ năng có một trang tính riêng (Nghe, Đọc, Viết, Nói), mỗi lần học viên gửi là 1 dòng.
+ * Giáo viên chấm bằng cách điền 2 cột cuối: "Điểm GV" và "Nhận xét GV".
+ * Học viên sẽ thấy điểm + nhận xét ở mục "Giáo viên đã chấm" trên trang tương ứng.
+ */
+
+var SHEET_NAMES = { nghe: 'Nghe', doc: 'Đọc', viet: 'Viết', noi: 'Nói' };
+var TEACHER_COLS = ['Điểm GV', 'Nhận xét GV'];
+var WIDE_COLS = ['Bài viết', 'Lời nói (chữ)', 'Chi tiết đáp án', 'Lỗi máy tìm (chi tiết)', 'Nhận xét GV', 'File ghi âm'];
+// Bản ghi âm bài Nói được lưu vào thư mục con này, nằm cùng thư mục với file Sheet
+// (ví dụ: Luyện thi VSTEP / Bài nói học viên).
+var AUDIO_FOLDER = 'Bài nói học viên';
+
+/* ---------- nhận bài gửi lên ---------- */
+function doPost(e) {
+  var lock = LockService.getScriptLock();
+  try {
+    lock.waitLock(30000);
+    var raw = (e && e.parameter && e.parameter.payload) || (e && e.postData && e.postData.contents) || '{}';
+    var data = JSON.parse(raw);
+    var sheetName = SHEET_NAMES[data.skill] || 'Khác';
+    var ss = SpreadsheetApp.getActiveSpreadsheet();
+    var sh = ss.getSheetByName(sheetName) || ss.insertSheet(sheetName);
+    var row = data.row || {};
+
+    // bản ghi âm bài Nói (nếu có) → lưu vào Google Drive, ghi link vào bảng
+    if (data.audio && data.audio.length) {
+      var folder = getAudioFolder_();
+      var links = [];
+      data.audio.forEach(function (a) {
+        try {
+          var blob = Utilities.newBlob(Utilities.base64Decode(a.b64), a.type || 'audio/webm', (row['Học viên'] || 'hoc-vien') + ' - ' + (a.name || 'bai-noi.webm'));
+          links.push(folder.createFile(blob).getUrl());
+        } catch (err) { links.push('(lỗi lưu file: ' + err + ')'); }
+      });
+      row['File ghi âm'] = links.join('\n');
+    }
+
+    // tiêu đề cột: Thời gian, Học viên, ... , Điểm GV, Nhận xét GV
+    var cols = ['Thời gian', 'Học viên'].concat((data.cols || Object.keys(row)).filter(function (c) {
+      return c !== 'Thời gian' && c !== 'Học viên' && TEACHER_COLS.indexOf(c) < 0;
+    }));
+    if (row['File ghi âm'] && cols.indexOf('File ghi âm') < 0) cols.push('File ghi âm');
+    var headers = sh.getLastRow() > 0 ? sh.getRange(1, 1, 1, sh.getLastColumn()).getValues()[0].filter(String) : [];
+    var isNew = headers.length === 0;
+    var tail = TEACHER_COLS.filter(function (c) { return headers.indexOf(c) < 0; });
+    cols.forEach(function (c) { if (headers.indexOf(c) < 0) headers.push(c); });
+    tail.forEach(function (c) { headers.push(c); });
+    sh.getRange(1, 1, 1, headers.length).setValues([headers]).setFontWeight('bold').setBackground('#e6f0ff');
+    if (isNew) formatSheet_(sh, headers);
+
+    row['Thời gian'] = new Date();
+    var values = headers.map(function (hd) { return cell_(hd, row[hd]); });
+    var formats = headers.map(function (hd, i) {
+      if (hd === 'Thời gian') return 'dd/MM/yyyy HH:mm';
+      return typeof values[i] === 'number' ? '0.0' : '@';   // '@' = văn bản thuần, Sheet không tự đổi
+    });
+    var r = sh.getLastRow() + 1;
+    var rg = sh.getRange(r, 1, 1, headers.length);
+    rg.setNumberFormats([formats]);
+    rg.setValues([values]);
+    return json_({ ok: true, ma: String(row['Mã'] || '') });
+  } catch (err) {
+    return json_({ ok: false, error: String(err) });
+  } finally {
+    lock.releaseLock();
+  }
+}
+
+/* ---------- học viên xem điểm/nhận xét đã chấm ---------- */
+function doGet(e) {
+  var p = (e && e.parameter) || {};
+  var out = { ok: true, msg: 'Bảng điểm VSTEP đang hoạt động ✔' };
+  if (p.action === 'check' && p.ma) {
+    out = { ok: true, found: hasCode_(p.skill, String(p.ma)) };
+  } else if (p.action === 'feedback' && p.name) {
+    out = { ok: true, items: [] };
+    var who = norm_(p.name);
+    var ss = SpreadsheetApp.getActiveSpreadsheet();
+    var sheets = p.skill && SHEET_NAMES[p.skill] ? [ss.getSheetByName(SHEET_NAMES[p.skill])] : ss.getSheets();
+    sheets.forEach(function (sh) {
+      if (!sh || sh.getLastRow() < 2) return;
+      var v = sh.getDataRange().getValues(), hd = v[0];
+      var col = function (n) { return hd.indexOf(n); };
+      var iN = col('Học viên'), iG = col('Điểm GV'), iC = col('Nhận xét GV'), iT = col('Thời gian');
+      if (iN < 0) return;
+      for (var r = 1; r < v.length; r++) {
+        if (norm_(v[r][iN]) !== who) continue;
+        var g = iG >= 0 ? v[r][iG] : '', c = iC >= 0 ? v[r][iC] : '';
+        if (g === '' && c === '') continue;
+        var t = v[r][iT];
+        out.items.push({
+          ts: t instanceof Date ? t.getTime() : 0,
+          time: t instanceof Date ? Utilities.formatDate(t, ss.getSpreadsheetTimeZone(), 'dd/MM/yyyy HH:mm') : String(t || ''),
+          skill: sh.getName(),
+          de: col('Đề') >= 0 ? String(v[r][col('Đề')]) : '',
+          part: col('Phần') >= 0 ? String(v[r][col('Phần')]) : (col('Task') >= 0 ? String(v[r][col('Task')]) : ''),
+          result: col('Kết quả') >= 0 ? String(v[r][col('Kết quả')]) : (col('Số từ') >= 0 ? v[r][col('Số từ')] + ' từ' : ''),
+          diem: g === '' ? '' : String(g),
+          nhanxet: String(c || '')
+        });
+      }
+    });
+    out.items.sort(function (a, b) { return b.ts - a.ts; });
+    out.items = out.items.slice(0, 30);
+  }
+  var cb = String(p.callback || '').replace(/[^\w.$]/g, '');
+  var body = JSON.stringify(out);
+  if (cb) return ContentService.createTextOutput(cb + '(' + body + ');').setMimeType(ContentService.MimeType.JAVASCRIPT);
+  return ContentService.createTextOutput(body).setMimeType(ContentService.MimeType.JSON);
+}
+
+/* ---------- tiện ích ---------- */
+function formatSheet_(sh, headers) {
+  sh.setFrozenRows(1);
+  headers.forEach(function (hd, i) {
+    if (WIDE_COLS.indexOf(hd) >= 0) sh.setColumnWidth(i + 1, 360);
+    else if (hd === 'Thời gian') sh.setColumnWidth(i + 1, 140);
+    else if (hd === 'Học viên') sh.setColumnWidth(i + 1, 160);
+  });
+  sh.getRange(1, 1, sh.getMaxRows(), headers.length).setVerticalAlignment('top').setWrap(true);
+  var g = headers.indexOf('Điểm GV');
+  if (g >= 0) sh.getRange(1, g + 1, sh.getMaxRows(), 2).setBackground('#fff8e1');
+  sh.getRange(1, 1, 1, headers.length).setBackground('#e6f0ff');
+}
+function getAudioFolder_() {
+  var parents = DriveApp.getFileById(SpreadsheetApp.getActiveSpreadsheet().getId()).getParents();
+  var home = parents.hasNext() ? parents.next() : DriveApp.getRootFolder();
+  var it = home.getFoldersByName(AUDIO_FOLDER);
+  return it.hasNext() ? it.next() : home.createFolder(AUDIO_FOLDER);
+}
+// giá trị của một ô: cột "… /10" (điểm) thành số thật; mọi cột khác giữ là chữ
+function cell_(hd, v) {
+  if (v === undefined || v === null) return '';
+  if (v instanceof Date || typeof v === 'number') return v;
+  v = String(v);
+  if (/\/10$/.test(hd) && /^\d+([.,]\d+)?$/.test(v.trim())) return Number(v.trim().replace(',', '.'));
+  if (v.length > 45000) v = v.slice(0, 45000) + ' …(đã cắt bớt)';
+  return /^=/.test(v) ? "'" + v : v;   // ô đã là văn bản thuần; chỉ chặn thêm dấu = cho chắc
+}
+// bài có mã này đã nằm trong bảng của kỹ năng đó chưa (trang hỏi lại sau khi gửi)
+function hasCode_(skill, ma) {
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  var sh = ss.getSheetByName(SHEET_NAMES[skill] || 'Khác');
+  if (!sh || sh.getLastRow() < 2) return false;
+  var hd = sh.getRange(1, 1, 1, sh.getLastColumn()).getValues()[0], c = hd.indexOf('Mã');
+  if (c < 0) return false;
+  var n = Math.min(sh.getLastRow() - 1, 300);   // chỉ xem 300 dòng mới nhất
+  var v = sh.getRange(sh.getLastRow() - n + 1, c + 1, n, 1).getDisplayValues();
+  for (var i = v.length - 1; i >= 0; i--) if (v[i][0] === ma) return true;
+  return false;
+}
+function norm_(s) {
+  return String(s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/đ/g, 'd').replace(/\s+/g, ' ').trim();
+}
+function json_(o) {
+  return ContentService.createTextOutput(JSON.stringify(o)).setMimeType(ContentService.MimeType.JSON);
+}
+
+/* Chạy thử hàm này 1 lần trong trình soạn Apps Script để cấp quyền và tạo sẵn 4 trang tính. */
+function taoBangDiem() {
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  Object.keys(SHEET_NAMES).forEach(function (k) { if (!ss.getSheetByName(SHEET_NAMES[k])) ss.insertSheet(SHEET_NAMES[k]); });
+  // xoá trang tính trống mặc định (Trang tính1 / Sheet1) nếu còn
+  ss.getSheets().forEach(function (sh) {
+    var n = sh.getName();
+    if (!/^(Nghe|Đọc|Viết|Nói)$/.test(n) && sh.getLastRow() === 0 && ss.getSheets().length > 4) ss.deleteSheet(sh);
+  });
+  getAudioFolder_();
+}
