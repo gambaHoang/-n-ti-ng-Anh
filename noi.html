@@ -741,8 +741,25 @@ mark.hl{background:#ffec99;color:inherit;padding:0 2px;border-radius:3px}
     if (!sheetOn()) { cb && cb(false); return; }
     var ordered = { 'Học viên': learnerName() || '(chưa nhập tên)' };
     Object.keys(row || {}).forEach(function (k) { ordered[k] = row[k]; });
-    ordered['Mã'] = uid() + '-' + Date.now().toString(36);
-    postSheet({ skill: skill, cols: Object.keys(ordered), row: ordered, audio: audio || [] }, cb);
+    var ma = uid() + '-' + Date.now().toString(36);
+    ordered['Mã'] = ma;
+    postSheet({ skill: skill, cols: Object.keys(ordered), row: ordered, audio: audio || [] }, function (ok) {
+      if (!ok) { cb && cb(false); return; }
+      confirmSent(skill, ma, cb);
+    });
+  }
+  // trang không đọc được câu trả lời của lệnh gửi, nên hỏi lại Sheet xem bài mang mã này đã vào bảng chưa
+  function confirmSent(skill, ma, cb) {
+    var waits = [0, 2500, 6000], i = 0;
+    (function ask() {
+      setTimeout(function () {
+        jsonp({ action: 'check', skill: skill, ma: ma }, function (err, d) {
+          if (!err && d && d.found === true) { cb && cb(true); return; }
+          if (!err && d && d.ok && d.found === undefined) { cb && cb(true); return; }   // mã Apps Script bản cũ chưa biết hỏi lại
+          if (++i < waits.length) ask(); else { cb && cb(false); }
+        });
+      }, waits[i]);
+    })();
   }
   function jsonp(params, cb) {
     var cbName = '__vjp' + Date.now() + Math.floor(Math.random() * 1000), finished = false;
