@@ -1,4 +1,4 @@
-# Ôn thi VSTEP B1–C1
+# Luyện thi VSTEP B1–C1
 
 Trang luyện thi VSTEP 4 kỹ năng Nghe, Nói, Đọc, Viết.
 

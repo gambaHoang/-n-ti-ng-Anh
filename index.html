@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Ôn thi VSTEP B1–C1 – luyện Nghe, Nói, Đọc, Viết</title>
+<title>Luyện thi VSTEP B1–C1 – luyện Nghe, Nói, Đọc, Viết</title>
 <meta name="description" content="Luyện thi VSTEP.3-5 từ B1 đến C1 đủ 4 kỹ năng Nghe, Nói, Đọc, Viết: bài luyện có chấm điểm, từ vựng có phát âm, theo dõi kết quả.">
 <script>
 /* ================================================================
@@ -11,7 +11,7 @@
    Phần này giống nhau ở cả 5 trang: sửa ở trang nào thì sửa luôn 4 trang còn lại.
    ================================================================ */
 window.VSTEP_CONFIG = {
-  brand: "Ôn thi VSTEP",          // tên hiện ở góc trái thanh menu
+  brand: "Luyện thi VSTEP",          // tên hiện ở góc trái thanh menu
   levelName: "Bậc 3–5",           // các bậc khoá học luyện
   level: "B1–C1",
   defaultTarget: "b1",            // bậc mục tiêu khi học viên chưa tự chọn: "b1", "b2" hoặc "c1"
@@ -459,7 +459,7 @@ h1,h2,h3,p{margin:0}
     whoEl = h('span', { class: 'nav-who' });
     drawWho();
     return h('header', { class: 'nav' }, h('div', { class: 'nav-in' },
-      link('home', { class: 'brand' }, C.brand || 'Ôn thi VSTEP', h('span', { class: 'lvl' }, C.level || 'B1–C1')),
+      link('home', { class: 'brand' }, C.brand || 'Luyện thi VSTEP', h('span', { class: 'lvl' }, C.level || 'B1–C1')),
       whoEl,
       h('nav', { class: 'nav-links', 'aria-label': 'Các trang' }, PAGES.map(function (p) {
         return link(p.key, { class: 'nav-a' + (p.key === PAGE ? ' on' : ''), 'aria-current': p.key === PAGE ? 'page' : null }, p.t);
@@ -496,7 +496,7 @@ h1,h2,h3,p{margin:0}
     render(root);
     audioCheck(root);
     root.appendChild(h('footer', { class: 'foot' },
-      (C.brand || 'Ôn thi VSTEP') + ' ' + (C.level || 'B1–C1') + '. Kết quả làm bài được lưu trên máy này' + (sheetOn() ? ' và gửi về bảng điểm của ' + teacher() + '.' : '.')));
+      (C.brand || 'Luyện thi VSTEP') + ' ' + (C.level || 'B1–C1') + '. Kết quả làm bài được lưu trên máy này' + (sheetOn() ? ' và gửi về bảng điểm của ' + teacher() + '.' : '.')));
   }
 
   /* ---------- ô nhập tên học viên ---------- */
@@ -1009,7 +1009,7 @@ h1,h2,h3,p{margin:0}
     live.scale = h('div'); live.tiles = h('div'); live.results = h('div'); live.words = h('div'); live.goals = h('div'); live.plan = h('div');
     root.appendChild(h('div', { class: 'hero' },
       h('div', null,
-        h('h1', null, 'Ôn thi VSTEP', h('span', { class: 'lvl' }, C.level || 'B1–C1')),
+        h('h1', null, C.brand || 'Luyện thi VSTEP', h('span', { class: 'lvl' }, C.level || 'B1–C1')),
         h('p', { class: 'lead' }, 'Luyện Nghe, Nói, Đọc, Viết theo đúng định dạng đề thi VSTEP.3-5, từ bậc 3 (B1) đến bậc 5 (C1). Bài làm xong được chấm, lưu lại' + (V.sheetOn() ? ' và gửi cho ' + V.teacher() + ' theo dõi.' : '.'))),
       V.learnerBox(function () { remote = V.store.get('remote', []); loadRemote(); })));
     root.appendChild(live.scale);

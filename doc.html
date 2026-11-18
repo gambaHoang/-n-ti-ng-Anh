@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Luyện Đọc – Ôn thi VSTEP B1–C1</title>
+<title>Luyện Đọc – Luyện thi VSTEP B1–C1</title>
 <meta name="description" content="Luyện Đọc VSTEP B1–C1: đề đọc 40 câu có bấm giờ, chấm điểm, chữa bài và từ vựng mới có phát âm giọng nam, giọng nữ.">
 <script>
 /* ================================================================
@@ -11,7 +11,7 @@
    Phần này giống nhau ở cả 5 trang: sửa ở trang nào thì sửa luôn 4 trang còn lại.
    ================================================================ */
 window.VSTEP_CONFIG = {
-  brand: "Ôn thi VSTEP",          // tên hiện ở góc trái thanh menu
+  brand: "Luyện thi VSTEP",          // tên hiện ở góc trái thanh menu
   levelName: "Bậc 3–5",           // các bậc khoá học luyện
   level: "B1–C1",
   defaultTarget: "b1",            // bậc mục tiêu khi học viên chưa tự chọn: "b1", "b2" hoặc "c1"
@@ -491,7 +491,7 @@ body.doing .nav{position:static}
     whoEl = h('span', { class: 'nav-who' });
     drawWho();
     return h('header', { class: 'nav' }, h('div', { class: 'nav-in' },
-      link('home', { class: 'brand' }, C.brand || 'Ôn thi VSTEP', h('span', { class: 'lvl' }, C.level || 'B1–C1')),
+      link('home', { class: 'brand' }, C.brand || 'Luyện thi VSTEP', h('span', { class: 'lvl' }, C.level || 'B1–C1')),
       whoEl,
       h('nav', { class: 'nav-links', 'aria-label': 'Các trang' }, PAGES.map(function (p) {
         return link(p.key, { class: 'nav-a' + (p.key === PAGE ? ' on' : ''), 'aria-current': p.key === PAGE ? 'page' : null }, p.t);
@@ -528,7 +528,7 @@ body.doing .nav{position:static}
     render(root);
     audioCheck(root);
     root.appendChild(h('footer', { class: 'foot' },
-      (C.brand || 'Ôn thi VSTEP') + ' ' + (C.level || 'B1–C1') + '. Kết quả làm bài được lưu trên máy này' + (sheetOn() ? ' và gửi về bảng điểm của ' + teacher() + '.' : '.')));
+      (C.brand || 'Luyện thi VSTEP') + ' ' + (C.level || 'B1–C1') + '. Kết quả làm bài được lưu trên máy này' + (sheetOn() ? ' và gửi về bảng điểm của ' + teacher() + '.' : '.')));
   }
 
   /* ---------- ô nhập tên học viên ---------- */
